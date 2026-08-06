@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { relatedTools } from "@/lib/seo/relatedTools";
 
 const tools = [
   {
@@ -48,90 +49,14 @@ export default function RelatedTools({
 }: {
   current: string;
 }) {
- const relatedMap: Record<string, string[]> = {
-  "/compress-image": [
-    "/image-resizer",
-    "/signature-resizer",
-    "/jpg-to-pdf",
-    "/compress-pdf",
-    "/pdf-to-jpg",
-  ],
+ 
 
-  "/compress-pdf": [
-    "/merge-pdf",
-    "/split-pdf",
-    "/rotate-pdf",
-    "/pdf-to-jpg",
-    "/jpg-to-pdf",
-  ],
-
-  "/merge-pdf": [
-    "/split-pdf",
-    "/rotate-pdf",
-    "/compress-pdf",
-    "/pdf-to-jpg",
-    "/jpg-to-pdf",
-  ],
-
-  "/split-pdf": [
-    "/merge-pdf",
-    "/rotate-pdf",
-    "/compress-pdf",
-    "/pdf-to-jpg",
-    "/jpg-to-pdf",
-  ],
-
-  "/rotate-pdf": [
-    "/merge-pdf",
-    "/split-pdf",
-    "/compress-pdf",
-    "/pdf-to-jpg",
-    "/jpg-to-pdf",
-  ],
-
-  "/jpg-to-pdf": [
-    "/pdf-to-jpg",
-    "/compress-image",
-    "/compress-pdf",
-    "/image-resizer",
-    "/signature-resizer",
-  ],
-
-  "/pdf-to-jpg": [
-    "/jpg-to-pdf",
-    "/compress-pdf",
-    "/merge-pdf",
-    "/split-pdf",
-    "/rotate-pdf",
-  ],
-
-  "/image-resizer": [
-    "/compress-image",
-    "/signature-resizer",
-    "/jpg-to-pdf",
-    "/pdf-to-jpg",
-    "/compress-pdf",
-  ],
-
-  "/signature-resizer": [
-    "/image-resizer",
-    "/compress-image",
-    "/jpg-to-pdf",
-    "/compress-pdf",
-    "/pdf-to-jpg",
-  ],
-
-  "/tamil-image-to-text": [
-    "/compress-image",
-    "/image-resizer",
-    "/jpg-to-pdf",
-    "/pdf-to-jpg",
-    "/compress-pdf",
-  ],
-};
-
-const related = (relatedMap[current] ?? [])
-  .map((href) => tools.find((tool) => tool.href === href))
+const related = (
+  relatedTools[current.replace("/", "") as keyof typeof relatedTools] ?? []
+)
+  .map((slug) =>
+  tools.find((tool) => tool.href === `/${slug}`)
+)
   .filter(
     (
       tool
