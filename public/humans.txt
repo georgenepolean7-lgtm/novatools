@@ -1,0 +1,30 @@
+/* TEAM */
+
+Company: Nova Code Tech
+Website: https://novatool.in
+Product: Nova Tools
+
+Founder: Nova Code Tech
+
+Contact:
+https://novatool.in/contact
+
+/* SITE */
+
+Platform: Next.js
+Language: English, Tamil
+
+Features:
+PDF Tools
+Image Tools
+OCR Tools
+AI Utilities
+
+Sitemap:
+https://novatool.in/sitemap.xml
+
+Robots:
+https://novatool.in/robots.txt
+
+LLMS:
+https://novatool.in/llms.txt
