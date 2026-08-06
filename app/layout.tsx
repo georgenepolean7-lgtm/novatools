@@ -4,6 +4,7 @@ import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import MicrosoftClarity from "@/components/MicrosoftClarity";
 import SearchActionSchema from "@/components/seo/SearchActionSchema";
+import CookieConsent from "@/components/CookieConsent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -100,6 +101,9 @@ export default function RootLayout({
 <MicrosoftClarity />
 <SearchActionSchema />
         {children}
+
+        <CookieConsent />
+        
       </body>
     </html>
   );
