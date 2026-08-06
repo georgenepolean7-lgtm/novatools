@@ -6,14 +6,14 @@ export default function CinematicHero() {
 
       {/* Background Image */}
      <div
-  className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80"
+  className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80 will-change-transform"
   style={{
-    backgroundImage: "url('/images/hero-bg.png')",
+    backgroundImage: "url('/images/hero-bg.webp')",
   }}
 />
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-slate-950/35" />
+      <div className="absolute inset-0 bg-slate-950/45" />
 
       {/* Left Gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-transparent to-transparent" />

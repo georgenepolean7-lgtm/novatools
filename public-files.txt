@@ -1,0 +1,62 @@
+ Volume in drive C is OS
+ Volume Serial Number is B6A9-42B3
+
+ Directory of C:\Users\georg\OneDrive\Desktop\novatools\public
+
+06-08-2026  18:08    <DIR>          .
+06-08-2026  19:59    <DIR>          ..
+06-08-2026  17:45                32 a52a86efe6f041bd931a36f0e2bdadd8.txt
+28-07-2026  12:15    <DIR>          animations
+26-07-2026  19:05               391 file.svg
+26-07-2026  19:05             1,035 globe.svg
+05-08-2026  22:36                 0 googlef03343f438aae291.html
+27-07-2026  21:07        17,133,115 hero-bg.mp4
+06-08-2026  18:08               406 humans.txt
+04-08-2026  18:13    <DIR>          images
+05-08-2026  22:19               495 manifest.webmanifest
+26-07-2026  19:05             1,375 next.svg
+28-07-2026  21:32           143,951 nova-robot.png
+28-07-2026  15:28    <DIR>          novabuddy
+26-07-2026  19:05               128 vercel.svg
+05-08-2026  22:53    <DIR>          videos
+26-07-2026  19:05               385 window.svg
+              11 File(s)     17,281,313 bytes
+
+ Directory of C:\Users\georg\OneDrive\Desktop\novatools\public\animations
+
+28-07-2026  12:15    <DIR>          .
+06-08-2026  18:08    <DIR>          ..
+28-07-2026  12:12                 0 robot-error.json
+28-07-2026  12:12                 0 robot-idle.json
+28-07-2026  12:12                 0 robot-success.json
+28-07-2026  12:12                 0 robot-upload.json
+               4 File(s)              0 bytes
+
+ Directory of C:\Users\georg\OneDrive\Desktop\novatools\public\images
+
+04-08-2026  18:13    <DIR>          .
+06-08-2026  18:08    <DIR>          ..
+04-08-2026  18:06         2,053,370 hero-bg.png
+               1 File(s)      2,053,370 bytes
+
+ Directory of C:\Users\georg\OneDrive\Desktop\novatools\public\novabuddy
+
+28-07-2026  15:28    <DIR>          .
+06-08-2026  18:08    <DIR>          ..
+28-07-2026  14:57           221,100 error.png
+28-07-2026  14:53           271,363 idle.png
+28-07-2026  14:54           251,516 point.png
+28-07-2026  14:55           300,687 processing.png
+28-07-2026  15:28           237,331 success.png
+28-07-2026  14:55           297,702 upload.png
+               6 File(s)      1,579,699 bytes
+
+ Directory of C:\Users\georg\OneDrive\Desktop\novatools\public\videos
+
+05-08-2026  22:53    <DIR>          .
+06-08-2026  18:08    <DIR>          ..
+               0 File(s)              0 bytes
+
+     Total Files Listed:
+              22 File(s)     20,914,382 bytes
+              14 Dir(s)  308,265,451,520 bytes free
