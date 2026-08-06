@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getKeywordString } from "@/lib/seo/getKeywords";
 
 type ToolMetadataProps = {
   title: string;
@@ -17,7 +18,10 @@ export function createToolMetadata({
     title,
     description,
 
-    keywords,
+    keywords: [
+      ...keywords,
+      ...getKeywordString(path.replace("/", "")).split(", "),
+    ],
 
     alternates: {
       canonical: path,
@@ -26,7 +30,7 @@ export function createToolMetadata({
     openGraph: {
       title,
       description,
-      url: `https://novacodetool.in${path}`,
+      url: `https://novatool.in${path}`,
       siteName: "Nova Tools",
       type: "website",
       locale: "en_IN",
