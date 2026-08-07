@@ -6,7 +6,7 @@ import FAQSection from "@/components/seo/FAQSection";
 import RelatedToolsSection from "@/components/seo/RelatedToolsSection";
 import HowToUse from "@/components/content/HowToUse";
 import Benefits from "@/components/content/Benefits";
-
+import RelatedTools from "@/components/content/RelatedTools";
 
 type PageData = {
   slug: string;
@@ -103,6 +103,8 @@ export default async function ProgrammaticPage({
 <HowToUse tool={page.title} />
 
 <Benefits tool={page.title} />
+
+<RelatedTools />
 
 <ToolContent
   title={page.title}
