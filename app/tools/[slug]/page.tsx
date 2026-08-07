@@ -4,6 +4,8 @@ import ToolContent from "@/components/seo/ToolContent";
 import { programmaticPages } from "@/lib/seo/programmaticPages";
 import FAQSection from "@/components/seo/FAQSection";
 import RelatedToolsSection from "@/components/seo/RelatedToolsSection";
+import FAQSchema from "@/components/seo/FAQSchema";
+
 
 type PageData = {
   slug: string;
@@ -73,6 +75,7 @@ export default async function ProgrammaticPage({
   }
 
   return (
+    
     <main className="min-h-screen bg-slate-950 text-white">
       <div className="mx-auto max-w-4xl px-6 py-16">
 
