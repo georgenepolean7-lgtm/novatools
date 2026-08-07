@@ -1,43 +1,27 @@
 "use client";
 
 import Link from "next/link";
+import { affiliatePartners } from "@/lib/affiliate/partners";
 
-type Partner = {
-  name: string;
-  description: string;
-  href: string;
-  badge: string;
-};
-
-const partners: Partner[] = [
+const partners = [
   {
-    name: "Canva Pro",
-    description: "Create professional designs, thumbnails and social media graphics.",
-    href: "#",
+    ...affiliatePartners.canva,
     badge: "Design",
   },
   {
-    name: "Hostinger",
-    description: "Fast and affordable web hosting for websites and apps.",
-    href: "#",
+    ...affiliatePartners.hostinger,
     badge: "Hosting",
   },
   {
-    name: "Namecheap",
-    description: "Buy domains, hosting and business email.",
-    href: "#",
+    ...affiliatePartners.namecheap,
     badge: "Domain",
   },
   {
-    name: "UPDF",
-    description: "Professional PDF editor for Windows, Mac and Mobile.",
-    href: "#",
+    ...affiliatePartners.updf,
     badge: "PDF",
   },
   {
-    name: "PDFelement",
-    description: "Edit, convert, merge and manage PDF documents.",
-    href: "#",
+    ...affiliatePartners.pdfelement,
     badge: "PDF",
   },
 ];
@@ -45,21 +29,19 @@ const partners: Partner[] = [
 export default function AffiliateRecommendations() {
   return (
     <section className="mt-12 rounded-3xl border border-white/10 bg-white/5 p-8">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
-            Recommended Partners
-          </p>
+      <div>
+        <p className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
+          Recommended Partners
+        </p>
 
-          <h2 className="mt-2 text-3xl font-bold">
-            Tools We Recommend
-          </h2>
+        <h2 className="mt-2 text-3xl font-bold">
+          Tools We Recommend
+        </h2>
 
-          <p className="mt-3 max-w-2xl text-slate-400">
-            These services can help you with image editing, PDF management,
-            domains and website hosting.
-          </p>
-        </div>
+        <p className="mt-3 max-w-2xl text-slate-400">
+          These trusted services can help you with web hosting, domains,
+          professional PDF editing and online design.
+        </p>
       </div>
 
       <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -81,7 +63,9 @@ export default function AffiliateRecommendations() {
             </p>
 
             <Link
-              href={partner.href}
+              href={partner.url}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
               className="mt-6 inline-flex rounded-xl bg-cyan-500 px-4 py-2 font-medium text-slate-950 transition hover:bg-cyan-400"
             >
               Learn More

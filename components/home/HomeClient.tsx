@@ -7,6 +7,7 @@ import ToolsSection from "./ToolsSection";
 import AboutSection from "./AboutSection";
 import CompanySection from "./CompanySection";
 import SiteFooter from "@/components/SiteFooter";
+import AffiliateRecommendations from "@/components/affiliate/AffiliateRecommendations";
 
 export default function HomeClient() {
   const aboutRef = useRef(null);
@@ -20,6 +21,8 @@ export default function HomeClient() {
       <AboutSection aboutRef={aboutRef} />
 
       <CompanySection />
+
+<AffiliateRecommendations />
 
       <SiteFooter />
     </>
