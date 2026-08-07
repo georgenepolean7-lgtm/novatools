@@ -3,8 +3,8 @@ export default function OrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Nova Tools",
-    url: "https://novacodetool.in",
-    logo: "https://novacodetool.in/icon.png",
+    url: "https://novatool.in",
+    logo: "https://novatool.in/icon.png",
     description:
       "Nova Tools provides free online image, PDF and document tools.",
 

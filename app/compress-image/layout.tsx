@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: "Compress Image Online Free",
     description:
       "Reduce image file size online without losing quality.",
-    url: "https://novacodetool.in/compress-image",
+    url: "https://novatool.in/compress-image",
     type: "website",
   },
 };
