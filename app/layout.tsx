@@ -1,11 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
+
 import "./globals.css";
+
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import MicrosoftClarity from "@/components/MicrosoftClarity";
 import SearchActionSchema from "@/components/seo/SearchActionSchema";
 import CookieConsent from "@/components/CookieConsent";
-import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -60,16 +62,18 @@ export const metadata: Metadata = {
 
   publisher: "Nova Code Tech",
 
-icons: {
-  icon: "/icon.png",
-  apple: "/icon.png",
-},
-
-
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 
   openGraph: {
@@ -85,15 +89,15 @@ icons: {
     locale: "en_IN",
 
     type: "website",
-    images: [
-  {
-    url: "/og-image.png",
-    width: 1200,
-    height: 630,
-    alt: "Nova Tools",
-  },
-],
 
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Nova Tools",
+      },
+    ],
   },
 
   twitter: {
@@ -104,7 +108,7 @@ icons: {
     description:
       "Free online image, PDF and OCR tools by Nova Code Tech.",
 
-      images: ["/og-image.png"],
+    images: ["/og-image.png"],
   },
 };
 
@@ -118,21 +122,22 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-screen flex flex-col bg-[#020617]">
-<Script
-  async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7888119602395886"
-  crossOrigin="anonymous"
-  strategy="afterInteractive"
-/>
+      <body className="min-h-screen bg-slate-950 text-white">
+        <Script
+          id="google-adsense"
+          async
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7888119602395886"
+          crossOrigin="anonymous"
+        />
 
-<GoogleAnalytics />
-<MicrosoftClarity />
-<SearchActionSchema />
+        <GoogleAnalytics />
+        <MicrosoftClarity />
+        <SearchActionSchema />
+
         {children}
 
         <CookieConsent />
-        
       </body>
     </html>
   );
