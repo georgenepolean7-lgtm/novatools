@@ -4,7 +4,8 @@ import ToolContent from "@/components/seo/ToolContent";
 import { programmaticPages } from "@/lib/seo/programmaticPages";
 import FAQSection from "@/components/seo/FAQSection";
 import RelatedToolsSection from "@/components/seo/RelatedToolsSection";
-import FAQSchema from "@/components/seo/FAQSchema";
+import HowToUse from "@/components/content/HowToUse";
+import Benefits from "@/components/content/Benefits";
 
 
 type PageData = {
@@ -98,6 +99,10 @@ export default async function ProgrammaticPage({
           </p>
 
         </div>
+
+<HowToUse tool={page.title} />
+
+<Benefits tool={page.title} />
 
 <ToolContent
   title={page.title}
