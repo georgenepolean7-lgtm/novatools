@@ -20,7 +20,8 @@ export default function ToolSEO({
   description,
   faqs,
 }: ToolSEOProps) {
-  const url = `https://novacodetool.in${path}`;
+  const baseUrl = "https://novatool.in";
+  const url = `${baseUrl}${path}`;
 
   return (
     <>
@@ -34,7 +35,7 @@ export default function ToolSEO({
         items={[
           {
             name: "Home",
-            url: "https://novacodetool.in",
+            url: baseUrl,
           },
           {
             name,
