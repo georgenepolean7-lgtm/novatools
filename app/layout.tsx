@@ -5,7 +5,7 @@ import GoogleAnalytics from "@/components/GoogleAnalytics";
 import MicrosoftClarity from "@/components/MicrosoftClarity";
 import SearchActionSchema from "@/components/seo/SearchActionSchema";
 import CookieConsent from "@/components/CookieConsent";
-
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -119,6 +119,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-[#020617]">
+<Script
+  async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7888119602395886"
+  crossOrigin="anonymous"
+  strategy="afterInteractive"
+/>
 
 <GoogleAnalytics />
 <MicrosoftClarity />
