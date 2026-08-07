@@ -6,9 +6,10 @@ import HeroSection from "./HeroSection";
 import ToolsSection from "./ToolsSection";
 import AboutSection from "./AboutSection";
 import CompanySection from "./CompanySection";
+import SiteFooter from "@/components/SiteFooter";
 
 export default function HomeClient() {
-  const aboutRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef(null);
 
   return (
     <>
@@ -16,11 +17,11 @@ export default function HomeClient() {
 
       <ToolsSection />
 
-      <AboutSection
-        aboutRef={aboutRef}
-      />
+      <AboutSection aboutRef={aboutRef} />
 
       <CompanySection />
+
+      <SiteFooter />
     </>
   );
 }

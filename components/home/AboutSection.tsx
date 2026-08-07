@@ -11,11 +11,11 @@ export default function AboutSection({
   aboutRef,
 }: AboutSectionProps) {
   return (
-    <section
-      ref={aboutRef}
-      id="about"
-      className="relative overflow-hidden bg-slate-950 py-24 text-white"
-    >
+
+     <section
+    ref={aboutRef}
+    className="relative overflow-hidden border-t border-white/10 bg-slate-950 py-24 text-white"
+  >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(37,99,235,0.18),transparent_55%)]" />
 
       <div className="absolute left-1/4 top-1/2 h-72 w-72 rounded-full bg-blue-600/10 blur-[120px]" />

@@ -16,12 +16,12 @@ interface Props {
 }
 
 const images: Record<NovaState, string> = {
-  idle: "/novabuddy/idle.png",
-  point: "/novabuddy/point.png",
-  uploading: "/novabuddy/upload.png",
-  processing: "/novabuddy/processing.png",
-  success: "/novabuddy/success.png",
-  error: "/novabuddy/error.png",
+  idle: "/novabuddy/idle.webp",
+  point: "/novabuddy/point.webp",
+  uploading: "/novabuddy/upload.webp",
+  processing: "/novabuddy/processing.webp",
+  success: "/novabuddy/success.webp",
+  error: "/novabuddy/error.webp",
 };
 
 export default function NovaAssistant({ state }: Props) {

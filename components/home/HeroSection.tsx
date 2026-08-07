@@ -115,11 +115,9 @@ export default function HeroSection() {
         </div>
 
        <div className="relative mx-auto hidden w-full max-w-[520px] lg:block">
-  <HeroUploadDemo />
-
-        
-
        
+       
+       <HeroUploadDemo />
 
                   {/* Floating Glass Status */}
           <div className="absolute left-14 top-20 rounded-2xl border border-white/15 bg-white/10 px-4 py-3 shadow-2xl backdrop-blur-xl">
