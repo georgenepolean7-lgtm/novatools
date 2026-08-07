@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import ToolContent from "@/components/seo/ToolContent";
 import { programmaticPages } from "@/lib/seo/programmaticPages";
 import FAQSection from "@/components/seo/FAQSection";
+import RelatedToolsSection from "@/components/seo/RelatedToolsSection";
 
 type PageData = {
   slug: string;
@@ -102,6 +103,10 @@ export default async function ProgrammaticPage({
 
 <FAQSection
   title={page.title}
+/>
+
+<RelatedToolsSection
+  currentSlug={page.slug}
 />
 
       </div>
