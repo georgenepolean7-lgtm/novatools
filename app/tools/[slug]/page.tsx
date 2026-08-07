@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import ToolContent from "@/components/seo/ToolContent";
 import { programmaticPages } from "@/lib/seo/programmaticPages";
+import FAQSection from "@/components/seo/FAQSection";
 
 type PageData = {
   slug: string;
@@ -97,6 +98,10 @@ export default async function ProgrammaticPage({
 <ToolContent
   title={page.title}
   description={page.description}
+/>
+
+<FAQSection
+  title={page.title}
 />
 
       </div>
