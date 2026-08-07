@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import MicrosoftClarity from "@/components/MicrosoftClarity";
 import SearchActionSchema from "@/components/seo/SearchActionSchema";
 import CookieConsent from "@/components/CookieConsent";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,6 +16,10 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  themeColor: "#020617",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://novatool.in"),
@@ -55,6 +60,13 @@ export const metadata: Metadata = {
 
   publisher: "Nova Code Tech",
 
+icons: {
+  icon: "/icon.png",
+  apple: "/icon.png",
+},
+
+
+
   robots: {
     index: true,
     follow: true,
@@ -73,6 +85,15 @@ export const metadata: Metadata = {
     locale: "en_IN",
 
     type: "website",
+    images: [
+  {
+    url: "/og-image.png",
+    width: 1200,
+    height: 630,
+    alt: "Nova Tools",
+  },
+],
+
   },
 
   twitter: {
@@ -82,6 +103,8 @@ export const metadata: Metadata = {
 
     description:
       "Free online image, PDF and OCR tools by Nova Code Tech.",
+
+      images: ["/og-image.png"],
   },
 };
 
