@@ -1,13 +1,18 @@
+import Image from "next/image";
+
 export default function SiteHeader() {
   return (
     <header className="border-b border-slate-200 bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="/" className="flex items-center gap-3">
-  <img
-    src="/icon.png"
-    alt="Nova Tools"
-    className="h-11 w-11 rounded-xl object-cover shadow-md"
-  />
+          <Image
+            src="/icon.png"
+            alt="Nova Tools"
+            width={44}
+            height={44}
+            priority
+            className="h-11 w-11 rounded-xl object-cover shadow-md"
+          />
 
   <div>
     <div className="text-xl font-bold tracking-tight text-slate-950">

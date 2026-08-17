@@ -11,7 +11,6 @@ import ToolLayout from "@/components/ToolLayout";
 import UploadCard from "@/components/UploadCard";
 import ResultCard from "@/components/ResultCard";
 import NovaAssistant from "@/components/NovaAssistant";
-import jsPDF from "jspdf";
 
 import { tamilCorrections } from "@/lib/tamilDictionary";
 
@@ -910,9 +909,11 @@ setWordCount(
 
   }
 
-function downloadPDF() {
+async function downloadPDF() {
 
   if (!text) return;
+
+  const { default: jsPDF } = await import("jspdf");
 
   const pdf = new jsPDF({
     orientation: "portrait",
