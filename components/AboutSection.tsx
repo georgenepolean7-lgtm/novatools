@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -19,20 +20,20 @@ export default function AboutSection() {
         duration: 2.5,
         repeat: -1,
         yoyo: true,
-        ease: "power1.inOut",
+        ease: "sine.inOut",
       });
 
-      // Cards reveal
+      // Cards staggered reveal
       gsap.from(".about-card", {
-        opacity: 0,
-        y: 80,
-        stagger: 0.2,
-        duration: 1,
-        ease: "power3.out",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 75%",
         },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out",
       });
     },
     { scope: sectionRef }
@@ -40,23 +41,21 @@ export default function AboutSection() {
 
   return (
     <section
+      id="about"
       ref={sectionRef}
-      className="relative overflow-hidden bg-slate-950 py-24 text-white"
+      className="relative overflow-hidden py-32 text-white"
     >
-      {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(37,99,235,0.15),transparent_60%)]" />
+      {/* Background glow */}
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[140px]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
+      <div className="relative mx-auto max-w-7xl px-6">
         <div className="text-center">
-          <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm">
+          <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-blue-400">
             About Nova Tools
-          </p>
+          </span>
 
-          <h2 className="mt-4 text-5xl font-bold">
-            Built for
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              {" "}Speed.
-            </span>
+          <h2 className="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl">
+            Built for Speed, Privacy &amp; Simplicity
           </h2>
 
           <p className="mx-auto mt-6 max-w-2xl text-slate-400">
@@ -71,10 +70,12 @@ export default function AboutSection() {
             ref={robotRef}
             className="flex justify-center"
           >
-            <img
+            <Image
               src="/nova-robot.png"
               alt="Nova Robot"
-              className="w-[340px] drop-shadow-[0_25px_50px_rgba(59,130,246,0.4)]"
+              width={340}
+              height={340}
+              className="w-[340px] h-auto drop-shadow-[0_25px_50px_rgba(59,130,246,0.4)]"
             />
           </div>
 

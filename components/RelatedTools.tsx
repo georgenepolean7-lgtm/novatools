@@ -42,6 +42,86 @@ const tools = [
     title: "Tamil Image to Text",
     href: "/tamil-image-to-text",
   },
+  {
+    title: "JPG to PNG",
+    href: "/jpg-to-png",
+  },
+  {
+    title: "PNG to JPG",
+    href: "/png-to-jpg",
+  },
+  {
+    title: "WebP Converter",
+    href: "/webp-converter",
+  },
+  {
+    title: "Image Cropper",
+    href: "/image-cropper",
+  },
+  {
+    title: "Image Rotator",
+    href: "/image-rotator",
+  },
+  {
+    title: "Image to Base64",
+    href: "/image-to-base64",
+  },
+  {
+    title: "Image to PDF",
+    href: "/image-to-pdf",
+  },
+  {
+    title: "Image Metadata",
+    href: "/image-metadata",
+  },
+  {
+    title: "GIF to PNG",
+    href: "/gif-to-png",
+  },
+  {
+    title: "BMP to JPG",
+    href: "/bmp-to-jpg",
+  },
+  {
+    title: "PDF Page Extractor",
+    href: "/pdf-page-extractor",
+  },
+  {
+    title: "PDF Page Deleter",
+    href: "/pdf-page-deleter",
+  },
+  {
+    title: "PDF Watermark",
+    href: "/pdf-watermark",
+  },
+  {
+    title: "PDF Password Protector",
+    href: "/pdf-password-protect",
+  },
+  {
+    title: "PDF Unlocker",
+    href: "/pdf-unlocker",
+  },
+  {
+    title: "Word Counter",
+    href: "/word-counter",
+  },
+  {
+    title: "Character Counter",
+    href: "/character-counter",
+  },
+  {
+    title: "Case Converter",
+    href: "/case-converter",
+  },
+  {
+    title: "Text Cleaner",
+    href: "/text-cleaner",
+  },
+  {
+    title: "Lorem Ipsum Generator",
+    href: "/lorem-ipsum-generator",
+  },
 ];
 
 export default function RelatedTools({
