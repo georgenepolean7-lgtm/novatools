@@ -6,7 +6,7 @@ export async function GET() {
   const tools = getAllTools();
   const categories = getAllCategories();
 
-  const text = `# Nova Tools 500
+  const text = `# Nova Tools - 250+ Free In-Browser Online Tools
 Production URL: https://novatool.in
 Organization: Nova Code Tech
 Platform Overview: Nova Tools is a high-performance, privacy-focused, 100% in-browser online utility platform containing 250 production-ready tools across 16 core categories.
@@ -23,8 +23,13 @@ ${tools.map((t) => `- ${t.name} (https://novatool.in/${t.slug}): ${t.shortDescri
 ## System Endpoints:
 - Sitemap: https://novatool.in/sitemap.xml
 - Robots: https://novatool.in/robots.txt
+- Tools Directory: https://novatool.in/tools
+- Categories Directory: https://novatool.in/categories
+- Pricing & Plans: https://novatool.in/pricing
 - About: https://novatool.in/about
 - Privacy Policy: https://novatool.in/privacy
+- Terms & Conditions: https://novatool.in/terms
+- Disclaimer: https://novatool.in/disclaimer
 `;
 
   return new NextResponse(text, {

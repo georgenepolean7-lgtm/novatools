@@ -5,9 +5,9 @@ import Image from "next/image";
 export default function CompanySection() {
   return (
     <section
-  id="tools"
-  className="relative overflow-hidden bg-slate-950 py-24 text-white"
->
+      id="company"
+      className="relative overflow-hidden bg-slate-950 py-24 text-white"
+    >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(34,211,238,.12),transparent_35%)]" />
 
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_80%,rgba(59,130,246,.12),transparent_35%)]" />

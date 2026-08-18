@@ -28,23 +28,24 @@ const partners = [
 
 export default function AffiliateRecommendations() {
   return (
-    <section className="mt-12 rounded-3xl border border-white/10 bg-white/5 p-8">
-      <div>
-        <p className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
-          Recommended Partners
-        </p>
+    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-16">
+      <div className="rounded-3xl border border-white/10 bg-slate-900/60 p-8 sm:p-10 shadow-xl backdrop-blur-xl">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-widest text-cyan-400">
+            Recommended Partners
+          </p>
 
-        <h2 className="mt-2 text-3xl font-bold">
-          Tools We Recommend
-        </h2>
+          <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-white">
+            Tools We Recommend
+          </h2>
 
-        <p className="mt-3 max-w-2xl text-slate-400">
-          These trusted services can help you with web hosting, domains,
-          professional PDF editing and online design.
-        </p>
-      </div>
+          <p className="mt-2 max-w-2xl text-xs sm:text-sm text-slate-400">
+            These trusted services can help you with web hosting, domains,
+            professional PDF editing and online design.
+          </p>
+        </div>
 
-      <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {partners.map((partner) => (
           <div
             key={partner.name}
@@ -72,6 +73,7 @@ export default function AffiliateRecommendations() {
             </Link>
           </div>
         ))}
+        </div>
       </div>
     </section>
   );

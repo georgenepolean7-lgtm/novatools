@@ -28,16 +28,24 @@ export default function SiteFooter() {
             </p>
 
             <div className="mt-3 flex flex-col gap-2 text-sm">
-              <Link href="/#all-tools" className="hover:text-white">
-                All Tools
+              <Link href="/tools" className="hover:text-white">
+                All 250+ Tools
+              </Link>
+
+              <Link href="/categories" className="hover:text-white">
+                Categories Directory
+              </Link>
+
+              <Link href="/pricing" className="hover:text-white">
+                Pricing &amp; Plans
               </Link>
 
               <Link href="/#about" className="hover:text-white">
-                About
+                About Nova Tools
               </Link>
 
               <Link href="/#contact" className="hover:text-white">
-                Contact
+                Contact Support
               </Link>
             </div>
           </div>
