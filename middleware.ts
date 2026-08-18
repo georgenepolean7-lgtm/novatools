@@ -7,12 +7,12 @@ export async function middleware(request: NextRequest) {
     request,
   });
 
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://rjnjrvemsyhaeonkvbja.supabase.co";
   const key =
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  if (!url || !key || url.includes("your-project") || key.includes("your_supabase")) {
+  if (!url || !key || url.includes("your-project") || key.includes("your_supabase") || key.includes("dummy")) {
     return supabaseResponse;
   }
 
