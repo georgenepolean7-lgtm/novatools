@@ -9,7 +9,6 @@ import {
 
 import ToolSEO from "@/components/seo/ToolSEO";
 import RelatedTools from "@/components/RelatedTools";
-import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import ToolLayout from "@/components/ToolLayout";
 import UploadCard from "@/components/UploadCard";
@@ -18,8 +17,6 @@ import NovaAssistant from "@/components/NovaAssistant";
 
 import {
   UploadCloud,
-  Download,
-  ImageIcon,
   FileText,
 } from "lucide-react";
 
@@ -237,7 +234,7 @@ return (
 />
 
 <main className="min-h-screen bg-[#030712] text-white">
-    <SiteHeader />
+    
 
     <ToolLayout
       badge="FREE PDF TOOL"
@@ -517,7 +514,7 @@ return (
 
           <li>1. Select your PDF file.</li>
 
-          <li>2. Click "Convert PDF to JPG".</li>
+          <li>2. Click &quot;Convert PDF to JPG&quot;.</li>
 
           <li>3. Wait for all pages to be converted.</li>
 

@@ -3,7 +3,6 @@
 
 import ResultCard from "@/components/ResultCard";
 import NovaAssistant from "@/components/NovaAssistant";
-import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { ChangeEvent, useEffect, useState } from "react";
 import ToolSEO from "@/components/seo/ToolSEO";
@@ -298,7 +297,7 @@ function resetAll() {
 />
 <main className="min-h-screen bg-slate-950 text-white">
 
-      <SiteHeader />
+      
       <section className="relative mx-auto max-w-5xl px-6 py-16">
         <div className="text-center">
           <p className="font-semibold uppercase tracking-[0.25em] text-cyan-400">

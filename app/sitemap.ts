@@ -1,139 +1,106 @@
 import type { MetadataRoute } from "next";
+import { getAllTools } from "@/lib/tools/registry";
+import { getAllCategories } from "@/lib/tools/categories";
+import { programmaticPages } from "@/lib/seo/programmaticPages";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://novatool.in";
+  const now = new Date();
 
-  const routes = [
+  // 1. Core Homepage
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
-      url: `${baseUrl}`,
-      priority: 1,
+      url: baseUrl,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 1.0,
     },
     {
-      url: `${baseUrl}/compress-image`,
+      url: `${baseUrl}/about`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/tools`,
+      lastModified: now,
+      changeFrequency: "daily",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/compress-pdf`,
+      url: `${baseUrl}/categories`,
+      lastModified: now,
+      changeFrequency: "daily",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/image-resizer`,
-      priority: 0.9,
+      url: `${baseUrl}/pricing`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
     },
     {
-      url: `${baseUrl}/jpg-to-pdf`,
-      priority: 0.9,
+      url: `${baseUrl}/privacy`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.3,
     },
     {
-      url: `${baseUrl}/merge-pdf`,
-      priority: 0.9,
+      url: `${baseUrl}/terms`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.3,
     },
     {
-      url: `${baseUrl}/pdf-to-jpg`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/rotate-pdf`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/signature-resizer`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/split-pdf`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/tamil-image-to-text`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/jpg-to-png`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/png-to-jpg`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/webp-converter`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/image-cropper`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/image-rotator`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/image-to-base64`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/image-to-pdf`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/image-metadata`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/gif-to-png`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/bmp-to-jpg`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/pdf-page-extractor`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/pdf-page-deleter`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/pdf-watermark`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/pdf-password-protect`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/pdf-unlocker`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/word-counter`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/character-counter`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/case-converter`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/text-cleaner`,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/lorem-ipsum-generator`,
-      priority: 0.9,
+      url: `${baseUrl}/disclaimer`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.3,
     },
   ];
 
-  return routes.map((route) => ({
-    url: route.url,
-    lastModified: new Date(),
+  // 2. All Registry Tools (Core 30 + Dynamic Suite)
+  const toolRoutes: MetadataRoute.Sitemap = getAllTools().map((t) => ({
+    url: `${baseUrl}/${t.slug}`,
+    lastModified: now,
     changeFrequency: "weekly",
-    priority: route.priority,
+    priority: t.isFeatured ? 0.95 : 0.85,
   }));
+
+  // 3. Category Hub Pages
+  const categoryRoutes: MetadataRoute.Sitemap = getAllCategories().map((c) => ({
+    url: `${baseUrl}/categories/${c.id}`,
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.8,
+  }));
+
+  // 4. Programmatic SEO Landing Pages
+  const progRoutes: MetadataRoute.Sitemap = Object.values(programmaticPages)
+    .flat()
+    .map((p) => ({
+      url: `${baseUrl}/tools/${p.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    }));
+
+  // Deduplicate by URL
+  const seenUrls = new Set<string>();
+  const merged: MetadataRoute.Sitemap = [];
+
+  [...staticRoutes, ...toolRoutes, ...categoryRoutes, ...progRoutes].forEach((entry) => {
+    if (!seenUrls.has(entry.url)) {
+      seenUrls.add(entry.url);
+      merged.push(entry);
+    }
+  });
+
+  return merged;
 }

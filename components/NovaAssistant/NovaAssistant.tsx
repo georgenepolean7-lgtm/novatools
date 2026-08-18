@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export type NovaState =
@@ -25,48 +24,31 @@ const images: Record<NovaState, string> = {
 };
 
 export default function NovaAssistant({ state }: Props) {
-    const [position, setPosition] = useState({
-  bottom: 24,
-  right: 24,
-});
+  const isProcessingOrUploading = state === "uploading" || state === "processing";
+  const position = isProcessingOrUploading
+    ? { bottom: 180, right: 320 }
+    : { bottom: 24, right: 24 };
 
-useEffect(() => {
-  switch (state) {
-    case "uploading":
-    case "processing":
-      setPosition({
-        bottom: 180,
-        right: 320,
-      });
-      break;
-
-    default:
-      setPosition({
-        bottom: 24,
-        right: 24,
-      });
-  }
-}, [state]);
- return (
-  <div
-    className="fixed z-50 pointer-events-none transition-all duration-700 ease-in-out"
-    style={{
-      bottom: `${position.bottom}px`,
-      right: `${position.right}px`,
-    }}
-  >
-     <Image
-  src={images[state]}
-  alt="Nova Buddy"
-  width={220}
-  height={220}
-  priority
-  className={
-    state === "processing"
-      ? "nova-spin"
-      : "nova-float"
-  }
-/>
+  return (
+    <div
+      className="fixed z-50 pointer-events-none transition-all duration-700 ease-in-out"
+      style={{
+        bottom: `${position.bottom}px`,
+        right: `${position.right}px`,
+      }}
+    >
+      <Image
+        src={images[state]}
+        alt="Nova Buddy"
+        width={220}
+        height={220}
+        priority
+        className={
+          state === "processing"
+            ? "nova-spin"
+            : "nova-float"
+        }
+      />
     </div>
   );
 }

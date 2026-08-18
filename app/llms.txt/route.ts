@@ -1,54 +1,35 @@
 import { NextResponse } from "next/server";
+import { getAllTools } from "@/lib/tools/registry";
+import { getAllCategories } from "@/lib/tools/categories";
 
 export async function GET() {
-  const text = `# Nova Tools
+  const tools = getAllTools();
+  const categories = getAllCategories();
 
-Nova Tools is a free online productivity platform.
+  const text = `# Nova Tools 500
+Production URL: https://novatool.in
+Organization: Nova Code Tech
+Platform Overview: Nova Tools is a high-performance, privacy-focused, 100% in-browser online utility platform containing 250 production-ready tools across 16 core categories.
 
-Website:
-https://novatool.in
+## Privacy & Security Architecture
+All text processing, image manipulations, audio calculations, cryptographic hashing, and conversions execute 100% client-side inside the user's browser via Web Crypto, Web Audio, and HTML5 Canvas APIs. Zero server uploads, zero storage, zero tracking.
 
-Description:
-Nova Tools provides free online PDF tools, image tools, OCR tools, and AI powered utilities.
+## Core Categories (${categories.length} Total):
+${categories.map((c) => `- ${c.name} (/categories/${c.id}): ${c.description}`).join("\n")}
 
-Primary Categories:
-- PDF Tools
-- Image Tools
-- OCR Tools
-- AI Utilities
+## Complete Tool Inventory (${tools.length} Working Tools):
+${tools.map((t) => `- ${t.name} (https://novatool.in/${t.slug}): ${t.shortDescription}`).join("\n")}
 
-Available Tools:
-- Compress PDF
-- Merge PDF
-- Split PDF
-- Rotate PDF
-- PDF to JPG
-- JPG to PDF
-- Compress Image
-- Image Resizer
-- Signature Resizer
-- Tamil Image to Text OCR
-
-Language:
-English
-Tamil
-
-Publisher:
-Nova Code Tech
-
-Homepage:
-https://novatool.in
-
-Sitemap:
-https://novatool.in/sitemap.xml
-
-Robots:
-https://novatool.in/robots.txt
+## System Endpoints:
+- Sitemap: https://novatool.in/sitemap.xml
+- Robots: https://novatool.in/robots.txt
+- About: https://novatool.in/about
+- Privacy Policy: https://novatool.in/privacy
 `;
 
   return new NextResponse(text, {
     headers: {
-      "Content-Type": "text/plain",
+      "Content-Type": "text/plain; charset=utf-8",
     },
   });
 }

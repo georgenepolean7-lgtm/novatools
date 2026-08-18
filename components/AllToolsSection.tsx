@@ -2,382 +2,350 @@
 
 import { useMemo, useState } from "react";
 import ToolCard from "./ToolCard";
+import { getAllTools } from "@/lib/tools/registry";
+import { searchTools } from "@/lib/tools/search";
+import { getAllCategories } from "@/lib/tools/categories";
+import { ToolCategory } from "@/lib/tools/tool-types";
+import {
+  Search,
+  ChevronLeft,
+  ChevronRight,
+  ArrowUpDown,
+  Layers,
+} from "lucide-react";
 
-const imageTools = [
-  {
-    title: "Compress Image",
-    description: "Reduce image size without losing quality.",
-    icon: "🖼️",
-    href: "/compress-image",
-  },
-  {
-    title: "Image Resizer",
-    description: "Resize JPG and PNG images instantly.",
-    icon: "📐",
-    href: "/image-resizer",
-  },
-  {
-    title: "Signature Resizer",
-    description: "Resize signatures for documents and exams.",
-    icon: "✍️",
-    href: "/signature-resizer",
-  },
-  {
-    title: "JPG to PNG",
-    description: "Convert JPG and JPEG images to lossless PNG format.",
-    icon: "🖼️",
-    href: "/jpg-to-png",
-  },
-  {
-    title: "PNG to JPG",
-    description: "Convert PNG images to compact JPG format.",
-    icon: "📷",
-    href: "/png-to-jpg",
-  },
-  {
-    title: "WebP Converter",
-    description: "Convert images to and from ultra-compact WebP format.",
-    icon: "⚡",
-    href: "/webp-converter",
-  },
-  {
-    title: "Image Cropper",
-    description: "Crop photos with custom rectangles and aspect ratios.",
-    icon: "✂️",
-    href: "/image-cropper",
-  },
-  {
-    title: "Image Rotator",
-    description: "Rotate 90°, 180° or fine angles with auto-fit.",
-    icon: "🔄",
-    href: "/image-rotator",
-  },
-  {
-    title: "Image to Base64",
-    description: "Convert images to Base64 text strings and Data URIs.",
-    icon: "🔡",
-    href: "/image-to-base64",
-  },
-  {
-    title: "Image Metadata",
-    description: "View and strip EXIF camera & GPS metadata from photos.",
-    icon: "🔍",
-    href: "/image-metadata",
-  },
-  {
-    title: "GIF to PNG",
-    description: "Extract lossless PNG frames from GIF images.",
-    icon: "🎬",
-    href: "/gif-to-png",
-  },
-  {
-    title: "BMP to JPG",
-    description: "Convert uncompressed BMP bitmaps to optimized JPG.",
-    icon: "🖼️",
-    href: "/bmp-to-jpg",
-  },
-];
+const PAGE_SIZE = 30;
 
-const pdfTools = [
-  {
-    title: "Compress PDF",
-    description: "Reduce PDF size while preserving clarity.",
-    icon: "📕",
-    href: "/compress-pdf",
-  },
-  {
-    title: "Merge PDF",
-    description: "Combine multiple PDF files into one document.",
-    icon: "📄",
-    href: "/merge-pdf",
-  },
-  {
-    title: "Split PDF",
-    description: "Extract selected PDF pages into separate files.",
-    icon: "✂️",
-    href: "/split-pdf",
-  },
-  {
-    title: "Rotate PDF",
-    description: "Rotate all or selected pages permanently.",
-    icon: "🔄",
-    href: "/rotate-pdf",
-  },
-  {
-    title: "JPG to PDF",
-    description: "Convert JPG images into high quality PDF.",
-    icon: "🖼️",
-    href: "/jpg-to-pdf",
-  },
-  {
-    title: "PDF to JPG",
-    description: "Convert PDF pages into crisp JPG images.",
-    icon: "📷",
-    href: "/pdf-to-jpg",
-  },
-  {
-    title: "Image to PDF",
-    description: "Combine multiple JPG, PNG, and WebP images into PDF.",
-    icon: "📑",
-    href: "/image-to-pdf",
-  },
-  {
-    title: "PDF Page Extractor",
-    description: "Extract specific pages or page ranges from PDF.",
-    icon: "✂️",
-    href: "/pdf-page-extractor",
-  },
-  {
-    title: "PDF Page Deleter",
-    description: "Permanently delete unwanted pages from PDF files.",
-    icon: "🗑️",
-    href: "/pdf-page-deleter",
-  },
-  {
-    title: "PDF Watermark",
-    description: "Stamp custom text watermarks onto all PDF pages.",
-    icon: "💧",
-    href: "/pdf-watermark",
-  },
-  {
-    title: "PDF Password Protector",
-    description: "Password protect and encrypt PDF files with 256-bit AES.",
-    icon: "🔒",
-    href: "/pdf-password-protect",
-  },
-  {
-    title: "PDF Unlocker",
-    description: "Remove passwords and decrypt PDF documents instantly.",
-    icon: "🔓",
-    href: "/pdf-unlocker",
-  },
-];
-
-const textTools = [
-  {
-    title: "Word Counter",
-    description: "Count words, characters, sentences, and reading time.",
-    icon: "📊",
-    href: "/word-counter",
-  },
-  {
-    title: "Character Counter",
-    description: "Accurate character counter with space exclusions and limits.",
-    icon: "🔢",
-    href: "/character-counter",
-  },
-  {
-    title: "Case Converter",
-    description: "Convert text to UPPERCASE, lowercase, Title Case, and more.",
-    icon: "🔤",
-    href: "/case-converter",
-  },
-  {
-    title: "Text Cleaner",
-    description: "Remove extra spaces, empty lines, and format messy text.",
-    icon: "🧹",
-    href: "/text-cleaner",
-  },
-  {
-    title: "Lorem Ipsum Generator",
-    description: "Generate dummy placeholder text for layouts and mockups.",
-    icon: "📝",
-    href: "/lorem-ipsum-generator",
-  },
-];
-
-const aiTools = [
-  {
-    title: "Tamil Image to Text",
-    description: "Extract Tamil text from images using in-browser OCR.",
-    icon: "🤖",
-    href: "/tamil-image-to-text",
-  },
-];
+type SortOption = "default" | "name-asc" | "name-desc" | "category";
 
 export default function AllToolsSection() {
   const [search, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<ToolCategory | "all">("all");
+  const [sortBy, setSortBy] = useState<SortOption>("default");
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const filteredImageTools = useMemo(() => {
-    return imageTools.filter((tool) =>
-      (tool.title + tool.description).toLowerCase().includes(search.toLowerCase())
-    );
-  }, [search]);
+  const allCategories = useMemo(() => getAllCategories(), []);
+  const allTools = useMemo(() => getAllTools(), []);
 
-  const filteredPdfTools = useMemo(() => {
-    return pdfTools.filter((tool) =>
-      (tool.title + tool.description).toLowerCase().includes(search.toLowerCase())
-    );
-  }, [search]);
+  // Filter tools based on search and category
+  const filteredTools = useMemo(() => {
+    let list = allTools;
+    if (search.trim()) {
+      list = searchTools(search, {
+        category: selectedCategory === "all" ? undefined : selectedCategory,
+      });
+    } else if (selectedCategory !== "all") {
+      list = allTools.filter((t) => t.category === selectedCategory);
+    }
 
-  const filteredTextTools = useMemo(() => {
-    return textTools.filter((tool) =>
-      (tool.title + tool.description).toLowerCase().includes(search.toLowerCase())
-    );
-  }, [search]);
+    // Apply sorting
+    return [...list].sort((a, b) => {
+      if (sortBy === "name-asc") {
+        return a.name.localeCompare(b.name);
+      }
+      if (sortBy === "name-desc") {
+        return b.name.localeCompare(a.name);
+      }
+      if (sortBy === "category") {
+        return a.category.localeCompare(b.category);
+      }
+      return 0; // default order from registry
+    });
+  }, [search, selectedCategory, sortBy, allTools]);
 
-  const filteredAiTools = useMemo(() => {
-    return aiTools.filter((tool) =>
-      (tool.title + tool.description).toLowerCase().includes(search.toLowerCase())
-    );
-  }, [search]);
+  const handleSearchChange = (val: string) => {
+    setSearch(val);
+    setCurrentPage(1);
+  };
 
-  const totalResults =
-    filteredImageTools.length +
-    filteredPdfTools.length +
-    filteredTextTools.length +
-    filteredAiTools.length;
+  const handleCategoryChange = (cat: ToolCategory | "all") => {
+    setSelectedCategory(cat);
+    setCurrentPage(1);
+  };
+
+  const handleSortChange = (sort: SortOption) => {
+    setSortBy(sort);
+    setCurrentPage(1);
+  };
+
+  // Calculate pagination parameters
+  const totalTools = filteredTools.length;
+  const totalPages = Math.ceil(totalTools / PAGE_SIZE) || 1;
+  const safeCurrentPage = Math.min(Math.max(1, currentPage), totalPages);
+
+  const startIndex = (safeCurrentPage - 1) * PAGE_SIZE;
+  const endIndex = Math.min(startIndex + PAGE_SIZE, totalTools);
+  const currentTools = useMemo(() => {
+    return filteredTools.slice(startIndex, endIndex);
+  }, [filteredTools, startIndex, endIndex]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    // Smoothly scroll to the top of the All Tools section
+    const el = document.getElementById("all-tools");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  // Generate page numbers to display with smart ellipsis
+  const pageNumbers = useMemo(() => {
+    const pages: (number | string)[] = [];
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      if (safeCurrentPage <= 4) {
+        pages.push(1, 2, 3, 4, 5, "...", totalPages);
+      } else if (safeCurrentPage >= totalPages - 3) {
+        pages.push(1, "...", totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+      } else {
+        pages.push(1, "...", safeCurrentPage - 1, safeCurrentPage, safeCurrentPage + 1, "...", totalPages);
+      }
+    }
+    return pages;
+  }, [totalPages, safeCurrentPage]);
 
   return (
-    <section className="relative overflow-hidden bg-slate-950 py-24 text-white">
-      {/* Background ambient glows matching Nova Tools theme */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_25%,rgba(34,211,238,0.07),transparent_40%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_75%,rgba(59,130,246,0.07),transparent_40%)]" />
-      <div className="pointer-events-none absolute left-1/2 top-12 -translate-x-1/2 h-[500px] w-[900px] rounded-full bg-cyan-500/5 blur-[160px]" />
+    <section id="all-tools" className="relative overflow-hidden bg-slate-950 py-20 text-white scroll-mt-20">
+      {/* Background ambient lighting */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_25%,rgba(34,211,238,0.06),transparent_40%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_75%,rgba(59,130,246,0.06),transparent_40%)]" />
+      <div className="pointer-events-none absolute left-1/2 top-12 -translate-x-1/2 h-[450px] w-[800px] rounded-full bg-cyan-500/5 blur-[150px]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-xl">
-            <span className="h-2 w-2 rounded-full bg-cyan-400" />
-            Complete Directory
+            <Layers className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Nova Tools Directory</span>
           </div>
 
-          <h2 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl">
-            All 30+ Tools,
+          <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+            Complete Tools Collection,
             <span className="block bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
-              100% Free &amp; Private.
+              Fast, Private &amp; 100% Free.
             </span>
           </h2>
 
-          <p className="mx-auto mt-4 text-base text-slate-400">
-            Fast, secure in-browser utilities with zero file uploads and no registration required.
+          <p className="mx-auto mt-3 max-w-2xl text-sm sm:text-base text-slate-400">
+            Browse all 250+ in-browser utilities across PDF, Image, Developer, Financial, GST, Tamil, and Data formats with zero server queues.
           </p>
         </div>
 
-        {/* Live Search Bar */}
-        <div className="mx-auto mt-10 mb-16 max-w-xl">
-          <div className="relative">
+        {/* Global Search and Filter Bar */}
+        <div className="mx-auto mt-10 max-w-4xl space-y-4">
+          <div className="relative flex items-center">
+            <div className="absolute left-5 text-slate-400 pointer-events-none">
+              <Search className="w-5 h-5" />
+            </div>
             <input
               type="text"
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="🔍 Search tools by name or purpose (e.g. compress, pdf, convert, counter)..."
-              className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-5 py-4 text-sm text-white placeholder:text-slate-500 shadow-2xl backdrop-blur-xl outline-none transition focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
+              onChange={(e) => handleSearchChange(e.target.value)}
+              placeholder="Search 250+ tools by name, keyword or tag (e.g. compress pdf, emi, gst, json, resize photo, tanglish)..."
+              className="w-full rounded-2xl border border-white/10 bg-slate-900/90 pl-14 pr-24 py-4 text-sm text-white placeholder:text-slate-500 shadow-xl backdrop-blur-xl outline-none transition focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
             />
             {search && (
               <button
                 type="button"
-                onClick={() => setSearch("")}
-                className="absolute right-4 top-1/2 -translate-y-1/2 rounded-lg bg-white/10 px-2 py-1 text-xs text-slate-400 hover:text-white"
+                onClick={() => handleSearchChange("")}
+                className="absolute right-4 rounded-lg bg-white/10 px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white transition-colors"
               >
                 Clear
               </button>
             )}
           </div>
-          {search && (
-            <p className="mt-3 text-center text-xs text-cyan-300">
-              Showing {totalResults} matching tool{totalResults === 1 ? "" : "s"}
-            </p>
+
+          {/* Controls Bar: Category Pills + Sort Selector */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-2">
+            {/* Category Filter Pills */}
+            <div className="flex items-center gap-1.5 overflow-x-auto w-full pb-2 md:pb-0 scrollbar-none">
+              <button
+                type="button"
+                onClick={() => handleCategoryChange("all")}
+                className={`whitespace-nowrap px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all shrink-0 cursor-pointer ${
+                  selectedCategory === "all"
+                    ? "bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/20"
+                    : "bg-slate-900/80 border border-slate-800 text-slate-400 hover:bg-slate-800 hover:text-white"
+                }`}
+              >
+                All Tools ({allTools.length})
+              </button>
+              {allCategories.map((cat) => {
+                const count = allTools.filter((t) => t.category === cat.id).length;
+                if (count === 0) return null;
+                return (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    onClick={() => handleCategoryChange(cat.id)}
+                    className={`whitespace-nowrap px-3 py-1.5 rounded-xl text-xs font-medium transition-all shrink-0 cursor-pointer flex items-center gap-1.5 ${
+                      selectedCategory === cat.id
+                        ? "bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/20"
+                        : "bg-slate-900/80 border border-slate-800 text-slate-400 hover:bg-slate-800 hover:text-white"
+                    }`}
+                  >
+                    <span>{cat.name}</span>
+                    <span className="text-[10px] opacity-70 font-mono">({count})</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Sort Selector */}
+            <div className="flex items-center gap-2 self-end md:self-auto shrink-0">
+              <div className="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/90 px-3 py-1.5 text-xs text-slate-300">
+                <ArrowUpDown className="w-3.5 h-3.5 text-cyan-400" />
+                <span className="text-slate-400">Sort:</span>
+                <select
+                  value={sortBy}
+                  onChange={(e) => handleSortChange(e.target.value as SortOption)}
+                  className="bg-transparent text-white outline-none cursor-pointer text-xs font-medium"
+                >
+                  <option value="default" className="bg-slate-900 text-white">Recommended</option>
+                  <option value="name-asc" className="bg-slate-900 text-white">Name: A to Z</option>
+                  <option value="name-desc" className="bg-slate-900 text-white">Name: Z to A</option>
+                  <option value="category" className="bg-slate-900 text-white">Category</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Directory Results Info */}
+        <div className="mt-8 mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
+          <div className="text-xs sm:text-sm text-slate-400 font-medium">
+            {totalTools > 0 ? (
+              <span>
+                Showing <strong className="text-white">{startIndex + 1}–{endIndex}</strong> of{" "}
+                <strong className="text-cyan-400">{totalTools}</strong> tools
+                {selectedCategory !== "all" && (
+                  <span className="ml-1.5 text-slate-400">
+                    in <span className="text-cyan-300 font-semibold capitalize">{selectedCategory}</span>
+                  </span>
+                )}
+                {search && (
+                  <span className="ml-1.5 text-slate-400">
+                    for &ldquo;<span className="text-white font-semibold">{search}</span>&rdquo;
+                  </span>
+                )}
+              </span>
+            ) : (
+              <span>No matching tools found</span>
+            )}
+          </div>
+
+          {totalPages > 1 && (
+            <div className="text-xs text-slate-400 font-mono">
+              Page <span className="text-cyan-300 font-bold">{safeCurrentPage}</span> of {totalPages}
+            </div>
           )}
         </div>
 
-        {/* Image Tools Category */}
-        {filteredImageTools.length > 0 && (
-          <div className="mb-20">
-            <div className="mb-8 flex items-center gap-3 border-b border-white/10 pb-4">
-              <span className="text-2xl">🖼️</span>
-              <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                Image Tools
-              </h3>
-              <span className="ml-auto rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-400">
-                {filteredImageTools.length} tools
-              </span>
-            </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {filteredImageTools.map((tool) => (
-                <ToolCard key={tool.title} {...tool} />
-              ))}
-            </div>
+        {/* Responsive Tool Cards Grid (1 col mobile, 2 col tablet, 3-4 col desktop) */}
+        {currentTools.length > 0 ? (
+          <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {currentTools.map((tool) => (
+              <ToolCard
+                key={tool.slug}
+                title={tool.name}
+                description={tool.shortDescription}
+                icon={
+                  tool.category === "pdf"
+                    ? "📄"
+                    : tool.category === "image"
+                    ? "🖼️"
+                    : tool.category === "developer"
+                    ? "💻"
+                    : tool.category === "calculators"
+                    ? "🧮"
+                    : tool.category === "finance"
+                    ? "💰"
+                    : tool.category === "tamil"
+                    ? "🇮🇳"
+                    : "⚡"
+                }
+                href={`/${tool.slug}`}
+              />
+            ))}
           </div>
-        )}
-
-        {/* PDF Tools Category */}
-        {filteredPdfTools.length > 0 && (
-          <div className="mb-20">
-            <div className="mb-8 flex items-center gap-3 border-b border-white/10 pb-4">
-              <span className="text-2xl">📄</span>
-              <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                PDF Tools
-              </h3>
-              <span className="ml-auto rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-400">
-                {filteredPdfTools.length} tools
-              </span>
-            </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {filteredPdfTools.map((tool) => (
-                <ToolCard key={tool.title} {...tool} />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Text Tools Category */}
-        {filteredTextTools.length > 0 && (
-          <div className="mb-20">
-            <div className="mb-8 flex items-center gap-3 border-b border-white/10 pb-4">
-              <span className="text-2xl">📝</span>
-              <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                Text Tools
-              </h3>
-              <span className="ml-auto rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-400">
-                {filteredTextTools.length} tools
-              </span>
-            </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {filteredTextTools.map((tool) => (
-                <ToolCard key={tool.title} {...tool} />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* AI Tools Category */}
-        {filteredAiTools.length > 0 && (
-          <div>
-            <div className="mb-8 flex items-center gap-3 border-b border-white/10 pb-4">
-              <span className="text-2xl">🤖</span>
-              <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                AI &amp; OCR Tools
-              </h3>
-              <span className="ml-auto rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-400">
-                {filteredAiTools.length} tools
-              </span>
-            </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {filteredAiTools.map((tool) => (
-                <ToolCard key={tool.title} {...tool} />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* No Search Results Fallback */}
-        {totalResults === 0 && (
-          <div className="rounded-3xl border border-white/10 bg-slate-900/40 p-12 text-center backdrop-blur-xl">
+        ) : (
+          /* Empty Search Fallback */
+          <div className="rounded-3xl border border-white/10 bg-slate-900/40 p-12 text-center backdrop-blur-xl my-6">
             <p className="text-4xl">🔍</p>
-            <h4 className="mt-4 text-xl font-bold text-white">No tools found</h4>
-            <p className="mt-2 text-sm text-slate-400">
-              No tools matched &quot;{search}&quot;. Try searching for &quot;pdf&quot;, &quot;compress&quot;, &quot;image&quot;, or &quot;counter&quot;.
+            <h4 className="mt-4 text-xl font-bold text-white">No matching tools found</h4>
+            <p className="mt-2 text-sm text-slate-400 max-w-md mx-auto">
+              We couldn&apos;t find any tool matching &quot;{search}&quot;. Try broader terms like &quot;pdf&quot;, &quot;compress&quot;, &quot;tax&quot;, &quot;image&quot;, or &quot;format&quot;.
             </p>
             <button
               type="button"
-              onClick={() => setSearch("")}
-              className="mt-6 rounded-xl bg-cyan-500/20 px-4 py-2 text-xs font-semibold text-cyan-300 hover:bg-cyan-500/30"
+              onClick={() => {
+                setSearch("");
+                setSelectedCategory("all");
+              }}
+              className="mt-6 rounded-xl bg-cyan-500/20 px-5 py-2.5 text-xs font-semibold text-cyan-300 hover:bg-cyan-500/30 transition-colors cursor-pointer"
             >
-              Reset Search
+              Reset Filters &amp; View All Tools
             </button>
           </div>
+        )}
+
+        {/* Pagination Navigation Bar */}
+        {totalPages > 1 && (
+          <nav
+            aria-label="Tools pagination"
+            className="mt-12 flex flex-wrap items-center justify-center gap-2 pt-6 border-t border-slate-800/80"
+          >
+            {/* Previous Page Button */}
+            <button
+              type="button"
+              disabled={safeCurrentPage === 1}
+              onClick={() => handlePageChange(safeCurrentPage - 1)}
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900 text-xs font-semibold text-slate-300 hover:border-cyan-500/40 hover:text-white disabled:opacity-40 disabled:pointer-events-none transition-all cursor-pointer"
+            >
+              <ChevronLeft className="w-4 h-4" />
+              <span>Previous</span>
+            </button>
+
+            {/* Page Number Buttons */}
+            <div className="flex items-center gap-1.5">
+              {pageNumbers.map((page, idx) => {
+                if (typeof page === "string") {
+                  return (
+                    <span key={`ellipsis-${idx}`} className="px-2 py-1 text-slate-500 text-xs font-mono">
+                      …
+                    </span>
+                  );
+                }
+                const isActive = page === safeCurrentPage;
+                return (
+                  <button
+                    key={page}
+                    type="button"
+                    onClick={() => handlePageChange(page)}
+                    className={`h-9 w-9 rounded-xl text-xs font-bold font-mono transition-all cursor-pointer ${
+                      isActive
+                        ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 scale-105"
+                        : "border border-slate-800 bg-slate-900/90 text-slate-400 hover:border-slate-700 hover:text-white"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Next Page Button */}
+            <button
+              type="button"
+              disabled={safeCurrentPage === totalPages}
+              onClick={() => handlePageChange(safeCurrentPage + 1)}
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900 text-xs font-semibold text-slate-300 hover:border-cyan-500/40 hover:text-white disabled:opacity-40 disabled:pointer-events-none transition-all cursor-pointer"
+            >
+              <span>Next</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </nav>
         )}
       </div>
     </section>

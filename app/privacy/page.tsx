@@ -1,149 +1,110 @@
-import SiteHeader from "@/components/SiteHeader";
+import type { Metadata } from "next";
 import SiteFooter from "@/components/SiteFooter";
+import { ShieldCheck, Lock, Eye, Cookie } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | Nova Tools",
+  description:
+    "Nova Tools Privacy Policy. Learn about our 100% client-side zero-upload processing, cookie policies, and Google AdSense privacy compliance.",
+  alternates: {
+    canonical: "https://novatool.in/privacy",
+  },
+};
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
-      <SiteHeader />
+    <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between">
+      <main className="mx-auto max-w-4xl px-4 sm:px-6 py-14 space-y-8 flex-1">
+        <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-7 sm:p-10 shadow-xl backdrop-blur-xl space-y-8">
+          <div className="border-b border-slate-800 pb-6 space-y-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>PRIVACY &amp; DATA PROTECTION</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-white">
+              Privacy Policy
+            </h1>
+            <p className="text-xs text-slate-400">
+              Last updated: August 18, 2026 • Effective immediately
+            </p>
+          </div>
 
-      <section className="mx-auto max-w-4xl px-6 py-14">
-        <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm sm:p-10">
-          <h1 className="text-4xl font-bold tracking-tight">
-            Privacy Policy
-          </h1>
-
-          <p className="mt-3 text-sm text-slate-500">
-            Last updated: July 26, 2026
-          </p>
-
-          <div className="mt-8 space-y-8 leading-7 text-slate-600">
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                1. About Nova Tools
+          <div className="space-y-8 text-sm leading-relaxed text-slate-300">
+            <section className="space-y-3">
+              <h2 className="text-lg font-bold text-white flex items-center gap-2">
+                <Lock className="w-4 h-4 text-cyan-400" />
+                <span>1. Zero-Upload Client-Side Architecture</span>
               </h2>
-
-              <p className="mt-3">
-                Nova Tools is an online file utility service provided by
-                Nova Code Tech. Our tools help users perform common tasks
-                such as image compression, image resizing, PDF processing,
-                file conversion and text extraction.
+              <p>
+                Nova Tools is built on a strict privacy-first principle: <strong>100% of your tool computation runs directly inside your web browser</strong> using WebAssembly, HTML5 Canvas, and modern Web APIs.
+              </p>
+              <p>
+                When you merge PDFs, compress images, resize signatures, convert documents, extract text via OCR, or generate hashes, <strong>your files are never uploaded to our servers</strong>. All data remains exclusively in your device&apos;s local memory and is discarded immediately when you close or refresh the page.
               </p>
             </section>
 
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                2. Files You Process
+            <section className="space-y-3">
+              <h2 className="text-lg font-bold text-white flex items-center gap-2">
+                <Eye className="w-4 h-4 text-indigo-400" />
+                <span>2. Information We Collect</span>
               </h2>
-
-              <p className="mt-3">
-                Many Nova Tools features process files directly in your
-                web browser. When a tool works entirely in your browser,
-                the selected file does not need to be uploaded to our
-                server for processing.
+              <p>
+                When you interact with Nova Tools, we collect minimal operational information to ensure service stability:
               </p>
+              <ul className="list-disc list-inside space-y-1.5 text-slate-300 ml-2">
+                <li><strong>Account Information:</strong> If you register an account, we store your email address, display name, and authentication timestamp via Supabase Auth.</li>
+                <li><strong>Usage &amp; Preferences:</strong> Pinned favorite tool slugs and local session preferences.</li>
+                <li><strong>Telemetry:</strong> Aggregated anonymous technical metadata (browser type, screen resolution, referral path) to monitor platform health.</li>
+              </ul>
+            </section>
 
-              <p className="mt-3">
-                If we introduce server-based processing in the future,
-                this Privacy Policy will be updated to explain how those
-                files are handled.
+            <section className="space-y-3">
+              <h2 className="text-lg font-bold text-white flex items-center gap-2">
+                <Cookie className="w-4 h-4 text-amber-400" />
+                <span>3. Cookies &amp; Google AdSense Advertising</span>
+              </h2>
+              <p>
+                Nova Tools uses cookies, web beacons, and similar tracking technologies to deliver essential functionality and display relevant advertisements:
+              </p>
+              <ul className="list-disc list-inside space-y-1.5 text-slate-300 ml-2">
+                <li>
+                  <strong>Google AdSense:</strong> Google, as a third-party vendor, uses cookies (such as the DoubleClick DART cookie) to serve ads based on a user&apos;s prior visits to Nova Tools or other websites on the internet.
+                </li>
+                <li>
+                  <strong>Personalized Advertising:</strong> Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-cyan-400 underline hover:text-cyan-300">Google Ads Settings</a> or <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer" className="text-cyan-400 underline hover:text-cyan-300">aboutads.info</a>.
+                </li>
+                <li>
+                  <strong>Analytics Cookies:</strong> We utilize privacy-conscious Google Analytics and Microsoft Clarity to understand feature popularity and optimize interface usability.
+                </li>
+              </ul>
+            </section>
+
+            <section className="space-y-3">
+              <h2 className="text-lg font-bold text-white">
+                4. Data Security &amp; Encryption
+              </h2>
+              <p>
+                All communications between your browser and Nova Tools are encrypted using industry-standard TLS 1.3 encryption with strict HTTP Strict Transport Security (HSTS). We do not store sensitive payment details or credentials on our infrastructure.
               </p>
             </section>
 
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                3. Information We May Collect
+            <section className="space-y-3">
+              <h2 className="text-lg font-bold text-white">
+                5. Contact &amp; Privacy Requests
               </h2>
-
-              <p className="mt-3">
-                We may collect basic technical information such as browser
-                type, device type, pages visited, approximate location,
-                referring pages and usage statistics.
+              <p>
+                If you have questions regarding this Privacy Policy or wish to exercise data rights under GDPR or local privacy regulations, contact our Data Protection Officer at:
               </p>
-
-              <p className="mt-3">
-                This information may be used to improve performance,
-                understand how visitors use Nova Tools and maintain the
-                security of the website.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                4. Cookies
-              </h2>
-
-              <p className="mt-3">
-                Nova Tools may use cookies or similar technologies for
-                essential website functions, analytics, preferences and
-                advertising where applicable.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                5. Analytics and Advertising
-              </h2>
-
-              <p className="mt-3">
-                We may use third-party analytics and advertising services.
-                These providers may use cookies or similar technologies in
-                accordance with their own privacy policies.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                6. Third-Party Links
-              </h2>
-
-              <p className="mt-3">
-                Nova Tools may contain links to external websites. We are
-                not responsible for the privacy practices or content of
-                third-party websites.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                7. Data Security
-              </h2>
-
-              <p className="mt-3">
-                We use reasonable technical and organizational measures to
-                protect the website and information processed through our
-                services. No internet-based service can guarantee absolute
-                security.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                8. Changes to This Policy
-              </h2>
-
-              <p className="mt-3">
-                We may update this Privacy Policy when our services,
-                technology or legal requirements change. The latest
-                version will be published on this page.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                9. Contact
-              </h2>
-
-              <p className="mt-3">
-                If you have questions about this Privacy Policy, you can
-                contact Nova Code Tech through the contact information
-                provided on Nova Tools.
-              </p>
+              <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 font-mono text-xs text-cyan-300">
+                Email: support@novatool.in<br />
+                Entity: Nova Code Tech
+              </div>
             </section>
           </div>
         </div>
-      </section>
+      </main>
 
       <SiteFooter />
-    </main>
+    </div>
   );
 }

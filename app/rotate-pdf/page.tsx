@@ -6,7 +6,6 @@ import { PDFDocument, degrees } from "pdf-lib";
 
 import { saveAs } from "file-saver";
 
-import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import ToolLayout from "@/components/ToolLayout";
 import UploadCard from "@/components/UploadCard";
@@ -278,7 +277,7 @@ return (
 
 <main className="min-h-screen bg-[#030712] text-white">
   
-    <SiteHeader />
+    
 
     <ToolLayout
       badge="FREE PDF TOOL"

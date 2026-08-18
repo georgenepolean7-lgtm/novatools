@@ -82,7 +82,7 @@ export default function CompanySection() {
 
               <p className="mt-8 text-lg leading-8 text-slate-400">
                 Questions, feedback or business enquiries?
-                We'd love to hear from you.
+                We&apos;d love to hear from you.
               </p>
 
               <div className="mt-10 space-y-4">

@@ -1,7 +1,6 @@
 "use client";
 
 import { ChangeEvent, useRef, useState } from "react";
-import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import ToolLayout from "@/components/ToolLayout";
 import UploadCard from "@/components/UploadCard";
@@ -251,7 +250,7 @@ export default function PdfPageExtractorPage() {
       />
 
       <main className="min-h-screen bg-slate-950 text-white">
-        <SiteHeader />
+        
 
         <ToolLayout
           badge="FREE PDF TOOL"

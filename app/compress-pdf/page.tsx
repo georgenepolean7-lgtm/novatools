@@ -2,7 +2,6 @@
 
 import { ChangeEvent, useState } from "react";
 import { PDFDocument } from "pdf-lib";
-import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import NovaAssistant from "@/components/NovaAssistant";
 import FAQSchema from "@/components/seo/FAQSchema";
@@ -449,7 +448,7 @@ setTimeout(() => {
 
 <main className="min-h-screen bg-slate-950 text-white">
      
-     <SiteHeader />
+     
       <section className="relative mx-auto max-w-5xl px-6 py-20">
         <div className="pointer-events-none absolute inset-0">
   <div className="absolute -left-40 top-20 h-[420px] w-[420px] rounded-full bg-blue-600/15 blur-[140px]" />

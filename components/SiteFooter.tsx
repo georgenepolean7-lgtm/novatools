@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function SiteFooter() {
   return (
     <footer
@@ -16,7 +18,7 @@ export default function SiteFooter() {
             </p>
 
             <p className="mt-3 text-sm leading-6 text-slate-400">
-              Simple online tools for images, PDFs and documents.
+              Simple online tools for images, PDFs, developers, and documents.
             </p>
           </div>
 
@@ -26,78 +28,75 @@ export default function SiteFooter() {
             </p>
 
             <div className="mt-3 flex flex-col gap-2 text-sm">
-              <a href="/#tools" className="hover:text-white">
-                Tools
-              </a>
+              <Link href="/#all-tools" className="hover:text-white">
+                All Tools
+              </Link>
 
-              <a href="/#about" className="hover:text-white">
+              <Link href="/#about" className="hover:text-white">
                 About
-              </a>
+              </Link>
 
-              <a href="/#contact" className="hover:text-white">
+              <Link href="/#contact" className="hover:text-white">
                 Contact
-              </a>
+              </Link>
             </div>
           </div>
-<div>
-  <p className="font-semibold text-white">
-    Contact
-  </p>
 
-  <div className="mt-3 flex flex-col gap-3 text-sm">
+          <div>
+            <p className="font-semibold text-white">
+              Contact
+            </p>
 
-    <a
-      href="mailto:georgenepolean7@gmail.com"
-      className="break-all hover:text-white"
-    >
-      📧 georgenepolean7@gmail.com
-    </a>
+            <div className="mt-3 flex flex-col gap-3 text-sm">
+              <a
+                href="mailto:georgenepolean7@gmail.com"
+                className="break-all hover:text-white"
+              >
+                📧 georgenepolean7@gmail.com
+              </a>
 
-    <p className="text-slate-400">
-      Need a custom website or web application?
-    </p>
+              <p className="text-slate-400">
+                Need a custom website or web application?
+              </p>
 
-    <p className="text-cyan-300">
-      Contact Nova Code Tech.
-    </p>
+              <p className="text-cyan-300">
+                Contact Nova Code Tech.
+              </p>
 
-<div className="flex gap-3 pt-2">
+              <div className="flex gap-3 pt-2">
+                <a
+                  href="mailto:georgenepolean7@gmail.com"
+                  className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 transition hover:border-cyan-400 hover:bg-cyan-500/10"
+                >
+                  📧 Email
+                </a>
+              </div>
+            </div>
+          </div>
 
-  <a
-    href="mailto:georgenepolean7@gmail.com"
-    className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 transition hover:border-cyan-400 hover:bg-cyan-500/10"
-  >
-    📧 Email
-  </a>
-
-</div>
-
-  </div>
-</div>
           <div>
             <p className="font-semibold text-white">
               Legal
             </p>
 
             <div className="mt-3 flex flex-col gap-2 text-sm">
-              <a href="/privacy" className="hover:text-white">
+              <Link href="/privacy" className="hover:text-white">
                 Privacy Policy
-              </a>
+              </Link>
 
-              <a href="/terms" className="hover:text-white">
-                Terms & Conditions
-              </a>
+              <Link href="/terms" className="hover:text-white">
+                Terms &amp; Conditions
+              </Link>
 
-              <a href="/disclaimer" className="hover:text-white">
+              <Link href="/disclaimer" className="hover:text-white">
                 Disclaimer
-              </a>
+              </Link>
             </div>
           </div>
         </div>
 
         <div className="mt-8 border-t border-slate-800 pt-6 text-center text-sm text-slate-500">
-          © 2026 Nova Code Tech. All rights reserved.
-Made for creators, students and businesses.
+          © 2026 Nova Code Tech. All rights reserved. Made for creators, students and businesses.
         </div>
       </div>
     </footer>

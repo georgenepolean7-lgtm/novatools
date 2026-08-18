@@ -16,7 +16,7 @@ export default function ContactPage() {
         </h1>
 
         <p className="mt-8 text-lg leading-8 text-slate-300">
-          We'd love to hear from you. If you have questions, suggestions,
+          We&apos;d love to hear from you. If you have questions, suggestions,
           feature requests or find an issue, please get in touch.
         </p>
 

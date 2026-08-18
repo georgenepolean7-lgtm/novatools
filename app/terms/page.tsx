@@ -1,163 +1,84 @@
-import SiteHeader from "@/components/SiteHeader";
+import type { Metadata } from "next";
 import SiteFooter from "@/components/SiteFooter";
+import { FileText, Shield } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions | Nova Tools",
+  description: "Terms and conditions of use for Nova Tools free web utility suite.",
+  alternates: {
+    canonical: "https://novatool.in/terms",
+  },
+};
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
-      <SiteHeader />
+    <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between">
+      <main className="mx-auto max-w-4xl px-4 sm:px-6 py-14 space-y-8 flex-1">
+        <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-7 sm:p-10 shadow-xl backdrop-blur-xl space-y-8">
+          <div className="border-b border-slate-800 pb-6 space-y-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold">
+              <FileText className="w-3.5 h-3.5" />
+              <span>LEGAL AGREEMENT</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-white">
+              Terms &amp; Conditions
+            </h1>
+            <p className="text-xs text-slate-400">
+              Last updated: August 18, 2026 • Nova Code Tech
+            </p>
+          </div>
 
-      <section className="mx-auto max-w-4xl px-6 py-14">
-        <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm sm:p-10">
-          <h1 className="text-4xl font-bold tracking-tight">
-            Terms & Conditions
-          </h1>
-
-          <p className="mt-3 text-sm text-slate-500">
-            Last updated: July 26, 2026
-          </p>
-
-          <div className="mt-8 space-y-8 leading-7 text-slate-600">
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                1. Acceptance of Terms
+          <div className="space-y-8 text-sm leading-relaxed text-slate-300">
+            <section className="space-y-3">
+              <h2 className="text-lg font-bold text-white flex items-center gap-2">
+                <Shield className="w-4 h-4 text-cyan-400" />
+                <span>1. Acceptance of Terms</span>
               </h2>
-
-              <p className="mt-3">
-                By accessing or using Nova Tools, you agree to these
-                Terms & Conditions. If you do not agree with these terms,
-                please do not use the website.
+              <p>
+                By accessing or using Nova Tools (&ldquo;Service&rdquo;), you agree to be bound by these Terms and Conditions. If you disagree with any part of these terms, you may not access the service.
               </p>
             </section>
 
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                2. About the Service
+            <section className="space-y-3">
+              <h2 className="text-lg font-bold text-white">
+                2. Scope of Service &amp; Client Processing
               </h2>
-
-              <p className="mt-3">
-                Nova Tools provides online utilities for tasks such as
-                image compression, image resizing, PDF processing, file
-                conversion and text extraction.
-              </p>
-
-              <p className="mt-3">
-                Features may be added, changed or removed as the service
-                develops.
+              <p>
+                Nova Tools provides 250+ utility tools for image editing, PDF manipulation, document conversion, text manipulation, and developer utilities. All operations are executed locally within your web browser. You retain 100% intellectual property ownership of all files and content processed using the service.
               </p>
             </section>
 
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                3. User Responsibilities
+            <section className="space-y-3">
+              <h2 className="text-lg font-bold text-white">
+                3. Acceptable Use
               </h2>
-
-              <p className="mt-3">
-                You are responsible for the files and content you process
-                using Nova Tools. You must have the necessary rights or
-                permission to use those files.
-              </p>
-
-              <p className="mt-3">
-                You must not use Nova Tools for unlawful activities or in
-                a way that could damage, disrupt or interfere with the
-                website or other users.
+              <p>
+                You agree not to use Nova Tools to violate applicable local, national, or international laws, infringe upon third-party copyrights, or attempt to reverse-engineer unauthorized internal APIs.
               </p>
             </section>
 
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                4. File Processing
+            <section className="space-y-3">
+              <h2 className="text-lg font-bold text-white">
+                4. Disclaimer of Warranties
               </h2>
-
-              <p className="mt-3">
-                Some Nova Tools features process files directly in your
-                browser. Processing results can vary depending on the
-                original file, browser, device and selected settings.
-              </p>
-
-              <p className="mt-3">
-                You should check downloaded files before using them for
-                important applications, submissions or documents.
+              <p>
+                The services are provided on an &ldquo;AS IS&rdquo; and &ldquo;AS AVAILABLE&rdquo; basis without warranties of any kind, whether express or implied.
               </p>
             </section>
 
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                5. Availability
+            <section className="space-y-3">
+              <h2 className="text-lg font-bold text-white">
+                5. Governing Law &amp; Jurisdiction
               </h2>
-
-              <p className="mt-3">
-                We aim to keep Nova Tools available and working correctly,
-                but we do not guarantee uninterrupted or error-free
-                access. Maintenance, technical problems or other factors
-                may temporarily affect the service.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                6. Intellectual Property
-              </h2>
-
-              <p className="mt-3">
-                The Nova Tools name, website design, original content and
-                related branding belong to Nova Code Tech unless stated
-                otherwise.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                7. Third-Party Services
-              </h2>
-
-              <p className="mt-3">
-                Nova Tools may use or link to third-party services.
-                Third-party services are governed by their own terms and
-                policies.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                8. Limitation of Liability
-              </h2>
-
-              <p className="mt-3">
-                Nova Tools is provided as an online utility service. You
-                are responsible for verifying that processed files meet
-                your requirements before submitting, printing, sharing or
-                relying on them.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                9. Changes to These Terms
-              </h2>
-
-              <p className="mt-3">
-                We may update these Terms & Conditions when the service or
-                applicable requirements change. The latest version will be
-                published on this page.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                10. Contact
-              </h2>
-
-              <p className="mt-3">
-                Questions about these terms can be sent to Nova Code Tech
-                through the contact information provided on Nova Tools.
+              <p>
+                These terms shall be governed by and construed in accordance with the laws of India, without regard to its conflict of law provisions.
               </p>
             </section>
           </div>
         </div>
-      </section>
+      </main>
 
       <SiteFooter />
-    </main>
+    </div>
   );
 }

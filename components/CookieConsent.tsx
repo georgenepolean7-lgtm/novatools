@@ -7,9 +7,9 @@ export default function CookieConsent() {
 
   useEffect(() => {
     const accepted = localStorage.getItem("cookie-consent");
-
     if (!accepted) {
-      setShow(true);
+      const timer = setTimeout(() => setShow(true), 0);
+      return () => clearTimeout(timer);
     }
   }, []);
 
@@ -35,7 +35,7 @@ export default function CookieConsent() {
       <div className="mt-6 flex justify-end">
         <button
           onClick={accept}
-          className="rounded-2xl bg-cyan-500 px-6 py-3 font-bold text-white transition hover:bg-cyan-400"
+          className="rounded-2xl bg-cyan-500 px-6 py-3 font-bold text-white transition hover:bg-cyan-400 cursor-pointer"
         >
           Accept
         </button>

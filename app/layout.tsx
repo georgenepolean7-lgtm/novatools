@@ -8,6 +8,8 @@ import GoogleAnalytics from "@/components/GoogleAnalytics";
 import MicrosoftClarity from "@/components/MicrosoftClarity";
 import SearchActionSchema from "@/components/seo/SearchActionSchema";
 import CookieConsent from "@/components/CookieConsent";
+import SiteHeader from "@/components/SiteHeader";
+import { AuthProvider } from "@/components/auth/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -128,24 +130,29 @@ export default function RootLayout({
           content="25e0cc4c-4024-4fec-89c2-8dd3a21535dc"
         />
 
+      </head>
+
+      <body className="h-full bg-slate-950 text-white">
         <Script
           async
           crossOrigin="anonymous"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7888119602395886"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         />
-      </head>
 
-      <body className="h-full bg-slate-950 text-white">
-        <GoogleAnalytics />
+        <AuthProvider>
+          <GoogleAnalytics />
 
-        <MicrosoftClarity />
+          <MicrosoftClarity />
 
-        <SearchActionSchema />
+          <SearchActionSchema />
 
-        {children}
+          <SiteHeader />
 
-        <CookieConsent />
+          {children}
+
+          <CookieConsent />
+        </AuthProvider>
       </body>
     </html>
   );

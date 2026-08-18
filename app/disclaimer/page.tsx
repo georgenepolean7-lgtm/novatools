@@ -1,122 +1,74 @@
-import SiteHeader from "@/components/SiteHeader";
+import type { Metadata } from "next";
 import SiteFooter from "@/components/SiteFooter";
+import { AlertCircle } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Disclaimer | Nova Tools",
+  description: "Legal disclaimer regarding file processing results, OCR accuracy, and utility output on Nova Tools.",
+  alternates: {
+    canonical: "https://novatool.in/disclaimer",
+  },
+};
 
 export default function DisclaimerPage() {
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
-      <SiteHeader />
+    <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between">
+      <main className="mx-auto max-w-4xl px-4 sm:px-6 py-14 space-y-8 flex-1">
+        <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-7 sm:p-10 shadow-xl backdrop-blur-xl space-y-8">
+          <div className="border-b border-slate-800 pb-6 space-y-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold">
+              <AlertCircle className="w-3.5 h-3.5" />
+              <span>DISCLAIMER &amp; LIMITATIONS</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-white">
+              Disclaimer
+            </h1>
+            <p className="text-xs text-slate-400">
+              Last updated: August 18, 2026 • Nova Tools
+            </p>
+          </div>
 
-      <section className="mx-auto max-w-4xl px-6 py-14">
-        <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm sm:p-10">
-          <h1 className="text-4xl font-bold tracking-tight">
-            Disclaimer
-          </h1>
-
-          <p className="mt-3 text-sm text-slate-500">
-            Last updated: July 26, 2026
-          </p>
-
-          <div className="mt-8 space-y-8 leading-7 text-slate-600">
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                General Information
+          <div className="space-y-8 text-sm leading-relaxed text-slate-300">
+            <section className="space-y-3">
+              <h2 className="text-lg font-bold text-white">
+                1. General Information
               </h2>
-
-              <p className="mt-3">
-                Nova Tools provides online utilities for image, PDF,
-                document conversion and text extraction tasks.
+              <p>
+                The information and utilities provided by Nova Tools are for general informational, educational, and workflow automation purposes only.
               </p>
             </section>
 
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                File Processing Results
+            <section className="space-y-3">
+              <h2 className="text-lg font-bold text-white">
+                2. File Processing &amp; Compression Results
               </h2>
-
-              <p className="mt-3">
-                File size, image quality, PDF quality, dimensions and
-                conversion results may vary depending on the original
-                file and the settings selected by the user.
-              </p>
-
-              <p className="mt-3">
-                Always check the processed file before submitting it to
-                government portals, educational institutions, employers
-                or other services.
+              <p>
+                File size reduction, visual resolution, PDF rendering fidelity, and format conversion outcomes vary depending on the complexity of your input documents. Users should always inspect generated files before submitting them to official regulatory authorities, academic portals, or commercial channels.
               </p>
             </section>
 
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                OCR Accuracy
+            <section className="space-y-3">
+              <h2 className="text-lg font-bold text-white">
+                3. OCR &amp; Text Extraction Accuracy
               </h2>
-
-              <p className="mt-3">
-                Text extraction and OCR results may contain incorrect,
-                missing or misidentified characters. Accuracy can be
-                affected by image quality, font style, language, layout,
-                background and text size.
-              </p>
-
-              <p className="mt-3">
-                Users should review and correct extracted text before
-                relying on it.
+              <p>
+                Optical Character Recognition (OCR) results (including Tamil and English language recognition) depend on source document resolution, typography, lighting conditions, and scan clarity. Nova Tools makes no guarantees of 100% character precision.
               </p>
             </section>
 
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                PDF Compression
+            <section className="space-y-3">
+              <h2 className="text-lg font-bold text-white">
+                4. Financial &amp; Calculation Utilities
               </h2>
-
-              <p className="mt-3">
-                A requested PDF target size cannot always be reached
-                without reducing visual quality. Nova Tools may preserve
-                a larger file when stronger compression would make the
-                document difficult to read.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                External Services
-              </h2>
-
-              <p className="mt-3">
-                Nova Tools may use third-party libraries, analytics,
-                advertising or other external services. Those services
-                may have their own terms and privacy policies.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                Service Availability
-              </h2>
-
-              <p className="mt-3">
-                We do not guarantee that every tool will always be
-                available, error-free or compatible with every file,
-                browser or device.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900">
-                Contact
-              </h2>
-
-              <p className="mt-3">
-                If you find a problem with Nova Tools, you can contact
-                Nova Code Tech using the contact information provided on
-                the website.
+              <p>
+                Financial tools, calculators, interest estimations, and percentage utilities are provided as estimation aids and should not be considered formal certified financial or tax advice.
               </p>
             </section>
           </div>
         </div>
-      </section>
+      </main>
 
       <SiteFooter />
-    </main>
+    </div>
   );
 }

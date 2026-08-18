@@ -1,5 +1,4 @@
 "use client";
-import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { ChangeEvent, useState } from "react";
 import ToolLayout from "@/components/ToolLayout";
@@ -125,8 +124,6 @@ img.src = URL.createObjectURL(selectedFile);
       ctx.drawImage(image, 0, 0, width, height);
 
       const targetBytes = targetKB * 1024;
-
-      let quality = 0.92;
       let blob: Blob | null = null;
 
 // Try to get as close as possible to the target size
@@ -330,7 +327,7 @@ setTimeout(() => {
   <main className="min-h-screen bg-slate-950 text-white">
  
 
-    <SiteHeader />
+    
 
     <ToolLayout
       badge="Free Online Image Tool"

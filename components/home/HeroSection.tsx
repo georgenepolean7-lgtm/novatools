@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import AuroraBackground from "@/components/AuroraBackground";
 import HeroLighting from "@/components/HeroLighting";
+import HeroSearch from "./HeroSearch";
 
 const HeroParticles = dynamic(
   () => import("@/components/HeroParticles"),
@@ -81,7 +82,9 @@ export default function HeroSection() {
             tools built for everyday work.
           </p>
 
-          <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
+          <HeroSearch />
+
+          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
 
             <Link
               href="#tools"

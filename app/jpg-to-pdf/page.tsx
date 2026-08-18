@@ -2,7 +2,6 @@
 import NovaAssistant from "@/components/NovaAssistant";
 import ToolSEO from "@/components/seo/ToolSEO";
 import RelatedTools from "@/components/RelatedTools";
-import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { PDFDocument } from "pdf-lib";
@@ -75,10 +74,10 @@ setTimeout(() => {
     setDownloadUrl(null);
     setPdfSize(null);
     setMessage("");
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   }
-if (fileInputRef.current) {
-  fileInputRef.current.value = "";
-}
   function removeImage(index: number) {
     const updated = files.filter((_, i) => i !== index);
 
@@ -303,7 +302,7 @@ setTimeout(() => {
 />
 
 <main className="min-h-screen bg-[#030712] text-white">
-<SiteHeader />
+
       <ToolLayout
   badge="FREE PDF TOOL"
   title="JPG to PDF"
