@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import ToolCard from "./ToolCard";
-import { getAllTools } from "@/lib/tools/registry";
+import { getToolDirectoryItems } from "@/lib/tools/directory-index";
 import { searchTools } from "@/lib/tools/search";
 import { getAllCategories } from "@/lib/tools/categories";
 import { ToolCategory } from "@/lib/tools/tool-types";
@@ -25,7 +25,7 @@ export default function AllToolsSection() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const allCategories = useMemo(() => getAllCategories(), []);
-  const allTools = useMemo(() => getAllTools(), []);
+  const allTools = useMemo(() => getToolDirectoryItems(), []);
 
   // Filter tools based on search and category
   const filteredTools = useMemo(() => {

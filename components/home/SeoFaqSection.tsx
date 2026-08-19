@@ -1,10 +1,7 @@
-"use client";
-
-import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { ChevronDown, HelpCircle, Shield, Zap, Globe, FolderTree } from "lucide-react";
 import { getAllCategories } from "@/lib/tools/categories";
-import { getAllTools } from "@/lib/tools/registry";
+import { getToolDirectoryItems } from "@/lib/tools/directory-index";
 
 interface FAQItem {
   question: string;
@@ -45,13 +42,8 @@ const FAQS: FAQItem[] = [
 ];
 
 export default function SeoFaqSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const categories = useMemo(() => getAllCategories(), []);
-  const allTools = useMemo(() => getAllTools(), []);
-
-  const toggleFaq = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+  const categories = getAllCategories();
+  const allTools = getToolDirectoryItems();
 
   // Structured Data for Google Rich Snippets (FAQPage)
   const faqSchema = {
@@ -68,7 +60,7 @@ export default function SeoFaqSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-slate-950/90 py-20 text-white border-t border-slate-900">
+    <section className="relative overflow-hidden bg-slate-950/90 py-20 text-white border-t border-slate-900 [content-visibility:auto]">
       {/* JSON-LD Schema for Google Search Rich Results */}
       <script
         type="application/ld+json"
@@ -167,7 +159,7 @@ export default function SeoFaqSection() {
           </div>
         </div>
 
-        {/* Interactive SEO FAQ Section */}
+        {/* Interactive SEO FAQ Section (Native HTML Details/Summary for 0 JS Cost) */}
         <div className="mx-auto max-w-4xl space-y-8">
           <div className="text-center space-y-3">
             <div className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/20 bg-cyan-500/10 px-3.5 py-1 text-xs font-semibold text-cyan-300">
@@ -180,34 +172,21 @@ export default function SeoFaqSection() {
           </div>
 
           <div className="space-y-3">
-            {FAQS.map((faq, index) => {
-              const isOpen = openIndex === index;
-              return (
-                <div
-                  key={index}
-                  className="rounded-2xl border border-slate-800 bg-slate-900/60 overflow-hidden transition-colors"
-                >
-                  <button
-                    type="button"
-                    onClick={() => toggleFaq(index)}
-                    aria-expanded={isOpen}
-                    className="w-full p-5 text-left flex items-center justify-between gap-4 font-semibold text-white text-sm sm:text-base hover:text-cyan-300 transition-colors cursor-pointer"
-                  >
-                    <span>{faq.question}</span>
-                    <ChevronDown
-                      className={`w-4 h-4 text-cyan-400 shrink-0 transition-transform duration-200 ${
-                        isOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {isOpen && (
-                    <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/60 animate-in fade-in duration-150">
-                      {faq.answer}
-                    </div>
-                  )}
+            {FAQS.map((faq, index) => (
+              <details
+                key={index}
+                open={index === 0}
+                className="group rounded-2xl border border-slate-800 bg-slate-900/60 overflow-hidden transition-colors"
+              >
+                <summary className="w-full p-5 text-left flex items-center justify-between gap-4 font-semibold text-white text-sm sm:text-base hover:text-cyan-300 transition-colors cursor-pointer list-none select-none">
+                  <span>{faq.question}</span>
+                  <ChevronDown className="w-4 h-4 text-cyan-400 shrink-0 transition-transform duration-200 group-open:rotate-180" />
+                </summary>
+                <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/60">
+                  {faq.answer}
                 </div>
-              );
-            })}
+              </details>
+            ))}
           </div>
         </div>
       </div>

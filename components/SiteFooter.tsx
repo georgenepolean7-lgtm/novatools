@@ -4,7 +4,7 @@ export default function SiteFooter() {
   return (
     <footer
       id="contact"
-      className="border-t border-slate-800 bg-slate-950 text-slate-300"
+      className="border-t border-slate-800 bg-slate-950 text-slate-300 [content-visibility:auto]"
     >
       <div className="mx-auto max-w-7xl px-6 py-10">
         <div className="grid gap-8 sm:grid-cols-4">

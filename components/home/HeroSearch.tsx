@@ -93,7 +93,7 @@ export default function HeroSearch() {
                           {tool.name}
                         </h4>
                         <p className="text-[10px] text-slate-400 line-clamp-1">
-                          {tool.seoDescription}
+                          {tool.shortDescription}
                         </p>
                       </div>
                     </div>

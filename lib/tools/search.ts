@@ -1,6 +1,5 @@
-import { ToolDefinition, ToolCategory } from "./tool-types";
-import { getAllTools } from "./registry";
-import { rankToolRelevance, RankedSearchResult } from "./ranking";
+import { ToolCategory } from "./tool-types";
+import { ToolDirectoryItem, getToolDirectoryItems } from "./directory-index";
 
 export interface SearchOptions {
   category?: ToolCategory;
@@ -8,9 +7,9 @@ export interface SearchOptions {
   featuredOnly?: boolean;
 }
 
-export function searchTools(query: string, options?: SearchOptions): ToolDefinition[] {
-  const all = getAllTools();
-  const q = query.trim();
+export function searchTools(query: string, options?: SearchOptions): ToolDirectoryItem[] {
+  const all = getToolDirectoryItems();
+  const q = query.trim().toLowerCase();
 
   let candidates = all;
   if (options?.category) {
@@ -21,16 +20,40 @@ export function searchTools(query: string, options?: SearchOptions): ToolDefinit
   }
 
   if (!q) {
-    // If no search query, return sorted by priority
-    return candidates.sort((a, b) => b.priority - a.priority).slice(0, options?.limit || candidates.length);
+    return [...candidates]
+      .sort((a, b) => b.priority - a.priority)
+      .slice(0, options?.limit || candidates.length);
   }
 
-  const scored: RankedSearchResult[] = candidates
-    .map((tool) => rankToolRelevance(tool, q))
-    .filter((res) => res.score > 10);
+  // Fast token & prefix weighted search
+  const terms = q.split(/\s+/).filter(Boolean);
+  const scored = candidates
+    .map((tool) => {
+      let score = 0;
+      const nameLower = tool.name.toLowerCase();
+      const slugLower = tool.slug.toLowerCase();
+      const descLower = tool.shortDescription.toLowerCase();
+
+      if (nameLower === q || slugLower === q) score += 1000;
+      else if (nameLower.startsWith(q)) score += 600;
+      else if (nameLower.includes(q)) score += 400;
+
+      for (const kw of tool.keywords) {
+        const kwLower = kw.toLowerCase();
+        if (kwLower === q) score += 350;
+        else if (kwLower.includes(q)) score += 150;
+      }
+
+      // Check multi-term presence
+      for (const term of terms) {
+        if (nameLower.includes(term)) score += 80;
+        if (descLower.includes(term)) score += 30;
+      }
+
+      return { tool, score };
+    })
+    .filter((item) => item.score > 0);
 
   scored.sort((a, b) => b.score - a.score);
-
-  const results = scored.map((s) => s.tool);
-  return results.slice(0, options?.limit || results.length);
+  return scored.map((s) => s.tool).slice(0, options?.limit || scored.length);
 }

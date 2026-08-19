@@ -1,7 +1,3 @@
-"use client";
-
-import { useRef } from "react";
-
 import HeroSection from "./HeroSection";
 import ToolsSection from "./ToolsSection";
 import AllToolsSection from "@/components/AllToolsSection";
@@ -13,8 +9,6 @@ import AffiliateRecommendations from "@/components/affiliate/AffiliateRecommenda
 import AdSenseBanner from "@/components/ads/AdSenseBanner";
 
 export default function HomeClient() {
-  const aboutRef = useRef<HTMLDivElement | null>(null);
-
   return (
     <div className="flex flex-col min-h-screen bg-slate-950 text-white">
       {/* 1. Hero Section with 250+ Tools Search */}
@@ -29,7 +23,7 @@ export default function HomeClient() {
       {/* 4. Mid Ad Area (Separating Featured from Full Directory) */}
       <AdSenseBanner slotId="home-directory-top" className="my-6" />
 
-      {/* 5. Complete All Tools Directory with 24-Tool Pagination */}
+      {/* 5. Complete All Tools Directory with 30-Tool Pagination */}
       <AllToolsSection />
 
       {/* 6. Bottom Ad Area */}
@@ -39,7 +33,7 @@ export default function HomeClient() {
       <SeoFaqSection />
 
       {/* 8. About & Company Highlights */}
-      <AboutSection aboutRef={aboutRef} />
+      <AboutSection />
       <CompanySection />
       <AffiliateRecommendations />
 

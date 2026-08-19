@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { affiliatePartners } from "@/lib/affiliate/partners";
 
@@ -28,7 +26,7 @@ const partners = [
 
 export default function AffiliateRecommendations() {
   return (
-    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-16">
+    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-16 [content-visibility:auto]">
       <div className="rounded-3xl border border-white/10 bg-slate-900/60 p-8 sm:p-10 shadow-xl backdrop-blur-xl">
         <div>
           <p className="text-xs font-bold uppercase tracking-widest text-cyan-400">
@@ -46,33 +44,37 @@ export default function AffiliateRecommendations() {
         </div>
 
         <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {partners.map((partner) => (
-          <div
-            key={partner.name}
-            className="rounded-2xl border border-white/10 bg-slate-900 p-6"
-          >
-            <span className="inline-block rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-300">
-              {partner.badge}
-            </span>
-
-            <h3 className="mt-4 text-xl font-semibold">
-              {partner.name}
-            </h3>
-
-            <p className="mt-3 text-sm leading-6 text-slate-400">
-              {partner.description}
-            </p>
-
-            <Link
-              href={partner.url}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              className="mt-6 inline-flex rounded-xl bg-cyan-500 px-4 py-2 font-medium text-slate-950 transition hover:bg-cyan-400"
+          {partners.map((partner) => (
+            <div
+              key={partner.name}
+              className="rounded-2xl border border-white/10 bg-slate-900 p-6 flex flex-col justify-between"
             >
-              Learn More
-            </Link>
-          </div>
-        ))}
+              <div>
+                <span className="inline-block rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-300">
+                  {partner.badge}
+                </span>
+
+                <h3 className="mt-4 text-xl font-semibold text-white">
+                  {partner.name}
+                </h3>
+
+                <p className="mt-2 text-sm text-slate-400">
+                  {partner.description}
+                </p>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-white/5">
+                <Link
+                  href={partner.url}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
+                >
+                  Visit {partner.name} →
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

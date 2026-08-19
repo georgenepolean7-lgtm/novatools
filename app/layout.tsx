@@ -14,11 +14,15 @@ import { AuthProvider } from "@/components/auth/AuthContext";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+  preload: false,
 });
 
 export const viewport: Viewport = {
@@ -137,7 +141,7 @@ export default function RootLayout({
           async
           crossOrigin="anonymous"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7888119602395886"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
 
         <AuthProvider>
