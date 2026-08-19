@@ -9,6 +9,12 @@ export const DEFAULT_SYSTEM_SETTINGS: SystemSettings = {
   premiumAmountInr: 99,
   adFreeAccess: false,
   maintenanceMode: false,
+  signupEnabled: true,
+  updfAffiliateEnabled: true,
+  updfAffiliateUrl: "https://www.dpbolvw.net/click-101855940-15717946",
+  updfCtaText: "Explore UPDF",
+  updfDisclosureEnabled: true,
+  updfBannerEnabled: true,
   updatedAt: new Date().toISOString(),
 };
 

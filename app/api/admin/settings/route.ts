@@ -53,6 +53,36 @@ export async function POST(request: Request) {
         updated_at: now,
         updated_by: user?.id || null,
       },
+      {
+        key: "updf_affiliate_enabled",
+        value: { enabled: body.updfAffiliateEnabled !== undefined ? !!body.updfAffiliateEnabled : true },
+        updated_at: now,
+        updated_by: user?.id || null,
+      },
+      {
+        key: "updf_affiliate_url",
+        value: { url: String(body.updfAffiliateUrl || "https://www.dpbolvw.net/click-101855940-15717946").trim() },
+        updated_at: now,
+        updated_by: user?.id || null,
+      },
+      {
+        key: "updf_cta_text",
+        value: { text: String(body.updfCtaText || "Explore UPDF").trim() },
+        updated_at: now,
+        updated_by: user?.id || null,
+      },
+      {
+        key: "updf_disclosure_enabled",
+        value: { enabled: body.updfDisclosureEnabled !== undefined ? !!body.updfDisclosureEnabled : true },
+        updated_at: now,
+        updated_by: user?.id || null,
+      },
+      {
+        key: "updf_banner_enabled",
+        value: { enabled: body.updfBannerEnabled !== undefined ? !!body.updfBannerEnabled : true },
+        updated_at: now,
+        updated_by: user?.id || null,
+      },
     ];
 
     const { error: updateError } = await supabase

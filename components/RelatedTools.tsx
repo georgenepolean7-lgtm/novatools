@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { relatedTools } from "@/lib/seo/relatedTools";
+import { isPdfRelatedTool } from "@/lib/affiliate/updf-config";
+import UPDFRecommendation from "@/components/affiliate/UPDFRecommendation";
 
 const tools = [
   {
@@ -146,32 +148,41 @@ const related = (
     } => tool !== undefined
   );
   return (
-    <section className="mt-16 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-      <h2 className="text-3xl font-bold text-white">
-        Related Tools
-      </h2>
+    <>
+      <section className="mt-16 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+        <h2 className="text-3xl font-bold text-white">
+          Related Tools
+        </h2>
 
-      <p className="mt-3 text-slate-400">
-        Try these free tools from Nova Tools.
-      </p>
+        <p className="mt-3 text-slate-400">
+          Try these free tools from Nova Tools.
+        </p>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {related.map((tool) => (
-          <Link
-            key={tool.href}
-            href={tool.href}
-            className="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-cyan-400 hover:bg-cyan-500/10"
-          >
-            <h3 className="font-semibold text-white">
-              {tool.title}
-            </h3>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {related.map((tool) => (
+            <Link
+              key={tool.href}
+              href={tool.href}
+              className="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-cyan-400 hover:bg-cyan-500/10"
+            >
+              <h3 className="font-semibold text-white">
+                {tool.title}
+              </h3>
 
-            <p className="mt-2 text-sm text-slate-400">
-              Open Tool →
-            </p>
-          </Link>
-        ))}
-      </div>
-    </section>
+              <p className="mt-2 text-sm text-slate-400">
+                Open Tool →
+              </p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Render UPDF affiliate recommendation exclusively for PDF utilities */}
+      {isPdfRelatedTool(undefined, current.replace("/", "")) && (
+        <div className="mt-6">
+          <UPDFRecommendation toolSlug={current.replace("/", "")} />
+        </div>
+      )}
+    </>
   );
 }

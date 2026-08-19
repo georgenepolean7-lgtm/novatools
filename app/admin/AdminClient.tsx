@@ -30,6 +30,7 @@ import {
   TrendingUp,
   CreditCard,
   Radio,
+  ExternalLink,
 } from "lucide-react";
 
 interface AdminMetricsData {
@@ -60,7 +61,9 @@ export function AdminClient({ initialSettings, isAdmin, userEmail }: AdminClient
   const tools = getAllTools();
   const categories = getAllCategories();
 
-  const [activeTab, setActiveTab] = useState<"overview" | "security" | "settings" | "flags" | "tools" | "feedback" | "audit">("overview");
+  const [activeTab, setActiveTab] = useState<
+    "overview" | "security" | "settings" | "affiliate" | "flags" | "tools" | "feedback" | "audit"
+  >("overview");
 
   // Real Supabase Analytics Metrics
   const [metrics, setMetrics] = useState<AdminMetricsData | null>(null);
@@ -71,6 +74,14 @@ export function AdminClient({ initialSettings, isAdmin, userEmail }: AdminClient
   const [isSavingSettings, setIsSavingSettings] = useState(false);
   const [settingsSaved, setSettingsSaved] = useState(false);
   const [settingsError, setSettingsError] = useState<string | null>(null);
+
+  // Affiliate & Partners State
+  const [affiliateStats, setAffiliateStats] = useState<{
+    totalClicks: number;
+    lastClickAt: string | null;
+    recentClicks: Array<{ id: string; toolSlug: string; clickedAt: string }>;
+  }>({ totalClicks: 0, lastClickAt: null, recentClicks: [] });
+  const [affiliateLoading, setAffiliateLoading] = useState(false);
 
   // Feature Flags State
   const [featureFlags, setFeatureFlags] = useState<FeatureFlag[]>([]);
@@ -155,9 +166,29 @@ export function AdminClient({ initialSettings, isAdmin, userEmail }: AdminClient
     }
   };
 
+  const loadAffiliateStats = async () => {
+    setAffiliateLoading(true);
+    try {
+      const res = await fetch("/api/admin/affiliate-stats");
+      const data = await res.json();
+      if (data) {
+        setAffiliateStats({
+          totalClicks: data.totalClicks || 0,
+          lastClickAt: data.lastClickAt || null,
+          recentClicks: data.recentClicks || [],
+        });
+      }
+    } catch {
+      // Fallback
+    } finally {
+      setAffiliateLoading(false);
+    }
+  };
+
   const handleSelectTab = (tabId: typeof activeTab) => {
     setActiveTab(tabId);
     if (tabId === "overview") loadMetrics();
+    if (tabId === "affiliate") loadAffiliateStats();
     if (tabId === "flags") loadFeatureFlags();
     if (tabId === "feedback") loadFeedback();
     if (tabId === "audit") loadAuditLogs();
@@ -268,6 +299,7 @@ export function AdminClient({ initialSettings, isAdmin, userEmail }: AdminClient
             { id: "overview", label: "Overview", icon: Activity },
             { id: "security", label: "Security & Vulnerability", icon: ShieldCheck },
             { id: "settings", label: "System & Payments", icon: DollarSign },
+            { id: "affiliate", label: "Affiliate & Partners", icon: Sparkles },
             { id: "flags", label: "Feature Flags", icon: ToggleRight },
             { id: "tools", label: "Tool Suite (250)", icon: Layers },
             { id: "feedback", label: "Feedback Inbox", icon: MessageSquare },
@@ -809,6 +841,235 @@ export function AdminClient({ initialSettings, isAdmin, userEmail }: AdminClient
                   </button>
                 </div>
               </form>
+            </div>
+          </div>
+        )}
+
+        {/* Tab: Dedicated Affiliate & Partners Management */}
+        {activeTab === "affiliate" && (
+          <div className="max-w-4xl space-y-8">
+            {/* Quick Metrics Bar */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="p-5 rounded-3xl bg-slate-900/80 border border-slate-800 space-y-1">
+                <span className="text-[10px] uppercase font-bold text-slate-400">UPDF Affiliate Status</span>
+                <div className="flex items-center gap-2 pt-1">
+                  <span className={`w-2.5 h-2.5 rounded-full ${settings.updfAffiliateEnabled !== false ? "bg-emerald-400 animate-pulse" : "bg-slate-600"}`} />
+                  <span className="text-xl font-extrabold text-white">
+                    {settings.updfAffiliateEnabled !== false ? "Active (Live)" : "Disabled (Off)"}
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-400">Targeted on PDF tools &amp; category</p>
+              </div>
+
+              <div className="p-5 rounded-3xl bg-slate-900/80 border border-slate-800 space-y-1">
+                <span className="text-[10px] uppercase font-bold text-slate-400">Total Affiliate Clicks</span>
+                <div className="text-2xl font-black text-amber-300 pt-1">
+                  {affiliateLoading ? "..." : affiliateStats.totalClicks}
+                </div>
+                <p className="text-[11px] text-slate-400">Tracked via privacy-safe beacon</p>
+              </div>
+
+              <div className="p-5 rounded-3xl bg-slate-900/80 border border-slate-800 space-y-1">
+                <span className="text-[10px] uppercase font-bold text-slate-400">Last Click Timestamp</span>
+                <div className="text-sm font-semibold text-cyan-300 pt-1 font-mono truncate">
+                  {affiliateLoading
+                    ? "..."
+                    : affiliateStats.lastClickAt
+                    ? new Date(affiliateStats.lastClickAt).toLocaleString()
+                    : "No clicks recorded yet"}
+                </div>
+                <p className="text-[11px] text-slate-400">Realtime database activity</p>
+              </div>
+            </div>
+
+            {/* UPDF Affiliate Management Panel */}
+            <div className="p-8 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-6">
+              <div className="border-b border-slate-800 pb-4 flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <Sparkles className="w-5 h-5 text-amber-400" />
+                    <span>UPDF Affiliate Management</span>
+                  </h2>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Manage official UPDF tracking links, call-to-action styling, and FTC/AdSense compliance disclosures.
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <a
+                    href={settings.updfAffiliateUrl || "https://www.dpbolvw.net/click-101855940-15717946"}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow sponsored"
+                    className="py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 text-xs font-bold transition-all inline-flex items-center gap-1.5 border border-slate-700"
+                  >
+                    <span>Test Affiliate Link</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+
+              {settingsError && (
+                <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 shrink-0" />
+                  <span>{settingsError}</span>
+                </div>
+              )}
+
+              {settingsSaved && (
+                <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs flex items-center gap-2">
+                  <Check className="w-4 h-4 shrink-0" />
+                  <span>Affiliate settings updated and persisted in Supabase!</span>
+                </div>
+              )}
+
+              <form onSubmit={handleSaveSettings} className="space-y-6">
+                {/* 1. UPDF Affiliate Enabled Toggle */}
+                <div className="flex items-center justify-between p-4 rounded-2xl bg-slate-950/80 border border-amber-500/20">
+                  <div>
+                    <h3 className="text-sm font-semibold text-white">1. UPDF Affiliate Enabled</h3>
+                    <p className="text-xs text-slate-400">Display UPDF promotional cards on PDF tool pages and the /categories/pdf directory</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setSettings((prev) => ({ ...prev, updfAffiliateEnabled: !prev.updfAffiliateEnabled }))
+                    }
+                    className="text-2xl"
+                  >
+                    {settings.updfAffiliateEnabled !== false ? (
+                      <ToggleRight className="w-8 h-8 text-amber-400" />
+                    ) : (
+                      <ToggleLeft className="w-8 h-8 text-slate-600" />
+                    )}
+                  </button>
+                </div>
+
+                {/* 2. UPDF Affiliate Tracking URL */}
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold text-slate-300 flex items-center justify-between">
+                    <span>2. UPDF Affiliate Tracking URL (CJ / Superace Approved Link)</span>
+                    <span className="text-[10px] text-amber-300 font-mono">CJ Publisher ID: 101855940</span>
+                  </label>
+                  <input
+                    type="url"
+                    value={settings.updfAffiliateUrl || ""}
+                    placeholder="https://www.dpbolvw.net/click-101855940-15717946"
+                    onChange={(e) =>
+                      setSettings((prev) => ({ ...prev, updfAffiliateUrl: e.target.value }))
+                    }
+                    className="w-full p-3.5 rounded-xl bg-slate-950 border border-slate-800 text-white font-mono text-xs focus:border-amber-400 focus:outline-none"
+                  />
+                </div>
+
+                {/* 3. UPDF CTA Button Text & 4. Affiliate Disclosure Toggle */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold text-slate-300">
+                      3. UPDF CTA Button Text
+                    </label>
+                    <input
+                      type="text"
+                      value={settings.updfCtaText || ""}
+                      placeholder="Explore UPDF"
+                      onChange={(e) =>
+                        setSettings((prev) => ({ ...prev, updfCtaText: e.target.value }))
+                      }
+                      className="w-full p-3.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-xs focus:border-amber-400 focus:outline-none"
+                    />
+                  </div>
+
+                  {/* 4. Affiliate Disclosure Toggle */}
+                  <div className="flex items-center justify-between p-3.5 rounded-xl bg-slate-950/80 border border-slate-800">
+                    <div>
+                      <h4 className="text-xs font-semibold text-white">4. Affiliate Disclosure</h4>
+                      <p className="text-[10px] text-slate-400">Show FTC &amp; AdSense compliance text</p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setSettings((prev) => ({ ...prev, updfDisclosureEnabled: !prev.updfDisclosureEnabled }))
+                      }
+                      className="text-2xl"
+                    >
+                      {settings.updfDisclosureEnabled !== false ? (
+                        <ToggleRight className="w-7 h-7 text-emerald-400" />
+                      ) : (
+                        <ToggleLeft className="w-7 h-7 text-slate-600" />
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                {/* 5. UPDF Banner Enabled Toggle */}
+                <div className="flex items-center justify-between p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+                  <div>
+                    <h3 className="text-sm font-semibold text-white">5. UPDF Banner &amp; Feature Cards Enabled</h3>
+                    <p className="text-xs text-slate-400">Include feature checklist (AI Assistant, OCR, Format Converter) inside the recommendation card</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setSettings((prev) => ({ ...prev, updfBannerEnabled: !prev.updfBannerEnabled }))
+                    }
+                    className="text-2xl"
+                  >
+                    {settings.updfBannerEnabled !== false ? (
+                      <ToggleRight className="w-8 h-8 text-emerald-400" />
+                    ) : (
+                      <ToggleLeft className="w-8 h-8 text-slate-600" />
+                    )}
+                  </button>
+                </div>
+
+                {/* Save and Actions */}
+                <div className="flex flex-wrap items-center gap-3 pt-2">
+                  <button
+                    type="submit"
+                    disabled={isSavingSettings}
+                    className="py-3 px-6 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-extrabold shadow-lg shadow-amber-500/20 transition-all flex items-center gap-2 disabled:opacity-50 cursor-pointer"
+                  >
+                    <Save className="w-4 h-4" />
+                    <span>{isSavingSettings ? "Saving Settings..." : "Save Affiliate Settings"}</span>
+                  </button>
+
+                  <a
+                    href={settings.updfAffiliateUrl || "https://www.dpbolvw.net/click-101855940-15717946"}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow sponsored"
+                    className="py-3 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-all inline-flex items-center gap-2"
+                  >
+                    <span>Test Affiliate Link</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
+                  </a>
+                </div>
+              </form>
+
+              {/* Click History Log */}
+              {affiliateStats.recentClicks.length > 0 && (
+                <div className="pt-6 border-t border-slate-800 space-y-3">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                    Recent UPDF Outbound Clicks
+                  </h3>
+                  <div className="rounded-2xl border border-slate-800 overflow-hidden">
+                    <table className="w-full text-left text-xs">
+                      <thead className="bg-slate-950/80 text-slate-400 font-mono">
+                        <tr>
+                          <th className="p-3">Source Tool</th>
+                          <th className="p-3">Clicked At</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-800/80 bg-slate-900/40">
+                        {affiliateStats.recentClicks.slice(0, 5).map((c) => (
+                          <tr key={c.id}>
+                            <td className="p-3 font-mono text-cyan-400">/{c.toolSlug}</td>
+                            <td className="p-3 text-slate-300 font-mono">{new Date(c.clickedAt).toLocaleString()}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}

@@ -10,6 +10,8 @@ import { renderToolWidget } from "@/lib/tools/engine-dispatcher";
 import { ToolFavoriteButton } from "@/components/tools/ToolFavoriteButton";
 import { ToolFeedbackWidget } from "@/components/tools/ToolFeedbackWidget";
 import { trackToolUsage } from "@/lib/supabase/client";
+import { isPdfRelatedTool } from "@/lib/affiliate/updf-config";
+import UPDFRecommendation from "@/components/affiliate/UPDFRecommendation";
 import { CheckCircle2, ArrowRight, Shield, Zap, Sparkles } from "lucide-react";
 
 interface DynamicToolHostProps {
@@ -166,6 +168,13 @@ export function DynamicToolHost({ tool }: DynamicToolHostProps) {
                   </Link>
                 ))}
               </div>
+            </div>
+          )}
+
+          {/* Dedicated UPDF Recommendation for PDF-related tools only */}
+          {isPdfRelatedTool(tool.category, tool.slug) && (
+            <div className="border-t border-slate-800/80 pt-8">
+              <UPDFRecommendation toolSlug={tool.slug} />
             </div>
           )}
         </div>

@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { Database } from "./database.types";
 import { UserProfile, SystemSettings } from "./types";
 import { DEFAULT_SYSTEM_SETTINGS, isSupabaseConfigured } from "./client";
+export { isSupabaseConfigured };
 
 /**
  * Server-side Supabase client for Server Components, Server Actions, and Route Handlers.
@@ -153,6 +154,19 @@ export async function getServerSystemSettings(): Promise<SystemSettings> {
       return fallback;
     };
 
+    const parseStr = (key: string, fallback: string) => {
+      const val = settingsMap.get(key);
+      if (val === undefined || val === null) return fallback;
+      if (typeof val === "string") return val;
+      if (typeof val === "object" && val !== null) {
+        const obj = val as Record<string, unknown>;
+        if (typeof obj.url === "string") return obj.url;
+        if (typeof obj.text === "string") return obj.text;
+        if (typeof obj.value === "string") return obj.value;
+      }
+      return fallback;
+    };
+
     return {
       id: "default",
       paymentEnabled: parseBool("payment_enabled", false),
@@ -161,6 +175,11 @@ export async function getServerSystemSettings(): Promise<SystemSettings> {
       adFreeAccess: parseBool("ad_free_access", true),
       maintenanceMode: parseBool("maintenance_mode", false),
       signupEnabled: parseBool("signup_enabled", true),
+      updfAffiliateEnabled: parseBool("updf_affiliate_enabled", true),
+      updfAffiliateUrl: parseStr("updf_affiliate_url", "https://www.dpbolvw.net/click-101855940-15717946"),
+      updfCtaText: parseStr("updf_cta_text", "Explore UPDF"),
+      updfDisclosureEnabled: parseBool("updf_disclosure_enabled", true),
+      updfBannerEnabled: parseBool("updf_banner_enabled", true),
       updatedAt: latestUpdatedAt,
     };
   } catch {

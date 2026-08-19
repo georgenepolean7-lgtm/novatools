@@ -5,6 +5,7 @@ import { getAllCategories, getCategoryById } from "@/lib/tools/categories";
 import { getToolsByCategory } from "@/lib/tools/registry";
 import { ToolCategory } from "@/lib/tools/tool-types";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
+import UPDFRecommendation from "@/components/affiliate/UPDFRecommendation";
 import { ArrowRight, ShieldCheck, Zap, Sparkles } from "lucide-react";
 
 interface CategoryPageProps {
@@ -150,6 +151,13 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               </Link>
             ))}
           </div>
+
+          {/* Dedicated UPDF Recommendation for PDF category directory */}
+          {meta.id === "pdf" && (
+            <div className="pt-6">
+              <UPDFRecommendation toolSlug="category-pdf" />
+            </div>
+          )}
         </div>
       </div>
     </main>

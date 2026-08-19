@@ -1,3 +1,5 @@
+import { DEFAULT_UPDF_CONFIG } from "./updf-config";
+
 export const affiliatePartners = {
   hostinger: {
     name: "Hostinger",
@@ -22,9 +24,9 @@ export const affiliatePartners = {
 
   updf: {
     name: "UPDF",
-    url: "#",
+    url: DEFAULT_UPDF_CONFIG.trackingUrl,
     description:
-      "Professional PDF editor for Windows, Mac and Mobile.",
+      "Professional PDF editor with AI-powered document tools for Windows, Mac and Mobile.",
   },
 
   pdfelement: {

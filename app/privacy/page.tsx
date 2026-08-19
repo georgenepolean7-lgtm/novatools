@@ -90,7 +90,16 @@ export default function PrivacyPage() {
 
             <section className="space-y-3">
               <h2 className="text-lg font-bold text-white">
-                5. Contact &amp; Privacy Requests
+                5. Affiliate Links &amp; Partner Recommendations
+              </h2>
+              <p>
+                Nova Tools participates in select verified software partner and affiliate programs (such as UPDF by Superace). Some links on Nova Tools are affiliate tracking links. If you make a purchase through these links, Nova Tools may earn an affiliate commission at no additional cost to you. We strictly partner with reputable software vendors and always prioritize privacy, clarity, and genuine user utility.
+              </p>
+            </section>
+
+            <section className="space-y-3">
+              <h2 className="text-lg font-bold text-white">
+                6. Contact &amp; Privacy Requests
               </h2>
               <p>
                 If you have questions regarding this Privacy Policy or wish to exercise data rights under GDPR or local privacy regulations, contact our Data Protection Officer at:

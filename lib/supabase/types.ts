@@ -47,6 +47,11 @@ export interface SystemSettings {
   adFreeAccess: boolean;
   maintenanceMode: boolean;
   signupEnabled?: boolean;
+  updfAffiliateEnabled?: boolean;
+  updfAffiliateUrl?: string;
+  updfCtaText?: string;
+  updfDisclosureEnabled?: boolean;
+  updfBannerEnabled?: boolean;
   updatedAt: string;
 }
 

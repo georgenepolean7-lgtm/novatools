@@ -64,6 +64,15 @@ export default function DisclaimerPage() {
                 Financial tools, calculators, interest estimations, and percentage utilities are provided as estimation aids and should not be considered formal certified financial or tax advice.
               </p>
             </section>
+
+            <section className="space-y-3">
+              <h2 className="text-lg font-bold text-white">
+                5. Affiliate &amp; Third-Party Link Disclosure
+              </h2>
+              <p>
+                Some links on Nova Tools are affiliate links. If you purchase products or services through these links (such as desktop software or partner utilities), Nova Tools may receive an affiliate commission at no additional cost to you. We only recommend software and services that we believe provide genuine utility and value to our community.
+              </p>
+            </section>
           </div>
         </div>
       </main>
