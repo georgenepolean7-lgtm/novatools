@@ -27,8 +27,7 @@ export function isSupabaseConfigured(): boolean {
     !!url &&
     !!key &&
     !url.includes("your-project") &&
-    !key.includes("your_supabase") &&
-    !key.includes("dummy")
+    !key.includes("your_supabase")
   );
 }
 
@@ -41,11 +40,11 @@ let browserClient: ReturnType<typeof createBrowserClient<Database>> | null = nul
 export function getSupabaseBrowserClient() {
   if (browserClient) return browserClient;
 
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://rjnjrvemsyhaeonkvbja.supabase.co";
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL || DEFAULT_SUPABASE_URL;
   const key =
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-    "sb_publishable_dummy_fallback";
+    "";
 
   browserClient = createBrowserClient<Database>(url, key);
   return browserClient;

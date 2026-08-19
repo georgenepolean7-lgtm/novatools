@@ -13,7 +13,7 @@ export async function createSupabaseServerClient() {
   const key =
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-    "sb_publishable_dummy_fallback";
+    "";
 
   return createServerClient<Database>(url, key, {
     cookies: {

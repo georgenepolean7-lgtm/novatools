@@ -12,7 +12,7 @@ export async function middleware(request: NextRequest) {
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  if (!url || !key || url.includes("your-project") || key.includes("your_supabase") || key.includes("dummy")) {
+  if (!url || !key || url.includes("your-project") || key.includes("your_supabase")) {
     return supabaseResponse;
   }
 
