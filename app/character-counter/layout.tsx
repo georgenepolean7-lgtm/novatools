@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Character Counter - Free Online Character & Letter Counter | Nova Tools",
+  title: "Character Counter Online",
   description:
     "Count characters with and without spaces, words, lines, and social media post limits in real-time. Unicode & Tamil-friendly in-browser counter.",
   keywords: [

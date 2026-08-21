@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Compress Image to 20KB, 50KB, 100KB Online Free",
+  title: "Compress Image - Reduce Image Size",
   description:
     "Compress JPG, JPEG, PNG and WebP images online for free. Reduce image size to 20KB, 50KB, 100KB or any custom size without installing software.",
 

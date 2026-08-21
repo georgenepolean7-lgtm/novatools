@@ -3,7 +3,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { AlertCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Disclaimer | Nova Tools",
+  title: "Disclaimer - Liability Notice",
   description: "Legal disclaimer regarding file processing results, OCR accuracy, and utility output on Nova Tools.",
   alternates: {
     canonical: "https://novatool.in/disclaimer",

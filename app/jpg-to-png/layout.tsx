@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "JPG to PNG Converter - Free Online Image Converter | Nova Tools",
+  title: "JPG to PNG - High Quality Converter",
   description:
     "Convert JPG and JPEG images to high-quality PNG format online for free. Fast, secure, and 100% private in-browser conversion.",
   keywords: [

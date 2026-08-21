@@ -1,7 +1,7 @@
 import { createToolMetadata } from "@/components/seo/ToolMetadata";
 
 export const metadata = createToolMetadata({
-  title: "JPG to PDF Online Free | Convert Images to PDF",
+  title: "Jpg To Pdf Online",
   description:
     "Convert JPG and PNG images to PDF online for free. Create high quality PDF documents instantly with Nova Tools.",
   path: "/jpg-to-pdf",

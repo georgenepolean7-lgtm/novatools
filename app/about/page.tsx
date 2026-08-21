@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Nova Tools",
+  title: "About Us - Fast In-Browser Utilities",
   description:
-    "Learn about Nova Tools, a free online platform that provides image, PDF and OCR tools.",
+    "Learn about Nova Tools, a free privacy-first online platform providing 250+ in-browser image, PDF, OCR, and developer tools.",
+  alternates: {
+    canonical: "https://novatool.in/about",
+  },
 };
 
 export default function AboutPage() {

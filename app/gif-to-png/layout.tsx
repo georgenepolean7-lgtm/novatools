@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "GIF to PNG Converter - Extract High-Quality PNG Frames | Nova Tools",
+  title: "Gif To Png Online",
   description:
     "Convert animated or static GIF images to lossless PNG format online. High-resolution in-browser conversion with alpha transparency support.",
   keywords: [

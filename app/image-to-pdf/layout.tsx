@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Image to PDF Converter - Convert Multiple Images to PDF | Nova Tools",
+  title: "Image To Pdf Online",
   description:
     "Convert JPG, PNG, and WebP images to high-quality PDF documents online. Reorder pages, select A4 or Letter sizes, and customize margins.",
   keywords: [

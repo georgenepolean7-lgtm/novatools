@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "PDF Page Extractor - Extract Specific Pages from PDF Online | Nova Tools",
+  title: "Pdf Page Extractor Online",
   description:
     "Extract specific pages or page ranges from PDF documents online. 100% private in-browser page extraction preserving original vector quality.",
   keywords: [

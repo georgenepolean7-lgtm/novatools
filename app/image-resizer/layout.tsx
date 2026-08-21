@@ -1,7 +1,7 @@
 import { createToolMetadata } from "@/components/seo/ToolMetadata";
 
 export const metadata = createToolMetadata({
-  title: "Image Resizer Online Free | Resize JPG & PNG",
+  title: "Image Resizer - Resize Dimensions",
   description:
     "Resize JPG, PNG and other images online for free while maintaining high quality.",
   path: "/image-resizer",

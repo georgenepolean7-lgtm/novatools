@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "PDF Page Deleter - Remove Unwanted Pages from PDF Online | Nova Tools",
+  title: "Pdf Page Deleter Online",
   description:
     "Delete unwanted pages from PDF files online. Select and remove pages instantly while preserving original vector formatting and layout.",
   keywords: [

@@ -40,7 +40,7 @@ export function createToolMetadata({
     publisher: "Nova Code Tech",
 
     alternates: {
-      canonical: path,
+      canonical: `https://novatool.in${path}`,
     },
 
     robots: {
@@ -53,7 +53,7 @@ export function createToolMetadata({
     },
 
     openGraph: {
-      title,
+      title: `${title} | Nova Tools`,
       description,
       url: `https://novatool.in${path}`,
       siteName: "Nova Tools",
@@ -65,14 +65,14 @@ export function createToolMetadata({
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: title,
+          alt: `${title} | Nova Tools`,
         },
       ],
     },
 
     twitter: {
       card: "summary_large_image",
-      title,
+      title: `${title} | Nova Tools`,
       description,
 
       images: [

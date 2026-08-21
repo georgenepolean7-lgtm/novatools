@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Lorem Ipsum Generator - Free Placeholder Text Tool | Nova Tools",
+  title: "Lorem Ipsum Generator Online",
   description:
     "Generate dummy placeholder text for mockups, graphic designs, and web layouts. Generate custom paragraphs, sentences, or words online instantly.",
   keywords: [

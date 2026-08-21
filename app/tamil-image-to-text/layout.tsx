@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tamil Image to Text OCR Online",
+  title: "Tamil OCR - Tamil Image to Text",
   description:
     "Extract Tamil and English text from images online using OCR. Convert screenshots, scanned documents and photos into editable text with Nova Tools.",
 };

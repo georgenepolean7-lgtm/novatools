@@ -4,8 +4,8 @@ import { verifyAdminSession, getServerSystemSettings } from "@/lib/supabase/serv
 import { AdminClient } from "./AdminClient";
 
 export const metadata: Metadata = {
-  title: "Admin Panel & System Operations | Nova Tools",
-  description: "Administrative dashboard for Nova Tools 500 platform operations.",
+  title: "Admin Panel - System Operations",
+  description: "Administrative dashboard for Nova Tools platform operations.",
   robots: {
     index: false,
     follow: false,

@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin", "/api/", "/auth/", "/profile", "/favorites"],
+        disallow: ["/admin", "/admin/", "/api/", "/auth/", "/profile", "/favorites"],
       },
     ],
     sitemap: "https://novatool.in/sitemap.xml",

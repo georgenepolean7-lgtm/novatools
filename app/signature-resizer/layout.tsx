@@ -1,7 +1,7 @@
 import { createToolMetadata } from "@/components/seo/ToolMetadata";
 
 export const metadata = createToolMetadata({
-  title: "Signature Resizer Online Free | Resize Signature to 20KB, 50KB",
+  title: "Signature Resizer - Resize for Forms",
   description:
     "Resize and compress signature images online for passport, SSC, UPSC, TNPSC and government application forms.",
   path: "/signature-resizer",

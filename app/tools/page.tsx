@@ -5,14 +5,14 @@ import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import { Sparkles, Shield, Cpu, Layers } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "All 250+ Online Tools & Utilities Directory | Nova Tools",
+  title: "All 250+ Free Online Tools Directory",
   description:
     "Explore the complete directory of 250+ free client-side online tools: PDF editors, Image compressors, Tamil OCR, Developer utilities, Text analyzers, and Financial calculators.",
   alternates: {
     canonical: "https://novatool.in/tools",
   },
   openGraph: {
-    title: "All 250+ Online Tools Directory | Nova Tools",
+    title: "All 250+ Free Online Tools Directory | Nova Tools",
     description: "100% free, private, and client-side browser utilities for students, developers, and creators.",
     url: "https://novatool.in/tools",
     siteName: "Nova Tools",

@@ -35,6 +35,7 @@ export function ToolFavoriteButton({ toolSlug }: ToolFavoriteButtonProps) {
     return (
       <Link
         href="/auth/login"
+        rel="nofollow"
         title="Sign in to add to favorites"
         className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-pink-500/30 text-xs font-semibold text-slate-400 hover:text-pink-300 transition-colors shadow-sm"
       >

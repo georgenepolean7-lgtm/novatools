@@ -49,11 +49,11 @@ export async function generateMetadata({
     description: page.description,
 
     alternates: {
-      canonical: `/tools/${page.slug}`,
+      canonical: `https://novatool.in/tools/${page.slug}`,
     },
 
     openGraph: {
-      title: page.title,
+      title: `${page.title} | Nova Tools`,
       description: page.description,
       url: `https://novatool.in/tools/${page.slug}`,
       siteName: "Nova Tools",

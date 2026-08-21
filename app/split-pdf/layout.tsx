@@ -1,7 +1,7 @@
 import { createToolMetadata } from "@/components/seo/ToolMetadata";
 
 export const metadata = createToolMetadata({
-  title: "Split PDF Online Free | Extract PDF Pages",
+  title: "Split PDF - Separate PDF Pages",
   description:
     "Split PDF files online for free. Extract selected pages or page ranges instantly with Nova Tools.",
   path: "/split-pdf",

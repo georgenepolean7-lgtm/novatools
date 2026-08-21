@@ -7,13 +7,13 @@ import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import { Sparkles, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Tool Categories Directory | Nova Tools",
+  title: "Tool Categories - Browse All Suites",
   description: "Explore all utility tool categories on Nova Tools: PDF, Image, Developer, Tamil, Finance, Text, CSS, SEO, and Security tools.",
   alternates: {
     canonical: "https://novatool.in/categories",
   },
   openGraph: {
-    title: "Tool Categories Directory | Nova Tools",
+    title: "Tool Categories - Browse All Suites | Nova Tools",
     description: "Browse 250+ tools across 16 specialized categories.",
     url: "https://novatool.in/categories",
     siteName: "Nova Tools",

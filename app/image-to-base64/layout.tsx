@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Image to Base64 Converter - Free Online Encoder | Nova Tools",
+  title: "Image To Base64 Online",
   description:
     "Convert JPG, PNG, WebP, GIF, and SVG images to Base64 data strings online. Copy or download Base64 text with 100% private in-browser encoding.",
   keywords: [

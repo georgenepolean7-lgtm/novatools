@@ -30,17 +30,17 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     };
   }
 
-  const title = `${meta.name} - Free Online In-Browser Tools | Nova Tools`;
+  const baseTitle = `${meta.name} - Free Online Utilities`;
   const description = `${meta.description} 100% private, free, and in-browser utilities by Nova Tools.`;
 
   return {
-    title,
+    title: baseTitle,
     description,
     alternates: {
       canonical: `https://novatool.in/categories/${meta.id}`,
     },
     openGraph: {
-      title,
+      title: `${baseTitle} | Nova Tools`,
       description,
       url: `https://novatool.in/categories/${meta.id}`,
       siteName: "Nova Tools",

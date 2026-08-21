@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Image Cropper - Free Online Photo & Image Crop Tool | Nova Tools",
+  title: "Image Cropper Online",
   description:
     "Crop images and photos online with custom crop boxes, aspect ratio presets (1:1, 4:3, 16:9, 9:16, Free), and pixel-level precision.",
   keywords: [

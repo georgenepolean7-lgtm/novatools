@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "BMP to JPG Converter - Convert BMP Images to Compact JPEG | Nova Tools",
+  title: "Bmp To Jpg Online",
   description:
     "Convert large uncompressed BMP bitmap images to lightweight JPG photos online. Adjust compression quality and reduce file sizes by up to 90%.",
   keywords: [

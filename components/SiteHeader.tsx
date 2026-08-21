@@ -167,6 +167,7 @@ export default function SiteHeader() {
                     <div className="py-1">
                       <Link
                         href="/profile"
+                        rel="nofollow"
                         onClick={() => setUserDropdownOpen(false)}
                         className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs text-slate-300 hover:text-white hover:bg-slate-800/80 transition-colors"
                       >
@@ -175,6 +176,7 @@ export default function SiteHeader() {
                       </Link>
                       <Link
                         href="/favorites"
+                        rel="nofollow"
                         onClick={() => setUserDropdownOpen(false)}
                         className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs text-slate-300 hover:text-white hover:bg-slate-800/80 transition-colors"
                       >
@@ -184,6 +186,7 @@ export default function SiteHeader() {
                       {isAdmin && (
                         <Link
                           href="/admin"
+                          rel="nofollow"
                           onClick={() => setUserDropdownOpen(false)}
                           className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs text-amber-300 hover:text-amber-200 hover:bg-amber-500/10 transition-colors font-semibold"
                         >
@@ -210,6 +213,7 @@ export default function SiteHeader() {
               <div className="flex items-center gap-2.5">
                 <Link
                   href="/auth/login"
+                  rel="nofollow"
                   className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-white/10 hover:border-cyan-400/40 bg-white/5 hover:bg-white/10 text-white text-xs font-semibold transition-all"
                 >
                   <LogIn className="w-3.5 h-3.5 text-cyan-400" />
@@ -218,6 +222,7 @@ export default function SiteHeader() {
 
                 <Link
                   href="/auth/signup"
+                  rel="nofollow"
                   className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-sky-400 hover:scale-105 text-white text-xs font-bold shadow-[0_0_20px_rgba(34,211,238,0.25)] transition-all"
                 >
                   <UserPlus className="w-3.5 h-3.5" />
@@ -349,6 +354,7 @@ export default function SiteHeader() {
               <div className="grid grid-cols-2 gap-2">
                 <Link
                   href="/auth/login"
+                  rel="nofollow"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl border border-white/10 bg-white/5 text-xs font-bold text-white text-center"
                 >
@@ -358,6 +364,7 @@ export default function SiteHeader() {
 
                 <Link
                   href="/auth/signup"
+                  rel="nofollow"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-sky-400 text-xs font-bold text-white text-center"
                 >

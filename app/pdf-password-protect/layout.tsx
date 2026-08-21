@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "PDF Password Protector - Encrypt PDF Documents | Nova Tools",
+  title: "Protect PDF - Encrypt PDF Password",
   description:
     "Secure and password protect your PDF documents. Learn about client-side PDF security standards and encryption capabilities.",
   keywords: [

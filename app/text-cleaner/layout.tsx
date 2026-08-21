@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Text Cleaner - Remove Extra Spaces, Blank Lines & Format Text | Nova Tools",
+  title: "Text Cleaner Online",
   description:
     "Clean, trim, and format messy text online. Remove extra spaces, delete empty lines, remove duplicate lines, and normalize whitespace with 100% in-browser privacy.",
   keywords: [

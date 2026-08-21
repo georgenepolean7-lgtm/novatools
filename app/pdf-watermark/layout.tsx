@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "PDF Watermark - Add Text Watermark to PDF Online | Nova Tools",
+  title: "Pdf Watermark Online",
   description:
     "Add custom diagonal or horizontal text watermarks to all PDF pages online. Customize font size, rotation angle, color, and opacity with 100% in-browser privacy.",
   keywords: [

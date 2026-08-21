@@ -5,7 +5,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "404 - Page Not Found | Nova Tools",
+  title: "404 - Page Not Found",
   description: "The page you are looking for does not exist on Nova Tools. Browse our 250+ free client-side online tools.",
   robots: {
     index: false,

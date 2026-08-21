@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Word Counter - Free Online Word, Character & Reading Time Tool | Nova Tools",
+  title: "Word Counter Online",
   description:
     "Accurately count words, characters, sentences, paragraphs, and estimated reading time. Real-time in-browser analysis supporting English, Tamil, Hindi, and multilingual text.",
   keywords: [

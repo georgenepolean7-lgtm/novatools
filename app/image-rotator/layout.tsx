@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Image Rotator - Rotate & Flip Images Online Free | Nova Tools",
+  title: "Image Rotator Online",
   description:
     "Rotate images 90°, 180°, 270° or custom angles online. Flip photos horizontally & vertically with 100% private in-browser canvas processing.",
   keywords: [

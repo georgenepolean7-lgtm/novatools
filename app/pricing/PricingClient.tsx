@@ -266,12 +266,14 @@ export function PricingClient({ premiumAmountInr, paymentEnabled, premiumEnabled
               <div className="space-y-3 pt-2">
                 <Link
                   href="/auth/signup"
+                  rel="nofollow"
                   className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-bold transition-all text-center block"
                 >
                   Create Free Account &amp; Upgrade
                 </Link>
                 <Link
                   href="/auth/login"
+                  rel="nofollow"
                   className="w-full py-3 px-6 rounded-xl border border-slate-800 bg-slate-950 text-slate-300 hover:text-white text-xs font-bold transition-all text-center block"
                 >
                   Sign In to Existing Account

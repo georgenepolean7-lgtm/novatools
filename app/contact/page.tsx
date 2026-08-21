@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Nova Tools",
+  title: "Contact Us - Support & Inquiries",
   description:
-    "Contact Nova Tools for questions, feedback or support.",
+    "Contact Nova Tools for questions, feature requests, feedback, or support regarding our web utility tools.",
+  alternates: {
+    canonical: "https://novatool.in/contact",
+  },
 };
 
 export default function ContactPage() {

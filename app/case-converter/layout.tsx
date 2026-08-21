@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Case Converter - Convert Text to UPPERCASE, lowercase, Title Case | Nova Tools",
+  title: "Case Converter Online",
   description:
     "Convert text case online instantly. Convert to UPPERCASE, lowercase, Title Case, Sentence case, Capitalized Case, and Alternating Case. 100% free and private.",
   keywords: [

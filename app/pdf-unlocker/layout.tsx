@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "PDF Unlocker - PDF Decryption & Password Removal | Nova Tools",
+  title: "Unlock PDF - Remove PDF Password",
   description:
     "Learn about PDF decryption standards and password removal capabilities with privacy-first client-side architecture.",
   keywords: [

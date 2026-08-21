@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "WebP Converter - Convert WebP to JPG, PNG or Images to WebP | Nova Tools",
+  title: "WebP Converter - WebP, JPG & PNG",
   description:
     "Free online WebP converter. Convert WebP to JPG/PNG or compress JPG, PNG, and GIF into modern WebP format in your browser.",
   keywords: [

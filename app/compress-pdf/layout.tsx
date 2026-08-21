@@ -1,7 +1,7 @@
 import { createToolMetadata } from "@/components/seo/ToolMetadata";
 
 export const metadata = createToolMetadata({
-  title: "Compress PDF Online Free | Reduce PDF Size to 100KB, 200KB, 500KB",
+  title: "Compress PDF - Reduce PDF Size",
   description:
     "Compress PDF files online for free. Reduce PDF size to 100KB, 200KB, 500KB or a custom size while keeping documents readable.",
   path: "/compress-pdf",

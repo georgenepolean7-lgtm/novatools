@@ -25,6 +25,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const fullTitle = `${tool.seoTitle} | Nova Tools`;
+
   return {
     title: tool.seoTitle,
     description: tool.seoDescription,
@@ -32,7 +34,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       canonical: `https://novatool.in/${tool.slug}`,
     },
     openGraph: {
-      title: tool.seoTitle,
+      title: fullTitle,
       description: tool.seoDescription,
       url: `https://novatool.in/${tool.slug}`,
       siteName: "Nova Tools",
@@ -40,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: "summary_large_image",
-      title: tool.seoTitle,
+      title: fullTitle,
       description: tool.seoDescription,
     },
   };

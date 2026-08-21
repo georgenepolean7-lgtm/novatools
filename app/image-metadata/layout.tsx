@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Image Metadata Viewer & EXIF Remover - Privacy Tool | Nova Tools",
+  title: "Image Metadata Online",
   description:
     "View and remove EXIF data, GPS location, camera details, and hidden metadata from your photos online. 100% private in-browser metadata stripper.",
   keywords: [

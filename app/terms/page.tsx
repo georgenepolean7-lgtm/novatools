@@ -3,7 +3,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { FileText, Shield } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | Nova Tools",
+  title: "Terms of Service - Usage Agreement",
   description: "Terms and conditions of use for Nova Tools free web utility suite.",
   alternates: {
     canonical: "https://novatool.in/terms",

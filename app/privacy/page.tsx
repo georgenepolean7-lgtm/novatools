@@ -3,7 +3,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { ShieldCheck, Lock, Eye, Cookie } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Nova Tools",
+  title: "Privacy Policy - Data Security",
   description:
     "Nova Tools Privacy Policy. Learn about our 100% client-side zero-upload processing, cookie policies, and Google AdSense privacy compliance.",
   alternates: {
