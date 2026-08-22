@@ -23,9 +23,13 @@ export default function AdSenseBanner({
   const isPremiumUser = profile?.isPremium === true;
 
   useEffect(() => {
-    if (isPremiumUser) return;
-    // Only attempt push once per mount and when window is available
-    if (typeof window !== "undefined" && !isLoaded.current) {
+    if (isPremiumUser || isLoaded.current) return;
+
+    const el = adRef.current;
+    if (!el || typeof window === "undefined") return;
+
+    const pushAd = () => {
+      if (isLoaded.current) return;
       try {
         // @ts-expect-error - adsbygoogle is dynamically provided by Google AdSense script
         (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -33,6 +37,32 @@ export default function AdSenseBanner({
       } catch {
         // Suppress AdSense push errors if script is still loading or ad blocked
       }
+    };
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0]?.isIntersecting) {
+            pushAd();
+            observer.disconnect();
+          }
+        },
+        { rootMargin: "300px" }
+      );
+      observer.observe(el);
+      return () => observer.disconnect();
+    } else if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      const win = window as unknown as {
+        requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number;
+        cancelIdleCallback: (id: number) => void;
+      };
+      const handle = win.requestIdleCallback(pushAd, { timeout: 2000 });
+      return () => {
+        win.cancelIdleCallback(handle);
+      };
+    } else {
+      const timer = setTimeout(pushAd, 1200);
+      return () => clearTimeout(timer);
     }
   }, [isPremiumUser]);
 
@@ -44,7 +74,7 @@ export default function AdSenseBanner({
   return (
     <aside
       aria-label="Advertisement"
-      className={`mx-auto w-full max-w-7xl px-4 sm:px-6 my-6 ${className}`}
+      className={`mx-auto w-full max-w-7xl px-4 sm:px-6 my-6 [content-visibility:auto] ${className}`}
     >
       <div className="relative overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/30 p-2 sm:p-3 text-center transition-all">
         {/* Subtle, standard label conforming to Google AdSense policies */}

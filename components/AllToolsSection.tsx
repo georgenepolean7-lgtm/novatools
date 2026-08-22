@@ -106,7 +106,7 @@ export default function AllToolsSection() {
   }, [totalPages, safeCurrentPage]);
 
   return (
-    <section id="all-tools" className="relative overflow-hidden bg-slate-950 py-20 text-white scroll-mt-20">
+    <section id="all-tools" className="relative overflow-hidden bg-slate-950 py-20 text-white scroll-mt-20 [content-visibility:auto] [contain-intrinsic-size:1px_1200px]">
       {/* Background ambient lighting */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_25%,rgba(34,211,238,0.06),transparent_40%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_75%,rgba(59,130,246,0.06),transparent_40%)]" />
