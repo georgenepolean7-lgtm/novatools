@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
 import ToolsSection from "@/components/home/ToolsSection";
 import AllToolsSection from "@/components/AllToolsSection";
@@ -7,6 +8,24 @@ import CompanySection from "@/components/home/CompanySection";
 import SiteFooter from "@/components/SiteFooter";
 import AffiliateRecommendations from "@/components/affiliate/AffiliateRecommendations";
 import AdSenseBanner from "@/components/ads/AdSenseBanner";
+
+export const metadata: Metadata = {
+  title: "Nova Tools - Free Online Image & PDF Tools",
+  description:
+    "Free online tools to compress images, resize photos, resize signatures, compress PDFs, convert JPG to PDF and extract Tamil text from images.",
+  alternates: {
+    canonical: "https://novatool.in",
+  },
+  openGraph: {
+    title: "Nova Tools - Free Online Image & PDF Tools",
+    description:
+      "Compress images, resize photos, resize signatures, compress PDFs, convert JPG to PDF and extract Tamil text online.",
+    url: "https://novatool.in",
+    siteName: "Nova Tools",
+    locale: "en_IN",
+    type: "website",
+  },
+};
 
 export default function Home() {
   return (

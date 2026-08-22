@@ -32,10 +32,6 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://novatool.in"),
 
-  alternates: {
-    canonical: "/",
-  },
-
   title: {
     default: "Nova Tools - Free Online Image & PDF Tools",
     template: "%s | Nova Tools",

@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-08-22T08:58:45.826Z",
+  "totalTools": 250,
+  "categoriesCount": 25,
+  "duplicateSlugsCount": 0,
+  "duplicateTitlesCount": 0,
+  "thinDescriptionsCount": 1,
+  "missingFaqsCount": 0,
+  "missingHowToCount": 0,
+  "placeholderCount": 0,
+  "adsTxtStatus": "VALID (pub-7888119602395886)",
+  "affiliateStatus": "COMPLIANT (UPDF on PDF tools with nofollow sponsored)",
+  "noindexRoutes": [
+    "/auth/login",
+    "/auth/signup",
+    "/auth/reset-password",
+    "/favorites",
+    "/profile",
+    "/admin",
+    "/404"
+  ],
+  "sitemapPublicCount": 301,
+  "siteScanIssueFixed": "RESOLVED (Allowed crawling in robots.txt + explicit noindex/nofollow + removed from sitemap + no homepage canonical inheritance)"
+}

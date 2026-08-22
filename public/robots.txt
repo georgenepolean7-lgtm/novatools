@@ -3,9 +3,6 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 Disallow: /api/
-Disallow: /auth/
-Disallow: /profile
-Disallow: /favorites
 
 Sitemap: https://novatool.in/sitemap.xml
 Host: https://novatool.in

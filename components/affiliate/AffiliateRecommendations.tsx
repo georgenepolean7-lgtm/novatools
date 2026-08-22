@@ -67,7 +67,7 @@ export default function AffiliateRecommendations() {
                 <Link
                   href={partner.url}
                   target="_blank"
-                  rel="noopener noreferrer nofollow"
+                  rel="nofollow sponsored noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
                 >
                   Visit {partner.name} →
@@ -75,6 +75,12 @@ export default function AffiliateRecommendations() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-8 pt-4 border-t border-white/10">
+          <p className="text-[11px] text-slate-500 leading-relaxed">
+            Transparency Disclosure: Some links on Nova Tools are affiliate links. If you purchase services through these links, Nova Tools may receive a small commission at no additional cost to you. We only recommend services that provide verified value to creators, students, and developers.
+          </p>
         </div>
       </div>
     </section>

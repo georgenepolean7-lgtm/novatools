@@ -9,7 +9,13 @@ export const metadata: Metadata = {
   description: "The page you are looking for does not exist on Nova Tools. Browse our 250+ free client-side online tools.",
   robots: {
     index: false,
-    follow: true,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
   },
 };
 
