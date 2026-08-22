@@ -126,10 +126,13 @@ export default function RootLayout({
     >
       <head>
         <meta
+          name="google-adsense-account"
+          content="ca-pub-7888119602395886"
+        />
+        <meta
           name="impact-site-verification"
           content="25e0cc4c-4024-4fec-89c2-8dd3a21535dc"
         />
-
       </head>
 
       <body className="h-full bg-slate-950 text-white">
@@ -137,7 +140,7 @@ export default function RootLayout({
           async
           crossOrigin="anonymous"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7888119602395886"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         />
 
         <AuthProvider>

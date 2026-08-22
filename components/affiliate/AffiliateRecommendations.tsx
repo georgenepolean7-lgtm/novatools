@@ -37,7 +37,7 @@ export default function AffiliateRecommendations() {
             Tools We Recommend
           </h2>
 
-          <p className="mt-2 max-w-2xl text-xs sm:text-sm text-slate-400">
+          <p className="mt-2 max-w-2xl text-xs sm:text-sm text-slate-300">
             These trusted services can help you with web hosting, domains,
             professional PDF editing and online design.
           </p>
@@ -58,7 +58,7 @@ export default function AffiliateRecommendations() {
                   {partner.name}
                 </h3>
 
-                <p className="mt-2 text-sm text-slate-400">
+                <p className="mt-2 text-sm text-slate-300">
                   {partner.description}
                 </p>
               </div>
@@ -78,7 +78,7 @@ export default function AffiliateRecommendations() {
         </div>
 
         <div className="mt-8 pt-4 border-t border-white/10">
-          <p className="text-[11px] text-slate-500 leading-relaxed">
+          <p className="text-[11px] text-slate-400 leading-relaxed">
             Transparency Disclosure: Some links on Nova Tools are affiliate links. If you purchase services through these links, Nova Tools may receive a small commission at no additional cost to you. We only recommend services that provide verified value to creators, students, and developers.
           </p>
         </div>

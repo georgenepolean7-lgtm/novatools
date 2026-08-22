@@ -49,7 +49,7 @@ export default function AdSenseBanner({
       <div className="relative overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/30 p-2 sm:p-3 text-center transition-all">
         {/* Subtle, standard label conforming to Google AdSense policies */}
         <div className="mb-1.5 flex items-center justify-center gap-1.5">
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
             Advertisement
           </span>
         </div>

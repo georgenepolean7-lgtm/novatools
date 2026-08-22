@@ -205,19 +205,23 @@ export default function ToolCarousel() {
         →
       </button>
 
-      <div className="mt-2 flex justify-center gap-2">
+      <div className="mt-2 flex justify-center items-center gap-1">
         {tools.map((tool, index) => (
           <button
             key={tool.title}
             type="button"
             onClick={() => setActive(index)}
             aria-label={`Show ${tool.title}`}
-            className={`h-2 rounded-full transition-all duration-500 ${
-              index === active
-                ? "w-8 bg-cyan-400"
-                : "w-2 bg-white/20"
-            }`}
-          />
+            className="flex items-center justify-center p-2.5 min-h-[36px] min-w-[36px] cursor-pointer"
+          >
+            <span
+              className={`h-2 rounded-full transition-all duration-500 block ${
+                index === active
+                  ? "w-8 bg-cyan-400"
+                  : "w-2 bg-white/40 hover:bg-white/70"
+              }`}
+            />
+          </button>
         ))}
       </div>
     </div>

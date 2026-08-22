@@ -198,6 +198,8 @@ export default function AllToolsSection() {
                 <ArrowUpDown className="w-3.5 h-3.5 text-cyan-400" />
                 <span className="text-slate-400">Sort:</span>
                 <select
+                  id="sort-tools-select"
+                  aria-label="Sort tools by order"
                   value={sortBy}
                   onChange={(e) => handleSortChange(e.target.value as SortOption)}
                   className="bg-transparent text-white outline-none cursor-pointer text-xs font-medium"
