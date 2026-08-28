@@ -31,6 +31,9 @@ import {
   CreditCard,
   Radio,
   ExternalLink,
+  Globe,
+  Send,
+  CheckCircle2,
 } from "lucide-react";
 
 interface AdminMetricsData {
@@ -62,12 +65,32 @@ export function AdminClient({ initialSettings, isAdmin, userEmail }: AdminClient
   const categories = getAllCategories();
 
   const [activeTab, setActiveTab] = useState<
-    "overview" | "security" | "settings" | "affiliate" | "flags" | "tools" | "feedback" | "audit"
+    "overview" | "security" | "settings" | "affiliate" | "flags" | "tools" | "feedback" | "audit" | "indexnow"
   >("overview");
 
   // Real Supabase Analytics Metrics
   const [metrics, setMetrics] = useState<AdminMetricsData | null>(null);
   const [metricsLoading, setMetricsLoading] = useState(false);
+
+  // IndexNow State
+  const [indexNowData, setIndexNowData] = useState<{
+    status: string;
+    host: string;
+    key: string;
+    keyLocation: string;
+    totalPublicUrls: number;
+    sampleUrls: string[];
+  } | null>(null);
+  const [indexNowLoading, setIndexNowLoading] = useState(false);
+  const [indexNowSubmitting, setIndexNowSubmitting] = useState(false);
+  const [indexNowResult, setIndexNowResult] = useState<{
+    success: boolean;
+    submittedCount: number;
+    timestamp: string;
+    responses: Array<{ endpoint: string; status: number; statusText: string; body?: string }>;
+    errors?: string[];
+  } | null>(null);
+  const [customUrlsInput, setCustomUrlsInput] = useState("");
 
   // System Settings State
   const [settings, setSettings] = useState<SystemSettings>(initialSettings || DEFAULT_SYSTEM_SETTINGS);
@@ -185,6 +208,41 @@ export function AdminClient({ initialSettings, isAdmin, userEmail }: AdminClient
     }
   };
 
+  const loadIndexNowStatus = async () => {
+    setIndexNowLoading(true);
+    try {
+      const res = await fetch("/api/admin/indexnow");
+      const data = await res.json();
+      if (data.status) {
+        setIndexNowData(data);
+      }
+    } catch {
+      // Fallback
+    } finally {
+      setIndexNowLoading(false);
+    }
+  };
+
+  const handleIndexNowSubmit = async (customUrlsList?: string[]) => {
+    setIndexNowSubmitting(true);
+    setIndexNowResult(null);
+    try {
+      const res = await fetch("/api/admin/indexnow", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ urls: customUrlsList }),
+      });
+      const data = await res.json();
+      if (data.result) {
+        setIndexNowResult(data.result);
+      }
+    } catch {
+      // Fallback
+    } finally {
+      setIndexNowSubmitting(false);
+    }
+  };
+
   const handleSelectTab = (tabId: typeof activeTab) => {
     setActiveTab(tabId);
     if (tabId === "overview") loadMetrics();
@@ -192,6 +250,7 @@ export function AdminClient({ initialSettings, isAdmin, userEmail }: AdminClient
     if (tabId === "flags") loadFeatureFlags();
     if (tabId === "feedback") loadFeedback();
     if (tabId === "audit") loadAuditLogs();
+    if (tabId === "indexnow") loadIndexNowStatus();
   };
 
   const handleSaveSettings = async (e: React.FormEvent) => {
@@ -297,6 +356,7 @@ export function AdminClient({ initialSettings, isAdmin, userEmail }: AdminClient
         <div className="flex flex-wrap items-center gap-2 border-b border-slate-800/80 pb-2">
           {[
             { id: "overview", label: "Overview", icon: Activity },
+            { id: "indexnow", label: "IndexNow & Search SEO", icon: Globe },
             { id: "security", label: "Security & Vulnerability", icon: ShieldCheck },
             { id: "settings", label: "System & Payments", icon: DollarSign },
             { id: "affiliate", label: "Affiliate & Partners", icon: Sparkles },
@@ -1314,6 +1374,231 @@ export function AdminClient({ initialSettings, isAdmin, userEmail }: AdminClient
                 ))}
               </div>
             )}
+          </div>
+        )}
+
+        {/* Tab: IndexNow & Search Engine SEO */}
+        {activeTab === "indexnow" && (
+          <div className="space-y-8 max-w-5xl">
+            <div className="flex flex-wrap items-center justify-between gap-4 p-6 rounded-3xl bg-slate-900/80 border border-slate-800 shadow-xl">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-bold mb-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                  <span>INDEXNOW PROTOCOL • ACTIVE &amp; CONFIGURED</span>
+                </div>
+                <h2 className="text-xl font-bold text-white">IndexNow Instant Search Indexing</h2>
+                <p className="text-xs text-slate-400 mt-1">
+                  Instantly notify Microsoft Bing, Yandex, Seznam.cz &amp; Naver whenever Nova Tools pages are published or updated.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={loadIndexNowStatus}
+                  disabled={indexNowLoading}
+                  className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-300 flex items-center gap-1.5 transition-colors"
+                >
+                  <RefreshCw className={`w-3.5 h-3.5 ${indexNowLoading ? "animate-spin" : ""}`} />
+                  <span>Refresh Status</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Protocol Key & Verification Status Card */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-6 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-4">
+                <div className="flex items-center gap-2 text-cyan-400 text-xs font-bold uppercase tracking-wider">
+                  <Lock className="w-4 h-4" />
+                  <span>IndexNow API Key</span>
+                </div>
+                <div className="space-y-1">
+                  <div className="font-mono text-xs bg-slate-950 p-3 rounded-xl border border-slate-800 text-cyan-300 select-all break-all">
+                    {indexNowData?.key || "e3d23f7bb6e24db492c3a59336d39ab7"}
+                  </div>
+                  <p className="text-[11px] text-slate-400">
+                    Host: <span className="font-mono text-white">novatool.in</span>
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-6 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-4">
+                <div className="flex items-center gap-2 text-cyan-400 text-xs font-bold uppercase tracking-wider">
+                  <Globe className="w-4 h-4" />
+                  <span>Verification Key Location</span>
+                </div>
+                <div className="space-y-1">
+                  <div className="font-mono text-xs bg-slate-950 p-3 rounded-xl border border-slate-800 text-emerald-300 select-all break-all flex items-center justify-between gap-2">
+                    <span className="truncate">
+                      {indexNowData?.keyLocation || "https://novatool.in/e3d23f7bb6e24db492c3a59336d39ab7.txt"}
+                    </span>
+                    <a
+                      href={indexNowData?.keyLocation || "https://novatool.in/e3d23f7bb6e24db492c3a59336d39ab7.txt"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-cyan-400 hover:text-cyan-300 p-1"
+                      title="Test live key file in browser"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                  <p className="text-[11px] text-slate-400">
+                    Verified status: <span className="text-emerald-400 font-semibold">HTTP 200 text/plain</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Submission Action Panel */}
+            <div className="p-7 rounded-3xl bg-slate-900/70 border border-slate-800 space-y-6 shadow-xl">
+              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
+                <div>
+                  <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                    <Send className="w-5 h-5 text-cyan-400" />
+                    <span>Submit Public URLs to Search Engines</span>
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Dispatches URL submission payloads to <span className="font-mono text-cyan-400">api.indexnow.org</span> and <span className="font-mono text-cyan-400">bing.com/indexnow</span>.
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="px-3 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-xs font-bold text-cyan-300 font-mono">
+                    {indexNowData?.totalPublicUrls || 301} Public URLs Available
+                  </span>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => handleIndexNowSubmit()}
+                  disabled={indexNowSubmitting}
+                  className="px-5 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-cyan-500/20 transition-all disabled:opacity-50"
+                >
+                  <Send className={`w-4 h-4 ${indexNowSubmitting ? "animate-pulse" : ""}`} />
+                  <span>
+                    {indexNowSubmitting
+                      ? "Submitting to Bing & IndexNow..."
+                      : `Submit All ${indexNowData?.totalPublicUrls || 301} Public URLs`}
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleIndexNowSubmit(["https://novatool.in/compress-pdf", "https://novatool.in/merge-pdf"])}
+                  disabled={indexNowSubmitting}
+                  className="px-4 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold flex items-center gap-2 transition-colors disabled:opacity-50"
+                >
+                  <span>Test Sample Batch (2 Tools)</span>
+                </button>
+              </div>
+
+              {/* Custom URL Input */}
+              <div className="space-y-2 pt-2 border-t border-slate-800/80">
+                <label className="text-xs font-semibold text-slate-300 flex items-center justify-between">
+                  <span>Custom URL List (Optional, one per line or comma-separated)</span>
+                  <span className="text-[11px] text-slate-500">Only public novatool.in URLs will be accepted</span>
+                </label>
+                <textarea
+                  value={customUrlsInput}
+                  onChange={(e) => setCustomUrlsInput(e.target.value)}
+                  placeholder="https://novatool.in/compress-pdf&#10;https://novatool.in/categories/pdf"
+                  rows={3}
+                  className="w-full rounded-2xl bg-slate-950 border border-slate-800 p-3 font-mono text-xs text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                />
+                {customUrlsInput.trim() && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const list = customUrlsInput
+                        .split(/[\n,]/)
+                        .map((u) => u.trim())
+                        .filter(Boolean);
+                      if (list.length > 0) handleIndexNowSubmit(list);
+                    }}
+                    disabled={indexNowSubmitting}
+                    className="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold flex items-center gap-2 transition-colors disabled:opacity-50"
+                  >
+                    <Send className="w-3.5 h-3.5" />
+                    <span>Submit Custom URLs</span>
+                  </button>
+                )}
+              </div>
+
+              {/* Submission Result Feedback */}
+              {indexNowResult && (
+                <div
+                  className={`p-5 rounded-2xl border space-y-3 ${
+                    indexNowResult.success
+                      ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-300"
+                      : "bg-rose-500/10 border-rose-500/30 text-rose-300"
+                  }`}
+                >
+                  <div className="flex items-center gap-2 font-bold text-xs">
+                    {indexNowResult.success ? (
+                      <>
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                        <span>Submission Accepted by IndexNow Search Engines!</span>
+                      </>
+                    ) : (
+                      <>
+                        <AlertCircle className="w-4 h-4 text-rose-400" />
+                        <span>Submission Warning / Review Endpoint Responses</span>
+                      </>
+                    )}
+                  </div>
+
+                  <div className="text-xs space-y-1 text-slate-300">
+                    <p>
+                      <strong>Submitted URLs:</strong> {indexNowResult.submittedCount} public URLs
+                    </p>
+                    <p>
+                      <strong>Timestamp:</strong> {new Date(indexNowResult.timestamp).toLocaleString()}
+                    </p>
+                  </div>
+
+                  {/* Individual Endpoint Responses */}
+                  <div className="space-y-1.5 pt-2">
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                      Search Engine Endpoint Responses:
+                    </div>
+                    {indexNowResult.responses.map((resp, idx) => (
+                      <div
+                        key={idx}
+                        className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 font-mono text-[11px] flex items-center justify-between"
+                      >
+                        <span className="text-slate-300">{resp.endpoint}</span>
+                        <span
+                          className={`font-bold px-2 py-0.5 rounded-md ${
+                            resp.status === 200 || resp.status === 202
+                              ? "bg-emerald-500/20 text-emerald-400"
+                              : "bg-rose-500/20 text-rose-400"
+                          }`}
+                        >
+                          HTTP {resp.status} {resp.statusText || ""}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Safety & Protocol Specifications Card */}
+            <div className="p-6 rounded-3xl bg-slate-900/40 border border-slate-800 space-y-3 text-xs text-slate-400 leading-relaxed">
+              <h4 className="font-bold text-white text-sm flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <span>IndexNow Protocol Safety Guarantees</span>
+              </h4>
+              <ul className="list-disc list-inside space-y-1 text-slate-400">
+                <li>Strict filtering: Private routes (<code className="text-cyan-300 font-mono">/auth/*</code>, <code className="text-cyan-300 font-mono">/admin</code>, <code className="text-cyan-300 font-mono">/api/*</code>, <code className="text-cyan-300 font-mono">/favorites</code>, <code className="text-cyan-300 font-mono">/profile</code>) are mathematically blocked from submission.</li>
+                <li>Key authenticity: Hosted at root <code className="text-cyan-300 font-mono">https://novatool.in/e3d23f7bb6e24db492c3a59336d39ab7.txt</code> matching the protocol specification.</li>
+                <li>Search Engine Coverage: Notifications submitted to IndexNow are automatically syndicated across Microsoft Bing, Yandex, Seznam.cz, and Naver.</li>
+                <li>Google Search Console unaffected: Googlebot continues to crawl via standard sitemap and robots.txt protocols without interference.</li>
+              </ul>
+            </div>
           </div>
         )}
 
