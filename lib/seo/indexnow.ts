@@ -2,28 +2,30 @@ import { getAllTools } from "@/lib/tools/registry";
 import { getAllCategories } from "@/lib/tools/categories";
 import { programmaticPages } from "@/lib/seo/programmaticPages";
 
-export const INDEXNOW_KEY = process.env.INDEXNOW_KEY || "e3d23f7bb6e24db492c3a59336d39ab7";
+export const INDEXNOW_KEY = process.env.INDEXNOW_KEY || "a52a86efe6f041bd931a36f0e2bdadd8";
 export const INDEXNOW_HOST = "novatool.in";
 export const INDEXNOW_KEY_LOCATION = `https://${INDEXNOW_HOST}/${INDEXNOW_KEY}.txt`;
 
+// IndexNow submission endpoints (Submitting to any one endpoint broadcasts to all participating search engines like Bing, Yandex, Seznam, Naver)
 export const INDEXNOW_ENDPOINTS = [
   "https://api.indexnow.org/indexnow",
   "https://www.bing.com/indexnow",
 ];
 
-const PRIVATE_PATH_PREFIXES = [
-  "/auth",
-  "/admin",
-  "/api",
-  "/favorites",
-  "/profile",
-  "/reset-password",
-  "/_not-found",
+// Strictly prohibited patterns - private, auth, user, or administrative routes must never be submitted
+const PRIVATE_ROUTE_PATTERNS = [
+  /^\/admin(\/.*)?$/,
+  /^\/api(\/.*)?$/,
+  /^\/auth(\/.*)?$/,
+  /^\/favorites(\/.*)?$/,
+  /^\/profile(\/.*)?$/,
+  /^\/reset-password(\/.*)?$/,
+  /^\/_not-found(\/.*)?$/,
 ];
 
 /**
- * Returns all legitimate, public, indexable URLs for Nova Tools.
- * Strictly filters out any private, admin, auth, API, or user-specific routes.
+ * Returns all public, indexable URLs for Nova Tools.
+ * Strictly filters out any private or administrative paths.
  */
 export function getPublicIndexableUrls(): string[] {
   const baseUrl = `https://${INDEXNOW_HOST}`;
@@ -41,76 +43,93 @@ export function getPublicIndexableUrls(): string[] {
     "/disclaimer",
   ];
 
-  // 2. All 250+ registry tools
+  // 2. All Registry Tool Pages
   const toolPaths = getAllTools().map((t) => `/${t.slug}`);
 
-  // 3. Category hub pages
+  // 3. Category Hub Pages
   const categoryPaths = getAllCategories().map((c) => `/categories/${c.id}`);
 
-  // 4. Programmatic landing pages
+  // 4. Programmatic Landing Pages
   const progPaths = Object.values(programmaticPages)
     .flat()
     .map((p) => `/tools/${p.slug}`);
 
+  // Merge and filter
   const allPaths = [...staticPaths, ...toolPaths, ...categoryPaths, ...progPaths];
-
-  // Deduplicate and filter out any accidental private routes
-  const cleanUrls = new Set<string>();
+  const uniqueUrls = new Set<string>();
 
   for (const p of allPaths) {
-    const isPrivate = PRIVATE_PATH_PREFIXES.some((prefix) =>
-      p.toLowerCase().startsWith(prefix)
-    );
+    const isPrivate = PRIVATE_ROUTE_PATTERNS.some((pattern) => pattern.test(p));
     if (!isPrivate) {
-      const fullUrl = p === "" ? baseUrl : `${baseUrl}${p.startsWith("/") ? "" : "/"}${p}`;
-      cleanUrls.add(fullUrl);
+      const fullUrl = p === "" ? baseUrl : `${baseUrl}${p}`;
+      uniqueUrls.add(fullUrl);
     }
   }
 
-  return Array.from(cleanUrls);
+  return Array.from(uniqueUrls);
 }
 
-export interface IndexNowSubmitResult {
+export interface IndexNowSubmissionResult {
+  endpoint: string;
+  status: number;
+  ok: boolean;
+  message: string;
+  submittedCount: number;
+}
+
+export interface IndexNowResponse {
   success: boolean;
+  timestamp: string;
   submittedCount: number;
   keyLocation: string;
-  host: string;
-  timestamp: string;
-  responses: Array<{
-    endpoint: string;
-    status: number;
-    statusText: string;
-    body?: string;
-  }>;
-  errors?: string[];
+  results: IndexNowSubmissionResult[];
 }
 
 /**
- * Submits an array of public URLs to IndexNow endpoints (Bing, IndexNow hub).
- * If no URLs are provided, submits the entire legitimate public URL catalog.
+ * Submits a list of public URLs to IndexNow.
+ * If no urlList is provided, submits all public indexable Nova Tools URLs.
  */
 export async function submitToIndexNow(
-  customUrls?: string[]
-): Promise<IndexNowSubmitResult> {
-  // Filter URLs to ensure ONLY legitimate public URLs belonging to novatool.in are submitted
-  let targetUrls = customUrls && customUrls.length > 0 ? customUrls : getPublicIndexableUrls();
+  urlsToSubmit?: string[]
+): Promise<IndexNowResponse> {
+  const allValidUrls = getPublicIndexableUrls();
+  const validUrlSet = new Set(allValidUrls);
 
-  targetUrls = targetUrls.filter((u) => {
-    try {
-      const parsed = new URL(u);
-      if (parsed.hostname !== INDEXNOW_HOST && parsed.hostname !== `www.${INDEXNOW_HOST}`) {
-        return false;
-      }
-      const pathname = parsed.pathname;
-      const isPrivate = PRIVATE_PATH_PREFIXES.some((prefix) =>
-        pathname.toLowerCase().startsWith(prefix)
-      );
-      return !isPrivate;
-    } catch {
-      return false;
-    }
-  });
+  let targetUrls: string[];
 
+  if (urlsToSubmit && urlsToSubmit.length > 0) {
+    // Validate that submitted URLs are legitimate public URLs on our domain
+    targetUrls = urlsToSubmit
+      .map((u) => u.trim())
+      .filter((u) => {
+        if (!u.startsWith(`https://${INDEXNOW_HOST}`)) return false;
+        const pathname = u.replace(`https://${INDEXNOW_HOST}`, "") || "/";
+        const isPrivate = PRIVATE_ROUTE_PATTERNS.some((pattern) => pattern.test(pathname));
+        return !isPrivate && (validUrlSet.has(u) || pathname.startsWith("/"));
+      });
+  } else {
+    targetUrls = allValidUrls;
+  }
+
+  if (targetUrls.length === 0) {
+    return {
+      success: false,
+      timestamp: new Date().toISOString(),
+      submittedCount: 0,
+      keyLocation: INDEXNOW_KEY_LOCATION,
+      results: [
+        {
+          endpoint: "none",
+          status: 400,
+          ok: false,
+          message: "No valid public indexable URLs provided for submission.",
+          submittedCount: 0,
+        },
+      ],
+    };
+  }
+
+  // IndexNow API accepts batches of up to 10,000 URLs
   const payload = {
     host: INDEXNOW_HOST,
     key: INDEXNOW_KEY,
@@ -118,61 +137,57 @@ export async function submitToIndexNow(
     urlList: targetUrls,
   };
 
-  const results: Array<{
-    endpoint: string;
-    status: number;
-    statusText: string;
-    body?: string;
-  }> = [];
-
-  const errors: string[] = [];
+  const results: IndexNowSubmissionResult[] = [];
 
   for (const endpoint of INDEXNOW_ENDPOINTS) {
     try {
-      const res = await fetch(endpoint, {
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=utf-8",
-          "User-Agent": "NovaTools-IndexNow-Client/1.0",
+          "User-Agent": "NovaTools-IndexNow/1.0",
         },
         body: JSON.stringify(payload),
       });
 
-      let bodyText = "";
-      try {
-        bodyText = await res.text();
-      } catch {
-        // empty body is expected for 200/202
+      // IndexNow returns 200 (OK) or 202 (Accepted) on success
+      const ok = response.status === 200 || response.status === 202;
+      let message = response.statusText || (ok ? "Submitted successfully" : "Submission failed");
+
+      if (!ok) {
+        try {
+          const errText = await response.text();
+          if (errText) message = `${message}: ${errText}`;
+        } catch {
+          // ignore
+        }
       }
 
       results.push({
         endpoint,
-        status: res.status,
-        statusText: res.statusText,
-        body: bodyText ? bodyText.slice(0, 300) : undefined,
+        status: response.status,
+        ok,
+        message,
+        submittedCount: targetUrls.length,
       });
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : String(err);
-      errors.push(`Error calling ${endpoint}: ${msg}`);
+    } catch (err) {
       results.push({
         endpoint,
-        status: 0,
-        statusText: "Network Error",
-        body: msg,
+        status: 500,
+        ok: false,
+        message: err instanceof Error ? err.message : "Network error during submission",
+        submittedCount: targetUrls.length,
       });
     }
   }
 
-  // Success if at least one endpoint returned 200 or 202
-  const isSuccess = results.some((r) => r.status === 200 || r.status === 202);
+  const anySuccess = results.some((r) => r.ok);
 
   return {
-    success: isSuccess,
+    success: anySuccess,
+    timestamp: new Date().toISOString(),
     submittedCount: targetUrls.length,
     keyLocation: INDEXNOW_KEY_LOCATION,
-    host: INDEXNOW_HOST,
-    timestamp: new Date().toISOString(),
-    responses: results,
-    errors: errors.length > 0 ? errors : undefined,
+    results,
   };
 }

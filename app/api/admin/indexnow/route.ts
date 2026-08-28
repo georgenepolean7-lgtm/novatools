@@ -1,52 +1,58 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { verifyAdminSession } from "@/lib/supabase/server";
 import {
+  INDEXNOW_HOST,
   INDEXNOW_KEY,
   INDEXNOW_KEY_LOCATION,
-  INDEXNOW_HOST,
   getPublicIndexableUrls,
   submitToIndexNow,
 } from "@/lib/seo/indexnow";
 
 export async function GET() {
-  const { isAdmin } = await verifyAdminSession();
-  if (!isAdmin) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
+  const { isAdmin, user } = await verifyAdminSession();
+  if (!isAdmin || !user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const publicUrls = getPublicIndexableUrls();
 
   return NextResponse.json({
-    status: "configured",
     host: INDEXNOW_HOST,
     key: INDEXNOW_KEY,
     keyLocation: INDEXNOW_KEY_LOCATION,
     totalPublicUrls: publicUrls.length,
-    sampleUrls: publicUrls.slice(0, 10),
+    sampleUrls: publicUrls.slice(0, 5),
   });
 }
 
-export async function POST(request: Request) {
-  const { isAdmin } = await verifyAdminSession();
-  if (!isAdmin) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
+export async function POST(req: NextRequest) {
+  const { isAdmin, user } = await verifyAdminSession();
+  if (!isAdmin || !user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
     let customUrls: string[] | undefined;
     try {
-      const body = await request.json();
-      if (Array.isArray(body?.urls) && body.urls.length > 0) {
+      const body = await req.json();
+      if (body && Array.isArray(body.urls)) {
         customUrls = body.urls;
       }
     } catch {
-      // Body is optional; if omitted, all public URLs will be submitted
+      // Empty body is allowed - defaults to all public URLs
     }
 
     const result = await submitToIndexNow(customUrls);
-    return NextResponse.json({ result });
-  } catch (error: unknown) {
-    const msg = error instanceof Error ? error.message : "Internal Server Error";
-    return NextResponse.json({ error: msg }, { status: 500 });
+    return NextResponse.json(result, {
+      status: result.success ? 200 : 502,
+    });
+  } catch (err) {
+    return NextResponse.json(
+      {
+        error: "Failed to execute IndexNow submission",
+        details: err instanceof Error ? err.message : String(err),
+      },
+      { status: 500 }
+    );
   }
 }
