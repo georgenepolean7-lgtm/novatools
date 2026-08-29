@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import { getAllArticles } from "@/lib/blog/posts";
@@ -30,8 +29,6 @@ export default function BlogHubPage() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white flex flex-col selection:bg-cyan-500 selection:text-black">
-      <SiteHeader />
-
       <BreadcrumbSchema
         items={[
           { name: "Home", url: "https://novatool.in" },

@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import ArticleSchema from "@/components/blog/ArticleSchema";
 import { getAllArticles, getArticleBySlug, getRelatedArticlesFor } from "@/lib/blog/posts";
@@ -86,7 +85,6 @@ export default async function IndividualArticlePage({ params }: ArticlePageProps
 
   return (
     <div className="min-h-screen bg-slate-950 text-white flex flex-col selection:bg-cyan-500 selection:text-black">
-      <SiteHeader />
       <ArticleSchema article={article} />
 
       <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-12">
