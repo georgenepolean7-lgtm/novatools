@@ -3,7 +3,6 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { AlertTriangle, RefreshCw, Home, Layers } from "lucide-react";
-import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
 export default function Error({
@@ -20,8 +19,6 @@ export default function Error({
 
   return (
     <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between">
-      <SiteHeader />
-
       <main className="flex-1 flex items-center justify-center px-4 sm:px-6 py-20 relative overflow-hidden">
         <div className="max-w-lg w-full text-center space-y-6 relative z-10">
           <div className="w-16 h-16 rounded-3xl bg-rose-500/10 border border-rose-500/20 text-rose-400 mx-auto flex items-center justify-center shadow-lg shadow-rose-500/10">

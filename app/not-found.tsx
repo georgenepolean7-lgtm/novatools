@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Home, Layers, ArrowRight, ShieldAlert } from "lucide-react";
-import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
@@ -31,8 +30,6 @@ const POPULAR_TOOLS = [
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between">
-      <SiteHeader />
-
       <main className="flex-1 flex items-center justify-center px-4 sm:px-6 py-20 relative overflow-hidden">
         {/* Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />

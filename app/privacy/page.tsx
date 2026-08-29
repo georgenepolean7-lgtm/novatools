@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import { ShieldCheck, Lock, Eye, Cookie } from "lucide-react";
@@ -24,7 +23,6 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
-      <SiteHeader />
       <BreadcrumbSchema
         items={[
           { name: "Home", url: "https://novatool.in" },

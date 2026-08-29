@@ -13,6 +13,7 @@ import { ToolFeedbackWidget } from "@/components/tools/ToolFeedbackWidget";
 import { trackToolUsage } from "@/lib/supabase/client";
 import { isPdfRelatedTool } from "@/lib/affiliate/updf-config";
 import UPDFRecommendation from "@/components/affiliate/UPDFRecommendation";
+import NovaBuddy from "@/components/tools/NovaBuddy";
 import { CheckCircle2, ArrowRight, Shield, Zap, Sparkles, BookOpen, Layers } from "lucide-react";
 
 interface DynamicToolHostProps {
@@ -103,9 +104,9 @@ export function DynamicToolHost({ tool }: DynamicToolHostProps) {
             </div>
           )}
 
-          {/* How-To Steps */}
+          {/* Step-by-Step Tutorial / How to Use */}
           {tool.howToSteps && tool.howToSteps.length > 0 && (
-            <div className="space-y-4">
+            <div className="space-y-4 border-t border-slate-800 pt-8">
               <h2 className="text-xl font-bold text-white tracking-tight">
                 How to Use {tool.name}
               </h2>
@@ -113,12 +114,14 @@ export function DynamicToolHost({ tool }: DynamicToolHostProps) {
                 {tool.howToSteps.map((step) => (
                   <div
                     key={step.step}
-                    className="p-5 rounded-2xl bg-slate-900/40 border border-slate-800/80 space-y-2 relative"
+                    className="p-5 rounded-2xl bg-slate-900/40 border border-slate-800 space-y-2 relative overflow-hidden"
                   >
-                    <div className="w-7 h-7 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold flex items-center justify-center">
-                      {step.step}
+                    <div className="flex items-center justify-between">
+                      <span className="w-7 h-7 rounded-xl bg-cyan-500/10 text-cyan-400 font-bold font-mono text-sm flex items-center justify-center border border-cyan-500/20">
+                        {step.step}
+                      </span>
                     </div>
-                    <h3 className="font-semibold text-white text-sm">{step.title}</h3>
+                    <h3 className="font-semibold text-white text-sm pt-1">{step.title}</h3>
                     <p className="text-xs text-slate-400 leading-relaxed">{step.instruction}</p>
                   </div>
                 ))}
@@ -126,38 +129,18 @@ export function DynamicToolHost({ tool }: DynamicToolHostProps) {
             </div>
           )}
 
-          {/* Custom FAQ Section */}
-          {tool.faq && tool.faq.length > 0 && (
-            <div className="space-y-4">
-              <h2 className="text-xl font-bold text-white tracking-tight">
-                Frequently Asked Questions
-              </h2>
-              <div className="space-y-3">
-                {tool.faq.map((f, idx) => (
-                  <div
-                    key={idx}
-                    className="p-5 rounded-2xl bg-slate-900/50 border border-slate-800/80 space-y-2"
-                  >
-                    <h3 className="font-semibold text-slate-100 text-sm">{f.question}</h3>
-                    <p className="text-xs text-slate-400 leading-relaxed">{f.answer}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Deep Technical Editorial Guide (if available) */}
+          {/* In-Depth Technical Editorial Guide & Documentation */}
           {tool.editorialGuide && (
-            <div className="space-y-6 border-t border-slate-800 pt-8">
+            <div className="space-y-8 border-t border-slate-800 pt-8">
               <div className="space-y-2">
-                <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-cyan-300">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold">
                   <BookOpen className="w-3.5 h-3.5" />
-                  <span>TECHNICAL REFERENCE &amp; GUIDE</span>
+                  <span>TECHNICAL DOCUMENTATION &amp; GUIDE</span>
                 </div>
                 <h2 className="text-2xl font-bold text-white tracking-tight">
                   {tool.editorialGuide.title}
                 </h2>
-                <p className="text-sm text-slate-300 leading-relaxed">
+                <p className="text-sm text-slate-300 leading-relaxed max-w-3xl">
                   {tool.editorialGuide.summary}
                 </p>
               </div>
@@ -166,17 +149,17 @@ export function DynamicToolHost({ tool }: DynamicToolHostProps) {
                 {tool.editorialGuide.sections.map((section, idx) => (
                   <div
                     key={idx}
-                    className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800/80 space-y-3"
+                    className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-3"
                   >
-                    <h3 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-cyan-400" />
-                      {section.heading}
+                    <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                      <span className="text-cyan-400 font-mono text-sm">#{idx + 1}</span>
+                      <span>{section.heading}</span>
                     </h3>
-                    <div className="text-sm text-slate-300 leading-relaxed whitespace-pre-line space-y-2">
+                    <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-line">
                       {section.content}
-                    </div>
+                    </p>
                     {section.codeExample && (
-                      <div className="mt-3 p-4 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs text-cyan-300 overflow-x-auto">
+                      <div className="mt-3 rounded-xl bg-slate-950 p-4 border border-slate-800 font-mono text-xs text-cyan-300 overflow-x-auto">
                         <pre>{section.codeExample}</pre>
                       </div>
                     )}
@@ -186,56 +169,59 @@ export function DynamicToolHost({ tool }: DynamicToolHostProps) {
             </div>
           )}
 
-          {/* Technical Boundaries & Limitations */}
-          {tool.limitations && tool.limitations.length > 0 && (
-            <div className="p-6 rounded-2xl bg-slate-900/30 border border-amber-500/20 space-y-3">
-              <h3 className="text-sm font-bold text-amber-300 uppercase tracking-wider flex items-center gap-2">
-                <Shield className="w-4 h-4 text-amber-400" />
-                <span>Technical Boundaries &amp; Scope</span>
-              </h3>
-              <ul className="space-y-1.5 text-xs text-slate-300">
-                {tool.limitations.map((lim, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="text-amber-400">•</span>
-                    <span>{lim}</span>
-                  </li>
+          {/* FAQ Accordion Section */}
+          {tool.faq && tool.faq.length > 0 && (
+            <div className="space-y-4 border-t border-slate-800 pt-8">
+              <h2 className="text-xl font-bold text-white tracking-tight">
+                Frequently Asked Questions
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {tool.faq.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="p-5 rounded-2xl bg-slate-900/40 border border-slate-800 space-y-2"
+                  >
+                    <h3 className="font-semibold text-white text-sm flex items-start gap-2">
+                      <span className="text-cyan-400 font-bold">Q:</span>
+                      <span>{item.question}</span>
+                    </h3>
+                    <p className="text-xs text-slate-400 leading-relaxed pl-5">{item.answer}</p>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           )}
 
-          {/* Related Blog Guides / Tutorials */}
+          {/* Related Articles / Blog Posts */}
           {relatedArticles && relatedArticles.length > 0 && (
             <div className="space-y-4 border-t border-slate-800 pt-8">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-cyan-400 font-bold text-xs uppercase tracking-wider">
-                  <BookOpen className="w-3.5 h-3.5" />
-                  <span>STEP-BY-STEP GUIDES &amp; TUTORIALS</span>
-                </div>
+                <h2 className="text-xl font-bold text-white tracking-tight">
+                  Related Guides &amp; Tutorials
+                </h2>
                 <Link href="/blog" className="text-xs text-cyan-400 hover:underline">
-                  All Guides
+                  View All Guides →
                 </Link>
               </div>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {relatedArticles.map((art) => (
+                {relatedArticles.map((article) => (
                   <Link
-                    key={art.slug}
-                    href={`/blog/${art.slug}`}
-                    className="group p-5 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-cyan-500/40 hover:bg-slate-900/80 transition-all flex flex-col justify-between space-y-2"
+                    key={article.slug}
+                    href={`/blog/${article.slug}`}
+                    className="p-5 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-cyan-500/40 hover:bg-slate-900/80 transition-all flex flex-col justify-between group space-y-3"
                   >
                     <div className="space-y-1">
-                      <span className="text-[10px] font-semibold text-slate-500 uppercase">
-                        {art.readTime}
+                      <span className="text-[10px] font-bold uppercase text-cyan-400">
+                        {article.category}
                       </span>
-                      <h3 className="font-bold text-white text-sm group-hover:text-cyan-300 transition-colors">
-                        {art.title}
+                      <h3 className="font-semibold text-white text-sm group-hover:text-cyan-300 transition-colors">
+                        {article.title}
                       </h3>
-                      <p className="text-xs text-slate-400 line-clamp-2">{art.summary}</p>
+                      <p className="text-xs text-slate-400 line-clamp-2">{article.summary}</p>
                     </div>
-                    <div className="flex items-center gap-1 text-xs text-cyan-400 font-semibold pt-2">
-                      <span>Read Full Guide</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    <div className="flex items-center gap-1 text-xs text-cyan-400 font-medium">
+                      <span>Read Guide</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </Link>
                 ))}
@@ -246,7 +232,7 @@ export function DynamicToolHost({ tool }: DynamicToolHostProps) {
           {/* Tool Community Feedback */}
           <ToolFeedbackWidget toolSlug={tool.slug} toolName={tool.name} />
 
-          {/* Related Tools Internal Linking */}
+          {/* Related Tools Links */}
           {related && related.length > 0 && (
             <div className="space-y-4 border-t border-slate-800 pt-8">
               <h2 className="text-xl font-bold text-white tracking-tight">
@@ -288,6 +274,9 @@ export function DynamicToolHost({ tool }: DynamicToolHostProps) {
           )}
         </div>
       </ToolLayout>
+
+      {/* Registry-Driven Universal NovaBuddy Assistant */}
+      <NovaBuddy tool={tool} />
     </>
   );
 }
