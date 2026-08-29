@@ -6,13 +6,14 @@ import ToolLayout from "@/components/ToolLayout";
 import ToolSEO from "@/components/seo/ToolSEO";
 import { ToolDefinition } from "@/lib/tools/tool-types";
 import { getRelatedToolsFor } from "@/lib/tools/registry";
+import { getArticlesForTool } from "@/lib/blog/posts";
 import { renderToolWidget } from "@/lib/tools/engine-dispatcher";
 import { ToolFavoriteButton } from "@/components/tools/ToolFavoriteButton";
 import { ToolFeedbackWidget } from "@/components/tools/ToolFeedbackWidget";
 import { trackToolUsage } from "@/lib/supabase/client";
 import { isPdfRelatedTool } from "@/lib/affiliate/updf-config";
 import UPDFRecommendation from "@/components/affiliate/UPDFRecommendation";
-import { CheckCircle2, ArrowRight, Shield, Zap, Sparkles } from "lucide-react";
+import { CheckCircle2, ArrowRight, Shield, Zap, Sparkles, BookOpen, Layers } from "lucide-react";
 
 interface DynamicToolHostProps {
   tool: ToolDefinition;
@@ -20,6 +21,7 @@ interface DynamicToolHostProps {
 
 export function DynamicToolHost({ tool }: DynamicToolHostProps) {
   const related = getRelatedToolsFor(tool.slug, 4);
+  const relatedArticles = getArticlesForTool(tool.slug, 2);
 
   // Track non-sensitive tool usage metric on mount
   useEffect(() => {
@@ -43,9 +45,19 @@ export function DynamicToolHost({ tool }: DynamicToolHostProps) {
         <div className="space-y-12">
           {/* Top Quick Actions Bar */}
           <div className="flex items-center justify-between border-b border-white/5 pb-4">
-            <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
-              <span className="w-2 h-2 rounded-full bg-emerald-400" />
-              <span>Client-Side Engine Active</span>
+            <div className="flex items-center gap-3 text-xs text-slate-400 font-mono">
+              <span className="flex items-center gap-1 text-emerald-400">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                Client-Side Engine Active
+              </span>
+              <span className="hidden sm:inline text-slate-600">|</span>
+              <Link
+                href={`/categories/${tool.category}`}
+                className="hidden sm:flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-sans font-medium"
+              >
+                <Layers className="w-3.5 h-3.5" />
+                <span>Explore {tool.category.toUpperCase()} Hub</span>
+              </Link>
             </div>
             <ToolFavoriteButton toolSlug={tool.slug} />
           </div>
@@ -67,7 +79,7 @@ export function DynamicToolHost({ tool }: DynamicToolHostProps) {
             </div>
             <div className="flex items-center gap-1.5 text-amber-400">
               <Sparkles className="w-4 h-4" />
-              <span>100% Free & Unlimited Usage</span>
+              <span>100% Free &amp; Unlimited Usage</span>
             </div>
           </div>
 
@@ -75,7 +87,7 @@ export function DynamicToolHost({ tool }: DynamicToolHostProps) {
           {tool.features && tool.features.length > 0 && (
             <div className="space-y-4">
               <h2 className="text-xl font-bold text-white tracking-tight">
-                Key Features & Capabilities
+                Key Features &amp; Capabilities
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {tool.features.map((feature, idx) => (
@@ -129,6 +141,45 @@ export function DynamicToolHost({ tool }: DynamicToolHostProps) {
                     <h3 className="font-semibold text-slate-100 text-sm">{f.question}</h3>
                     <p className="text-xs text-slate-400 leading-relaxed">{f.answer}</p>
                   </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Related Blog Guides / Tutorials */}
+          {relatedArticles && relatedArticles.length > 0 && (
+            <div className="space-y-4 border-t border-slate-800 pt-8">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-cyan-400 font-bold text-xs uppercase tracking-wider">
+                  <BookOpen className="w-3.5 h-3.5" />
+                  <span>STEP-BY-STEP GUIDES &amp; TUTORIALS</span>
+                </div>
+                <Link href="/blog" className="text-xs text-cyan-400 hover:underline">
+                  All Guides
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {relatedArticles.map((art) => (
+                  <Link
+                    key={art.slug}
+                    href={`/blog/${art.slug}`}
+                    className="group p-5 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-cyan-500/40 hover:bg-slate-900/80 transition-all flex flex-col justify-between space-y-2"
+                  >
+                    <div className="space-y-1">
+                      <span className="text-[10px] font-semibold text-slate-500 uppercase">
+                        {art.readTime}
+                      </span>
+                      <h3 className="font-bold text-white text-sm group-hover:text-cyan-300 transition-colors">
+                        {art.title}
+                      </h3>
+                      <p className="text-xs text-slate-400 line-clamp-2">{art.summary}</p>
+                    </div>
+                    <div className="flex items-center gap-1 text-xs text-cyan-400 font-semibold pt-2">
+                      <span>Read Full Guide</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                  </Link>
                 ))}
               </div>
             </div>

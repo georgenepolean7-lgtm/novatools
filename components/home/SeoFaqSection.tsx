@@ -159,6 +159,91 @@ export default function SeoFaqSection() {
           </div>
         </div>
 
+        {/* Featured Guides & Tutorials Showcase */}
+        <div className="rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8 backdrop-blur-xl space-y-6">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 text-cyan-400 font-bold text-xs uppercase tracking-wider">
+                <Globe className="w-3.5 h-3.5" />
+                <span>STEP-BY-STEP GUIDES &amp; TUTORIALS</span>
+              </div>
+              <h3 className="text-xl font-bold text-white">Technical Documentation &amp; How-To Articles</h3>
+            </div>
+            <Link
+              href="/blog"
+              className="text-xs text-cyan-400 hover:text-cyan-300 font-semibold hover:underline"
+            >
+              Browse All Guides →
+            </Link>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 pt-2">
+            <Link
+              href="/blog/how-to-compress-pdf-without-losing-quality"
+              className="group p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80 hover:border-cyan-500/30 transition-all flex flex-col justify-between space-y-2"
+            >
+              <div className="space-y-1">
+                <span className="text-[10px] font-bold text-rose-400 uppercase">PDF Guide</span>
+                <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300 transition-colors line-clamp-2">
+                  How to Compress a PDF Without Losing Quality
+                </h4>
+                <p className="text-[11px] text-slate-400 line-clamp-2">
+                  Learn DPI downsampling and vector font retention for strict portal limits.
+                </p>
+              </div>
+              <span className="text-[11px] text-cyan-400 font-semibold pt-1">Read Guide →</span>
+            </Link>
+
+            <Link
+              href="/blog/how-to-compress-images-for-web-performance"
+              className="group p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80 hover:border-cyan-500/30 transition-all flex flex-col justify-between space-y-2"
+            >
+              <div className="space-y-1">
+                <span className="text-[10px] font-bold text-cyan-400 uppercase">Image Guide</span>
+                <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300 transition-colors line-clamp-2">
+                  How to Compress Images for Web Performance &amp; LCP
+                </h4>
+                <p className="text-[11px] text-slate-400 line-clamp-2">
+                  Optimize Largest Contentful Paint (LCP) and convert to modern WebP.
+                </p>
+              </div>
+              <span className="text-[11px] text-cyan-400 font-semibold pt-1">Read Guide →</span>
+            </Link>
+
+            <Link
+              href="/blog/how-to-format-and-validate-json-data"
+              className="group p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80 hover:border-cyan-500/30 transition-all flex flex-col justify-between space-y-2"
+            >
+              <div className="space-y-1">
+                <span className="text-[10px] font-bold text-amber-400 uppercase">Developer Guide</span>
+                <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300 transition-colors line-clamp-2">
+                  How to Format, Validate, and Beautify JSON
+                </h4>
+                <p className="text-[11px] text-slate-400 line-clamp-2">
+                  Fix syntax errors, trailing commas, and unquoted keys in REST APIs.
+                </p>
+              </div>
+              <span className="text-[11px] text-cyan-400 font-semibold pt-1">Read Guide →</span>
+            </Link>
+
+            <Link
+              href="/blog/zero-upload-architecture-how-in-browser-tools-protect-privacy"
+              className="group p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80 hover:border-cyan-500/30 transition-all flex flex-col justify-between space-y-2"
+            >
+              <div className="space-y-1">
+                <span className="text-[10px] font-bold text-emerald-400 uppercase">Privacy &amp; Security</span>
+                <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300 transition-colors line-clamp-2">
+                  Zero-Upload Architecture: In-Browser Privacy
+                </h4>
+                <p className="text-[11px] text-slate-400 line-clamp-2">
+                  Why WebAssembly and local RAM processing keep files 100% confidential.
+                </p>
+              </div>
+              <span className="text-[11px] text-cyan-400 font-semibold pt-1">Read Guide →</span>
+            </Link>
+          </div>
+        </div>
+
         {/* Interactive SEO FAQ Section (Native HTML Details/Summary for 0 JS Cost) */}
         <div className="mx-auto max-w-4xl space-y-8">
           <div className="text-center space-y-3">

@@ -1,5 +1,6 @@
 import { getAllTools } from "@/lib/tools/registry";
 import { getAllCategories } from "@/lib/tools/categories";
+import { getAllArticles } from "@/lib/blog/posts";
 import { programmaticPages } from "@/lib/seo/programmaticPages";
 
 export const INDEXNOW_KEY = process.env.INDEXNOW_KEY || "a52a86efe6f041bd931a36f0e2bdadd8";
@@ -37,6 +38,7 @@ export function getPublicIndexableUrls(): string[] {
     "/contact",
     "/tools",
     "/categories",
+    "/blog",
     "/pricing",
     "/privacy",
     "/terms",
@@ -49,13 +51,16 @@ export function getPublicIndexableUrls(): string[] {
   // 3. Category Hub Pages
   const categoryPaths = getAllCategories().map((c) => `/categories/${c.id}`);
 
-  // 4. Programmatic Landing Pages
+  // 4. Blog Guides & Articles
+  const blogPaths = getAllArticles().map((a) => `/blog/${a.slug}`);
+
+  // 5. Programmatic Landing Pages
   const progPaths = Object.values(programmaticPages)
     .flat()
     .map((p) => `/tools/${p.slug}`);
 
   // Merge and filter
-  const allPaths = [...staticPaths, ...toolPaths, ...categoryPaths, ...progPaths];
+  const allPaths = [...staticPaths, ...toolPaths, ...categoryPaths, ...blogPaths, ...progPaths];
   const uniqueUrls = new Set<string>();
 
   for (const p of allPaths) {

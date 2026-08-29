@@ -16,6 +16,8 @@ import {
   X,
   ChevronDown,
   Layers,
+  BookOpen,
+  FolderTree,
 } from "lucide-react";
 
 export default function SiteHeader() {
@@ -74,11 +76,27 @@ export default function SiteHeader() {
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-5 text-xs sm:text-sm font-semibold text-slate-300">
           <Link
-            href="/#tools"
+            href="/tools"
             className="transition hover:text-cyan-400 flex items-center gap-1.5"
           >
             <Layers className="w-3.5 h-3.5 text-cyan-400" />
             <span>All Tools</span>
+          </Link>
+
+          <Link
+            href="/categories"
+            className="transition hover:text-cyan-400 flex items-center gap-1.5"
+          >
+            <FolderTree className="w-3.5 h-3.5 text-indigo-400" />
+            <span>Categories</span>
+          </Link>
+
+          <Link
+            href="/blog"
+            className="transition hover:text-cyan-400 flex items-center gap-1.5"
+          >
+            <BookOpen className="w-3.5 h-3.5 text-amber-400" />
+            <span>Guides &amp; Blog</span>
           </Link>
 
           <Link
@@ -98,14 +116,14 @@ export default function SiteHeader() {
           </Link>
 
           <Link
-            href="/#about"
+            href="/about"
             className="transition hover:text-cyan-400"
           >
             About
           </Link>
 
           <Link
-            href="/#contact"
+            href="/contact"
             className="transition hover:text-cyan-400"
           >
             Contact
@@ -261,12 +279,30 @@ export default function SiteHeader() {
         <div className="md:hidden border-t border-slate-800 bg-slate-950/95 px-6 py-4 space-y-4 backdrop-blur-2xl">
           <nav className="flex flex-col space-y-2 text-sm font-semibold text-slate-300">
             <Link
-              href="/#tools"
+              href="/tools"
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2 rounded-xl hover:bg-slate-900 flex items-center gap-2"
             >
               <Layers className="w-4 h-4 text-cyan-400" />
               <span>All 250+ Tools</span>
+            </Link>
+
+            <Link
+              href="/categories"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2 rounded-xl hover:bg-slate-900 flex items-center gap-2"
+            >
+              <FolderTree className="w-4 h-4 text-indigo-400" />
+              <span>Category Hubs</span>
+            </Link>
+
+            <Link
+              href="/blog"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2 rounded-xl hover:bg-slate-900 flex items-center gap-2"
+            >
+              <BookOpen className="w-4 h-4 text-amber-400" />
+              <span>Guides &amp; Tutorials</span>
             </Link>
 
             <Link
@@ -287,7 +323,7 @@ export default function SiteHeader() {
             </Link>
 
             <Link
-              href="/#about"
+              href="/about"
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2 rounded-xl hover:bg-slate-900"
             >
@@ -295,7 +331,7 @@ export default function SiteHeader() {
             </Link>
 
             <Link
-              href="/#contact"
+              href="/contact"
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2 rounded-xl hover:bg-slate-900"
             >

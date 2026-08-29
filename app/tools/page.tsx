@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import SiteHeader from "@/components/SiteHeader";
 import AllToolsSection from "@/components/AllToolsSection";
 import SiteFooter from "@/components/SiteFooter";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import { Sparkles, Shield, Cpu, Layers } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "All 250+ Free Online Tools Directory",
+  title: "All 250+ Free Online Tools Directory | Nova Tools",
   description:
     "Explore the complete directory of 250+ free client-side online tools: PDF editors, Image compressors, Tamil OCR, Developer utilities, Text analyzers, and Financial calculators.",
   alternates: {
@@ -22,7 +23,8 @@ export const metadata: Metadata = {
 
 export default function ToolsDirectoryPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between">
+    <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
+      <SiteHeader />
       <BreadcrumbSchema
         items={[
           { name: "Home", url: "https://novatool.in" },

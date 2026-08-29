@@ -1,18 +1,34 @@
 import type { Metadata } from "next";
+import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import { FileText, Shield } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Terms of Service - Usage Agreement",
-  description: "Terms and conditions of use for Nova Tools free web utility suite.",
+  title: "Terms of Service - Usage Agreement | Nova Tools",
+  description: "Terms and conditions of use for Nova Tools free web utility suite by Nova Code Tech.",
   alternates: {
     canonical: "https://novatool.in/terms",
+  },
+  openGraph: {
+    title: "Terms of Service - Usage Agreement | Nova Tools",
+    description: "Terms and conditions of use for Nova Tools free web utility suite by Nova Code Tech.",
+    url: "https://novatool.in/terms",
+    siteName: "Nova Tools",
+    type: "website",
   },
 };
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between">
+    <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
+      <SiteHeader />
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "https://novatool.in" },
+          { name: "Terms of Service", url: "https://novatool.in/terms" },
+        ]}
+      />
       <main className="mx-auto max-w-4xl px-4 sm:px-6 py-14 space-y-8 flex-1">
         <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-7 sm:p-10 shadow-xl backdrop-blur-xl space-y-8">
           <div className="border-b border-slate-800 pb-6 space-y-2">

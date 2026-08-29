@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SiteHeader from "@/components/SiteHeader";
 import { getAllCategories } from "@/lib/tools/categories";
 import { getAllTools } from "@/lib/tools/registry";
 import SiteFooter from "@/components/SiteFooter";
@@ -7,7 +8,7 @@ import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import { Sparkles, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Tool Categories - Browse All Suites",
+  title: "Tool Categories - Browse All Suites | Nova Tools",
   description: "Explore all utility tool categories on Nova Tools: PDF, Image, Developer, Tamil, Finance, Text, CSS, SEO, and Security tools.",
   alternates: {
     canonical: "https://novatool.in/categories",
@@ -26,7 +27,8 @@ export default function CategoriesDirectoryPage() {
   const allTools = getAllTools();
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between">
+    <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
+      <SiteHeader />
       <BreadcrumbSchema
         items={[
           { name: "Home", url: "https://novatool.in" },

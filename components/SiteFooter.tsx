@@ -36,15 +36,19 @@ export default function SiteFooter() {
                 Categories Directory
               </Link>
 
+              <Link href="/blog" className="hover:text-white text-cyan-400">
+                Guides &amp; Tutorials
+              </Link>
+
               <Link href="/pricing" className="hover:text-white">
                 Pricing &amp; Plans
               </Link>
 
-              <Link href="/#about" className="hover:text-white">
+              <Link href="/about" className="hover:text-white">
                 About Nova Tools
               </Link>
 
-              <Link href="/#contact" className="hover:text-white">
+              <Link href="/contact" className="hover:text-white">
                 Contact Support
               </Link>
             </div>

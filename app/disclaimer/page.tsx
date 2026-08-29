@@ -1,18 +1,34 @@
 import type { Metadata } from "next";
+import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import { AlertCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Disclaimer - Liability Notice",
+  title: "Disclaimer - Liability Notice | Nova Tools",
   description: "Legal disclaimer regarding file processing results, OCR accuracy, and utility output on Nova Tools.",
   alternates: {
     canonical: "https://novatool.in/disclaimer",
+  },
+  openGraph: {
+    title: "Disclaimer - Liability Notice | Nova Tools",
+    description: "Legal disclaimer regarding file processing results, OCR accuracy, and utility output on Nova Tools.",
+    url: "https://novatool.in/disclaimer",
+    siteName: "Nova Tools",
+    type: "website",
   },
 };
 
 export default function DisclaimerPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between">
+    <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
+      <SiteHeader />
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "https://novatool.in" },
+          { name: "Disclaimer", url: "https://novatool.in/disclaimer" },
+        ]}
+      />
       <main className="mx-auto max-w-4xl px-4 sm:px-6 py-14 space-y-8 flex-1">
         <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-7 sm:p-10 shadow-xl backdrop-blur-xl space-y-8">
           <div className="border-b border-slate-800 pb-6 space-y-2">

@@ -1,19 +1,36 @@
 import type { Metadata } from "next";
+import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import { ShieldCheck, Lock, Eye, Cookie } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - Data Security",
+  title: "Privacy Policy - Zero-Upload Data Protection | Nova Tools",
   description:
     "Nova Tools Privacy Policy. Learn about our 100% client-side zero-upload processing, cookie policies, and Google AdSense privacy compliance.",
   alternates: {
     canonical: "https://novatool.in/privacy",
   },
+  openGraph: {
+    title: "Privacy Policy - Zero-Upload Data Protection | Nova Tools",
+    description:
+      "Nova Tools Privacy Policy. Learn about our 100% client-side zero-upload processing, cookie policies, and Google AdSense privacy compliance.",
+    url: "https://novatool.in/privacy",
+    siteName: "Nova Tools",
+    type: "website",
+  },
 };
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between">
+    <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
+      <SiteHeader />
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "https://novatool.in" },
+          { name: "Privacy Policy", url: "https://novatool.in/privacy" },
+        ]}
+      />
       <main className="mx-auto max-w-4xl px-4 sm:px-6 py-14 space-y-8 flex-1">
         <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-7 sm:p-10 shadow-xl backdrop-blur-xl space-y-8">
           <div className="border-b border-slate-800 pb-6 space-y-2">

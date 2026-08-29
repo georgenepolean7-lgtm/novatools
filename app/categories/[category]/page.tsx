@@ -1,12 +1,26 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllCategories, getCategoryById } from "@/lib/tools/categories";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
+import { getAllCategories, getCategoryById, getCategoryEditorial } from "@/lib/tools/categories";
 import { getToolsByCategory } from "@/lib/tools/registry";
+import { getArticlesByCategory } from "@/lib/blog/posts";
 import { ToolCategory } from "@/lib/tools/tool-types";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import UPDFRecommendation from "@/components/affiliate/UPDFRecommendation";
-import { ArrowRight, ShieldCheck, Zap, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  ShieldCheck,
+  Zap,
+  Sparkles,
+  CheckCircle2,
+  BookOpen,
+  HelpCircle,
+  Users,
+  Cpu,
+  Layers,
+} from "lucide-react";
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
@@ -30,7 +44,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     };
   }
 
-  const baseTitle = `${meta.name} - Free Online Utilities`;
+  const baseTitle = `${meta.name} - Free Online Utilities & Guides`;
   const description = `${meta.description} 100% private, free, and in-browser utilities by Nova Tools.`;
 
   return {
@@ -58,28 +72,51 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   }
 
   const tools = getToolsByCategory(meta.id as ToolCategory);
+  const editorial = getCategoryEditorial(meta.id);
+  const relatedArticles = getArticlesByCategory(meta.id);
+
+  // Category FAQ JSON-LD Schema
+  const faqSchema =
+    editorial.faqs && editorial.faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: editorial.faqs.map((f) => ({
+            "@type": "Question",
+            name: f.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: f.answer,
+            },
+          })),
+        }
+      : null;
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white relative overflow-hidden">
+    <div className="min-h-screen bg-slate-950 text-white flex flex-col selection:bg-cyan-500 selection:text-black">
+      <SiteHeader />
+
       <BreadcrumbSchema
         items={[
           { name: "Home", url: "https://novatool.in" },
-          { name: "Categories", url: "https://novatool.in#categories" },
+          { name: "Categories", url: "https://novatool.in/categories" },
           { name: meta.name, url: `https://novatool.in/categories/${meta.id}` },
         ]}
       />
 
-      {/* Decorative Glows */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-40 top-20 h-[400px] w-[400px] rounded-full bg-cyan-600/15 blur-[140px]" />
-        <div className="absolute -right-40 top-[30%] h-[400px] w-[400px] rounded-full bg-violet-600/15 blur-[140px]" />
-      </div>
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-16 sm:py-20 space-y-12">
-        {/* Category Header */}
-        <div className="max-w-3xl space-y-4">
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
+        {/* Category Hero Header */}
+        <div className="max-w-4xl space-y-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
-            <span>CATEGORY DIRECTORY</span>
+            <Layers className="w-3.5 h-3.5" />
+            <span>CATEGORY DIRECTORY &amp; DOCUMENTATION</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
@@ -87,14 +124,14 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           </h1>
 
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-            {meta.description}
+            {editorial.overview}
           </p>
 
           <div className="flex flex-wrap gap-2 pt-2">
             {meta.popularKeywords.map((kw) => (
               <span
                 key={kw}
-                className="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs text-slate-400"
+                className="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs text-slate-400 font-mono"
               >
                 #{kw}
               </span>
@@ -102,17 +139,58 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           </div>
         </div>
 
-        {/* Tools Grid */}
-        <div className="space-y-6">
-          <div className="flex justify-between items-center border-b border-slate-800 pb-4">
-            <h2 className="text-xl font-bold text-white tracking-tight">
-              Available Tools ({tools.length})
-            </h2>
+        {/* Practical Workflows & Technical Capabilities Card */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Who is it for */}
+          <div className="p-6 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-4">
+            <div className="flex items-center gap-2 text-cyan-400 font-bold text-sm">
+              <Users className="w-4 h-4" />
+              <span>Who Should Use These Tools?</span>
+            </div>
+            <ul className="space-y-2.5 text-xs sm:text-sm text-slate-300">
+              {editorial.whoIsItFor.map((item, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Key Capabilities */}
+          <div className="p-6 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-4">
+            <div className="flex items-center gap-2 text-indigo-400 font-bold text-sm">
+              <Cpu className="w-4 h-4" />
+              <span>Key Capabilities &amp; Architecture</span>
+            </div>
+            <ul className="space-y-2.5 text-xs sm:text-sm text-slate-300">
+              {editorial.keyCapabilities.map((item, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <Sparkles className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Available Tools Grid */}
+        <section className="space-y-6">
+          <div className="flex flex-wrap justify-between items-center gap-4 border-b border-slate-800 pb-4">
+            <div>
+              <h2 className="text-2xl font-bold text-white tracking-tight">
+                Available Tools in {meta.name} ({tools.length})
+              </h2>
+              <p className="text-xs text-slate-400 mt-1">
+                All tools run 100% locally in your browser with zero server uploads.
+              </p>
+            </div>
+
             <div className="flex items-center gap-4 text-xs text-slate-400">
-              <span className="flex items-center gap-1 text-emerald-400">
+              <span className="flex items-center gap-1.5 text-emerald-400">
                 <ShieldCheck className="w-4 h-4" /> Client-Side Privacy
               </span>
-              <span className="flex items-center gap-1 text-cyan-400">
+              <span className="flex items-center gap-1.5 text-cyan-400">
                 <Zap className="w-4 h-4" /> Instant
               </span>
             </div>
@@ -123,7 +201,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               <Link
                 key={t.slug}
                 href={`/${t.slug}`}
-                className="group p-6 rounded-3xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/40 hover:bg-white/[0.04] transition-all flex flex-col justify-between space-y-4"
+                className="group p-6 rounded-3xl bg-slate-900/40 border border-slate-800 hover:border-cyan-500/40 hover:bg-slate-900/80 transition-all flex flex-col justify-between space-y-4 shadow-lg shadow-black/20"
               >
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
@@ -139,12 +217,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                   <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
                     {t.name}
                   </h3>
-                  <p className="text-sm text-slate-400 line-clamp-3 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-400 line-clamp-3 leading-relaxed">
                     {t.shortDescription}
                   </p>
                 </div>
 
-                <div className="flex items-center gap-1 text-sm text-cyan-400 font-semibold pt-2 border-t border-slate-800/60">
+                <div className="flex items-center gap-1 text-xs text-cyan-400 font-semibold pt-3 border-t border-slate-800/60">
                   <span>Launch Tool</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -158,8 +236,93 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               <UPDFRecommendation toolSlug="category-pdf" />
             </div>
           )}
-        </div>
-      </div>
-    </main>
+        </section>
+
+        {/* Related Blog Guides & Tutorials */}
+        {relatedArticles.length > 0 && (
+          <section className="space-y-6 border-t border-slate-800 pt-10">
+            <div className="flex items-center justify-between">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2 text-cyan-400 font-bold text-xs uppercase tracking-wider">
+                  <BookOpen className="w-3.5 h-3.5" />
+                  <span>STEP-BY-STEP TUTORIALS</span>
+                </div>
+                <h2 className="text-2xl font-bold text-white tracking-tight">
+                  Guides &amp; Technical Articles for {meta.name}
+                </h2>
+              </div>
+              <Link href="/blog" className="text-xs text-cyan-400 hover:underline">
+                View All Guides
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {relatedArticles.map((art) => (
+                <Link
+                  key={art.slug}
+                  href={`/blog/${art.slug}`}
+                  className="group p-6 rounded-3xl bg-slate-900/40 border border-slate-800 hover:border-cyan-500/40 hover:bg-slate-900/80 transition-all flex flex-col justify-between space-y-3"
+                >
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-semibold text-slate-500 uppercase">
+                      {art.readTime}
+                    </span>
+                    <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors line-clamp-2">
+                      {art.title}
+                    </h3>
+                    <p className="text-xs text-slate-400 line-clamp-2">{art.summary}</p>
+                  </div>
+                  <div className="flex items-center gap-1 text-xs text-cyan-400 font-semibold pt-2 border-t border-slate-800/80">
+                    <span>Read Guide</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Category FAQs */}
+        {editorial.faqs && editorial.faqs.length > 0 && (
+          <section className="space-y-6 border-t border-slate-800 pt-10">
+            <div className="flex items-center gap-2">
+              <HelpCircle className="w-5 h-5 text-cyan-400" />
+              <h2 className="text-2xl font-bold text-white tracking-tight">
+                {meta.name} Frequently Asked Questions
+              </h2>
+            </div>
+
+            <div className="space-y-4 max-w-3xl">
+              {editorial.faqs.map((faq, idx) => (
+                <div
+                  key={idx}
+                  className="p-5 rounded-2xl bg-slate-900/40 border border-slate-800 space-y-2"
+                >
+                  <h3 className="font-semibold text-white text-sm sm:text-base">
+                    {faq.question}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Technical Architecture Callout */}
+        <section className="p-8 rounded-3xl bg-slate-900/30 border border-slate-800/80 space-y-3">
+          <div className="flex items-center gap-2 text-emerald-400 font-bold text-xs uppercase tracking-wider">
+            <ShieldCheck className="w-4 h-4" />
+            <span>ZERO-UPLOAD SECURITY ARCHITECTURE</span>
+          </div>
+          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            {editorial.technicalArchitecture}
+          </p>
+        </section>
+      </main>
+
+      <SiteFooter />
+    </div>
   );
 }
