@@ -65,6 +65,19 @@ export interface ToolFAQ {
   answer: string;
 }
 
+export interface ToolEditorialSection {
+  id?: string;
+  heading: string;
+  content: string;
+  codeExample?: string;
+}
+
+export interface ToolEditorialGuide {
+  title: string;
+  summary: string;
+  sections: ToolEditorialSection[];
+}
+
 export interface ToolDefinition {
   id: string;
   slug: string;
@@ -98,6 +111,7 @@ export interface ToolDefinition {
   engineComponent: string; // Identifier for client widget dispatcher
   supportedFormats?: string[];
   limitations?: string[];
+  editorialGuide?: ToolEditorialGuide;
   customParams?: Record<string, unknown>;
 }
 

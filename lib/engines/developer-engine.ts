@@ -268,13 +268,66 @@ export function encodeHtmlEntities(text: string): DeveloperEngineResult {
 
 export function decodeHtmlEntities(text: string): DeveloperEngineResult {
   if (!text) return { success: true, output: "" };
-  const decoded = text
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'")
-    .replace(/&#39;/g, "'");
+
+  const NAMED_ENTITIES: Record<string, string> = {
+    "&amp;": "&",
+    "&lt;": "<",
+    "&gt;": ">",
+    "&quot;": '"',
+    "&apos;": "'",
+    "&nbsp;": " ",
+    "&copy;": "©",
+    "&reg;": "®",
+    "&trade;": "™",
+    "&euro;": "€",
+    "&pound;": "£",
+    "&yen;": "¥",
+    "&cent;": "¢",
+    "&bull;": "•",
+    "&hellip;": "…",
+    "&ndash;": "–",
+    "&mdash;": "—",
+    "&laquo;": "«",
+    "&raquo;": "»",
+    "&times;": "×",
+    "&divide;": "÷",
+    "&plusmn;": "±",
+    "&para;": "¶",
+    "&sect;": "§",
+    "&deg;": "°",
+    "&micro;": "µ",
+    "&frac12;": "½",
+    "&frac14;": "¼",
+    "&frac34;": "¾",
+  };
+
+  let decoded = text;
+
+  // 1. Decode standard named entities
+  for (const [entity, char] of Object.entries(NAMED_ENTITIES)) {
+    decoded = decoded.replaceAll(entity, char);
+  }
+
+  // 2. Decode decimal numeric entities: &#60; -> <
+  decoded = decoded.replace(/&#(\d+);/g, (_, dec) => {
+    const code = parseInt(dec, 10);
+    try {
+      return String.fromCodePoint(code);
+    } catch {
+      return _;
+    }
+  });
+
+  // 3. Decode hexadecimal numeric entities: &#x3C; -> <
+  decoded = decoded.replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => {
+    const code = parseInt(hex, 16);
+    try {
+      return String.fromCodePoint(code);
+    } catch {
+      return _;
+    }
+  });
+
   return { success: true, output: decoded };
 }
 

@@ -146,6 +146,64 @@ export function DynamicToolHost({ tool }: DynamicToolHostProps) {
             </div>
           )}
 
+          {/* Deep Technical Editorial Guide (if available) */}
+          {tool.editorialGuide && (
+            <div className="space-y-6 border-t border-slate-800 pt-8">
+              <div className="space-y-2">
+                <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-cyan-300">
+                  <BookOpen className="w-3.5 h-3.5" />
+                  <span>TECHNICAL REFERENCE &amp; GUIDE</span>
+                </div>
+                <h2 className="text-2xl font-bold text-white tracking-tight">
+                  {tool.editorialGuide.title}
+                </h2>
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  {tool.editorialGuide.summary}
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                {tool.editorialGuide.sections.map((section, idx) => (
+                  <div
+                    key={idx}
+                    className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800/80 space-y-3"
+                  >
+                    <h3 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-cyan-400" />
+                      {section.heading}
+                    </h3>
+                    <div className="text-sm text-slate-300 leading-relaxed whitespace-pre-line space-y-2">
+                      {section.content}
+                    </div>
+                    {section.codeExample && (
+                      <div className="mt-3 p-4 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs text-cyan-300 overflow-x-auto">
+                        <pre>{section.codeExample}</pre>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Technical Boundaries & Limitations */}
+          {tool.limitations && tool.limitations.length > 0 && (
+            <div className="p-6 rounded-2xl bg-slate-900/30 border border-amber-500/20 space-y-3">
+              <h3 className="text-sm font-bold text-amber-300 uppercase tracking-wider flex items-center gap-2">
+                <Shield className="w-4 h-4 text-amber-400" />
+                <span>Technical Boundaries &amp; Scope</span>
+              </h3>
+              <ul className="space-y-1.5 text-xs text-slate-300">
+                {tool.limitations.map((lim, idx) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <span className="text-amber-400">•</span>
+                    <span>{lim}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {/* Related Blog Guides / Tutorials */}
           {relatedArticles && relatedArticles.length > 0 && (
             <div className="space-y-4 border-t border-slate-800 pt-8">

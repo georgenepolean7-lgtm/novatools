@@ -1,86 +1,47 @@
 import Link from "next/link";
 import { affiliatePartners } from "@/lib/affiliate/partners";
-
-const partners = [
-  {
-    ...affiliatePartners.canva,
-    badge: "Design",
-  },
-  {
-    ...affiliatePartners.hostinger,
-    badge: "Hosting",
-  },
-  {
-    ...affiliatePartners.namecheap,
-    badge: "Domain",
-  },
-  {
-    ...affiliatePartners.updf,
-    badge: "PDF",
-  },
-  {
-    ...affiliatePartners.pdfelement,
-    badge: "PDF",
-  },
-];
+import { FileText, ExternalLink, ShieldCheck } from "lucide-react";
 
 export default function AffiliateRecommendations() {
+  const updf = affiliatePartners.updf;
+
   return (
     <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-16 [content-visibility:auto]">
-      <div className="rounded-3xl border border-white/10 bg-slate-900/60 p-8 sm:p-10 shadow-xl backdrop-blur-xl">
-        <div>
-          <p className="text-xs font-bold uppercase tracking-widest text-cyan-400">
-            Recommended Partners
-          </p>
-
-          <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-white">
-            Tools We Recommend
-          </h2>
-
-          <p className="mt-2 max-w-2xl text-xs sm:text-sm text-slate-300">
-            These trusted services can help you with web hosting, domains,
-            professional PDF editing and online design.
-          </p>
-        </div>
-
-        <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {partners.map((partner) => (
-            <div
-              key={partner.name}
-              className="rounded-2xl border border-white/10 bg-slate-900 p-6 flex flex-col justify-between"
-            >
-              <div>
-                <span className="inline-block rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-300">
-                  {partner.badge}
-                </span>
-
-                <h3 className="mt-4 text-xl font-semibold text-white">
-                  {partner.name}
-                </h3>
-
-                <p className="mt-2 text-sm text-slate-300">
-                  {partner.description}
-                </p>
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-white/5">
-                <Link
-                  href={partner.url}
-                  target="_blank"
-                  rel="nofollow sponsored noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
-                >
-                  Visit {partner.name} →
-                </Link>
-              </div>
+      <div className="rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8 backdrop-blur-xl">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div className="space-y-2 max-w-2xl">
+            <div className="flex items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-3 py-0.5 text-xs font-semibold text-cyan-300">
+                <FileText className="w-3.5 h-3.5" />
+                <span>{updf.badge}</span>
+              </span>
+              <span className="text-[11px] text-slate-400 font-medium">Partner Recommendation</span>
             </div>
-          ))}
-        </div>
 
-        <div className="mt-8 pt-4 border-t border-white/10">
-          <p className="text-[11px] text-slate-400 leading-relaxed">
-            Transparency Disclosure: Some links on Nova Tools are affiliate links. If you purchase services through these links, Nova Tools may receive a small commission at no additional cost to you. We only recommend services that provide verified value to creators, students, and developers.
-          </p>
+            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              Need Advanced Desktop PDF Editing?
+            </h3>
+
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              {updf.description}
+            </p>
+
+            <p className="text-[11px] text-slate-400 leading-normal pt-1">
+              <strong>Disclosure:</strong> This is an affiliate recommendation. Nova Tools may earn a commission if you purchase through this link, at no additional cost to you.
+            </p>
+          </div>
+
+          <div className="shrink-0 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <a
+              href={updf.url}
+              target="_blank"
+              rel="nofollow sponsored noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-cyan-500/20 transition-all"
+            >
+              <span>Explore UPDF</span>
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </div>
         </div>
       </div>
     </section>

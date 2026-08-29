@@ -1,38 +1,11 @@
 import { DEFAULT_UPDF_CONFIG } from "./updf-config";
 
 export const affiliatePartners = {
-  hostinger: {
-    name: "Hostinger",
-    url: "#",
-    description:
-      "Fast and reliable web hosting for websites and web applications.",
-  },
-
-  canva: {
-    name: "Canva Pro",
-    url: "#",
-    description:
-      "Professional online design platform for creators and businesses.",
-  },
-
-  namecheap: {
-    name: "Namecheap",
-    url: "#",
-    description:
-      "Domain registration, hosting and business email services.",
-  },
-
   updf: {
-    name: "UPDF",
+    name: "UPDF - Professional PDF Editor",
     url: DEFAULT_UPDF_CONFIG.trackingUrl,
     description:
-      "Professional PDF editor with AI-powered document tools for Windows, Mac and Mobile.",
-  },
-
-  pdfelement: {
-    name: "PDFelement",
-    url: "#",
-    description:
-      "Complete PDF editing, conversion and document management software.",
+      "Advanced desktop and mobile PDF editor with OCR text recognition, page reordering, annotation tools, and form editing for power users.",
+    badge: "Desktop PDF Software",
   },
 } as const;
