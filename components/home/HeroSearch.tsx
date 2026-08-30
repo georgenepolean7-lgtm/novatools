@@ -1,19 +1,71 @@
 "use client";
 
-import React, { useState, useMemo, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { searchTools } from "@/lib/tools/search";
 import { Search, ArrowRight, X } from "lucide-react";
+import type { ToolDirectoryItem } from "@/lib/tools/directory-index";
 
 export default function HeroSearch() {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [results, setResults] = useState<ToolDirectoryItem[]>([]);
   const searchRef = useRef<HTMLDivElement>(null);
+  const searchFnRef = useRef<((q: string) => ToolDirectoryItem[]) | null>(null);
 
-  const results = useMemo(() => {
-    if (!query.trim()) return [];
-    return searchTools(query.trim()).slice(0, 6);
-  }, [query]);
+  // Preload search module on idle or first focus/input
+  const loadSearchModule = useCallback(async () => {
+    if (searchFnRef.current) return searchFnRef.current;
+    const { searchTools } = await import("@/lib/tools/search");
+    searchFnRef.current = (q: string) => searchTools(q).slice(0, 6);
+    return searchFnRef.current;
+  }, []);
+
+  // Preload during idle time after initial critical paint
+  useEffect(() => {
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      const win = window as unknown as {
+        requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number;
+        cancelIdleCallback: (id: number) => void;
+      };
+      const handle = win.requestIdleCallback(() => {
+        loadSearchModule();
+      }, { timeout: 3000 });
+      return () => {
+        win.cancelIdleCallback(handle);
+      };
+    } else {
+      const timer = setTimeout(() => {
+        loadSearchModule();
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [loadSearchModule]);
+
+  const performSearch = useCallback((searchTerm: string) => {
+    const trimmed = searchTerm.trim();
+    if (!trimmed) {
+      setResults([]);
+      return;
+    }
+    loadSearchModule().then((searchFn) => {
+      if (searchFn) {
+        setResults(searchFn(trimmed));
+      }
+    });
+  }, [loadSearchModule]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setQuery(val);
+    setIsOpen(true);
+    performSearch(val);
+  };
+
+  const handleQuickCategory = (cat: string) => {
+    setQuery(cat);
+    setIsOpen(true);
+    performSearch(cat);
+  };
 
   // Handle click outside
   useEffect(() => {
@@ -42,11 +94,12 @@ export default function HeroSearch() {
         <input
           type="text"
           value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
+          onChange={handleInputChange}
+          onFocus={() => {
             setIsOpen(true);
+            if (query.trim()) performSearch(query);
+            else loadSearchModule();
           }}
-          onFocus={() => setIsOpen(true)}
           onKeyDown={handleKeyDown}
           placeholder="Search 250+ tools (e.g. compress pdf, emi, gst, json, resize photo, tamil)..."
           className="w-full pl-12 pr-12 py-3.5 rounded-2xl bg-slate-900/90 border border-white/15 text-white placeholder-slate-400 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.5)] transition-all"
@@ -57,9 +110,10 @@ export default function HeroSearch() {
             type="button"
             onClick={() => {
               setQuery("");
+              setResults([]);
               setIsOpen(false);
             }}
-            className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
             aria-label="Clear search"
           >
             <X className="w-4 h-4" />
@@ -139,11 +193,8 @@ export default function HeroSearch() {
           <button
             key={cat}
             type="button"
-            onClick={() => {
-              setQuery(cat);
-              setIsOpen(true);
-            }}
-            className="px-2.5 py-1 rounded-lg bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 hover:text-cyan-300 text-[11px] font-medium transition-all"
+            onClick={() => handleQuickCategory(cat)}
+            className="px-2.5 py-1 rounded-lg bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 hover:text-cyan-300 text-[11px] font-medium transition-all cursor-pointer"
           >
             {cat}
           </button>

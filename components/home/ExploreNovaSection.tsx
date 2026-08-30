@@ -34,7 +34,7 @@ export default function ExploreNovaSection() {
   ];
 
   return (
-    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-16 [content-visibility:auto]">
+    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-16 [content-visibility:auto] [contain-intrinsic-size:1px_380px]">
       <div className="space-y-8">
         <div className="text-center space-y-2 max-w-2xl mx-auto">
           <p className="text-xs font-bold uppercase tracking-widest text-cyan-400">

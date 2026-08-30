@@ -74,7 +74,7 @@ export default function AdSenseBanner({
   return (
     <aside
       aria-label="Advertisement"
-      className={`mx-auto w-full max-w-7xl px-4 sm:px-6 my-6 [content-visibility:auto] ${className}`}
+      className={`mx-auto w-full max-w-7xl px-4 sm:px-6 my-6 [content-visibility:auto] [contain-intrinsic-size:1px_160px] ${className}`}
     >
       <div className="relative overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/30 p-2 sm:p-3 text-center transition-all">
         {/* Subtle, standard label conforming to Google AdSense policies */}

@@ -1,12 +1,11 @@
-import Link from "next/link";
 import { affiliatePartners } from "@/lib/affiliate/partners";
-import { FileText, ExternalLink, ShieldCheck } from "lucide-react";
+import { FileText, ExternalLink } from "lucide-react";
 
 export default function AffiliateRecommendations() {
   const updf = affiliatePartners.updf;
 
   return (
-    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-16 [content-visibility:auto]">
+    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-16 [content-visibility:auto] [contain-intrinsic-size:1px_240px]">
       <div className="rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8 backdrop-blur-xl">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="space-y-2 max-w-2xl">

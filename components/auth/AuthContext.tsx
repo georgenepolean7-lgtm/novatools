@@ -61,24 +61,35 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const supabase = getSupabaseBrowserClient();
 
-    // Check active session
-    supabase.auth.getSession().then(async ({ data: { session: currentSession } }) => {
-      setSession(currentSession);
-      setUser(currentSession?.user || null);
-      if (currentSession?.user) {
-        try {
-          const [p, favs] = await Promise.all([
-            fetchCurrentUserProfile(),
-            fetchUserFavorites(currentSession.user.id),
-          ]);
-          setProfile(p);
-          setFavorites(favs);
-        } catch {
-          // Handled inside fetchers
+    // Check active session on idle to keep initial paint fast
+    const initSession = () => {
+      supabase.auth.getSession().then(async ({ data: { session: currentSession } }) => {
+        setSession(currentSession);
+        setUser(currentSession?.user || null);
+        if (currentSession?.user) {
+          try {
+            const [p, favs] = await Promise.all([
+              fetchCurrentUserProfile(),
+              fetchUserFavorites(currentSession.user.id),
+            ]);
+            setProfile(p);
+            setFavorites(favs);
+          } catch {
+            // Handled inside fetchers
+          }
         }
-      }
-      setIsLoading(false);
-    });
+        setIsLoading(false);
+      });
+    };
+
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      const win = window as unknown as {
+        requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number;
+      };
+      win.requestIdleCallback(initSession, { timeout: 1500 });
+    } else {
+      setTimeout(initSession, 500);
+    }
 
     // Listen for auth events
     const { data: { subscription } } = supabase.auth.onAuthStateChange(

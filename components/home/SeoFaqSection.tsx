@@ -60,7 +60,7 @@ export default function SeoFaqSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-slate-950/90 py-20 text-white border-t border-slate-900 [content-visibility:auto]">
+    <section className="relative overflow-hidden bg-slate-950/90 py-20 text-white border-t border-slate-900 [content-visibility:auto] [contain-intrinsic-size:1px_1400px]">
       {/* JSON-LD Schema for Google Search Rich Results */}
       <script
         type="application/ld+json"

@@ -4,7 +4,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden border-t border-white/10 bg-slate-950 py-24 text-white [content-visibility:auto]"
+      className="relative overflow-hidden border-t border-white/10 bg-slate-950 py-24 text-white [content-visibility:auto] [contain-intrinsic-size:1px_600px]"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(37,99,235,0.18),transparent_55%)]" />
 

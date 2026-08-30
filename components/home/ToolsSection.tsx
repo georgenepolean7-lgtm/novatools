@@ -4,7 +4,7 @@ export default function ToolsSection() {
   return (
     <section
       id="tools"
-      className="relative overflow-hidden bg-slate-950 py-24 text-white [content-visibility:auto]"
+      className="relative overflow-hidden bg-slate-950 py-24 text-white [content-visibility:auto] [contain-intrinsic-size:1px_550px]"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(37,99,235,0.16),transparent_35%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(124,58,237,0.12),transparent_35%)]" />

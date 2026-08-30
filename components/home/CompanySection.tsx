@@ -2,7 +2,7 @@ export default function CompanySection() {
   return (
     <section
       id="company"
-      className="relative overflow-hidden bg-slate-950 py-24 text-white [content-visibility:auto]"
+      className="relative overflow-hidden bg-slate-950 py-24 text-white [content-visibility:auto] [contain-intrinsic-size:1px_600px]"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(34,211,238,.12),transparent_35%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_80%,rgba(59,130,246,.12),transparent_35%)]" />

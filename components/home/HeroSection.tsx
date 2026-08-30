@@ -1,21 +1,24 @@
 import Link from "next/link";
 import AuroraBackground from "@/components/AuroraBackground";
 import HeroLighting from "@/components/HeroLighting";
+import CinematicHero from "@/components/CinematicHero";
+import HeroParticles from "@/components/HeroParticles";
 import HeroSearch from "./HeroSearch";
-import { HeroBackgroundVisuals, HeroUploadVisual } from "./HeroBackgroundEffects";
+import { HeroDesktopVisuals, HeroUploadVisual } from "./HeroBackgroundEffects";
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-[720px] overflow-hidden bg-slate-950">
       <AuroraBackground />
       <HeroLighting />
+      <CinematicHero />
+      <HeroParticles />
+      <HeroDesktopVisuals />
 
       <div className="hero-blue-glow pointer-events-none absolute left-[-220px] top-[-180px] h-[700px] w-[700px] rounded-full bg-cyan-500/20 blur-[170px]" />
       <div className="hero-purple-glow pointer-events-none absolute right-[-220px] top-[80px] h-[650px] w-[650px] rounded-full bg-fuchsia-500/20 blur-[170px]" />
       <div className="hero-center-glow pointer-events-none absolute left-1/2 top-[45%] h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-[140px]" />
       <div className="pointer-events-none absolute bottom-[-260px] left-1/2 h-[600px] w-[1000px] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-[180px]" />
-
-      <HeroBackgroundVisuals />
 
       <div className="relative z-10 mx-auto grid min-h-[820px] max-w-7xl items-center gap-14 px-6 pb-20 pt-36 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="mt-10 text-center lg:mt-0 lg:text-left">
