@@ -457,7 +457,8 @@ export const calculatorTools: ToolDefinition[] = [
     faq: [
 { question: "What is the standard aspect ratio for YouTube videos?", answer: "16:9 (e.g. 1920x1080 Full HD or 3840x2160 4K UHD)." },
       { question: "What is an aspect ratio?", answer: "Aspect ratio is the proportional relationship between width and height of an image or video, expressed as width:height (e.g., 16:9 for widescreen)." },
-      { question: "How do I calculate aspect ratio?", answer: "Enter the width and height in pixels or inches. The calculator instantly shows the ratio in the format width:height." }
+      { question: "How do I calculate aspect ratio?", answer: "Enter the width and height in pixels or inches. The calculator instantly shows the ratio in the format width:height." },
+      { question: "How does Aspect Ratio Calculator (Image & Video) calculate results?", answer: "Calculations execute client-side directly in your browser using standard JavaScript mathematical logic for immediate results." }
     ],
     relatedTools: ["image-resizer", "px-to-rem-converter"],
     seoTitle: "Aspect Ratio - Image & Video Dimensions",
