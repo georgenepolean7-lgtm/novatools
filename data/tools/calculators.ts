@@ -459,7 +459,8 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "What is an aspect ratio?", answer: "Aspect ratio is the proportional relationship between width and height of an image or video, expressed as width:height (e.g., 16:9 for widescreen)." },
       { question: "How do I calculate aspect ratio?", answer: "Enter the width and height in pixels or inches. The calculator instantly shows the ratio in the format width:height." },
       { question: "How does Aspect Ratio Calculator (Image & Video) calculate results?", answer: "Calculations execute client-side directly in your browser using standard JavaScript mathematical logic for immediate results." },
-      { question: "Does Aspect Ratio Calculator (Image & Video) require an internet connection after loading?", answer: "No. Once the page is loaded, calculations execute locally in your browser without sending input data over the network." }
+      { question: "Does Aspect Ratio Calculator (Image & Video) require an internet connection after loading?", answer: "No. Once the page is loaded, calculations execute locally in your browser without sending input data over the network." },
+      { question: "Is Aspect Ratio Calculator (Image & Video) free to use on Nova Tools?", answer: "Yes. All calculations are performed directly in-browser with no usage limits or registration required." }
     ],
     relatedTools: ["image-resizer", "px-to-rem-converter"],
     seoTitle: "Aspect Ratio - Image & Video Dimensions",
@@ -1108,7 +1109,10 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Configure Format", instruction: "Select sample rate, bit depth, and channels." },
       { step: 3, title: "Calculate", instruction: "View estimated file size in MB across WAV, MP3, and AAC." },
     ],
-    faq: [{ question: "How is uncompressed audio size calculated?", answer: "Size (Bytes) = Sample Rate (Hz) x (Bit Depth / 8) x Channels x Duration (Seconds)." }],
+    faq: [
+{ question: "How is uncompressed audio size calculated?", answer: "Size (Bytes) = Sample Rate (Hz) x (Bit Depth / 8) x Channels x Duration (Seconds)." },
+      { question: "How do I calculate audio file size?", answer: "Enter your audio's sample rate, bit depth, and duration to get accurate file size and bitrate estimates in real-time." }
+    ],
     relatedTools: ["audio-duration-to-samples-converter", "audio-bpm-tempo-delay-calculator"],
     seoTitle: "Audio File Size & Bitrate Calculator (WAV",
     seoDescription: "Calculate WAV, MP3, and AAC audio file sizes online based on sample rate, bit depth, and duration. Free audio engineering tool.",

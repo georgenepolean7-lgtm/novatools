@@ -55,7 +55,10 @@ export const pdfTools: ToolDefinition[] = [
       { step: 2, title: "Arrange Order", instruction: "Drag cards to set the desired document order." },
       { step: 3, title: "Merge & Download", instruction: "Click 'Merge PDF' and save your combined file." },
     ],
-    faq: [{ question: "Is there a limit on how many PDFs I can merge?", answer: "No, you can combine as many files as your device's memory can handle." }],
+    faq: [
+{ question: "Is there a limit on how many PDFs I can merge?", answer: "No, you can combine as many files as your device's memory can handle." },
+      { question: "How do I merge multiple PDFs?", answer: "Drag and drop your PDF files into the interface. The tool will combine them in the order you added them. No files are stored on our servers." }
+    ],
     relatedTools: ["compress-pdf", "split-pdf", "pdf-page-extractor"],
     seoTitle: "Merge PDF - Combine PDF Files",
     seoDescription: "Combine multiple PDF documents into a single file online. Easy drag-and-drop reordering with 100% in-browser privacy.",
@@ -90,7 +93,11 @@ export const pdfTools: ToolDefinition[] = [
       { step: 2, title: "Specify Pages", instruction: "Enter page ranges (e.g. 1-3, 5, 8-10) or choose 'Split All'." },
       { step: 3, title: "Download", instruction: "Save your split PDF files or ZIP archive." },
     ],
-    faq: [{ question: "Can I extract non-consecutive pages?", answer: "Yes, you can enter comma-separated numbers and ranges like 1, 4, 7-10." }],
+    faq: [
+{ question: "Can I extract non-consecutive pages?", answer: "Yes, you can enter comma-separated numbers and ranges like 1, 4, 7-10." },
+      { question: "How do I split a PDF into individual pages?", answer: "Select the PDF file, choose the page range, and click 'Split'. The tool processes it in your browser with no file storage." },
+      { question: "Can I split specific page ranges in a PDF?", answer: "Yes. Enter start and end page numbers to split custom ranges. The tool handles this in your browser." }
+    ],
     relatedTools: ["merge-pdf", "pdf-page-extractor", "pdf-page-deleter"],
     seoTitle: "Split PDF - Separate PDF Pages",
     seoDescription: "Split PDF files into separate pages or custom page ranges online. Fast, secure, in-browser PDF splitting.",

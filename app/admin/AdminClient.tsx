@@ -33,7 +33,9 @@ import {
   ExternalLink,
   Globe,
   Send,
+  Bot,
 } from "lucide-react";
+import SeoAgentDashboard from "@/components/admin/SeoAgentDashboard";
 
 interface AdminMetricsData {
   totalUsers: number;
@@ -64,7 +66,7 @@ export function AdminClient({ initialSettings, isAdmin, userEmail }: AdminClient
   const categories = getAllCategories();
 
   const [activeTab, setActiveTab] = useState<
-    "overview" | "security" | "settings" | "affiliate" | "flags" | "tools" | "feedback" | "audit"
+    "overview" | "seo" | "security" | "settings" | "affiliate" | "flags" | "tools" | "feedback" | "audit"
   >("overview");
 
   // Real Supabase Analytics Metrics
@@ -341,6 +343,7 @@ export function AdminClient({ initialSettings, isAdmin, userEmail }: AdminClient
         <div className="flex flex-wrap items-center gap-2 border-b border-slate-800/80 pb-2">
           {[
             { id: "overview", label: "Overview", icon: Activity },
+            { id: "seo", label: "SEO Automation", icon: Bot },
             { id: "security", label: "Security & Vulnerability", icon: ShieldCheck },
             { id: "settings", label: "System & Payments", icon: DollarSign },
             { id: "affiliate", label: "Affiliate & Partners", icon: Sparkles },
@@ -1453,6 +1456,9 @@ export function AdminClient({ initialSettings, isAdmin, userEmail }: AdminClient
             )}
           </div>
         )}
+
+        {/* Tab 9: Autonomous SEO Engine */}
+        {activeTab === "seo" && <SeoAgentDashboard />}
 
         {/* Back link */}
         <div className="pt-8 border-t border-slate-800">

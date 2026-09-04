@@ -42,3 +42,9 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# Google Cloud credentials
+*-462313-*.json
+capable-shape-*.json
+*service-account*.json
+*.credential.json

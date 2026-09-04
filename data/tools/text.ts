@@ -484,7 +484,10 @@ export const textTools: ToolDefinition[] = [
       { step: 1, title: "Enter Text", instruction: "Type or paste normal words or sentences." },
       { step: 2, title: "Convert", instruction: "Click Process to generate camelCase identifier." },
     ],
-    faq: [{ question: "What is camelCase?", answer: "A naming convention where words are joined without spaces, and each word after the first begins with a capital letter (e.g., firstName)." }],
+    faq: [
+{ question: "What is camelCase?", answer: "A naming convention where words are joined without spaces, and each word after the first begins with a capital letter (e.g., firstName)." },
+      { question: "How do I convert text to camelCase?", answer: "Enter your text in the input box, click 'Convert', and the tool instantly returns camelCase formatted text for JavaScript use." }
+    ],
     relatedTools: ["snake-case-converter", "kebab-case-converter", "pascalcase-converter"],
     seoTitle: "camelCase String Converter",
     seoDescription: "Convert text and phrases to camelCase online for JavaScript and programming. Fast and free.",
