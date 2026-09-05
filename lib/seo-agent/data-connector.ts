@@ -416,12 +416,78 @@ export class SeoDataConnector {
           };
         }
 
+        // First discover the exact Search Console property authorized for this account.
+        // GSC is strict about property identity: URL-prefix properties use the full URL
+        // and domain properties use sc-domain:example.com. Reusing a hard-coded property
+        // that differs from the connected account can validly return zero rows.
+        const listSitesPayload: Record<string, unknown> = {
+          connected_account_id: gscAcc.id,
+          arguments: {},
+        };
+        if (gscAcc.user_id) listSitesPayload.user_id = gscAcc.user_id;
+
+        const listSitesRes = await fetchWithTimeout(
+          `${this.composioBaseUrl}/tools/execute/GOOGLE_SEARCH_CONSOLE_LIST_SITES`,
+          {
+            method: "POST",
+            headers: {
+              "x-api-key": this.composioApiKey,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(listSitesPayload),
+          },
+          SEO_AGENT_CONFIG.COMPOSIO.ACCOUNTS_MS || 10000
+        );
+
+        let authorizedProperties: string[] = [];
+        if (listSitesRes.ok) {
+          const sitesJson = await listSitesRes.json();
+          const parseJson = (value: unknown): unknown => {
+            if (typeof value !== "string") return value;
+            try { return JSON.parse(value); } catch { return value; }
+          };
+          const sitesEnvelope = parseJson(sitesJson) as any;
+          const siteCandidates = [
+            sitesEnvelope?.data?.response_data?.siteEntry,
+            sitesEnvelope?.data?.response_data?.site_entry,
+            sitesEnvelope?.data?.response_data?.sites,
+            sitesEnvelope?.data?.data?.siteEntry,
+            sitesEnvelope?.data?.siteEntry,
+            sitesEnvelope?.data?.sites,
+            sitesEnvelope?.response_data?.siteEntry,
+            sitesEnvelope?.siteEntry,
+            sitesEnvelope?.sites,
+          ];
+          const siteArray = siteCandidates.map(parseJson).find((v) => Array.isArray(v)) || [];
+          authorizedProperties = siteArray
+            .map((site: any) => String(site?.siteUrl || site?.site_url || "").trim())
+            .filter(Boolean);
+        }
+
+        const configuredProperty = this.gscProperty.trim();
+        const configuredHost = (() => {
+          try { return new URL(configuredProperty).hostname.replace(/^www\\./, "").toLowerCase(); }
+          catch { return configuredProperty.replace(/^sc-domain:/i, "").replace(/^www\\./, "").toLowerCase(); }
+        })();
+
+        const selectedProperty =
+          authorizedProperties.find((p) => p === configuredProperty) ||
+          authorizedProperties.find((p) => {
+            try { return new URL(p).hostname.replace(/^www\\./, "").toLowerCase() === configuredHost; }
+            catch { return p.replace(/^sc-domain:/i, "").replace(/^www\\./, "").toLowerCase() === configuredHost; }
+          }) ||
+          configuredProperty;
+
+        console.log(
+          `[SEO][GSC] Authorized properties: ${authorizedProperties.length}; configured='${configuredProperty}'; selected='${selectedProperty}'`
+        );
+
         // Composio's current GSC schema uses snake_case argument names.
-        // Keep the request aligned with the live GOOGLE_SEARCH_CONSOLE_SEARCH_ANALYTICS_QUERY tool.
         const payload: Record<string, unknown> = {
           connected_account_id: gscAcc.id,
+          version: "20260806_00",
           arguments: {
-            site_url: this.gscProperty,
+            site_url: selectedProperty,
             start_date: dateRange.startDate,
             end_date: dateRange.endDate,
             dimensions: ["page", "query"],
@@ -430,9 +496,7 @@ export class SeoDataConnector {
           },
         };
 
-        if (gscAcc.user_id) {
-          payload.user_id = gscAcc.user_id;
-        }
+        if (gscAcc.user_id) payload.user_id = gscAcc.user_id;
 
         const res = await fetchWithTimeout(
           `${this.composioBaseUrl}/tools/execute/${SEO_AGENT_CONFIG.COMPOSIO.GSC_ACTION_NAME}`,
@@ -477,6 +541,8 @@ export class SeoDataConnector {
           const envelope = parseNestedJson(json);
           const candidates: unknown[] = [
             (envelope as any)?.data?.response_data?.rows,
+            (envelope as any)?.data?.response_data?.data?.rows,
+            (envelope as any)?.data?.response_data?.response?.rows,
             (envelope as any)?.data?.data?.rows,
             (envelope as any)?.data?.response?.data?.rows,
             (envelope as any)?.data?.rows,
@@ -495,7 +561,7 @@ export class SeoDataConnector {
             const query = keys[1] || "";
             const provenance: MetricProvenance = {
               source: "GOOGLE_SEARCH_CONSOLE",
-              property: this.gscProperty,
+              property: selectedProperty,
               dateRange,
               retrievalTimestamp: timestamp,
               pageOrQuery: page,
@@ -518,7 +584,7 @@ export class SeoDataConnector {
           return {
             metrics,
             status: "CONNECTED",
-            provenanceReport: `Retrieved ${metrics.length} real GSC metrics from ${this.gscProperty} for ${dateRange.startDate} to ${dateRange.endDate}`,
+            provenanceReport: `Retrieved ${metrics.length} real GSC metrics from ${selectedProperty} for ${dateRange.startDate} to ${dateRange.endDate}`,
           };
         }
       } catch (err) {
