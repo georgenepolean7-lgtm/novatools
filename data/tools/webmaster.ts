@@ -27,7 +27,7 @@ export const webmasterTools: ToolDefinition[] = [
       { question: "Does CIDR Subnet Calculator (IPv4) support class a/b/c detection?", answer: "Yes. CIDR Subnet Calculator (IPv4) provides class a/b/c detection natively in your browser with real-time feedback." }
     ],
     relatedTools: ["user-agent-parser", "htaccess-redirect-generator", "robots-txt-generator"],
-    seoTitle: "CIDR Subnet Calculator (IPv4)",
+    seoTitle: "CIDR Subnet Calculator (IPv4) Online | Nova Tools",
     seoDescription: "Calculate IPv4 subnet masks, total IP addresses, and usable host ranges online with CIDR notation. Fast network engineering tool.",
     canonicalUrl: "/cidr-calculator",
     processingType: "client",

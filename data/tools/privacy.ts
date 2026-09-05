@@ -173,7 +173,7 @@ export const privacyTools: ToolDefinition[] = [
       { question: "Does IPv4 Subnet Calculator (CIDR) support wildcard mask calculation?", answer: "Yes. IPv4 Subnet Calculator (CIDR) provides wildcard mask calculation natively in your browser with real-time feedback." }
     ],
     relatedTools: ["ipv4-address-converter", "ipv6-validator"],
-    seoTitle: "IPv4 Subnet Calculator (CIDR)",
+    seoTitle: "IPv4 Subnet Calculator (CIDR) Online | Nova Tools",
     seoDescription: "Calculate IPv4 subnets, usable host ranges, broadcast IPs, and masks online. Free network calculator.",
     canonicalUrl: "/ipv4-subnet-calculator",
     processingType: "client",

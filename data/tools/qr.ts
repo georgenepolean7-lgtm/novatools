@@ -58,7 +58,7 @@ export const qrTools: ToolDefinition[] = [
     ],
     faq: [{ question: "Is my WiFi password safe?", answer: "Yes, the QR code is drawn directly in your browser's canvas. No credentials leave your device." }],
     relatedTools: ["qr-code-generator", "password-generator", "vcard-qr-code-generator", "email-qr-code-generator", "sms-qr-code-generator"],
-    seoTitle: "WiFi QR Code Generator",
+    seoTitle: "WiFi QR Code Generator Online | Nova Tools",
     seoDescription: "Create WiFi QR codes online for fast guest login. Share your home or office WiFi securely with instant scanning.",
     canonicalUrl: "/wifi-qr-code-generator",
     processingType: "client",
