@@ -130,7 +130,7 @@ export const seoTools: ToolDefinition[] = [
     ],
     faq: [{ question: "What is the maximum pixel width for Google titles?", answer: "Google typically truncates titles exceeding approximately 600 pixels (around 55 to 60 characters)." }],
     relatedTools: ["meta-tag-generator", "keyword-density-checker", "robots-txt-generator", "open-graph-meta-generator", "schema-markup-generator"],
-    seoTitle: "Google SERP Snippet Preview",
+    seoTitle: "Google SERP Snippet Preview Tool Online Tool | Nova Tools",
     seoDescription: "Preview your website's search result snippet as it appears on Google desktop and mobile. Free SERP simulator.",
     canonicalUrl: "/serp-snippet-preview",
     processingType: "client",

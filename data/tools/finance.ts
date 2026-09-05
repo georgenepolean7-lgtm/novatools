@@ -22,7 +22,7 @@ export const financeTools: ToolDefinition[] = [
     ],
     faq: [{ question: "What is the difference between Margin and Markup?", answer: "Margin is profit as a percentage of Selling Price; Markup is profit as a percentage of Cost Price." }],
     relatedTools: ["roi-calculator", "break-even-calculator", "discount-calculator", "gst-calculator"],
-    seoTitle: "Profit Margin Calculator",
+    seoTitle: "Profit Margin Calculator Online | Nova Tools",
     seoDescription: "Calculate profit margins and markups online. Accurate, instant gross profit and pricing calculator for businesses.",
     canonicalUrl: "/profit-margin-calculator",
     processingType: "client",
