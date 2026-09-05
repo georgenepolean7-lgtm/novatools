@@ -493,8 +493,6 @@ export class SeoDataConnector {
             const keys = Array.isArray(row.keys) ? row.keys.map(String) : [];
             const page = keys[0] || "";
             const query = keys[1] || "";
-            const page = row.keys?.[0] || "";
-            const query = row.keys?.[1] || "";
             const provenance: MetricProvenance = {
               source: "GOOGLE_SEARCH_CONSOLE",
               property: this.gscProperty,
