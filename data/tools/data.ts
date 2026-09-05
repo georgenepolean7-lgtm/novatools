@@ -163,7 +163,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 2, title: "Set Interface Name", instruction: "Provide root interface name (e.g. UserProfile)." },
       { step: 3, title: "Copy TypeScript", instruction: "Copy generated .ts interface directly into your codebase." },
     ],
-    faq: [{ question: "Does it support arrays of objects?", answer: "Yes, it inspects array items to generate typed `Item[]` declarations." }],
+    faq: [
+{ question: "Does it support arrays of objects?", answer: "Yes, it inspects array items to generate typed `Item[]` declarations." },
+      { question: "Does JSON to TypeScript Interface Generator support infers string, number, boolean, array types?", answer: "Yes. JSON to TypeScript Interface Generator provides infers string, number, boolean, array types natively in your browser with real-time feedback." },
+      { question: "Does JSON to TypeScript Interface Generator support custom interface naming?", answer: "Yes. JSON to TypeScript Interface Generator provides custom interface naming natively in your browser with real-time feedback." },
+      { question: "Does JSON to TypeScript Interface Generator support strict typescript syntax?", answer: "Yes. JSON to TypeScript Interface Generator provides strict typescript syntax natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["json-validator", "json-formatter"],
     seoTitle: "JSON to TypeScript Interface Generator",
     seoDescription: "Generate strongly-typed TypeScript interfaces from JSON payloads online. Free developer tool.",
@@ -911,7 +916,7 @@ export const dataTools: ToolDefinition[] = [
       { step: 3, title: "Copy", instruction: "Copy JSON array output." },
     ],
     faq: [{ question: "Does this support multi-row inserts?", answer: "Yes, multi-row INSERT syntax like VALUES (1, 'A'), (2, 'B') is fully supported." }],
-    relatedTools: ["csv-to-sql-insert-generator", "json-to-csv"],
+    relatedTools: ["csv-to-sql-insert", "json-to-csv"],
     seoTitle: "SQL INSERT to JSON Converter",
     seoDescription: "Convert SQL INSERT INTO statements and database queries to JSON array objects online. Free in-browser data tool.",
     canonicalUrl: "/sql-to-json-converter",

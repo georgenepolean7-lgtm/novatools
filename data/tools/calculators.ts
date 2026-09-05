@@ -59,7 +59,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Set Return Rate", instruction: "Enter the expected annual return percentage (e.g. 12%)." },
       { step: 3, title: "Set Duration", instruction: "Choose investment horizon in years to see maturity wealth." },
     ],
-    faq: [{ question: "What is an average realistic SIP return?", answer: "Historically, Indian equity mutual funds have generated around 12% to 15% annualized returns over 10+ year periods." }],
+    faq: [
+{ question: "What is an average realistic SIP return?", answer: "Historically, Indian equity mutual funds have generated around 12% to 15% annualized returns over 10+ year periods." },
+      { question: "Does SIP Investment & Wealth Calculator support compound monthly compounding?", answer: "Yes. SIP Investment & Wealth Calculator provides compound monthly compounding natively in your browser with real-time feedback." },
+      { question: "Does SIP Investment & Wealth Calculator support visual total invested vs wealth gain?", answer: "Yes. SIP Investment & Wealth Calculator provides visual total invested vs wealth gain natively in your browser with real-time feedback." },
+      { question: "Does SIP Investment & Wealth Calculator support instant projection?", answer: "Yes. SIP Investment & Wealth Calculator provides instant projection natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["loan-emi-calculator", "compound-interest-calculator", "cagr-calculator"],
     seoTitle: "SIP Calculator - Mutual Fund Returns",
     seoDescription: "Calculate future returns on your SIP investments. Project mutual fund compound wealth growth online.",
@@ -95,7 +100,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Set Rate & Years", instruction: "Enter annual interest rate and number of years." },
       { step: 3, title: "Calculate", instruction: "View total interest earned and final balance." },
     ],
-    faq: [{ question: "What is the compound interest formula?", answer: "A = P(1 + r/n)^(nt), where P is principal, r is annual rate, n is compounding frequency, and t is years." }],
+    faq: [
+{ question: "What is the compound interest formula?", answer: "A = P(1 + r/n)^(nt), where P is principal, r is annual rate, n is compounding frequency, and t is years." },
+      { question: "Does Compound Interest Calculator support annual and monthly compounding?", answer: "Yes. Compound Interest Calculator provides annual and monthly compounding natively in your browser with real-time feedback." },
+      { question: "Does Compound Interest Calculator support principal and interest separation?", answer: "Yes. Compound Interest Calculator provides principal and interest separation natively in your browser with real-time feedback." },
+      { question: "Does Compound Interest Calculator support instant calculation?", answer: "Yes. Compound Interest Calculator provides instant calculation natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["simple-interest-calculator", "sip-calculator", "cagr-calculator"],
     seoTitle: "Compound Interest - Investment Growth",
     seoDescription: "Calculate compound interest gains and maturity value online with annual and monthly compounding.",
@@ -749,7 +759,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Enter Final Value", instruction: "Input portfolio value at end." },
       { step: 3, title: "Enter Years", instruction: "Input number of years to view annualized CAGR percentage." },
     ],
-    faq: [{ question: "What is the CAGR formula?", answer: "CAGR = (Ending Value / Beginning Value)^(1 / Years) - 1." }],
+    faq: [
+{ question: "What is the CAGR formula?", answer: "CAGR = (Ending Value / Beginning Value)^(1 / Years) - 1." },
+      { question: "Does CAGR Calculator (Compound Annual Growth Rate) support standard cagr formula?", answer: "Yes. CAGR Calculator (Compound Annual Growth Rate) provides standard cagr formula natively in your browser with real-time feedback." },
+      { question: "Does CAGR Calculator (Compound Annual Growth Rate) support initial and final valuation inputs?", answer: "Yes. CAGR Calculator (Compound Annual Growth Rate) provides initial and final valuation inputs natively in your browser with real-time feedback." },
+      { question: "Does CAGR Calculator (Compound Annual Growth Rate) support instant calculation?", answer: "Yes. CAGR Calculator (Compound Annual Growth Rate) provides instant calculation natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["sip-calculator", "compound-interest-calculator"],
     seoTitle: "CAGR Calculator - Annual Growth Rate",
     seoDescription: "Calculate CAGR (Compound Annual Growth Rate) for investments, stocks, and businesses online.",
@@ -785,7 +800,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Enter Inflation Rate", instruction: "Input estimated annual inflation percentage (e.g. 6%)." },
       { step: 3, title: "Enter Years", instruction: "Input duration in years to see future equivalent cost." },
     ],
-    faq: [{ question: "What is the average inflation rate in India?", answer: "Historically, consumer price index (CPI) inflation in India averages around 5% to 7% annually." }],
+    faq: [
+{ question: "What is the average inflation rate in India?", answer: "Historically, consumer price index (CPI) inflation in India averages around 5% to 7% annually." },
+      { question: "Does Inflation & Purchasing Power Calculator support projects future cost equivalent?", answer: "Yes. Inflation & Purchasing Power Calculator provides projects future cost equivalent natively in your browser with real-time feedback." },
+      { question: "Does Inflation & Purchasing Power Calculator support calculates purchasing power reduction?", answer: "Yes. Inflation & Purchasing Power Calculator provides calculates purchasing power reduction natively in your browser with real-time feedback." },
+      { question: "Does Inflation & Purchasing Power Calculator support instant calculation?", answer: "Yes. Inflation & Purchasing Power Calculator provides instant calculation natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["compound-interest-calculator", "sip-calculator"],
     seoTitle: "Inflation Calculator - Future Value",
     seoDescription: "Calculate the impact of inflation on future purchasing power and expenses online. Fast and accurate.",
@@ -857,7 +877,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Enter COGS", instruction: "Input total cost of goods sold." },
       { step: 3, title: "View Margin", instruction: "Read gross profit and margin percentage." },
     ],
-    faq: [{ question: "What is the Gross Margin formula?", answer: "Gross Margin % = ((Revenue - COGS) / Revenue) x 100." }],
+    faq: [
+{ question: "What is the Gross Margin formula?", answer: "Gross Margin % = ((Revenue - COGS) / Revenue) x 100." },
+      { question: "Does Gross Profit Margin Calculator support standard gross profit margin formula?", answer: "Yes. Gross Profit Margin Calculator provides standard gross profit margin formula natively in your browser with real-time feedback." },
+      { question: "Does Gross Profit Margin Calculator support cogs percentage ratio breakdown?", answer: "Yes. Gross Profit Margin Calculator provides cogs percentage ratio breakdown natively in your browser with real-time feedback." },
+      { question: "Does Gross Profit Margin Calculator support instant calculation?", answer: "Yes. Gross Profit Margin Calculator provides instant calculation natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["markup-calculator", "percentage-change-calculator"],
     seoTitle: "Margin Calculator - Gross Profit Margin",
     seoDescription: "Calculate gross profit margins and business profitability online. Fast and accurate.",
@@ -893,7 +918,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Enter Time 2", instruction: "Input second duration." },
       { step: 3, title: "View Sum", instruction: "Read total combined hours and minutes." },
     ],
-    faq: [{ question: "Can it calculate over 24 hours?", answer: "Yes, it supports multi-day hour durations seamlessly." }],
+    faq: [
+{ question: "Can it calculate over 24 hours?", answer: "Yes, it supports multi-day hour durations seamlessly." },
+      { question: "Does Time Duration & Addition Calculator support add or subtract modes?", answer: "Yes. Time Duration & Addition Calculator provides add or subtract modes natively in your browser with real-time feedback." },
+      { question: "Does Time Duration & Addition Calculator support hours, minutes, seconds breakdown?", answer: "Yes. Time Duration & Addition Calculator provides hours, minutes, seconds breakdown natively in your browser with real-time feedback." },
+      { question: "Does Time Duration & Addition Calculator support instant result?", answer: "Yes. Time Duration & Addition Calculator provides instant result natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["date-difference-calculator", "unix-timestamp-converter"],
     seoTitle: "Time Duration & Addition Calculator",
     seoDescription: "Add and subtract hours, minutes, and seconds online. Fast time duration calculator.",
@@ -930,7 +960,7 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 3, title: "Copy", instruction: "Copy text directly for your bank cheque or invoice." },
     ],
     faq: [{ question: "Does it support Indian Lakhs and Crores?", answer: "Yes, it fully complies with the Indian numbering system." }],
-    relatedTools: ["tamil-number-to-words", "sales-tax-calculator"],
+    relatedTools: ["gst-calculator", "sales-tax-calculator"],
     seoTitle: "Number to Words & Cheque Amount Converter",
     seoDescription: "Convert numbers to words online with Lakhs, Crores, and currency formatting for cheques.",
     canonicalUrl: "/number-to-words-converter",

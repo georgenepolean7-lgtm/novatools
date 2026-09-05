@@ -1002,7 +1002,12 @@ export const developerTools: ToolDefinition[] = [
       { step: 2, title: "Decode", instruction: "Click 'Process Hex to ASCII'." },
       { step: 3, title: "Read", instruction: "View the decoded plain text." },
     ],
-    faq: [{ question: "Can I paste hex with 0x prefixes?", answer: "Yes, '0x48 0x65' and '4865' formats are both accepted." }],
+    faq: [
+{ question: "Can I paste hex with 0x prefixes?", answer: "Yes, '0x48 0x65' and '4865' formats are both accepted." },
+      { question: "Does Hex to ASCII Text Converter support handles space, colon, or no delimiter?", answer: "Yes. Hex to ASCII Text Converter provides handles space, colon, or no delimiter natively in your browser with real-time feedback." },
+      { question: "Does Hex to ASCII Text Converter support utf-8 decoder?", answer: "Yes. Hex to ASCII Text Converter provides utf-8 decoder natively in your browser with real-time feedback." },
+      { question: "Does Hex to ASCII Text Converter support error detection?", answer: "Yes. Hex to ASCII Text Converter provides error detection natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["ascii-to-hex-converter", "base64-decoder", "url-decoder"],
     seoTitle: "Hex to ASCII Text Converter",
     seoDescription: "Convert hexadecimal byte sequences back to readable plain text online. Fast, free in-browser hex decoder.",
@@ -1074,7 +1079,12 @@ export const developerTools: ToolDefinition[] = [
       { step: 2, title: "Convert", instruction: "Click 'Process YAML to JSON'." },
       { step: 3, title: "Copy JSON", instruction: "Copy your formatted JSON." },
     ],
-    faq: [{ question: "Does it handle comments in YAML?", answer: "Yes, '#' comments in YAML are automatically stripped during conversion." }],
+    faq: [
+{ question: "Does it handle comments in YAML?", answer: "Yes, '#' comments in YAML are automatically stripped during conversion." },
+      { question: "Does YAML to JSON Converter support type casting for booleans, numbers, and nulls?", answer: "Yes. YAML to JSON Converter provides type casting for booleans, numbers, and nulls natively in your browser with real-time feedback." },
+      { question: "Does YAML to JSON Converter support formatted json output?", answer: "Yes. YAML to JSON Converter provides formatted json output natively in your browser with real-time feedback." },
+      { question: "Does YAML to JSON Converter support instant copy?", answer: "Yes. YAML to JSON Converter provides instant copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["json-to-yaml", "json-formatter", "json-validator"],
     seoTitle: "YAML to JSON Converter - Developer Utility",
     seoDescription: "Convert YAML and YML configuration files to valid JSON online. Fast in-browser converter.",
@@ -1182,7 +1192,7 @@ export const developerTools: ToolDefinition[] = [
       { step: 2, title: "Explain", instruction: "View plain English schedule description." },
     ],
     faq: [{ question: "What are the 5 cron fields in order?", answer: "Minute (0-59), Hour (0-23), Day of Month (1-31), Month (1-12), Day of Week (0-7)." }],
-    relatedTools: ["timestamp-converter", "api-payload-size-calculator"],
+    relatedTools: ["unix-timestamp-converter", "api-payload-size-calculator"],
     seoTitle: "Cron Expression Parser & Human Schedule Ex",
     seoDescription: "Parse Cron expressions into plain English schedules online. Free in-browser crontab schedule explainer.",
     canonicalUrl: "/cron-expression-descriptor",
@@ -1322,7 +1332,12 @@ export const developerTools: ToolDefinition[] = [
       { step: 2, title: "Convert", instruction: "Click Execute to transpile indentation." },
       { step: 3, title: "Copy Code", instruction: "Copy standardized code." },
     ],
-    faq: [{ question: "Does this alter string literals inside code?", answer: "It targets only leading line indentation without modifying string contents inside lines." }],
+    faq: [
+{ question: "Does this alter string literals inside code?", answer: "It targets only leading line indentation without modifying string contents inside lines." },
+      { question: "Does Code Indentation Converter (Spaces ↔ Tabs) support supports 2 spaces, 4 spaces, and tabs (\\t)?", answer: "Yes. Code Indentation Converter (Spaces ↔ Tabs) provides supports 2 spaces, 4 spaces, and tabs (\\t) natively in your browser with real-time feedback." },
+      { question: "Does Code Indentation Converter (Spaces ↔ Tabs) support trims trailing whitespace?", answer: "Yes. Code Indentation Converter (Spaces ↔ Tabs) provides trims trailing whitespace natively in your browser with real-time feedback." },
+      { question: "Does Code Indentation Converter (Spaces ↔ Tabs) support preserves inner code formatting?", answer: "Yes. Code Indentation Converter (Spaces ↔ Tabs) provides preserves inner code formatting natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["text-cleaner", "json-formatter"],
     seoTitle: "Code Indentation Converter (Spaces ↔ Tabs)",
     seoDescription: "Convert code indentation between spaces and tabs online. Fast, clean in-browser indentation formatter.",

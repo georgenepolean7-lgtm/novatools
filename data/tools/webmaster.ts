@@ -21,7 +21,7 @@ export const webmasterTools: ToolDefinition[] = [
       { step: 3, title: "Review Range", instruction: "View total addresses, netmask, and usable host count." },
     ],
     faq: [{ question: "How many usable hosts are in a /24 subnet?", answer: "A /24 subnet has 256 total IP addresses and 254 usable host addresses (subtracting network and broadcast IPs)." }],
-    relatedTools: ["user-agent-parser", "htaccess-redirect-generator", "unit-converter"],
+    relatedTools: ["user-agent-parser", "htaccess-redirect-generator", "robots-txt-generator"],
     seoTitle: "CIDR Subnet Calculator (IPv4)",
     seoDescription: "Calculate IPv4 subnet masks, total IP addresses, and usable host ranges online with CIDR notation. Fast network engineering tool.",
     canonicalUrl: "/cidr-calculator",
@@ -56,7 +56,12 @@ export const webmasterTools: ToolDefinition[] = [
       { step: 2, title: "Parse", instruction: "Click Execute to transform headers into structured JSON." },
       { step: 3, title: "Copy", instruction: "Copy clean JSON formatted header object." },
     ],
-    faq: [{ question: "Can this parse both request and response headers?", answer: "Yes, any standard key-value colon-delimited HTTP header stream is parsed." }],
+    faq: [
+{ question: "Can this parse both request and response headers?", answer: "Yes, any standard key-value colon-delimited HTTP header stream is parsed." },
+      { question: "Does HTTP Request Header Parser & Security Auditor support parses multi-line headers into formatted json?", answer: "Yes. HTTP Request Header Parser & Security Auditor provides parses multi-line headers into formatted json natively in your browser with real-time feedback." },
+      { question: "Does HTTP Request Header Parser & Security Auditor support flags authorization and security headers?", answer: "Yes. HTTP Request Header Parser & Security Auditor provides flags authorization and security headers natively in your browser with real-time feedback." },
+      { question: "Does HTTP Request Header Parser & Security Auditor support one-click copy?", answer: "Yes. HTTP Request Header Parser & Security Auditor provides one-click copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["security-headers-generator", "cache-control-generator", "cors-header-generator"],
     seoTitle: "HTTP Request Header Parser & Security Audi",
     seoDescription: "Parse raw HTTP request and response headers into JSON online. Free in-browser webmaster and developer tool.",
@@ -92,7 +97,12 @@ export const webmasterTools: ToolDefinition[] = [
       { step: 2, title: "Enter Destination URL", instruction: "Enter the target destination URL." },
       { step: 3, title: "Copy Directive", instruction: "Paste the generated rule into your `.htaccess` file." },
     ],
-    faq: [{ question: "Does a 301 redirect preserve SEO rankings?", answer: "Yes, 301 permanent redirects pass 90-99% of link equity (ranking power) to the new page." }],
+    faq: [
+{ question: "Does a 301 redirect preserve SEO rankings?", answer: "Yes, 301 permanent redirects pass 90-99% of link equity (ranking power) to the new page." },
+      { question: "Does .htaccess 301 Redirect Generator support 301 permanent & 302 temporary modes?", answer: "Yes. .htaccess 301 Redirect Generator provides 301 permanent & 302 temporary modes natively in your browser with real-time feedback." },
+      { question: "Does .htaccess 301 Redirect Generator support standard apache mod_alias syntax?", answer: "Yes. .htaccess 301 Redirect Generator provides standard apache mod_alias syntax natively in your browser with real-time feedback." },
+      { question: "Does .htaccess 301 Redirect Generator support one-click copy?", answer: "Yes. .htaccess 301 Redirect Generator provides one-click copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["robots-txt-generator", "meta-tag-generator", "cidr-calculator"],
     seoTitle: ".htaccess 301 Redirect Generator",
     seoDescription: "Generate Apache .htaccess 301 permanent and 302 temporary redirect rules online. Fast, clean, SEO-safe URL redirection generator.",
