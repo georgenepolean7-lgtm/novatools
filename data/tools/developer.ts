@@ -1297,7 +1297,7 @@ export const developerTools: ToolDefinition[] = [
       { step: 2, title: "Escape", instruction: "View sanitized RegExp-safe string." },
     ],
     faq: [{ question: "Which characters are escaped?", answer: "Escapes: \\, ., *, +, ?, ^, $, {, }, (, ), |, [, ], /." }],
-    relatedTools: ["regex-tester", "url-encoder"],
+    relatedTools: ["regex-tester", "url-encoder", "json-formatter", "json-minifier", "json-validator"],
     seoTitle: "RegExp & JavaScript String Escape Utility",
     seoDescription: "Escape special characters for RegExp and JavaScript string literals online. Fast, free in-browser developer tool.",
     canonicalUrl: "/javascript-regex-string-escape",

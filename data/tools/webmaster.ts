@@ -289,7 +289,7 @@ export const webmasterTools: ToolDefinition[] = [
       { step: 2, title: "Parse", instruction: "Click Execute to view structural analysis." },
     ],
     faq: [{ question: "Does it decode URL-encoded query characters?", answer: "Yes, percent-encoded query parameter values are automatically decoded into plain text." }],
-    relatedTools: ["url-encoder", "url-decoder", "cidr-calculator"],
+    relatedTools: ["url-encoder", "url-decoder", "cidr-calculator", "http-request-header-parser", "htaccess-redirect-generator", "security-headers-generator"],
     seoTitle: "URL Structure Parser & Query Analyzer",
     seoDescription: "Deconstruct and parse URLs into protocol, host, path, and query parameters online. Fast webmaster reference.",
     canonicalUrl: "/url-slug-parser-analyzer",
