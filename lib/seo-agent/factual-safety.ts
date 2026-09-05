@@ -16,6 +16,7 @@
  */
 
 import { ToolDefinition } from "@/lib/tools/tool-types";
+import { SEO_AGENT_CONFIG } from "./config";
 
 export interface FactualClaimEvidence {
   claim: string;
@@ -340,13 +341,13 @@ export class FactualContentSafetyValidator {
       // Verify that proposed metadata is within safe bounds and not malformed
       if (actionType === "TITLE_OPTIMIZATION" && proposed.seoTitle) {
         const proposedTitleLen = proposed.seoTitle.trim().length;
-        if (proposedTitleLen < 20 || proposedTitleLen > 75) {
+        if (proposedTitleLen < SEO_AGENT_CONFIG.METADATA.MIN_TITLE_LENGTH || proposedTitleLen > SEO_AGENT_CONFIG.METADATA.MAX_TITLE_LENGTH) {
           return {
             isSafe: false,
             classification: "NEEDS_REVIEW",
             factuallyVerified: false,
             claimsChecked: totalClaimsChecked,
-            unverifiedClaims: [`Proposed title length (${proposedTitleLen} chars) is outside safe range (20-75 chars)`],
+            unverifiedClaims: [`Proposed title length (${proposedTitleLen} chars) is outside safe range (${SEO_AGENT_CONFIG.METADATA.MIN_TITLE_LENGTH}-${SEO_AGENT_CONFIG.METADATA.MAX_TITLE_LENGTH} chars)`],
             bannedWordsFound: [],
             evidenceTrail,
             reason: `Proposed title length (${proposedTitleLen} chars) is out of safe range.`,
@@ -356,13 +357,13 @@ export class FactualContentSafetyValidator {
 
       if (actionType === "DESCRIPTION_OPTIMIZATION" && proposed.seoDescription) {
         const proposedDescLen = proposed.seoDescription.trim().length;
-        if (proposedDescLen < 80 || proposedDescLen > 170) {
+        if (proposedDescLen < SEO_AGENT_CONFIG.METADATA.MIN_DESCRIPTION_LENGTH || proposedDescLen > SEO_AGENT_CONFIG.METADATA.MAX_DESCRIPTION_LENGTH) {
           return {
             isSafe: false,
             classification: "NEEDS_REVIEW",
             factuallyVerified: false,
             claimsChecked: totalClaimsChecked,
-            unverifiedClaims: [`Proposed description length (${proposedDescLen} chars) is outside safe range (80-170 chars)`],
+            unverifiedClaims: [`Proposed description length (${proposedDescLen} chars) is outside safe range (${SEO_AGENT_CONFIG.METADATA.MIN_DESCRIPTION_LENGTH}-${SEO_AGENT_CONFIG.METADATA.MAX_DESCRIPTION_LENGTH} chars)`],
             bannedWordsFound: [],
             evidenceTrail,
             reason: `Proposed description length (${proposedDescLen} chars) is out of safe range.`,
