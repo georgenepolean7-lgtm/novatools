@@ -1051,7 +1051,14 @@ export class SeoAgentRunner {
               console.log(`[SEO][stage_a_validation] started for /${opp.pageSlug}`);
               console.log(`   [Stage A Isolation] Running cheap preflight check for /${opp.pageSlug}...`);
               const stageAStart = Date.now();
-              const stageAResult = this.validator.validatePageStageA(opp.pageSlug);
+              const stageAResult = this.validator.validatePageStageA(opp.pageSlug, {
+                seoTitle: semanticResult.seoTitle,
+                seoDescription: semanticResult.seoDescription,
+                faqs: semanticResult.faqs,
+                relatedTools: semanticResult.internalLinkSuggestions,
+                titleWasPatched: opp.proposedAction.type === "TITLE_OPTIMIZATION",
+                descWasPatched: opp.proposedAction.type === "DESCRIPTION_OPTIMIZATION",
+              });
               totalValidationMs += Date.now() - stageAStart;
               if (!stageAResult.passed) {
                 console.log(`[SEO][stage_a_validation] failed for /${opp.pageSlug}: ${stageAResult.failureReason}`);
