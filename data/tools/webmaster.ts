@@ -178,7 +178,7 @@ export const webmasterTools: ToolDefinition[] = [
       { step: 2, title: "Generate", instruction: "Click Execute to produce correct Cache-Control header directive." },
     ],
     faq: [{ question: "What does 'immutable' mean in Cache-Control?", answer: "It indicates that the file content will never change during its max-age lifetime, preventing unnecessary 304 revalidation requests." }],
-    relatedTools: ["security-headers-generator", "nginx-reverse-proxy-generator"],
+    relatedTools: ["security-headers-generator", "nginx-reverse-proxy-generator", "cidr-calculator", "http-request-header-parser", "htaccess-redirect-generator"],
     seoTitle: "HTTP Cache-Control Header Generator",
     seoDescription: "Generate optimal Cache-Control HTTP headers online for static assets, SSR pages, and APIs.",
     canonicalUrl: "/cache-control-generator",

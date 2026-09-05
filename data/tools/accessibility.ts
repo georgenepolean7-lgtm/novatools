@@ -126,7 +126,7 @@ export const accessibilityTools: ToolDefinition[] = [
       { step: 2, title: "Audit", instruction: "View compliance across WCAG, Apple HIG, and Material Design." },
     ],
     faq: [{ question: "What is the minimum recommended touch target?", answer: "WCAG 2.5.5 mandates at least 44x44px, while Google Material Design recommends 48x48px with 8px padding." }],
-    relatedTools: ["color-contrast-checker", "accessible-form-label-checker"],
+    relatedTools: ["color-contrast-checker", "accessible-form-label-checker", "html-image-alt-text-checker", "aria-attribute-reference-validator", "heading-accessibility-hierarchy-checker"],
     seoTitle: "Touch Target - WCAG 48px Target Test",
     seoDescription: "Audit UI button dimensions against WCAG 2.5.5 (44px) and Google (48px) touch target standards online.",
     canonicalUrl: "/touch-target-size-checker",
