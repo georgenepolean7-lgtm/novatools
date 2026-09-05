@@ -153,6 +153,7 @@ export async function submitToIndexNow(
           "User-Agent": "NovaTools-IndexNow/1.0",
         },
         body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(15000),
       });
 
       // IndexNow returns 200 (OK) or 202 (Accepted) on success

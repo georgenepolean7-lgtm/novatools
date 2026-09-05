@@ -225,6 +225,14 @@ export interface ValidationSummary {
   failureReason?: string;
 }
 
+export interface StageAValidationResult {
+  passed: boolean;
+  slug: string;
+  failureReason?: string;
+  durationMs: number;
+  checks: ValidationCheckResult[];
+}
+
 export interface PostDeployCheckResult {
   url: string;
   statusCode: number;

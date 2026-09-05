@@ -40,7 +40,7 @@ export const SEO_AGENT_CONFIG = {
     FALLBACK_MODEL: "qwen2.5:3b",
     OLLAMA_BASE_URL: process.env.OLLAMA_BASE_URL || "http://localhost:11434",
     CUSTOM_OPENAI_ENDPOINT: process.env.SEO_AGENT_LLM_ENDPOINT || "",
-    TIMEOUT_MS: 120000,
+    TIMEOUT_MS: 30000,
     TEMPERATURE: 0.2, // Low temperature for deterministic factual generation
   },
 
@@ -63,6 +63,28 @@ export const SEO_AGENT_CONFIG = {
     OVERALL_INGESTION_MS: 60000,
     GA4_DIRECT_MS: 20000,
     COMPOSIO_ACCOUNTS_MS: 10000,
+  },
+
+  // Bounded Execution Timeouts & Watchdogs (Task 4)
+  TIMEOUTS: {
+    LLM_TIMEOUT_MS: 30000,
+    LLM_MS: 30000,
+    OPPORTUNITY_PROCESSING_MS: 150000,
+    BATCH_VALIDATION_MS: 600000,
+    TYPESCRIPT_TIMEOUT_MS: 90000,
+    TYPECHECK_MS: 90000,
+    ESLINT_TIMEOUT_MS: 60000,
+    LINT_MS: 60000,
+    BUILD_TIMEOUT_MS: 300000,
+    BUILD_MS: 300000,
+    GIT_COMMIT_TIMEOUT_MS: 30000,
+    GIT_COMMIT_MS: 30000,
+    GIT_PUSH_TIMEOUT_MS: 60000,
+    GIT_PUSH_MS: 60000,
+    DEPLOY_VERIFY_TIMEOUT_MS: 180000,
+    DEPLOY_VERIFY_MS: 180000,
+    INDEXNOW_TIMEOUT_MS: 15000,
+    INDEXNOW_MS: 15000,
   },
 
   // IndexNow Configuration (Reusing existing Nova Tools infrastructure)

@@ -2,14 +2,12 @@
  * Nova Tools Autonomous SEO Agent - Git & Deployment Integration
  * Manages atomic Git commits, pushes, and production post-deployment verification.
  * Enforces strict Git safety: never force pushes, never rewrites history.
+ * Employs bounded watchdog timeouts on all Git and network operations.
  */
 
-import { exec } from "child_process";
-import { promisify } from "util";
 import { SEO_AGENT_CONFIG } from "./config";
 import { PostDeployCheckResult } from "./types";
-
-const execAsync = promisify(exec);
+import { execWithWatchdog } from "./validator";
 
 export class SeoDeploymentEngine {
   private workspaceRoot: string;
@@ -19,12 +17,13 @@ export class SeoDeploymentEngine {
   }
 
   /**
-   * Creates a dedicated atomic Git commit for the autonomous SEO change.
+   * Creates a dedicated atomic Git commit for the autonomous SEO change with bounded watchdog timeout.
    */
   async createAutonomousCommit(
     changedFile: string,
     actionSummary: string,
-    pageSlug: string
+    pageSlug: string,
+    timeoutMs: number = SEO_AGENT_CONFIG.TIMEOUTS?.GIT_COMMIT_TIMEOUT_MS || 30000
   ): Promise<{ success: boolean; commitHash?: string; message: string }> {
     try {
       const commitMessage = `seo(auto): ${actionSummary.slice(0, 60)} [${pageSlug}]`;
@@ -35,12 +34,15 @@ export class SeoDeploymentEngine {
         .filter(Boolean)
         .map((f) => `"${f}"`)
         .join(" ");
-      await execAsync(`git add ${filesToStage}`, { cwd: this.workspaceRoot });
+      await execWithWatchdog(`git add ${filesToStage}`, { cwd: this.workspaceRoot }, timeoutMs, "Git Add");
 
       // 2. Commit
-      const { stdout } = await execAsync(`git commit -m "${commitMessage}"`, {
-        cwd: this.workspaceRoot,
-      });
+      const { stdout } = await execWithWatchdog(
+        `git commit -m "${commitMessage}"`,
+        { cwd: this.workspaceRoot },
+        timeoutMs,
+        "Git Commit"
+      );
 
       // Extract hash
       const hashMatch = stdout.match(/\[(?:[^\s]+)\s+([a-f0-9]+)\]/i);
@@ -60,15 +62,20 @@ export class SeoDeploymentEngine {
   }
 
   /**
-   * Pushes the commit to the main branch.
+   * Pushes the commit to the main branch with bounded watchdog timeout.
    * STRICT SAFETY: Standard push only. Never force-pushes.
    */
-  async pushToProduction(): Promise<{ success: boolean; message: string }> {
+  async pushToProduction(
+    timeoutMs: number = SEO_AGENT_CONFIG.TIMEOUTS?.GIT_PUSH_TIMEOUT_MS || 60000
+  ): Promise<{ success: boolean; message: string }> {
     try {
       // Push current branch to origin
-      const { stdout } = await execAsync("git push origin main", {
-        cwd: this.workspaceRoot,
-      });
+      const { stdout } = await execWithWatchdog(
+        "git push origin main",
+        { cwd: this.workspaceRoot },
+        timeoutMs,
+        "Git Push"
+      );
       return {
         success: true,
         message: `Pushed successfully: ${stdout.trim().slice(0, 100)}`,
@@ -82,15 +89,18 @@ export class SeoDeploymentEngine {
   }
 
   /**
-   * Verifies production status of the deployed page.
+   * Verifies production status of the deployed page with bounded timeout.
    * Checks HTTP 200, canonical URL, title, and description.
    */
-  async verifyProductionPage(pageSlug: string): Promise<PostDeployCheckResult> {
+  async verifyProductionPage(
+    pageSlug: string,
+    timeoutMs: number = SEO_AGENT_CONFIG.TIMEOUTS?.DEPLOY_VERIFY_TIMEOUT_MS || 20000
+  ): Promise<PostDeployCheckResult> {
     const targetUrl = `${SEO_AGENT_CONFIG.SITE_URL}/${pageSlug}`;
 
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 10000);
+      const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
       const res = await fetch(targetUrl, {
         headers: { "User-Agent": "NovaTools-Autonomous-SEO-Verifier/1.0" },
         signal: controller.signal,
@@ -143,12 +153,14 @@ export class SeoDeploymentEngine {
   }
 
   /**
-   * Reverts the latest Git commit if a production regression is detected.
+   * Reverts the latest Git commit if a production regression is detected with bounded watchdog timeout.
    */
-  async rollbackCommit(): Promise<{ success: boolean; message: string }> {
+  async rollbackCommit(
+    timeoutMs: number = SEO_AGENT_CONFIG.TIMEOUTS?.GIT_PUSH_TIMEOUT_MS || 60000
+  ): Promise<{ success: boolean; message: string }> {
     try {
-      await execAsync("git revert --no-edit HEAD", { cwd: this.workspaceRoot });
-      await execAsync("git push origin main", { cwd: this.workspaceRoot });
+      await execWithWatchdog("git revert --no-edit HEAD", { cwd: this.workspaceRoot }, timeoutMs, "Git Revert");
+      await execWithWatchdog("git push origin main", { cwd: this.workspaceRoot }, timeoutMs, "Git Revert Push");
       return {
         success: true,
         message: "Successfully reverted latest commit and pushed rollback to main.",

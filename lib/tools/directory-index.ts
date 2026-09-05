@@ -2064,6 +2064,23 @@ export const TOOL_DIRECTORY_ITEMS: ToolDirectoryItem[] = [
     "isFeatured": true
   },
   {
+    "id": "image-cropper",
+    "name": "Image Cropper (Aspect Ratio & Presets)",
+    "slug": "image-cropper",
+    "category": "image",
+    "shortDescription": "Crop photos and images online with custom crop boxes and aspect ratio presets (1:1, 4:3, 16:9, 9:16, Free).",
+    "keywords": [
+      "image cropper",
+      "crop photo online",
+      "crop image",
+      "aspect ratio crop",
+      "square crop",
+      "photo cropper free"
+    ],
+    "priority": 95,
+    "isFeatured": true
+  },
+  {
     "id": "jpg-to-png",
     "name": "JPG to PNG Converter",
     "slug": "jpg-to-png",

@@ -639,143 +639,244 @@ export class SeoAgentRunner {
       const batch = batches[bIndex];
       const batchModifiedFiles: Array<{ targetFile: string; previousContent: string }> = [];
       const batchChangedSlugs: string[] = [];
-      let batchFailed = false;
 
       for (const opp of batch) {
         const realTool = getToolBySlug(opp.pageSlug);
         if (!realTool) continue;
 
-        // Step A: Hermes / Qwen semantic optimization
-        const semanticResult = await this.llmClient.generateOptimization(
-          realTool,
-          opp.proposedAction.type as SeoActionType,
-          {
-            primaryQuery: opp.primaryQuery,
-            reason: opp.reason,
-            multiSourceContext: `GSC imp: ${opp.currentMetrics?.impressions || 0}, pos: ${(opp.currentMetrics?.position || 0).toFixed(1)}, GA4 sessions: ${opp.currentMetrics?.trafficSessions || 0}`,
-          }
-        );
+        // Bounded watchdog timeout per opportunity (Task 4)
+        const OPP_TIMEOUT_MS = SEO_AGENT_CONFIG.TIMEOUTS?.OPPORTUNITY_PROCESSING_MS || 150000;
+        let oppTimer: NodeJS.Timeout | null = null;
+        const oppTimeoutPromise = new Promise<never>((_, reject) => {
+          oppTimer = setTimeout(
+            () => reject(new Error(`TIMEOUT: Opportunity processing for /${opp.pageSlug} exceeded ${OPP_TIMEOUT_MS}ms`)),
+            OPP_TIMEOUT_MS
+          );
+          if (typeof oppTimer.unref === "function") oppTimer.unref();
+        });
 
-        // Guardrail: Skip suspicious or malformed recommendation without poisoning the batch
-        if (
-          !semanticResult ||
-          (!semanticResult.seoTitle && !semanticResult.seoDescription && !semanticResult.internalLinkSuggestions)
-        ) {
-          const skipAudit: SeoAuditRecord = {
-            id: `audit-${cycleId}-${opp.id}-bad-rec-skipped`,
-            timestamp: new Date().toISOString(),
-            action: "AI_RECOMMENDATION_REJECTED",
-            status: "SKIPPED",
-            riskLevel: opp.riskLevel,
-            pageSlug: opp.pageSlug,
-            details: { reason: "Malformed or empty AI recommendation skipped safely." },
-            provenance: opp.provenance,
-          };
-          this.auditStore.recordAudit(skipAudit);
-          auditRecords.push(skipAudit);
-          continue;
-        }
+        try {
+          const processOppPromise = (async () => {
+            // Step A: Hermes / Qwen semantic optimization
+            const semanticResult = await this.llmClient.generateOptimization(
+              realTool,
+              opp.proposedAction.type as SeoActionType,
+              {
+                primaryQuery: opp.primaryQuery,
+                reason: opp.reason,
+                multiSourceContext: `GSC imp: ${opp.currentMetrics?.impressions || 0}, pos: ${(opp.currentMetrics?.position || 0).toFixed(1)}, GA4 sessions: ${opp.currentMetrics?.trafficSessions || 0}`,
+              }
+            );
 
-        // Factual Content Safety Gate: Never auto-publish unverified claims
-        if (semanticResult.factualSafety && !semanticResult.factualSafety.isSafe) {
-          const isReview = semanticResult.factualSafety.classification === "NEEDS_REVIEW";
-          const safetyAudit: SeoAuditRecord = {
-            id: `audit-${cycleId}-${opp.id}-factual-safety`,
-            timestamp: new Date().toISOString(),
-            action: isReview ? "FACTUAL_VERIFICATION_REQUIRED" : "AI_RECOMMENDATION_REJECTED",
-            status: isReview ? "NEEDS_REVIEW" : "SKIPPED",
-            riskLevel: opp.riskLevel,
-            pageSlug: opp.pageSlug,
-            details: {
-              reason: semanticResult.factualSafety.reason,
-              unverifiedClaims: semanticResult.factualSafety.unverifiedClaims,
-              highRiskArea: semanticResult.factualSafety.highRiskAreaDetected,
-            },
-            provenance: opp.provenance,
-          };
-          this.auditStore.recordAudit(safetyAudit);
-          auditRecords.push(safetyAudit);
-          continue;
-        }
+            // Guardrail: Skip suspicious or malformed recommendation without poisoning the batch
+            if (
+              !semanticResult ||
+              (!semanticResult.seoTitle && !semanticResult.seoDescription && !semanticResult.internalLinkSuggestions)
+            ) {
+              const skipAudit: SeoAuditRecord = {
+                id: `audit-${cycleId}-${opp.id}-bad-rec-skipped`,
+                timestamp: new Date().toISOString(),
+                action: "AI_RECOMMENDATION_REJECTED",
+                status: "SKIPPED",
+                riskLevel: opp.riskLevel,
+                pageSlug: opp.pageSlug,
+                details: { reason: "Malformed or empty AI recommendation skipped safely." },
+                provenance: opp.provenance,
+              };
+              this.auditStore.recordAudit(skipAudit);
+              auditRecords.push(skipAudit);
+              return;
+            }
 
-        // Actionability Gate: Verify semantic result produces real content change
-        const actionability = verifyActionableSemanticChange(
-          realTool,
-          opp.proposedAction.type as SeoActionType,
-          semanticResult
-        );
-        if (!actionability.isActionable) {
-          console.log(`[SEO Gate] Skipping /${opp.pageSlug}: NO_ACTIONABLE_CHANGE (${actionability.reason})`);
-          const noChangeAudit: SeoAuditRecord = {
-            id: `audit-${cycleId}-${opp.id}-no-actionable-change`,
+            // Factual Content Safety Gate: Never auto-publish unverified claims
+            if (semanticResult.factualSafety && !semanticResult.factualSafety.isSafe) {
+              const isReview = semanticResult.factualSafety.classification === "NEEDS_REVIEW";
+              const safetyAudit: SeoAuditRecord = {
+                id: `audit-${cycleId}-${opp.id}-factual-safety`,
+                timestamp: new Date().toISOString(),
+                action: isReview ? "FACTUAL_VERIFICATION_REQUIRED" : "AI_RECOMMENDATION_REJECTED",
+                status: isReview ? "NEEDS_REVIEW" : "SKIPPED",
+                riskLevel: opp.riskLevel,
+                pageSlug: opp.pageSlug,
+                details: {
+                  reason: semanticResult.factualSafety.reason,
+                  unverifiedClaims: semanticResult.factualSafety.unverifiedClaims,
+                  highRiskArea: semanticResult.factualSafety.highRiskAreaDetected,
+                },
+                provenance: opp.provenance,
+              };
+              this.auditStore.recordAudit(safetyAudit);
+              auditRecords.push(safetyAudit);
+              return;
+            }
+
+            // Actionability Gate: Verify semantic result produces real content change
+            const actionability = verifyActionableSemanticChange(
+              realTool,
+              opp.proposedAction.type as SeoActionType,
+              semanticResult
+            );
+            if (!actionability.isActionable) {
+              console.log(`[SEO Gate] Skipping /${opp.pageSlug}: NO_ACTIONABLE_CHANGE (${actionability.reason})`);
+              const noChangeAudit: SeoAuditRecord = {
+                id: `audit-${cycleId}-${opp.id}-no-actionable-change`,
+                timestamp: new Date().toISOString(),
+                action: "NO_ACTIONABLE_CHANGE",
+                status: "SKIPPED",
+                riskLevel: opp.riskLevel,
+                pageSlug: opp.pageSlug,
+                pageUrl: opp.pageUrl,
+                details: {
+                  reason: actionability.reason,
+                  proposedAction: opp.proposedAction.type,
+                  message: "Proposed action cannot produce a real content change on the target page.",
+                },
+                provenance: opp.provenance,
+              };
+              this.auditStore.recordAudit(noChangeAudit);
+              auditRecords.push(noChangeAudit);
+              return;
+            }
+
+            // Step B: Safe code modification
+            const applyResult = await this.optimizer.applyOptimization(opp, semanticResult);
+            if (!applyResult.success) {
+              if (applyResult.errorMessage?.includes("NO_ACTIONABLE_CHANGE")) {
+                const noChangeAudit: SeoAuditRecord = {
+                  id: `audit-${cycleId}-${opp.id}-optimizer-no-change`,
+                  timestamp: new Date().toISOString(),
+                  action: "NO_ACTIONABLE_CHANGE",
+                  status: "SKIPPED",
+                  riskLevel: opp.riskLevel,
+                  pageSlug: opp.pageSlug,
+                  pageUrl: opp.pageUrl,
+                  details: {
+                    reason: applyResult.errorMessage,
+                    proposedAction: opp.proposedAction.type,
+                  },
+                  provenance: opp.provenance,
+                };
+                this.auditStore.recordAudit(noChangeAudit);
+                auditRecords.push(noChangeAudit);
+              }
+              return;
+            }
+
+            // STAGE A: Cheap, Fast Per-Page Validation Gate (Task 3 & Task 5)
+            // Validates target tool existence, syntax-safe patch, boundary, canonicals, metadata, FAQs, relatedTools, factual safety
+            const stageAResult = this.validator.validatePageStageA(opp.pageSlug);
+            if (!stageAResult.passed) {
+              // Reject ONLY this page, restore it immediately, do not add to candidate batch
+              console.warn(`\n⚠️ [Stage A Isolation] Page /${opp.pageSlug} failed Stage A validation:`);
+              console.warn(`   Reason: ${stageAResult.failureReason}`);
+              console.warn(`   Action: Restoring /${opp.pageSlug} immediately; remaining candidate batch continues.`);
+
+              this.optimizer.rollbackFile(applyResult.targetFile, applyResult.previousContent);
+
+              const stageAAudit: SeoAuditRecord = {
+                id: `audit-${cycleId}-${opp.id}-stage-a-rejected`,
+                timestamp: new Date().toISOString(),
+                action: "STAGE_A_ISOLATION_REJECTED",
+                status: "SKIPPED",
+                riskLevel: opp.riskLevel,
+                pageSlug: opp.pageSlug,
+                pageUrl: opp.pageUrl,
+                details: {
+                  reason: stageAResult.failureReason,
+                  failedChecks: stageAResult.checks.filter((c) => !c.passed).map((c) => `${c.name}: ${c.message}`),
+                  message: "Page rejected during Stage A pre-build isolation and restored immediately without poisoning batch.",
+                },
+                provenance: opp.provenance,
+              };
+              this.auditStore.recordAudit(stageAAudit);
+              auditRecords.push(stageAAudit);
+              return;
+            }
+
+            // Stage A passed: safe to include in candidate batch!
+            batchModifiedFiles.push({
+              targetFile: applyResult.targetFile,
+              previousContent: applyResult.previousContent,
+            });
+            batchChangedSlugs.push(opp.pageSlug);
+          })();
+
+          await Promise.race([processOppPromise, oppTimeoutPromise]);
+        } catch (oppErr) {
+          const timeoutErrMsg = oppErr instanceof Error ? oppErr.message : String(oppErr);
+          console.error(`\n❌ [Opportunity Processing Error] /${opp.pageSlug}: ${timeoutErrMsg}`);
+          const errAudit: SeoAuditRecord = {
+            id: `audit-${cycleId}-${opp.id}-processing-timeout`,
             timestamp: new Date().toISOString(),
-            action: "NO_ACTIONABLE_CHANGE",
+            action: "OPPORTUNITY_PROCESSING_TIMEOUT",
             status: "SKIPPED",
             riskLevel: opp.riskLevel,
             pageSlug: opp.pageSlug,
             pageUrl: opp.pageUrl,
             details: {
-              reason: actionability.reason,
-              proposedAction: opp.proposedAction.type,
-              message: "Proposed action cannot produce a real content change on the target page.",
+              reason: timeoutErrMsg,
+              message: "Opportunity processing timed out or failed. Continued safely to next opportunity.",
             },
             provenance: opp.provenance,
           };
-          this.auditStore.recordAudit(noChangeAudit);
-          auditRecords.push(noChangeAudit);
-          continue;
+          this.auditStore.recordAudit(errAudit);
+          auditRecords.push(errAudit);
+        } finally {
+          if (oppTimer) clearTimeout(oppTimer);
         }
-
-        // Step B: Safe code modification
-        const applyResult = await this.optimizer.applyOptimization(opp, semanticResult);
-        if (!applyResult.success) {
-          if (applyResult.errorMessage?.includes("NO_ACTIONABLE_CHANGE")) {
-            const noChangeAudit: SeoAuditRecord = {
-              id: `audit-${cycleId}-${opp.id}-optimizer-no-change`,
-              timestamp: new Date().toISOString(),
-              action: "NO_ACTIONABLE_CHANGE",
-              status: "SKIPPED",
-              riskLevel: opp.riskLevel,
-              pageSlug: opp.pageSlug,
-              pageUrl: opp.pageUrl,
-              details: {
-                reason: applyResult.errorMessage,
-                proposedAction: opp.proposedAction.type,
-              },
-              provenance: opp.provenance,
-            };
-            this.auditStore.recordAudit(noChangeAudit);
-            auditRecords.push(noChangeAudit);
-          }
-          continue;
-        }
-
-        batchModifiedFiles.push({
-          targetFile: applyResult.targetFile,
-          previousContent: applyResult.previousContent,
-        });
-        batchChangedSlugs.push(opp.pageSlug);
       }
 
       if (batchModifiedFiles.length === 0) {
         continue;
       }
 
-      // Step C: Batch Validation Gate (Validate all changed pages in batch)
-      let failedSlug: string | undefined;
-      let lastValSummary: ValidationSummary | undefined;
-      for (const slug of batchChangedSlugs) {
-        const valSummary = await this.validator.validateAll(slug);
-        if (!valSummary.overallPassed) {
-          batchFailed = true;
-          failedSlug = slug;
-          lastValSummary = valSummary;
-          break;
-        }
+      // STAGE B: Expensive Global Validation Gate (Task 3 & Task 5)
+      // Executed ONCE per remaining atomic batch (Sitemap, Robots, Canonicals, Structured Data, Internal Links, TypeScript, ESLint, Next.js build)
+      const BATCH_VAL_TIMEOUT_MS = SEO_AGENT_CONFIG.TIMEOUTS?.BATCH_VALIDATION_MS || 600000;
+      let valTimer: NodeJS.Timeout | null = null;
+      const batchValTimeoutPromise = new Promise<ValidationSummary>((_, reject) => {
+        valTimer = setTimeout(
+          () => reject(new Error(`TIMEOUT: Batch validation exceeded ${BATCH_VAL_TIMEOUT_MS}ms`)),
+          BATCH_VAL_TIMEOUT_MS
+        );
+        if (typeof valTimer.unref === "function") valTimer.unref();
+      });
+
+      let lastValSummary: ValidationSummary;
+      try {
+        console.log(`\n⏳ Running Stage B Global Validation Gate for batch ${bIndex + 1} (${batchChangedSlugs.length} candidate pages)...`);
+        lastValSummary = await Promise.race([
+          this.validator.validateBatchStageB(batchChangedSlugs),
+          batchValTimeoutPromise,
+        ]);
+      } catch (err) {
+        const timeoutMsg = err instanceof Error ? err.message : String(err);
+        lastValSummary = {
+          overallPassed: false,
+          typecheckPassed: false,
+          lintPassed: false,
+          buildPassed: false,
+          canonicalValid: false,
+          sitemapValid: false,
+          robotsValid: false,
+          structuredDataValid: false,
+          internalLinksValid: false,
+          checks: [
+            {
+              name: "Batch Validation Timeout Gate",
+              passed: false,
+              message: timeoutMsg,
+              durationMs: BATCH_VAL_TIMEOUT_MS,
+            },
+          ],
+          failureReason: timeoutMsg,
+        };
+      } finally {
+        if (valTimer) clearTimeout(valTimer);
       }
 
-      // Step D: Rollback batch on validation failure
-      if (batchFailed && lastValSummary) {
+      // Rollback entire remaining atomic batch if Stage B fails
+      if (!lastValSummary.overallPassed) {
         failedBatches++;
         rollbacksCount += batchModifiedFiles.length;
 
@@ -783,12 +884,12 @@ export class SeoAgentRunner {
         const primaryFailedCheck = failedChecks[0] || {
           name: "Validation Gate",
           passed: false,
-          message: lastValSummary.failureReason || "One or more pre-deployment validation checks failed.",
+          message: lastValSummary.failureReason || "One or more Stage B global validation checks failed.",
           durationMs: 0,
         };
 
-        console.error(`\n❌ ==================== SEO BATCH VALIDATION FAILED ====================`);
-        console.error(`   Page Slug:              /${failedSlug}`);
+        console.error(`\n❌ ==================== SEO BATCH VALIDATION FAILED (STAGE B) ====================`);
+        console.error(`   Affected Pages (${batchChangedSlugs.length}):  ${batchChangedSlugs.map((s) => "/" + s).join(", ")}`);
         console.error(`   Failure Reason:         ${lastValSummary.failureReason || primaryFailedCheck.message}`);
         console.error(`   Failed Checks Count:    ${failedChecks.length} / ${lastValSummary.checks.length}`);
         console.error(`   --- Failed Check Breakdown ---`);
@@ -797,33 +898,25 @@ export class SeoAgentRunner {
           console.error(`     Passed:         ${fc.passed}`);
           console.error(`     Message:        ${fc.message}`);
           console.error(`     Duration:       ${fc.durationMs !== undefined ? fc.durationMs + "ms" : "N/A"}`);
-          console.error(`     Failure Reason: ${fc.message}`);
         }
         console.error(`   ------------------------------`);
-        console.error(`   --- All Executed Checks ---`);
-        for (const c of lastValSummary.checks) {
-          const icon = c.passed ? "✅" : "❌";
-          console.error(`   ${icon} ${c.name.padEnd(28)} | Passed: ${String(c.passed).padEnd(5)} | Duration: ${(c.durationMs || 0) + "ms"} | ${c.message.slice(0, 100)}`);
-        }
-        console.error(`   ---------------------------`);
-        console.error(`   Action Taken:           Rolling back ${batchModifiedFiles.length} file(s) cleanly...`);
-        console.error(`========================================================================\n`);
+        console.error(`   Action Taken:           Atomic rollback of all ${batchModifiedFiles.length} file(s) in batch...`);
+        console.error(`===================================================================================\n`);
 
         for (const snap of batchModifiedFiles) {
           this.optimizer.rollbackFile(snap.targetFile, snap.previousContent);
         }
+
         const failAudit: SeoAuditRecord = {
           id: `audit-${cycleId}-batch-${bIndex}-validation-failed`,
           timestamp: new Date().toISOString(),
           action: "BATCH_VALIDATION_FAILED_ROLLED_BACK",
           status: "ROLLED_BACK",
           riskLevel: "LOW",
-          pageSlug: failedSlug,
           validationSummary: lastValSummary,
           details: {
             batchIndex: bIndex,
             affectedPages: batchChangedSlugs,
-            failedSlug,
             failedCheckName: primaryFailedCheck.name,
             exactFailureMessage: primaryFailedCheck.message,
             allFailedChecks: failedChecks.map((c) => c.name),
@@ -858,6 +951,9 @@ export class SeoAgentRunner {
         failedBatches++;
         rollbacksCount += batchModifiedFiles.length;
         await this.deployment.rollbackCommit();
+        for (const snap of batchModifiedFiles) {
+          this.optimizer.rollbackFile(snap.targetFile, snap.previousContent);
+        }
         continue;
       }
 
@@ -874,10 +970,11 @@ export class SeoAgentRunner {
       changedSlugs.push(...batchChangedSlugs);
       this.auditStore.recordChangeApplied();
 
-      // Record deployed optimization fingerprints to audit store
-      for (const opp of batch) {
-        const deployedTool = getToolBySlug(opp.pageSlug);
-        if (deployedTool) {
+      // Record deployed optimization fingerprints to audit store only for actually deployed pages
+      for (const slug of batchChangedSlugs) {
+        const deployedTool = getToolBySlug(slug);
+        const opp = batch.find((o) => o.pageSlug === slug);
+        if (deployedTool && opp) {
           const contentFp = computeToolContentFingerprint(deployedTool, opp.proposedAction.type);
           this.auditStore.recordOptimization({
             id: `opt-${cycleId}-${opp.pageSlug}-${Date.now()}`,

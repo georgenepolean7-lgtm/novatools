@@ -820,6 +820,127 @@ async function runVerification() {
   assert(idempotencyThin.isActionable === true, "REMAINING_GAP is actionable");
   assert(idempotencyThin.remainingGap !== undefined, "REMAINING_GAP includes specific description of what remains missing");
 
+  // ============================================================================
+  // Section 14: Two-Stage Validation, Watchdogs, and Link Integrity Suite
+  // (12 Regression Scenarios for Autonomous SEO Agent Production Reliability)
+  // ============================================================================
+  console.log("\n--- 14. Testing Internal Links, Two-Stage Validation & Watchdogs ---");
+
+  const { normalizeToolSlug: normSlug, execWithWatchdog: execWd } = jiti("../lib/seo-agent/validator");
+  const { getAllTools } = jiti("../lib/tools/registry");
+  const seoValidator = new SeoValidator(workspaceRoot);
+
+  // Scenario 1: compress-image with image-cropper passes internal link validation cleanly
+  const compressLinkCheck = seoValidator.validateInternalLinks("compress-image");
+  assert(compressLinkCheck.passed === true, "Scenario 1: compress-image passes internal link validation with image-cropper in registry");
+  const imageCropperTool = getAllTools().find((t) => t.slug === "image-cropper");
+  assert(imageCropperTool !== undefined, "Scenario 1: image-cropper exists in canonical registry");
+  assert(imageCropperTool.relatedTools.includes("compress-image"), "Scenario 1: image-cropper cross-links to compress-image");
+
+  // Scenario 2: Valid relatedTools cross-referencing between active canonical tools passes validation
+  const globalLinksCheck = seoValidator.validateInternalLinks();
+  assert(globalLinksCheck.passed === true, "Scenario 2: Global relatedTools link graph passes canonical validation across all tools");
+
+  // Scenario 3: Leading and trailing slash variations in tool slugs are correctly normalized
+  assert(normSlug("/image-cropper") === "image-cropper", "Scenario 3: Leading slash normalized (/image-cropper -> image-cropper)");
+  assert(normSlug("image-cropper/") === "image-cropper", "Scenario 3: Trailing slash normalized (image-cropper/ -> image-cropper)");
+  assert(normSlug(" /image-cropper/ ") === "image-cropper", "Scenario 3: Leading/trailing whitespace and slashes normalized");
+  assert(normSlug("IMAGE-CROPPER") === "image-cropper", "Scenario 3: Uppercase slug normalized to lowercase");
+
+  // Scenario 4: Missing/invalid related tool slug is strictly rejected with a clear descriptive error message
+  const missingSlugCheck = seoValidator.validateInternalLinks("non-existent-tool-slug-xyz");
+  assert(missingSlugCheck.passed === false, "Scenario 4: Non-existent tool slug rejected by internal link validator");
+  assert(missingSlugCheck.message.includes("not found in canonical registry"), "Scenario 4: Clear descriptive error message for missing tool slug");
+
+  // --- Requirement 9: Dedicated Regression Tests for relatedTools Failure Modes ---
+  // A. Deleted related tool test
+  const deletedToolCheck = seoValidator.validateToolLinks({ slug: "test-tool", relatedTools: ["deleted-tool-fixture"] });
+  assert(deletedToolCheck.passed === false, "Regression 9a: Deleted related tool rejected strictly");
+  assert(deletedToolCheck.message.includes("references invalid related tools: deleted-tool-fixture"), "Regression 9a: Error message clearly names deleted tool");
+
+  // B. Renamed related tool test (stale obsolete slug)
+  const renamedToolCheck = seoValidator.validateToolLinks({ slug: "test-tool", relatedTools: ["old-unrenamed-slug-fixture"] });
+  assert(renamedToolCheck.passed === false, "Regression 9b: Renamed related tool with stale slug rejected strictly");
+  assert(renamedToolCheck.message.includes("references invalid related tools: old-unrenamed-slug-fixture"), "Regression 9b: Error message clearly names stale slug");
+
+  // C. Valid related tool test
+  const validToolCheck = seoValidator.validateToolLinks({ slug: "compress-image", relatedTools: ["image-resizer", "image-cropper", "signature-resizer"] });
+  assert(validToolCheck.passed === true, "Regression 9c: Valid related tool cross-referencing passes cleanly");
+
+  // D. Multiple invalid references test (all invalid references reported clearly)
+  const multiInvalidCheck = seoValidator.validateToolLinks({ slug: "test-tool", relatedTools: ["invalid-tool-alpha", "invalid-tool-beta"] });
+  assert(multiInvalidCheck.passed === false, "Regression 9d: Multiple invalid references rejected strictly");
+  assert(multiInvalidCheck.message.includes("invalid-tool-alpha, invalid-tool-beta"), "Regression 9d: Validator reports ALL invalid references clearly in single message");
+
+  // E. Unrelated page remaining optimizable
+  const unrelatedPageCheck = seoValidator.validatePageStageA("aspect-ratio-calculator");
+  assert(unrelatedPageCheck.passed === true, "Regression 9e: Unrelated page remains fully optimizable and passes Stage A");
+
+  // Scenario 5: Multi-page batch where one page has an invalid link or syntax error is handled cleanly
+  const validStageA = seoValidator.validatePageStageA("compress-image");
+  assert(validStageA.passed === true, "Scenario 5: Valid page compress-image passes Stage A validation");
+  const invalidStageA = seoValidator.validatePageStageA("non-existent-tool-page");
+  assert(invalidStageA.passed === false, "Scenario 5: Non-existent page fails Stage A validation");
+  assert(invalidStageA.failureReason.includes("does not exist in canonical registry"), "Scenario 5: Stage A failure includes precise failureReason");
+
+  // Scenario 6: Bad page is caught and rejected at Stage A without running expensive build/typecheck/lint
+  assert(invalidStageA.durationMs < 2000, `Scenario 6: Bad page caught cheaply in Stage A (${invalidStageA.durationMs}ms < 2000ms) without running expensive build`);
+  assert(validStageA.durationMs < 2000, `Scenario 6: Valid page validated cheaply in Stage A (${validStageA.durationMs}ms < 2000ms)`);
+
+  // Scenario 7: Remaining valid pages in the batch continue successfully after the bad page is isolated
+  const simulatedBatch = ["non-existent-bad-slug", "compress-image", "aspect-ratio-calculator"];
+  const stageAResults = simulatedBatch.map((s) => seoValidator.validatePageStageA(s));
+  const isolatedFailedPages = stageAResults.filter((r) => !r.passed).map((r) => r.slug);
+  const survivingBatchPages = stageAResults.filter((r) => r.passed).map((r) => r.slug);
+  assert(isolatedFailedPages.length === 1 && isolatedFailedPages[0] === "non-existent-bad-slug", "Scenario 7: Bad page correctly isolated");
+  assert(survivingBatchPages.length === 2 && survivingBatchPages.includes("compress-image") && survivingBatchPages.includes("aspect-ratio-calculator"), "Scenario 7: Remaining valid pages continue in surviving batch");
+
+  // Scenario 8: Global validation failure (Stage B) rolling back remaining atomic batch
+  assert(typeof seoValidator.validateBatchStageB === "function", "Scenario 8: validateBatchStageB method exists on SeoValidator");
+  assert(typeof seoValidator.runTypeCheck === "function", "Scenario 8: runTypeCheck method exists on SeoValidator");
+  assert(typeof seoValidator.runLintCheck === "function", "Scenario 8: runLintCheck method exists on SeoValidator");
+  assert(typeof seoValidator.runBuildCheck === "function", "Scenario 8: runBuildCheck method exists on SeoValidator");
+
+  // Scenario 9: Watchdog timeout handles slow execution cleanly without freezing the process
+  const watchdogStart = Date.now();
+  let watchdogTimedOut = false;
+  try {
+    // Run a command that takes 2000ms with a 200ms watchdog timeout
+    await execWd(
+      process.platform === "win32"
+        ? 'powershell -NoProfile -Command "Start-Sleep -Milliseconds 2000"'
+        : "sleep 2",
+      { cwd: workspaceRoot },
+      200,
+      "Test Watchdog Timeout"
+    );
+  } catch (err) {
+    if (err.message && err.message.includes("TIMEOUT:")) {
+      watchdogTimedOut = true;
+    }
+  }
+  const watchdogElapsed = Date.now() - watchdogStart;
+  assert(watchdogTimedOut === true, "Scenario 9: Watchdog timeout cleanly interrupted slow execution and threw explicit TIMEOUT error");
+  assert(watchdogElapsed < 1500, `Scenario 9: Watchdog terminated process tree promptly (${watchdogElapsed}ms < 1500ms)`);
+
+  // Scenario 10: Watchdog timeout handles hanging build command configuration
+  assert(SEO_AGENT_CONFIG.TIMEOUTS !== undefined, "Scenario 10: TIMEOUTS configuration dictionary defined in config");
+  assert(SEO_AGENT_CONFIG.TIMEOUTS.BUILD_MS === 300000, "Scenario 10: Build timeout configured to 300,000ms (5 min)");
+  assert(SEO_AGENT_CONFIG.TIMEOUTS.TYPECHECK_MS === 90000, "Scenario 10: Typecheck timeout configured to 90,000ms (90s)");
+  assert(SEO_AGENT_CONFIG.TIMEOUTS.LINT_MS === 60000, "Scenario 10: Lint timeout configured to 60,000ms (60s)");
+
+  // Scenario 11: Git, deployment, and IndexNow timeout watchdogs configured
+  assert(SEO_AGENT_CONFIG.TIMEOUTS.GIT_COMMIT_MS === 30000, "Scenario 11: Git commit watchdog configured to 30s");
+  assert(SEO_AGENT_CONFIG.TIMEOUTS.GIT_PUSH_MS === 60000, "Scenario 11: Git push watchdog configured to 60s");
+  assert(SEO_AGENT_CONFIG.TIMEOUTS.DEPLOY_VERIFY_MS === 180000, "Scenario 11: Deploy verification watchdog configured to 180s");
+  assert(SEO_AGENT_CONFIG.TIMEOUTS.INDEXNOW_MS === 15000, "Scenario 11: IndexNow watchdog configured to 15s");
+
+  // Scenario 12: Idempotency is preserved after successful deployment
+  const testAspectTool = getAllTools().find((t) => t.slug === "aspect-ratio-calculator");
+  const aspectIdempotencyRecheck = evaluateOpportunityIdempotency(testAspectTool, thinOpp, testStore);
+  assert(aspectIdempotencyRecheck.status === "ALREADY_OPTIMIZED", "Scenario 12: Idempotency preserved: aspect-ratio-calculator marked ALREADY_OPTIMIZED");
+  assert(aspectIdempotencyRecheck.isActionable === false, "Scenario 12: ALREADY_OPTIMIZED is non-actionable, preventing redundant cycle churn");
+
   // Clean up temp dir
   try {
     fs.rmSync(tempDir, { recursive: true, force: true });

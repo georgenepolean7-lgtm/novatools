@@ -96,14 +96,18 @@ export class HermesQwenClient {
     const prompt = this.buildPrompt(tool, actionType, context);
     let result: SemanticOptimizationResult | null = null;
 
-    // Try calling local Ollama / Hermes runner
+    // Try calling local Ollama / Hermes runner with bounded watchdog
     try {
       const completion = await this.callLlm(prompt);
       if (completion) {
         result = this.parseLlmResponse(completion, tool);
       }
-    } catch {
-      // Local LLM offline - fallback to deterministic high-quality rules
+    } catch (err) {
+      const isTimeout = err instanceof Error && err.message.startsWith("TIMEOUT:");
+      console.warn(
+        `[SEO Agent] LLM generation ${isTimeout ? "timed out" : "unavailable"} for /${tool.slug}. Falling back to deterministic semantic rules.`
+      );
+      // Local LLM offline / error / timeout - fallback to deterministic high-quality rules
     }
 
     if (!result) {
@@ -190,7 +194,12 @@ Return ONLY a valid JSON object in this exact schema:
 
   private async callLlm(prompt: string): Promise<string | null> {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), SEO_AGENT_CONFIG.LLM.TIMEOUT_MS);
+    const timeoutMs = SEO_AGENT_CONFIG.TIMEOUTS?.LLM_TIMEOUT_MS || SEO_AGENT_CONFIG.LLM.TIMEOUT_MS || 120000;
+    let isTimedOut = false;
+    const timeoutId = setTimeout(() => {
+      isTimedOut = true;
+      controller.abort();
+    }, timeoutMs);
 
     try {
       const url = this.customEndpoint || `${this.ollamaBaseUrl}/api/generate`;
@@ -225,8 +234,11 @@ Return ONLY a valid JSON object in this exact schema:
       if (json?.choices?.[0]?.message?.content) return json.choices[0].message.content;
 
       return null;
-    } catch {
+    } catch (_err) {
       clearTimeout(timeoutId);
+      if (isTimedOut) {
+        throw new Error(`TIMEOUT: LLM generation exceeded ${timeoutMs}ms`);
+      }
       return null;
     }
   }
