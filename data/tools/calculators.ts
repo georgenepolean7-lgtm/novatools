@@ -1069,7 +1069,7 @@ export const calculatorTools: ToolDefinition[] = [
     ],
     faq: [{ question: "What is the formula to convert Celsius to Fahrenheit?", answer: "°F = (°C x 9/5) + 32." }],
     relatedTools: ["length-unit-converter", "weight-unit-converter"],
-    seoTitle: "Temperature Unit Converter",
+    seoTitle: "Temperature Unit Converter Online | Nova Tools",
     seoDescription: "Convert temperatures between Celsius, Fahrenheit, and Kelvin online. Fast and accurate.",
     canonicalUrl: "/temperature-converter",
     processingType: "client",
