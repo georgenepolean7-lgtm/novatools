@@ -66,8 +66,10 @@ export const SEO_AGENT_CONFIG = {
     BING_PAGE_PERF_ACTION: "BING_WEBMASTER_TOOLS_GET_PAGE_PERFORMANCE",
     BING_LIST_SITES_ACTION: "BING_WEBMASTER_TOOLS_LIST_SITES",
     CLARITY_EXPORT_ACTION: "MICROSOFT_CLARITY_DATA_EXPORT",
-    GOOGLEADS_ACTION: "GOOGLEADS_GET_CUSTOMER_LISTS",
+    GOOGLEADS_ACTION_NAME: "GOOGLEADS_GET_CUSTOMER_LISTS",
     BASE_URL: "https://backend.composio.dev/api/v3",
+    // Backward-compatible alias used by the GSC property discovery path.
+    ACCOUNTS_MS: 10000,
   },
 
   // Telemetry Ingestion Timeouts (Production-grade timeouts against hung connections)
