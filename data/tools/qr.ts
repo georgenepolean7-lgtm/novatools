@@ -170,7 +170,7 @@ export const qrTools: ToolDefinition[] = [
       { step: 3, title: "Download", instruction: "Save high-resolution QR PNG." },
     ],
     faq: [{ question: "Does scanning automatically send the SMS?", answer: "No, for security reasons, mobile operating systems require the user to tap 'Send' inside their messaging app." }],
-    relatedTools: ["email-qr-code-generator", "qr-code-generator"],
+    relatedTools: ["email-qr-code-generator", "qr-code-generator", "wifi-qr-code-generator", "vcard-qr-code-generator", "barcode-code128-generator"],
     seoTitle: "SMS Text Message QR Code Generator",
     seoDescription: "Create scan-to-SMS QR codes with pre-filled recipient and text message online. Fast, private in-browser tool.",
     canonicalUrl: "/sms-qr-code-generator",

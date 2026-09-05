@@ -1121,7 +1121,7 @@ export const developerTools: ToolDefinition[] = [
       { step: 3, title: "Copy Code", instruction: "Copy the executable JavaScript fetch code." },
     ],
     faq: [{ question: "Does it support multi-line cURL with backslashes?", answer: "Yes, backslash line breaks in terminal commands are parsed seamlessly." }],
-    relatedTools: ["jwt-decoder", "json-formatter", "url-encoder"],
+    relatedTools: ["jwt-decoder", "json-formatter", "url-encoder", "json-minifier", "json-validator", "sql-formatter"],
     seoTitle: "cURL to JavaScript Fetch Converter",
     seoDescription: "Convert cURL commands to JavaScript fetch() code online. Transform API cURL requests into clean code.",
     canonicalUrl: "/curl-to-fetch-converter",
