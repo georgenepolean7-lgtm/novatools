@@ -58,7 +58,7 @@ export const dataTools: ToolDefinition[] = [
     ],
     faq: [{ question: "Does it support commas inside quoted fields?", answer: "Yes, RFC 4180 quoted strings with commas and escaped quotes are handled accurately." }],
     relatedTools: ["json-to-csv", "csv-to-sql-insert", "csv-to-markdown-table"],
-    seoTitle: "CSV to JSON Converter",
+    seoTitle: "CSV to JSON Converter Online | Nova Tools",
     seoDescription: "Convert CSV spreadsheets into JSON arrays of objects online. Fast, secure in-browser parser.",
     canonicalUrl: "/csv-to-json",
     processingType: "client",
