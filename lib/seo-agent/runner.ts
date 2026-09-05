@@ -5,6 +5,8 @@
  * Validation -> Git Commit -> Production Deploy -> IndexNow -> Learning Loop.
  */
 
+import fs from "fs";
+import path from "path";
 import { getToolBySlug, getAllTools } from "@/lib/tools/registry";
 import { ToolDefinition } from "@/lib/tools/tool-types";
 import { SeoDataConnector } from "./data-connector";
@@ -17,6 +19,7 @@ import { SeoDeploymentEngine } from "./deployment";
 import { SeoIndexNowIntegration } from "./indexnow-integration";
 import { SeoLearningLoop } from "./learning-loop";
 import { SeoAuditStore, computeToolContentFingerprint } from "./audit-store";
+import { evaluateOpportunityIdempotency } from "./idempotency-gate";
 import {
   DataSourceMatrixItem,
   SeoActionType,
@@ -31,7 +34,7 @@ import { SEO_AGENT_CONFIG } from "./config";
 
 export interface CycleRunResult {
   success: boolean;
-  status: "COMPLETED" | "COMPLETED_WITH_ROLLBACKS" | "BLOCKED_PENDING_REAL_DATA" | "PAUSED_KILL_SWITCH" | "DRY_RUN";
+  status: "COMPLETED" | "PARTIAL" | "FAILED" | "COMPLETED_WITH_ROLLBACKS" | "BLOCKED_PENDING_REAL_DATA" | "PAUSED_KILL_SWITCH" | "DRY_RUN";
   realDataStatus: "AVAILABLE" | "BLOCKED_PENDING_REAL_DATA";
   missingConnectors?: string[];
   cycleId: string;
@@ -51,6 +54,16 @@ export interface CycleRunResult {
   summary: string;
   auditRecords: SeoAuditRecord[];
   killSwitchActive: boolean;
+  timing?: {
+    telemetryIngestionMs: number;
+    opportunityScoringMs: number;
+    llmMs: number;
+    optimizationMs: number;
+    validationMs: number;
+    buildMs: number;
+    deploymentMs: number;
+    totalCycleMs: number;
+  };
 }
 
 export interface ActionabilityResult {
@@ -169,6 +182,7 @@ export function verifyActionableSemanticChange(
 }
 
 export class SeoAgentRunner {
+  private workspaceRoot: string;
   private connector: SeoDataConnector;
   private opportunityEngine: SeoOpportunityEngine;
   private scoringEngine: SeoScoringEngine;
@@ -181,6 +195,7 @@ export class SeoAgentRunner {
   private auditStore: SeoAuditStore;
 
   constructor(workspaceRoot = process.cwd()) {
+    this.workspaceRoot = workspaceRoot;
     this.connector = new SeoDataConnector();
     this.opportunityEngine = new SeoOpportunityEngine();
     this.scoringEngine = new SeoScoringEngine();
@@ -201,7 +216,138 @@ export class SeoAgentRunner {
     const timestamp = new Date().toISOString();
     const auditRecords: SeoAuditRecord[] = [];
 
+    // 0. CONCURRENCY LOCK CHECK & ACQUISITION (Task 11 & 12)
+    const lockDir = path.join(this.workspaceRoot, "data", "seo-agent");
+    const lockPath = path.join(lockDir, "seo-agent.lock");
+
+    if (fs.existsSync(lockPath)) {
+      try {
+        const rawLock = fs.readFileSync(lockPath, "utf8");
+        const lockData = JSON.parse(rawLock);
+        const lockPid = lockData.pid;
+        const lockTime = new Date(lockData.timestamp).getTime();
+
+        let isRunning = false;
+        if (lockPid && typeof lockPid === "number") {
+          try {
+            process.kill(lockPid, 0);
+            isRunning = true;
+          } catch {
+            isRunning = false;
+          }
+        }
+
+        if (isRunning && Date.now() - lockTime < 2 * 60 * 60 * 1000) {
+          console.error(`❌ SEO cycle already running (PID: ${lockPid}, Started: ${lockData.timestamp})`);
+          throw new Error("SEO cycle already running");
+        } else {
+          console.warn(`⚠️ Stale lock file detected from PID ${lockPid}. Reclaiming lock.`);
+        }
+      } catch (err) {
+        if (err instanceof Error && err.message === "SEO cycle already running") {
+          throw err;
+        }
+      }
+    }
+
+    try {
+      fs.mkdirSync(lockDir, { recursive: true });
+      fs.writeFileSync(
+        lockPath,
+        JSON.stringify({ pid: process.pid, timestamp: new Date().toISOString(), cycleId }, null, 2),
+        "utf8"
+      );
+    } catch {
+      // Proceed safely
+    }
+
+    const releaseLock = () => {
+      try {
+        if (fs.existsSync(lockPath)) {
+          const raw = fs.readFileSync(lockPath, "utf8");
+          const data = JSON.parse(raw);
+          if (data.pid === process.pid) {
+            fs.unlinkSync(lockPath);
+          }
+        }
+      } catch {}
+    };
+
+    process.once("exit", releaseLock);
+
+    const CYCLE_TIMEOUT_MS = SEO_AGENT_CONFIG.TIMEOUTS?.CYCLE_TIMEOUT_MS || 1200000;
+    let cycleTimer: NodeJS.Timeout | null = null;
+    const cycleTimeoutPromise = new Promise<never>((_, reject) => {
+      cycleTimer = setTimeout(
+        () => reject(new Error(`TIMEOUT: Autonomous SEO cycle exceeded hard cycle limit of ${CYCLE_TIMEOUT_MS}ms`)),
+        CYCLE_TIMEOUT_MS
+      );
+      if (typeof cycleTimer.unref === "function") cycleTimer.unref();
+    });
+
+    try {
+      return await Promise.race([
+        this.executeCycleBody(options, cycleId, timestamp, auditRecords),
+        cycleTimeoutPromise,
+      ]);
+    } catch (err: unknown) {
+      const errMsg = err instanceof Error ? err.message : String(err);
+      const isTimeout = errMsg.startsWith("TIMEOUT:");
+      if (isTimeout) {
+        console.error(`\n❌ [SEO][cycle] timeout after ${CYCLE_TIMEOUT_MS}ms: ${errMsg}`);
+      } else {
+        console.error(`\n❌ [SEO][cycle] failed: ${errMsg}`);
+      }
+      const failAudit: SeoAuditRecord = {
+        id: `audit-${cycleId}-cycle-failed`,
+        timestamp,
+        action: isTimeout ? "CYCLE_TIMEOUT" : "CYCLE_FAILED",
+        status: "FAILED",
+        riskLevel: "HIGH",
+        details: { message: errMsg },
+        provenance: [],
+      };
+      this.auditStore.recordAudit(failAudit);
+      return {
+        success: false,
+        status: "FAILED",
+        realDataStatus: "BLOCKED_PENDING_REAL_DATA",
+        cycleId,
+        timestamp,
+        opportunitiesDetected: 0,
+        highRiskSkipped: 0,
+        optimizationsApplied: 0,
+        deploymentsCompleted: 0,
+        indexNowUrlsSubmitted: [],
+        summary: `Cycle failed: ${errMsg}`,
+        auditRecords: [...auditRecords, failAudit],
+        killSwitchActive: false,
+      };
+    } finally {
+      if (cycleTimer) clearTimeout(cycleTimer);
+      releaseLock();
+      process.removeListener("exit", releaseLock);
+    }
+  }
+
+  private async executeCycleBody(
+    options: { dryRun?: boolean; forceSingleSlug?: string },
+    cycleId: string,
+    timestamp: string,
+    auditRecords: SeoAuditRecord[]
+  ): Promise<CycleRunResult> {
+
     // 1. EMERGENCY KILL SWITCH CHECK
+    const cycleStartTime = Date.now();
+    let totalLlmMs = 0;
+    let totalOptimizationMs = 0;
+    let totalValidationMs = 0;
+    let totalBuildMs = 0;
+    let totalDeploymentMs = 0;
+    let telemetryIngestionMs = 0;
+    let opportunityScoringMs = 0;
+    const getElapsed = () => ((Date.now() - cycleStartTime) / 1000).toFixed(1) + "s";
+
     if (this.auditStore.isKillSwitchActive()) {
       const killAudit: SeoAuditRecord = {
         id: `audit-${cycleId}-killswitch`,
@@ -231,9 +377,10 @@ export class SeoAgentRunner {
     }
 
     // 2. CHECK CONNECTOR HEALTH & FETCH REAL MULTI-SOURCE DATA
+    console.log(`[Heartbeat | Elapsed: ${getElapsed()}] Stage: PREFLIGHT_CONNECTOR_CHECK...`);
     const healthStart = Date.now();
     const health = await this.connector.checkHealth();
-    console.log(`[SEO] Pre-flight connector check completed in ${Date.now() - healthStart}ms`);
+    console.log(`[Heartbeat | Elapsed: ${getElapsed()}] Stage: PREFLIGHT_CONNECTOR_CHECK_COMPLETED (${Date.now() - healthStart}ms)`);
     const missingConnectors: string[] = [];
     if (health.gsc.status !== "CONNECTED") {
       missingConnectors.push(`Google Search Console (${health.gsc.status})`);
@@ -247,6 +394,8 @@ export class SeoAgentRunner {
     const priorStartDate = new Date(Date.now() - 56 * 24 * 60 * 60 * 1000).toISOString().split("T")[0];
 
     // Global overall telemetry ingestion timeout protection (60s default)
+    console.log("[SEO][telemetry_ingestion] started");
+    console.log(`[Heartbeat | Elapsed: ${getElapsed()}] Stage: TELEMETRY_INGESTION...`);
     const OVERALL_TIMEOUT_MS = SEO_AGENT_CONFIG.TELEMETRY_TIMEOUTS?.OVERALL_INGESTION_MS || 60000;
     let timeoutTimer: NodeJS.Timeout | null = null;
     const overallTimeoutPromise = new Promise<never>((_, reject) => {
@@ -277,7 +426,17 @@ export class SeoAgentRunner {
       })();
 
       [multiSource, priorGscResult] = await Promise.race([ingestionPromise, overallTimeoutPromise]);
+      telemetryIngestionMs = Date.now() - healthStart;
+      console.log(`[SEO][telemetry_ingestion] completed in ${telemetryIngestionMs}ms`);
+      console.log(`[Heartbeat | Elapsed: ${getElapsed()}] Stage: TELEMETRY_INGESTION_COMPLETED (${telemetryIngestionMs}ms)`);
     } catch (err) {
+      telemetryIngestionMs = Date.now() - healthStart;
+      const isTimeout = err instanceof Error && (err.message.includes("exceeded") || err.message.includes("TIMEOUT:") || err.message.includes("timed out"));
+      if (isTimeout) {
+        console.log(`[SEO][telemetry_ingestion] timeout after ${telemetryIngestionMs}ms`);
+      } else {
+        console.log(`[SEO][telemetry_ingestion] failed: ${err instanceof Error ? err.message : String(err)}`);
+      }
       console.error(`[SEO] Telemetry ingestion halted: ${err instanceof Error ? err.message : String(err)}`);
       multiSource = {
         gsc: [],
@@ -301,24 +460,41 @@ export class SeoAgentRunner {
       ? "AVAILABLE"
       : "BLOCKED_PENDING_REAL_DATA";
 
-    // HARD REAL-DATA GATE:
-    // If real GSC telemetry is unavailable and this is a live production run:
-    if (SEO_AGENT_CONFIG.REAL_SEO_DATA_REQUIRED && !hasRealGscData && !options.dryRun) {
-      const blockedAudit: SeoAuditRecord = {
-        id: `audit-${cycleId}-real-data-gate`,
+    // Stop and block if real Search Console metrics are unavailable
+    if (SEO_AGENT_CONFIG.REAL_SEO_DATA_REQUIRED && !hasRealGscData) {
+      const summary = `BLOCKED: Zero real GSC telemetry data retrieved. Real Data Gate prevents autonomous changes without authenticated live metrics. Missing/Pending: ${missingConnectors.join(", ")}.`;
+      console.warn(`\n🛑 [REAL DATA GATE ACTIVATED]`);
+      console.warn(`   Reason: Search Console returned 0 rows for ${SEO_AGENT_CONFIG.GSC_SITE_PROPERTY}`);
+      console.warn(`   Resolution: Verify Composio Google OAuth connection or GSC credentials in .env.local.`);
+      console.warn(`   Zero files modified. Zero autonomous deployments executed.\n`);
+
+      const gateAudit: SeoAuditRecord = {
+        id: `audit-${cycleId}-real-data-blocked`,
         timestamp,
         action: "REAL_DATA_GATE_BLOCKED",
-        status: "BLOCKED_PENDING_REAL_DATA",
-        riskLevel: "LOW",
-        details: {
-          message:
-            "REAL_SEO_DATA_REQUIRED=true: Production SEO modifications blocked because real Search Console telemetry is unconfigured. The LLM engine must never make production changes without real search evidence.",
-          missingConnectors,
-        },
+        status: "SKIPPED",
+        riskLevel: "HIGH",
+        details: { message: summary, missingConnectors },
         provenance: [],
       };
-      this.auditStore.recordAudit(blockedAudit);
-      auditRecords.push(blockedAudit);
+      this.auditStore.recordAudit(gateAudit);
+      auditRecords.push(gateAudit);
+
+      this.auditStore.recordCycleRun({
+        date: timestamp.split("T")[0],
+        cycleId,
+        opportunities: 0,
+        selected: 0,
+        processed: 0,
+        successful: 0,
+        failed: 0,
+        rollback: 0,
+        deployment: 0,
+        indexNow: 0,
+        finalStatus: "BLOCKED_PENDING_REAL_DATA",
+        summary,
+        isDryRun: !!options.dryRun,
+      });
 
       return {
         success: false,
@@ -332,19 +508,32 @@ export class SeoAgentRunner {
         optimizationsApplied: 0,
         deploymentsCompleted: 0,
         indexNowUrlsSubmitted: [],
-        summary: `STATUS = BLOCKED_PENDING_REAL_DATA. Missing required real data connector: ${missingConnectors.join(", ")}. Hard gate active: Zero files modified, zero commits created, zero deployments executed.`,
+        multiSourceMatrix: multiSource.matrix,
+        summary,
         auditRecords,
         killSwitchActive: false,
+        timing: {
+          telemetryIngestionMs,
+          opportunityScoringMs: 0,
+          llmMs: 0,
+          optimizationMs: 0,
+          validationMs: 0,
+          buildMs: 0,
+          deploymentMs: 0,
+          totalCycleMs: Date.now() - cycleStartTime,
+        },
       };
     }
 
-    // 3. DETECT OPPORTUNITIES (all 19 signal categories across multi-source metrics)
+    // 3. DETECT OPPORTUNITIES ACROSS 19 ADVANCED PATTERNS
+    console.log(`[Heartbeat | Elapsed: ${getElapsed()}] Stage: OPPORTUNITY_DETECTION_AND_SCORING...`);
     const oppStart = Date.now();
+    console.log("[SEO][opportunity_scoring] started");
+    const deployedOpts = this.auditStore.getOptimizations().filter((o) => o.commitStatus === "DEPLOYED");
     const recentAudits = this.auditStore.getRuntimeStatus().recentAudits || [];
-    const deployedOpts = this.auditStore.getOptimizations();
     const resolvedOppKeys: string[] = recentAudits
-      .filter((a) => a.action === "OPTIMIZATION_APPLIED" || a.action === "PAGE_OPTIMIZED" || a.action === "NO_ACTIONABLE_CHANGE")
-      .map((a) => `${a.pageSlug}:${a.details?.proposedAction || ""}`)
+      .filter((a) => a.action === "HIGH_RISK_SKIPPED")
+      .map((a) => `${a.pageSlug}:HIGH_RISK`)
       .concat(
         recentAudits
           .filter((a) => a.action === "OPTIMIZATION_APPLIED" || a.action === "PAGE_OPTIMIZED" || a.action === "NO_ACTIONABLE_CHANGE")
@@ -367,12 +556,15 @@ export class SeoAgentRunner {
     console.log(`[SEO] Opportunity engine evaluated 19 criteria in ${Date.now() - oppStart}ms: ${rawOpportunities.length} opportunities detected`);
 
     // 4. SCORE AND PRIORITIZE
-    const scoreStart = Date.now();
     const scoredOpportunities = this.scoringEngine.scoreAndPrioritize(rawOpportunities);
     this.auditStore.setOpportunities(scoredOpportunities);
-    console.log(`[SEO] Opportunity scoring & risk evaluation completed in ${Date.now() - scoreStart}ms`);
+    opportunityScoringMs = Date.now() - oppStart;
+    console.log(`[SEO][opportunity_scoring] completed in ${opportunityScoringMs}ms`);
+    console.log(`[Heartbeat | Elapsed: ${getElapsed()}] Stage: OPPORTUNITY_SCORING_COMPLETED (${opportunityScoringMs}ms: ${scoredOpportunities.length} opportunities evaluated)`);
 
     // 5. BUDGET CHECK AND RISK FILTERING
+    console.log("[SEO][candidate_filtering] started");
+    const filterStart = Date.now();
     const budgets = this.auditStore.getBudgets();
     const selection = this.scoringEngine.selectActionableOpportunities(
       scoredOpportunities,
@@ -380,6 +572,7 @@ export class SeoAgentRunner {
       budgets.weeklyDone,
       this.auditStore
     );
+    console.log(`[SEO][candidate_filtering] completed in ${Date.now() - filterStart}ms`);
     const {
       actionable,
       skippedHighRisk,
@@ -551,9 +744,32 @@ export class SeoAgentRunner {
       let oppIdx = 0;
       for (const opp of dryRunBatch) {
         oppIdx++;
-        console.log(`🧠 [Qwen3:4b] Reasoning on Opportunity ${oppIdx}/${dryRunBatch.length}: /${opp.pageSlug} (${opp.type})...`);
+        console.log(`[Heartbeat | Candidate ${oppIdx}/${dryRunBatch.length} | Elapsed: ${getElapsed()}] 🧠 LLM Reasoning on /${opp.pageSlug} (${opp.type})...`);
         const realTool = getToolBySlug(opp.pageSlug);
         if (!realTool) continue;
+
+        // 7. NO_ACTIONABLE_CHANGE and ALREADY_OPTIMIZED candidates must be filtered before LLM invocation
+        const idempotency = evaluateOpportunityIdempotency(realTool, opp, this.auditStore);
+        if (!idempotency.isActionable) {
+          console.log(`[SEO][candidate_filtering] Pre-LLM skipped /${opp.pageSlug} (${opp.proposedAction.type}): ${idempotency.status} - ${idempotency.reason}`);
+          continue;
+        }
+
+        console.log(`[SEO][llm_generation] started for /${opp.pageSlug}`);
+        const llmStart = Date.now();
+        const hasMeasurableTraffic =
+          (opp.currentMetrics?.impressions || 0) > 0 ||
+          (opp.currentMetrics?.clicks || 0) > 0 ||
+          (opp.currentMetrics?.trafficSessions || 0) > 0;
+        const hasObjectiveDefect =
+          opp.type === "WEAK_TITLE" ||
+          opp.type === "WEAK_META_DESCRIPTION" ||
+          (realTool.seoTitle || "").trim().length < 30 ||
+          (realTool.seoTitle || "").trim().length > 65 ||
+          (realTool.seoDescription || "").trim().length < 80 ||
+          (realTool.seoDescription || "").trim().length > 165 ||
+          (realTool.seoTitle || "").includes("Free, Fast & Private") ||
+          (realTool.seoDescription || "").includes("Free, Fast & Private");
 
         const semanticResult = await this.llmClient.generateOptimization(
           realTool,
@@ -562,8 +778,13 @@ export class SeoAgentRunner {
             primaryQuery: opp.primaryQuery,
             reason: opp.reason,
             multiSourceContext: `GSC imp: ${opp.currentMetrics?.impressions || 0}, clicks: ${opp.currentMetrics?.clicks || 0}, pos: ${(opp.currentMetrics?.position || 0).toFixed(1)}, GA4 sessions: ${opp.currentMetrics?.trafficSessions || 0}, Bing imp: ${opp.currentMetrics?.bingImpressions || 0}, Clarity dead clicks: ${opp.currentMetrics?.clarityDeadClicks || 0}`,
+            hasMeasurableTraffic,
+            objectiveDefect: hasObjectiveDefect,
           }
         );
+        const llmDuration = Date.now() - llmStart;
+        totalLlmMs += llmDuration;
+        console.log(`[SEO][llm_generation] completed in ${llmDuration}ms`);
 
         const actionability = verifyActionableSemanticChange(
           realTool,
@@ -576,9 +797,9 @@ export class SeoAgentRunner {
         (opp as SeoOpportunity & { semanticResult?: unknown; actionability?: unknown; isActionable?: boolean }).isActionable = actionability.isActionable;
 
         if (!actionability.isActionable) {
-          console.log(`ℹ️ [SEO Actionability Gate] /${opp.pageSlug} (${opp.proposedAction.type}): NO_ACTIONABLE_CHANGE - ${actionability.reason}`);
+          console.log(`[Heartbeat | Candidate ${oppIdx}/${dryRunBatch.length} | Elapsed: ${getElapsed()}] ℹ️ [Actionability Gate] /${opp.pageSlug} (${opp.proposedAction.type}): NO_ACTIONABLE_CHANGE - ${actionability.reason}`);
         } else {
-          console.log(`✅ [SEO Actionability Gate] /${opp.pageSlug} (${opp.proposedAction.type}): ACTIONABLE - ${actionability.reason}`);
+          console.log(`[Heartbeat | Candidate ${oppIdx}/${dryRunBatch.length} | Elapsed: ${getElapsed()}] ✅ [Actionability Gate] /${opp.pageSlug} (${opp.proposedAction.type}): ACTIONABLE - ${actionability.reason}`);
         }
       }
 
@@ -621,6 +842,16 @@ export class SeoAgentRunner {
         summary,
         auditRecords,
         killSwitchActive: false,
+        timing: {
+          telemetryIngestionMs,
+          opportunityScoringMs,
+          llmMs: totalLlmMs,
+          optimizationMs: totalOptimizationMs,
+          validationMs: totalValidationMs,
+          buildMs: totalBuildMs,
+          deploymentMs: totalDeploymentMs,
+          totalCycleMs: Date.now() - cycleStartTime,
+        },
       };
     }
 
@@ -640,110 +871,135 @@ export class SeoAgentRunner {
       const batchModifiedFiles: Array<{ targetFile: string; previousContent: string }> = [];
       const batchChangedSlugs: string[] = [];
 
-      for (const opp of batch) {
+        for (let oppIdx = 0; oppIdx < batch.length; oppIdx++) {
+        const opp = batch[oppIdx];
         const realTool = getToolBySlug(opp.pageSlug);
         if (!realTool) continue;
 
-        // Bounded watchdog timeout per opportunity (Task 4)
-        const OPP_TIMEOUT_MS = SEO_AGENT_CONFIG.TIMEOUTS?.OPPORTUNITY_PROCESSING_MS || 150000;
-        let oppTimer: NodeJS.Timeout | null = null;
-        const oppTimeoutPromise = new Promise<never>((_, reject) => {
-          oppTimer = setTimeout(
-            () => reject(new Error(`TIMEOUT: Opportunity processing for /${opp.pageSlug} exceeded ${OPP_TIMEOUT_MS}ms`)),
-            OPP_TIMEOUT_MS
-          );
-          if (typeof oppTimer.unref === "function") oppTimer.unref();
-        });
+        console.log(`\n[Heartbeat | Candidate ${oppIdx + 1}/${batch.length} (Batch ${bIndex + 1}/${batches.length}) | Elapsed: ${getElapsed()}] Evaluating /${opp.pageSlug} (${opp.proposedAction.type})...`);
 
-        try {
-          const processOppPromise = (async () => {
-            // Step A: Hermes / Qwen semantic optimization
-            const semanticResult = await this.llmClient.generateOptimization(
-              realTool,
-              opp.proposedAction.type as SeoActionType,
-              {
-                primaryQuery: opp.primaryQuery,
-                reason: opp.reason,
-                multiSourceContext: `GSC imp: ${opp.currentMetrics?.impressions || 0}, pos: ${(opp.currentMetrics?.position || 0).toFixed(1)}, GA4 sessions: ${opp.currentMetrics?.trafficSessions || 0}`,
+          // 7. NO_ACTIONABLE_CHANGE and ALREADY_OPTIMIZED candidates must be filtered before LLM invocation
+          const idempotency = evaluateOpportunityIdempotency(realTool, opp, this.auditStore);
+          if (!idempotency.isActionable) {
+            console.log(`   [Pre-LLM Filter] /${opp.pageSlug} (${opp.proposedAction.type}): FILTERED BEFORE LLM (${idempotency.status}) - ${idempotency.reason}`);
+            console.log(`[SEO][candidate_filtering] Pre-LLM skipped /${opp.pageSlug}: ${idempotency.status}`);
+            const filterAudit: SeoAuditRecord = {
+              id: `audit-${cycleId}-${opp.id}-pre-llm-filtered`,
+              timestamp: new Date().toISOString(),
+              action: idempotency.status === "ALREADY_OPTIMIZED" ? "ALREADY_OPTIMIZED_SKIPPED" : "NO_ACTIONABLE_CHANGE",
+              status: "SKIPPED",
+              riskLevel: opp.riskLevel,
+              pageSlug: opp.pageSlug,
+              pageUrl: opp.pageUrl,
+              details: { reason: idempotency.reason, filterType: idempotency.status },
+              provenance: opp.provenance,
+            };
+            this.auditStore.recordAudit(filterAudit);
+            auditRecords.push(filterAudit);
+            continue;
+          }
+
+          // Bounded watchdog timeout per opportunity (Task 4)
+          const OPP_TIMEOUT_MS = SEO_AGENT_CONFIG.TIMEOUTS?.OPPORTUNITY_PROCESSING_MS || 150000;
+          let oppTimer: NodeJS.Timeout | null = null;
+          const oppTimeoutPromise = new Promise<never>((_, reject) => {
+            oppTimer = setTimeout(
+              () => reject(new Error(`TIMEOUT: Opportunity processing for /${opp.pageSlug} exceeded ${OPP_TIMEOUT_MS}ms`)),
+              OPP_TIMEOUT_MS
+            );
+            if (typeof oppTimer.unref === "function") oppTimer.unref();
+          });
+
+          try {
+            const processOppPromise = (async () => {
+              // Step A: Hermes / Qwen semantic optimization
+              console.log(`[SEO][llm_generation] started for /${opp.pageSlug}`);
+              console.log(`   [LLM / Semantic Engine] Generating recommendation for /${opp.pageSlug}...`);
+              const optStart = Date.now();
+              const hasMeasurableTraffic =
+                (opp.currentMetrics?.impressions || 0) > 0 ||
+                (opp.currentMetrics?.clicks || 0) > 0 ||
+                (opp.currentMetrics?.trafficSessions || 0) > 0;
+              const hasObjectiveDefect =
+                opp.type === "WEAK_TITLE" ||
+                opp.type === "WEAK_META_DESCRIPTION" ||
+                (realTool.seoTitle || "").trim().length < 30 ||
+                (realTool.seoTitle || "").trim().length > 65 ||
+                (realTool.seoDescription || "").trim().length < 80 ||
+                (realTool.seoDescription || "").trim().length > 165 ||
+                (realTool.seoTitle || "").includes("Free, Fast & Private") ||
+                (realTool.seoDescription || "").includes("Free, Fast & Private");
+
+              const semanticResult = await this.llmClient.generateOptimization(
+                realTool,
+                opp.proposedAction.type as SeoActionType,
+                {
+                  primaryQuery: opp.primaryQuery,
+                  reason: opp.reason,
+                  multiSourceContext: `GSC imp: ${opp.currentMetrics?.impressions || 0}, pos: ${(opp.currentMetrics?.position || 0).toFixed(1)}, GA4 sessions: ${opp.currentMetrics?.trafficSessions || 0}`,
+                  hasMeasurableTraffic,
+                  objectiveDefect: hasObjectiveDefect,
+                }
+              );
+              const llmDuration = Date.now() - optStart;
+              totalLlmMs += llmDuration;
+              console.log(`[SEO][llm_generation] completed in ${llmDuration}ms`);
+              console.log(`   [LLM / Semantic Engine] Generated recommendation for /${opp.pageSlug} in ${llmDuration}ms`);
+
+              // Guardrail: Skip suspicious or malformed recommendation without poisoning the batch
+              if (
+                !semanticResult ||
+                (!semanticResult.seoTitle && !semanticResult.seoDescription && !semanticResult.internalLinkSuggestions)
+              ) {
+                console.log(`   [Guardrail] Skipping /${opp.pageSlug}: Malformed or empty AI recommendation.`);
+                const skipAudit: SeoAuditRecord = {
+                  id: `audit-${cycleId}-${opp.id}-bad-rec-skipped`,
+                  timestamp: new Date().toISOString(),
+                  action: "AI_RECOMMENDATION_REJECTED",
+                  status: "SKIPPED",
+                  riskLevel: opp.riskLevel,
+                  pageSlug: opp.pageSlug,
+                  details: { reason: "Malformed or empty AI recommendation skipped safely." },
+                  provenance: opp.provenance,
+                };
+                this.auditStore.recordAudit(skipAudit);
+                auditRecords.push(skipAudit);
+                return;
               }
-            );
 
-            // Guardrail: Skip suspicious or malformed recommendation without poisoning the batch
-            if (
-              !semanticResult ||
-              (!semanticResult.seoTitle && !semanticResult.seoDescription && !semanticResult.internalLinkSuggestions)
-            ) {
-              const skipAudit: SeoAuditRecord = {
-                id: `audit-${cycleId}-${opp.id}-bad-rec-skipped`,
-                timestamp: new Date().toISOString(),
-                action: "AI_RECOMMENDATION_REJECTED",
-                status: "SKIPPED",
-                riskLevel: opp.riskLevel,
-                pageSlug: opp.pageSlug,
-                details: { reason: "Malformed or empty AI recommendation skipped safely." },
-                provenance: opp.provenance,
-              };
-              this.auditStore.recordAudit(skipAudit);
-              auditRecords.push(skipAudit);
-              return;
-            }
+              // Factual Content Safety Gate: Never auto-publish unverified claims
+              if (semanticResult.factualSafety && !semanticResult.factualSafety.isSafe) {
+                console.log(`   [Factual Safety Gate] Skipping /${opp.pageSlug}: ${semanticResult.factualSafety.reason}`);
+                const isReview = semanticResult.factualSafety.classification === "NEEDS_REVIEW";
+                const safetyAudit: SeoAuditRecord = {
+                  id: `audit-${cycleId}-${opp.id}-factual-safety`,
+                  timestamp: new Date().toISOString(),
+                  action: isReview ? "FACTUAL_VERIFICATION_REQUIRED" : "AI_RECOMMENDATION_REJECTED",
+                  status: isReview ? "NEEDS_REVIEW" : "SKIPPED",
+                  riskLevel: opp.riskLevel,
+                  pageSlug: opp.pageSlug,
+                  details: {
+                    reason: semanticResult.factualSafety.reason,
+                    unverifiedClaims: semanticResult.factualSafety.unverifiedClaims,
+                    highRiskArea: semanticResult.factualSafety.highRiskAreaDetected,
+                  },
+                  provenance: opp.provenance,
+                };
+                this.auditStore.recordAudit(safetyAudit);
+                auditRecords.push(safetyAudit);
+                return;
+              }
 
-            // Factual Content Safety Gate: Never auto-publish unverified claims
-            if (semanticResult.factualSafety && !semanticResult.factualSafety.isSafe) {
-              const isReview = semanticResult.factualSafety.classification === "NEEDS_REVIEW";
-              const safetyAudit: SeoAuditRecord = {
-                id: `audit-${cycleId}-${opp.id}-factual-safety`,
-                timestamp: new Date().toISOString(),
-                action: isReview ? "FACTUAL_VERIFICATION_REQUIRED" : "AI_RECOMMENDATION_REJECTED",
-                status: isReview ? "NEEDS_REVIEW" : "SKIPPED",
-                riskLevel: opp.riskLevel,
-                pageSlug: opp.pageSlug,
-                details: {
-                  reason: semanticResult.factualSafety.reason,
-                  unverifiedClaims: semanticResult.factualSafety.unverifiedClaims,
-                  highRiskArea: semanticResult.factualSafety.highRiskAreaDetected,
-                },
-                provenance: opp.provenance,
-              };
-              this.auditStore.recordAudit(safetyAudit);
-              auditRecords.push(safetyAudit);
-              return;
-            }
-
-            // Actionability Gate: Verify semantic result produces real content change
-            const actionability = verifyActionableSemanticChange(
-              realTool,
-              opp.proposedAction.type as SeoActionType,
-              semanticResult
-            );
-            if (!actionability.isActionable) {
-              console.log(`[SEO Gate] Skipping /${opp.pageSlug}: NO_ACTIONABLE_CHANGE (${actionability.reason})`);
-              const noChangeAudit: SeoAuditRecord = {
-                id: `audit-${cycleId}-${opp.id}-no-actionable-change`,
-                timestamp: new Date().toISOString(),
-                action: "NO_ACTIONABLE_CHANGE",
-                status: "SKIPPED",
-                riskLevel: opp.riskLevel,
-                pageSlug: opp.pageSlug,
-                pageUrl: opp.pageUrl,
-                details: {
-                  reason: actionability.reason,
-                  proposedAction: opp.proposedAction.type,
-                  message: "Proposed action cannot produce a real content change on the target page.",
-                },
-                provenance: opp.provenance,
-              };
-              this.auditStore.recordAudit(noChangeAudit);
-              auditRecords.push(noChangeAudit);
-              return;
-            }
-
-            // Step B: Safe code modification
-            const applyResult = await this.optimizer.applyOptimization(opp, semanticResult);
-            if (!applyResult.success) {
-              if (applyResult.errorMessage?.includes("NO_ACTIONABLE_CHANGE")) {
+              // Actionability Gate: Verify semantic result produces real content change
+              const actionability = verifyActionableSemanticChange(
+                realTool,
+                opp.proposedAction.type as SeoActionType,
+                semanticResult
+              );
+              console.log(`   [Actionability Gate] /${opp.pageSlug}: ${actionability.isActionable ? "ACTIONABLE ✅" : "NO_ACTIONABLE_CHANGE ℹ️"} (${actionability.reason})`);
+              if (!actionability.isActionable) {
                 const noChangeAudit: SeoAuditRecord = {
-                  id: `audit-${cycleId}-${opp.id}-optimizer-no-change`,
+                  id: `audit-${cycleId}-${opp.id}-no-actionable-change`,
                   timestamp: new Date().toISOString(),
                   action: "NO_ACTIONABLE_CHANGE",
                   status: "SKIPPED",
@@ -751,58 +1007,93 @@ export class SeoAgentRunner {
                   pageSlug: opp.pageSlug,
                   pageUrl: opp.pageUrl,
                   details: {
-                    reason: applyResult.errorMessage,
+                    reason: actionability.reason,
                     proposedAction: opp.proposedAction.type,
+                    message: "Proposed action cannot produce a real content change on the target page.",
                   },
                   provenance: opp.provenance,
                 };
                 this.auditStore.recordAudit(noChangeAudit);
                 auditRecords.push(noChangeAudit);
+                return;
               }
-              return;
-            }
 
-            // STAGE A: Cheap, Fast Per-Page Validation Gate (Task 3 & Task 5)
-            // Validates target tool existence, syntax-safe patch, boundary, canonicals, metadata, FAQs, relatedTools, factual safety
-            const stageAResult = this.validator.validatePageStageA(opp.pageSlug);
-            if (!stageAResult.passed) {
-              // Reject ONLY this page, restore it immediately, do not add to candidate batch
-              console.warn(`\n⚠️ [Stage A Isolation] Page /${opp.pageSlug} failed Stage A validation:`);
-              console.warn(`   Reason: ${stageAResult.failureReason}`);
-              console.warn(`   Action: Restoring /${opp.pageSlug} immediately; remaining candidate batch continues.`);
+              // Step B: Safe code modification
+              console.log(`   [Optimizer] Applying optimization patch to ${opp.proposedAction.targetFile || "data/tools/*.ts"}...`);
+              const optPatchStart = Date.now();
+              const applyResult = await this.optimizer.applyOptimization(opp, semanticResult);
+              totalOptimizationMs += Date.now() - optPatchStart;
+              if (!applyResult.success) {
+                console.log(`   [Optimizer] Patch could not be applied: ${applyResult.errorMessage}`);
+                if (applyResult.errorMessage?.includes("NO_ACTIONABLE_CHANGE")) {
+                  const noChangeAudit: SeoAuditRecord = {
+                    id: `audit-${cycleId}-${opp.id}-optimizer-no-change`,
+                    timestamp: new Date().toISOString(),
+                    action: "NO_ACTIONABLE_CHANGE",
+                    status: "SKIPPED",
+                    riskLevel: opp.riskLevel,
+                    pageSlug: opp.pageSlug,
+                    pageUrl: opp.pageUrl,
+                    details: {
+                      reason: applyResult.errorMessage,
+                      proposedAction: opp.proposedAction.type,
+                    },
+                    provenance: opp.provenance,
+                  };
+                  this.auditStore.recordAudit(noChangeAudit);
+                  auditRecords.push(noChangeAudit);
+                }
+                return;
+              }
 
-              this.optimizer.rollbackFile(applyResult.targetFile, applyResult.previousContent);
+              // STAGE A: Cheap, Fast Per-Page Validation Gate (Task 3 & Task 5)
+              // Validates target tool existence, syntax-safe patch, boundary, canonicals, metadata, FAQs, relatedTools, factual safety
+              console.log(`[SEO][stage_a_validation] started for /${opp.pageSlug}`);
+              console.log(`   [Stage A Isolation] Running cheap preflight check for /${opp.pageSlug}...`);
+              const stageAStart = Date.now();
+              const stageAResult = this.validator.validatePageStageA(opp.pageSlug);
+              totalValidationMs += Date.now() - stageAStart;
+              if (!stageAResult.passed) {
+                console.log(`[SEO][stage_a_validation] failed for /${opp.pageSlug}: ${stageAResult.failureReason}`);
+                // Reject ONLY this page, restore it immediately, do not add to candidate batch
+                console.warn(`\n⚠️ [Stage A Isolation] Page /${opp.pageSlug} failed Stage A validation (${stageAResult.durationMs}ms):`);
+                console.warn(`   Reason: ${stageAResult.failureReason}`);
+                console.warn(`   Action: Restoring /${opp.pageSlug} immediately; remaining candidate batch continues.`);
 
-              const stageAAudit: SeoAuditRecord = {
-                id: `audit-${cycleId}-${opp.id}-stage-a-rejected`,
-                timestamp: new Date().toISOString(),
-                action: "STAGE_A_ISOLATION_REJECTED",
-                status: "SKIPPED",
-                riskLevel: opp.riskLevel,
-                pageSlug: opp.pageSlug,
-                pageUrl: opp.pageUrl,
-                details: {
-                  reason: stageAResult.failureReason,
-                  failedChecks: stageAResult.checks.filter((c) => !c.passed).map((c) => `${c.name}: ${c.message}`),
-                  message: "Page rejected during Stage A pre-build isolation and restored immediately without poisoning batch.",
-                },
-                provenance: opp.provenance,
-              };
-              this.auditStore.recordAudit(stageAAudit);
-              auditRecords.push(stageAAudit);
-              return;
-            }
+                this.optimizer.rollbackFile(applyResult.targetFile, applyResult.previousContent);
 
-            // Stage A passed: safe to include in candidate batch!
-            batchModifiedFiles.push({
-              targetFile: applyResult.targetFile,
-              previousContent: applyResult.previousContent,
-            });
-            batchChangedSlugs.push(opp.pageSlug);
-          })();
+                const stageAAudit: SeoAuditRecord = {
+                  id: `audit-${cycleId}-${opp.id}-stage-a-rejected`,
+                  timestamp: new Date().toISOString(),
+                  action: "STAGE_A_ISOLATION_REJECTED",
+                  status: "SKIPPED",
+                  riskLevel: opp.riskLevel,
+                  pageSlug: opp.pageSlug,
+                  pageUrl: opp.pageUrl,
+                  details: {
+                    reason: stageAResult.failureReason,
+                    failedChecks: stageAResult.checks.filter((c) => !c.passed).map((c) => `${c.name}: ${c.message}`),
+                    message: "Page rejected during Stage A pre-build isolation and restored immediately without poisoning batch.",
+                  },
+                  provenance: opp.provenance,
+                };
+                this.auditStore.recordAudit(stageAAudit);
+                auditRecords.push(stageAAudit);
+                return;
+              }
 
-          await Promise.race([processOppPromise, oppTimeoutPromise]);
-        } catch (oppErr) {
+              // Stage A passed: safe to include in candidate batch!
+              console.log(`[SEO][stage_a_validation] completed in ${stageAResult.durationMs}ms`);
+              console.log(`   [Stage A Isolation] PASS (${stageAResult.durationMs}ms): /${opp.pageSlug} accepted into candidate batch.`);
+              batchModifiedFiles.push({
+                targetFile: applyResult.targetFile,
+                previousContent: applyResult.previousContent,
+              });
+              batchChangedSlugs.push(opp.pageSlug);
+            })();
+
+            await Promise.race([processOppPromise, oppTimeoutPromise]);
+          } catch (oppErr) {
           const timeoutErrMsg = oppErr instanceof Error ? oppErr.message : String(oppErr);
           console.error(`\n❌ [Opportunity Processing Error] /${opp.pageSlug}: ${timeoutErrMsg}`);
           const errAudit: SeoAuditRecord = {
@@ -843,14 +1134,36 @@ export class SeoAgentRunner {
       });
 
       let lastValSummary: ValidationSummary;
+      const stageBStart = Date.now();
+      console.log("[SEO][stage_b_validation] started");
       try {
-        console.log(`\n⏳ Running Stage B Global Validation Gate for batch ${bIndex + 1} (${batchChangedSlugs.length} candidate pages)...`);
+        console.log(`\n[Heartbeat | Elapsed: ${getElapsed()}] ⏳ Running Stage B Global Validation Gate for batch ${bIndex + 1} (${batchChangedSlugs.length} candidate pages)...`);
         lastValSummary = await Promise.race([
           this.validator.validateBatchStageB(batchChangedSlugs),
           batchValTimeoutPromise,
         ]);
+        const stageBDuration = Date.now() - stageBStart;
+        if (lastValSummary.overallPassed) {
+          console.log(`[SEO][stage_b_validation] completed in ${stageBDuration}ms`);
+        } else {
+          console.log(`[SEO][stage_b_validation] failed: ${lastValSummary.failureReason}`);
+        }
+        const buildCheck = lastValSummary.checks.find((c) => c.name.includes("Build"));
+        if (buildCheck && buildCheck.durationMs) {
+          totalBuildMs += buildCheck.durationMs;
+          totalValidationMs += stageBDuration - buildCheck.durationMs;
+        } else {
+          totalValidationMs += stageBDuration;
+        }
       } catch (err) {
         const timeoutMsg = err instanceof Error ? err.message : String(err);
+        const stageBDuration = Date.now() - stageBStart;
+        if (timeoutMsg.includes("TIMEOUT:") || timeoutMsg.includes("exceeded")) {
+          console.log(`[SEO][stage_b_validation] timeout after ${stageBDuration}ms`);
+        } else {
+          console.log(`[SEO][stage_b_validation] failed: ${timeoutMsg}`);
+        }
+        totalValidationMs += stageBDuration;
         lastValSummary = {
           overallPassed: false,
           typecheckPassed: false,
@@ -930,11 +1243,13 @@ export class SeoAgentRunner {
       }
 
       // Step E: Git commit batch
+      const commitStart = Date.now();
       const commitRes = await this.deployment.createAutonomousCommit(
         batchModifiedFiles.map((b) => b.targetFile).join(" "),
         `Autonomous SEO batch ${bIndex + 1}: optimized ${batchChangedSlugs.length} pages`,
         batchChangedSlugs.join(",")
       );
+      totalDeploymentMs += Date.now() - commitStart;
 
       if (!commitRes.success) {
         failedBatches++;
@@ -946,7 +1261,9 @@ export class SeoAgentRunner {
       }
 
       // Step F: Production Deployment
+      const deployStart = Date.now();
       const pushRes = await this.deployment.pushToProduction();
+      totalDeploymentMs += Date.now() - deployStart;
       if (!pushRes.success) {
         failedBatches++;
         rollbacksCount += batchModifiedFiles.length;
@@ -1000,13 +1317,21 @@ export class SeoAgentRunner {
 
     console.log(`Batch processing finished. Successful batches: ${successfulBatches}, Failed batches: ${failedBatches}, Rollbacks: ${rollbacksCount}`);
 
-    const isRolledBackCycle = (failedBatches > 0 || rollbacksCount > 0) && appliedCount === 0;
-    const finalCycleStatus = isRolledBackCycle ? "COMPLETED_WITH_ROLLBACKS" : "COMPLETED";
+    let finalCycleStatus: "COMPLETED" | "PARTIAL" | "FAILED";
+    if (failedBatches === 0 && rollbacksCount === 0) {
+      finalCycleStatus = "COMPLETED";
+    } else if (successfulBatches > 0) {
+      finalCycleStatus = "PARTIAL";
+    } else {
+      finalCycleStatus = "FAILED";
+    }
+
+    const isRolledBackCycle = finalCycleStatus === "FAILED";
 
     // 7. SUBMIT TO INDEXNOW SUMMARY
     const summary = isRolledBackCycle
-      ? `Cycle ${cycleId} finished with rollbacks: ${rawOpportunities.length} opportunities detected, ${filteredAlreadyOptimized.length} already optimized, ${filteredCooldown.length} in cooldown, ${filteredNoOp.length} no-op, ${skippedHighRisk.length} high-risk skipped, ${rollbacksCount} changes rolled back after batch validation failure. 0 files permanently modified, 0 deployments executed.`
-      : `Cycle ${cycleId} finished: ${rawOpportunities.length} opportunities detected, ${filteredAlreadyOptimized.length} already optimized, ${filteredCooldown.length} in cooldown, ${filteredNoOp.length} no-op, ${skippedHighRisk.length} high-risk skipped, ${appliedCount} optimized in atomic batches, ${deployedCount} deployed, ${changedSlugs.length} IndexNow URLs broadcast.`;
+      ? `Cycle ${cycleId} finished with failures: ${rawOpportunities.length} opportunities detected, ${filteredAlreadyOptimized.length} already optimized, ${filteredCooldown.length} in cooldown, ${filteredNoOp.length} no-op, ${skippedHighRisk.length} high-risk skipped, ${rollbacksCount} changes rolled back after batch validation failure. 0 files permanently modified, 0 deployments executed.`
+      : `Cycle ${cycleId} finished (${finalCycleStatus}): ${rawOpportunities.length} opportunities detected, ${filteredAlreadyOptimized.length} already optimized, ${filteredCooldown.length} in cooldown, ${filteredNoOp.length} no-op, ${skippedHighRisk.length} high-risk skipped, ${appliedCount} optimized in atomic batches, ${deployedCount} deployed, ${changedSlugs.length} IndexNow URLs broadcast.`;
 
     this.auditStore.recordCycleRun({
       date: timestamp.split("T")[0],
@@ -1045,6 +1370,16 @@ export class SeoAgentRunner {
       summary,
       auditRecords,
       killSwitchActive: false,
+      timing: {
+        telemetryIngestionMs,
+        opportunityScoringMs,
+        llmMs: totalLlmMs,
+        optimizationMs: totalOptimizationMs,
+        validationMs: totalValidationMs,
+        buildMs: totalBuildMs,
+        deploymentMs: totalDeploymentMs,
+        totalCycleMs: Date.now() - cycleStartTime,
+      },
     };
   }
 }

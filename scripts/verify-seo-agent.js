@@ -941,6 +941,136 @@ async function runVerification() {
   assert(aspectIdempotencyRecheck.status === "ALREADY_OPTIMIZED", "Scenario 12: Idempotency preserved: aspect-ratio-calculator marked ALREADY_OPTIMIZED");
   assert(aspectIdempotencyRecheck.isActionable === false, "Scenario 12: ALREADY_OPTIMIZED is non-actionable, preventing redundant cycle churn");
 
+  // Scenario 13: Concurrency Lock prevents duplicate cycles
+  console.log("--- Testing Concurrency Lock Protection ---");
+  const lockDir = path.join(workspaceRoot, "data", "seo-agent");
+  const lockPath = path.join(lockDir, "seo-agent.lock");
+  fs.mkdirSync(lockDir, { recursive: true });
+  fs.writeFileSync(
+    lockPath,
+    JSON.stringify({ pid: process.pid, timestamp: new Date().toISOString(), cycleId: "test-lock" }),
+    "utf8"
+  );
+  let lockBlocked = false;
+  try {
+    const { SeoAgentRunner } = jiti("../lib/seo-agent/runner");
+    const testRunner = new SeoAgentRunner(workspaceRoot);
+    await testRunner.runCycle({ dryRun: true });
+  } catch (err) {
+    if (err && err.message === "SEO cycle already running") {
+      lockBlocked = true;
+    }
+  } finally {
+    try {
+      if (fs.existsSync(lockPath)) fs.unlinkSync(lockPath);
+    } catch {}
+  }
+  assert(lockBlocked === true, "Scenario 13: Concurrency Lock successfully blocked duplicate cycle and threw 'SEO cycle already running'");
+
+  // ============================================================================
+  // Task 14: Dedicated Regression Tests
+  // ============================================================================
+  console.log("\n--- Task 14: Dedicated Regression Suite ---");
+
+  // 1. Ollama timeout regression test
+  console.log("Testing Ollama timeout handling...");
+  const { HermesQwenClient: TimeoutHermesClient } = jiti("../lib/seo-agent/hermes-qwen-client");
+  const timeoutLlmClient = new TimeoutHermesClient();
+  timeoutLlmClient.customEndpoint = "http://127.0.0.1:59999/timeout-test";
+  const dummyTool = getAllTools()[0];
+  const llmStart = Date.now();
+  const llmRes = await timeoutLlmClient.generateOptimization(dummyTool, "FAQ_ENRICHMENT", { reason: "Regression test" });
+  const llmElapsed = Date.now() - llmStart;
+  assert(llmRes !== null && typeof llmRes === "object", "Regression 1: Ollama timeout returns structured deterministic fallback");
+  assert(llmElapsed < 10000, `Regression 1: Ollama request failed promptly without hanging (${llmElapsed}ms)`);
+
+  // 2. Connector timeout regression test
+  console.log("Testing Connector timeout handling...");
+  const { SeoDataConnector: TimeoutDataConnector } = jiti("../lib/seo-agent/data-connector");
+  const testConnector = new TimeoutDataConnector();
+  const connStart = Date.now();
+  const gscTimeoutRes = await testConnector.fetchSearchConsoleMetrics({ startDate: "2026-01-01", endDate: "2026-01-28" });
+  const connElapsed = Date.now() - connStart;
+  assert(gscTimeoutRes !== null && Array.isArray(gscTimeoutRes.metrics), "Regression 2: Connector timeout returns structured failure result");
+  assert(connElapsed < 10000, `Regression 2: Connector request resolved cleanly without hanging (${connElapsed}ms)`);
+
+  // 3. Validation timeout regression test
+  console.log("Testing Validation timeout handling...");
+  let valTimedOut = false;
+  try {
+    await execWd(
+      process.platform === "win32"
+        ? 'powershell -NoProfile -Command "Start-Sleep -Milliseconds 1500"'
+        : "sleep 1.5",
+      { cwd: workspaceRoot },
+      100,
+      "Validation Timeout Test"
+    );
+  } catch (err) {
+    if (err && err.message && err.message.includes("TIMEOUT:")) {
+      valTimedOut = true;
+    }
+  }
+  assert(valTimedOut === true, "Regression 3: Validation timeout triggers structured TIMEOUT rejection");
+
+  // 4. Build timeout regression test
+  console.log("Testing Build timeout handling...");
+  const buildCheckTimeoutRes = await seoValidator.runBuildCheck(50);
+  assert(buildCheckTimeoutRes.passed === false, "Regression 4: Build timeout returns structured failure result");
+  assert(buildCheckTimeoutRes.name === "Next.js Build Gate", "Regression 4: Build timeout preserves gate identity");
+  assert(buildCheckTimeoutRes.message.includes("TIMEOUT:") || buildCheckTimeoutRes.message.includes("exceeded"), "Regression 4: Build timeout captures explicit timeout message");
+
+  // 5. No-op candidate regression test
+  console.log("Testing No-op candidate filtering...");
+  const mockMaxedTool = {
+    ...dummyTool,
+    faq: Array(10).fill({ question: "Existing Q?", answer: "Existing A." }),
+    relatedTools: ["aspect-ratio-calculator", "base64-encoder", "color-converter", "cron-generator", "csv-to-json", "diff-checker"],
+  };
+  const noOpActionability = evaluateOpportunityIdempotency(mockMaxedTool, {
+    id: "test-noop",
+    type: "THIN_PAGE_CONTENT",
+    pageSlug: mockMaxedTool.slug,
+    pageUrl: `https://novatool.in/${mockMaxedTool.slug}`,
+    priorityScore: 70,
+    riskLevel: "LOW",
+    confidence: "HIGH",
+    reason: "Test no-op",
+    proposedAction: { type: "FAQ_ENRICHMENT", summary: "Test", risk: "LOW" },
+    provenance: [],
+  }, testStore);
+  assert(noOpActionability.isActionable === false, "Regression 5: Maxed-out tool filtered as non-actionable before LLM");
+
+  // 6. Already optimized candidate regression test
+  console.log("Testing Already Optimized candidate filtering...");
+  const alreadyOptimizedTool = getAllTools().find((t) => t.slug === "aspect-ratio-calculator");
+  const alreadyOptCheck = evaluateOpportunityIdempotency(alreadyOptimizedTool, thinOpp, testStore);
+  assert(alreadyOptCheck.status === "ALREADY_OPTIMIZED", "Regression 6: Previously optimized tool recognized as ALREADY_OPTIMIZED");
+  assert(alreadyOptCheck.isActionable === false, "Regression 6: ALREADY_OPTIMIZED candidate filtered before LLM invocation");
+
+  // 7. One candidate failure while another candidate remains processable (isolation)
+  console.log("Testing single candidate failure isolation...");
+  const invalidCandidate = seoValidator.validatePageStageA("non-existent-tool-slug-xyz");
+  const validCandidate = seoValidator.validatePageStageA("aspect-ratio-calculator");
+  assert(invalidCandidate.passed === false, "Regression 7: Invalid candidate fails Stage A");
+  assert(validCandidate.passed === true, "Regression 7: Valid candidate passes Stage A");
+  assert(validCandidate.slug === "aspect-ratio-calculator", "Regression 7: Valid candidate remains processable in batch");
+
+  // 8. Complete successful batch validation
+  console.log("Testing complete successful batch validation...");
+  const validSlugs = ["aspect-ratio-calculator", "compress-image"];
+  const batchStageAResults = validSlugs.map((s) => seoValidator.validatePageStageA(s));
+  assert(batchStageAResults.every((r) => r.passed), "Regression 8: All candidates in valid batch pass Stage A");
+
+  // 9. Terminal cycle state
+  console.log("Testing terminal cycle state...");
+  const { SeoAgentRunner: RegRunner } = jiti("../lib/seo-agent/runner");
+  const regRunner = new RegRunner(workspaceRoot);
+  const allowedTerminalStates = ["COMPLETED", "PARTIAL", "FAILED", "DRY_RUN", "BLOCKED_PENDING_REAL_DATA", "PAUSED_KILL_SWITCH"];
+  const dryRunCycleRes = await regRunner.runCycle({ dryRun: true, forceSingleSlug: "aspect-ratio-calculator" });
+  assert(allowedTerminalStates.includes(dryRunCycleRes.status), `Regression 9: Cycle execution reached valid terminal state (${dryRunCycleRes.status})`);
+  assert(typeof dryRunCycleRes.success === "boolean", "Regression 9: Cycle result includes boolean success flag");
+
   // Clean up temp dir
   try {
     fs.rmSync(tempDir, { recursive: true, force: true });

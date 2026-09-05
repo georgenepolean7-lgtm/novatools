@@ -300,8 +300,29 @@ export class FactualContentSafetyValidator {
 
     // 7. Metadata Optimization Check
     if (actionType === "TITLE_OPTIMIZATION" || actionType === "DESCRIPTION_OPTIMIZATION") {
-      const hasDefectOrTraffic =
-        evidenceContext?.hasMeasurableTraffic || evidenceContext?.objectiveDefect;
+      const currentTitle = (tool.seoTitle || "").trim();
+      const currentDesc = (tool.seoDescription || "").trim();
+      const isFileTool = tool.category === "pdf" || tool.category === "image" || tool.category === "file";
+
+      // Direct inspection of existing metadata for objective defects
+      const titleHasDefect =
+        currentTitle.length < 30 ||
+        currentTitle.length > 65 ||
+        currentTitle.includes("Free, Fast & Private");
+
+      const descHasDefect =
+        currentDesc.length < 80 ||
+        currentDesc.length > 165 ||
+        currentDesc.includes("Free, Fast & Private") ||
+        (!isFileTool && currentDesc.includes("zero file uploads"));
+
+      const hasObjectiveDefect =
+        Boolean(evidenceContext?.objectiveDefect) ||
+        (actionType === "TITLE_OPTIMIZATION" ? titleHasDefect : descHasDefect);
+
+      const hasMeasurableTraffic = Boolean(evidenceContext?.hasMeasurableTraffic);
+
+      const hasDefectOrTraffic = hasObjectiveDefect || hasMeasurableTraffic;
 
       if (!hasDefectOrTraffic) {
         return {
@@ -314,6 +335,39 @@ export class FactualContentSafetyValidator {
           evidenceTrail,
           reason: "Metadata is already compliant and page lacks search performance signal. Skipped to prevent churn.",
         };
+      }
+
+      // Verify that proposed metadata is within safe bounds and not malformed
+      if (actionType === "TITLE_OPTIMIZATION" && proposed.seoTitle) {
+        const proposedTitleLen = proposed.seoTitle.trim().length;
+        if (proposedTitleLen < 20 || proposedTitleLen > 75) {
+          return {
+            isSafe: false,
+            classification: "NEEDS_REVIEW",
+            factuallyVerified: false,
+            claimsChecked: totalClaimsChecked,
+            unverifiedClaims: [`Proposed title length (${proposedTitleLen} chars) is outside safe range (20-75 chars)`],
+            bannedWordsFound: [],
+            evidenceTrail,
+            reason: `Proposed title length (${proposedTitleLen} chars) is out of safe range.`,
+          };
+        }
+      }
+
+      if (actionType === "DESCRIPTION_OPTIMIZATION" && proposed.seoDescription) {
+        const proposedDescLen = proposed.seoDescription.trim().length;
+        if (proposedDescLen < 80 || proposedDescLen > 170) {
+          return {
+            isSafe: false,
+            classification: "NEEDS_REVIEW",
+            factuallyVerified: false,
+            claimsChecked: totalClaimsChecked,
+            unverifiedClaims: [`Proposed description length (${proposedDescLen} chars) is outside safe range (80-170 chars)`],
+            bannedWordsFound: [],
+            evidenceTrail,
+            reason: `Proposed description length (${proposedDescLen} chars) is out of safe range.`,
+          };
+        }
       }
     }
 

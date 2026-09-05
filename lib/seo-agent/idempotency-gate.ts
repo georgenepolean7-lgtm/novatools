@@ -209,22 +209,27 @@ export function evaluateOpportunityIdempotency(
 
   if (actionType === "TITLE_OPTIMIZATION" && opp.type === "WEAK_TITLE") {
     const titleLen = (tool.seoTitle || "").trim().length;
-    if (titleLen >= 35 && titleLen <= 60) {
+    const hasLegacyBoilerplate = (tool.seoTitle || "").includes("Free, Fast & Private");
+    if (titleLen >= 30 && titleLen <= 65 && !hasLegacyBoilerplate) {
       return {
         status: "NO_MEANINGFUL_CHANGE",
         isActionable: false,
-        reason: `Current title is already in optimal length range (${titleLen} characters).`,
+        reason: `Current title is already in compliant length range (${titleLen} characters).`,
       };
     }
   }
 
   if (actionType === "DESCRIPTION_OPTIMIZATION" && opp.type === "WEAK_META_DESCRIPTION") {
     const descLen = (tool.seoDescription || "").trim().length;
-    if (descLen >= 120 && descLen <= 155) {
+    const isFileTool = tool.category === "pdf" || tool.category === "image" || tool.category === "file";
+    const hasLegacyBoilerplate =
+      (tool.seoDescription || "").includes("Free, Fast & Private") ||
+      (!isFileTool && (tool.seoDescription || "").includes("zero file uploads"));
+    if (descLen >= 80 && descLen <= 165 && !hasLegacyBoilerplate) {
       return {
         status: "NO_MEANINGFUL_CHANGE",
         isActionable: false,
-        reason: `Current meta description is already in optimal length range (${descLen} characters).`,
+        reason: `Current meta description is already in compliant length range (${descLen} characters).`,
       };
     }
   }

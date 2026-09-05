@@ -71,6 +71,9 @@ async function fetchWithTimeout(
   const timeoutId = setTimeout(() => {
     controller.abort(new Error(`External request to ${url} timed out after ${timeoutMs}ms`));
   }, timeoutMs);
+  if (typeof timeoutId.unref === "function") {
+    timeoutId.unref();
+  }
 
   try {
     const res = await fetch(url, {

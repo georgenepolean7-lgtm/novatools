@@ -274,15 +274,24 @@ export class SeoOpportunityEngine {
       }
 
       // Rule L: Title Tag Health
-      const titleLen = (tool.seoTitle || "").length;
-      if (titleLen < 25 || titleLen > 65) {
+      const titleLen = (tool.seoTitle || "").trim().length;
+      const isTitleResolved =
+        resolvedSet.has(`weak-title-${pageSlug}`) ||
+        resolvedSet.has(`${pageSlug}:TITLE_OPTIMIZATION`) ||
+        resolvedSet.has(`${pageSlug}:WEAK_TITLE`);
+      const hasLegacyTitleBoilerplate = (tool.seoTitle || "").includes("Free, Fast & Private");
+
+      // Title is genuinely weak if under 30 chars, over 65 chars, or contains deprecated boilerplate
+      if ((titleLen < 30 || titleLen > 65 || hasLegacyTitleBoilerplate) && !isTitleResolved) {
         opportunities.push(
           this.createOpportunity({
             id: `weak-title-${pageSlug}`,
             pageSlug,
             pageUrl,
             type: "WEAK_TITLE",
-            reason: `Title length (${titleLen} characters) is outside optimal range (35-60 chars).`,
+            reason: hasLegacyTitleBoilerplate
+              ? `Title contains deprecated boilerplate ('Free, Fast & Private').`
+              : `Title length (${titleLen} characters) is outside optimal range (35-60 chars).`,
             riskLevel: "LOW",
             targetFile,
             actionType: "TITLE_OPTIMIZATION",
@@ -295,15 +304,27 @@ export class SeoOpportunityEngine {
       }
 
       // Rule M: Meta Description Health
-      const descLen = (tool.seoDescription || "").length;
-      if (descLen < 80 || descLen > 165) {
+      const descLen = (tool.seoDescription || "").trim().length;
+      const isFileTool = tool.category === "pdf" || tool.category === "image" || tool.category === "file";
+      const isDescResolved =
+        resolvedSet.has(`weak-desc-${pageSlug}`) ||
+        resolvedSet.has(`${pageSlug}:DESCRIPTION_OPTIMIZATION`) ||
+        resolvedSet.has(`${pageSlug}:WEAK_META_DESCRIPTION`);
+      const hasLegacyDescBoilerplate =
+        (tool.seoDescription || "").includes("Free, Fast & Private") ||
+        (!isFileTool && (tool.seoDescription || "").includes("zero file uploads"));
+
+      // Description is genuinely weak if under 80 chars, over 165 chars, or contains deprecated boilerplate
+      if ((descLen < 80 || descLen > 165 || hasLegacyDescBoilerplate) && !isDescResolved) {
         opportunities.push(
           this.createOpportunity({
             id: `weak-desc-${pageSlug}`,
             pageSlug,
             pageUrl,
             type: "WEAK_META_DESCRIPTION",
-            reason: `Meta description length (${descLen} characters) is outside optimal range (120-155 chars).`,
+            reason: hasLegacyDescBoilerplate
+              ? `Meta description contains deprecated boilerplate.`
+              : `Meta description length (${descLen} characters) is outside optimal range (120-155 chars).`,
             riskLevel: "LOW",
             targetFile,
             actionType: "DESCRIPTION_OPTIMIZATION",

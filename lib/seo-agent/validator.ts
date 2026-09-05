@@ -414,35 +414,51 @@ export class SeoValidator {
     const checks: ValidationCheckResult[] = [];
 
     // 1. Canonical URLs
+    console.log("   [Stage B][1/8] Validating Canonical URLs...");
     const canonicalCheck = this.validateCanonicals();
+    console.log(`   [Stage B][1/8] Canonicals: ${canonicalCheck.passed ? "PASS" : "FAIL"}`);
     checks.push(canonicalCheck);
 
     // 2. Robots.txt Integrity
+    console.log("   [Stage B][2/8] Validating Robots.txt...");
     const robotsCheck = this.validateRobotsConfig();
+    console.log(`   [Stage B][2/8] Robots.txt: ${robotsCheck.passed ? "PASS" : "FAIL"}`);
     checks.push(robotsCheck);
 
     // 3. Sitemap & Public Routes Count
+    console.log("   [Stage B][3/8] Validating Sitemap Integrity...");
     const sitemapCheck = this.validateSitemapIntegrity();
+    console.log(`   [Stage B][3/8] Sitemap: ${sitemapCheck.passed ? "PASS" : "FAIL"}`);
     checks.push(sitemapCheck);
 
     // 4. Batch Internal Links Graph Integrity
+    console.log("   [Stage B][4/8] Validating Internal Links Graph...");
     const internalLinksCheck = this.validateInternalLinks(_batchSlugs && _batchSlugs.length > 0 ? _batchSlugs : undefined);
+    console.log(`   [Stage B][4/8] Internal Links: ${internalLinksCheck.passed ? "PASS" : "FAIL"}`);
     checks.push(internalLinksCheck);
 
     // 5. Structured Data Schema Integrity
+    console.log("   [Stage B][5/8] Validating Structured Data...");
     const structuredDataCheck = this.validateStructuredData();
+    console.log(`   [Stage B][5/8] Structured Data: ${structuredDataCheck.passed ? "PASS" : "FAIL"}`);
     checks.push(structuredDataCheck);
 
     // 6. Dedicated TypeScript Typecheck with bounded watchdog timeout
+    console.log("   [Stage B][6/8] Running TypeScript Typecheck Gate (tsc --noEmit)...");
     const typecheckCheck = await this.runTypeCheck();
+    console.log(`   [Stage B][6/8] TypeScript: ${typecheckCheck.passed ? "PASS" : "FAIL"} (${typecheckCheck.durationMs}ms)`);
     checks.push(typecheckCheck);
 
     // 7. ESLint Quality Gate with bounded watchdog timeout
+    console.log("   [Stage B][7/8] Running ESLint Quality Gate (npm run lint)...");
     const lintCheck = await this.runLintCheck();
+    console.log(`   [Stage B][7/8] ESLint: ${lintCheck.passed ? "PASS" : "FAIL"} (${lintCheck.durationMs}ms)`);
     checks.push(lintCheck);
 
     // 8. Next.js Build Compilation Check with bounded watchdog timeout
+    console.log("   [Stage B][8/8] Running Next.js Production Build Gate (next build)...");
     const buildCheck = await this.runBuildCheck();
+    console.log(`   [Stage B][8/8] Next.js Build: ${buildCheck.passed ? "PASS" : "FAIL"} (${buildCheck.durationMs}ms)`);
     checks.push(buildCheck);
 
     const overallPassed = checks.every((c) => c.passed);
@@ -847,6 +863,7 @@ export class SeoValidator {
   async runTypeCheck(
     timeoutMs: number = SEO_AGENT_CONFIG.TIMEOUTS?.TYPESCRIPT_TIMEOUT_MS || 120000
   ): Promise<ValidationCheckResult> {
+    console.log("[SEO][typecheck] started");
     const start = Date.now();
     try {
       await execWithWatchdog(
@@ -855,13 +872,22 @@ export class SeoValidator {
         timeoutMs,
         "TypeScript Typecheck"
       );
+      const durationMs = Date.now() - start;
+      console.log(`[SEO][typecheck] completed in ${durationMs}ms`);
       return {
         name: "TypeScript Typecheck Gate",
         passed: true,
         message: "TypeScript compiler checked clean with zero type errors.",
-        durationMs: Date.now() - start,
+        durationMs,
       };
     } catch (err: unknown) {
+      const durationMs = Date.now() - start;
+      const isTimeout = err instanceof Error && err.message.startsWith("TIMEOUT:");
+      if (isTimeout) {
+        console.log(`[SEO][typecheck] timeout after ${durationMs}ms`);
+      } else {
+        console.log(`[SEO][typecheck] failed`);
+      }
       const stdout = err && typeof err === "object" && "stdout" in err ? String(err.stdout).trim() : "";
       const stderr = err && typeof err === "object" && "stderr" in err ? String(err.stderr).trim() : "";
       const errorOutput = [stderr, stdout].filter(Boolean).join("\n") || String(err);
@@ -869,7 +895,7 @@ export class SeoValidator {
         name: "TypeScript Typecheck Gate",
         passed: false,
         message: `TypeScript error: ${errorOutput.slice(0, 1000)}`,
-        durationMs: Date.now() - start,
+        durationMs,
       };
     }
   }
@@ -880,6 +906,7 @@ export class SeoValidator {
   async runLintCheck(
     timeoutMs: number = SEO_AGENT_CONFIG.TIMEOUTS?.ESLINT_TIMEOUT_MS || 90000
   ): Promise<ValidationCheckResult> {
+    console.log("[SEO][eslint] started");
     const start = Date.now();
     try {
       await execWithWatchdog(
@@ -888,13 +915,22 @@ export class SeoValidator {
         timeoutMs,
         "ESLint"
       );
+      const durationMs = Date.now() - start;
+      console.log(`[SEO][eslint] completed in ${durationMs}ms`);
       return {
         name: "ESLint Quality Gate",
         passed: true,
         message: "Lint check on tool definitions passed with 0 errors.",
-        durationMs: Date.now() - start,
+        durationMs,
       };
     } catch (err: unknown) {
+      const durationMs = Date.now() - start;
+      const isTimeout = err instanceof Error && err.message.startsWith("TIMEOUT:");
+      if (isTimeout) {
+        console.log(`[SEO][eslint] timeout after ${durationMs}ms`);
+      } else {
+        console.log(`[SEO][eslint] failed`);
+      }
       const stdout = err && typeof err === "object" && "stdout" in err ? String(err.stdout).trim() : "";
       const stderr = err && typeof err === "object" && "stderr" in err ? String(err.stderr).trim() : "";
       const errorOutput = [stderr, stdout].filter(Boolean).join("\n") || String(err);
@@ -902,7 +938,7 @@ export class SeoValidator {
         name: "ESLint Quality Gate",
         passed: false,
         message: `Lint error: ${errorOutput.slice(0, 1000)}`,
-        durationMs: Date.now() - start,
+        durationMs,
       };
     }
   }
@@ -913,6 +949,7 @@ export class SeoValidator {
   async runBuildCheck(
     timeoutMs: number = SEO_AGENT_CONFIG.TIMEOUTS?.BUILD_TIMEOUT_MS || 480000
   ): Promise<ValidationCheckResult> {
+    console.log("[SEO][next_build] started");
     const start = Date.now();
     try {
       await execWithWatchdog(
@@ -921,13 +958,22 @@ export class SeoValidator {
         timeoutMs,
         "Next.js Build"
       );
+      const durationMs = Date.now() - start;
+      console.log(`[SEO][next_build] completed in ${durationMs}ms`);
       return {
         name: "Next.js Build Gate",
         passed: true,
         message: "Full production build compiled cleanly with all static routes generated.",
-        durationMs: Date.now() - start,
+        durationMs,
       };
     } catch (err: unknown) {
+      const durationMs = Date.now() - start;
+      const isTimeout = err instanceof Error && err.message.startsWith("TIMEOUT:");
+      if (isTimeout) {
+        console.log(`[SEO][next_build] timeout after ${durationMs}ms`);
+      } else {
+        console.log(`[SEO][next_build] failed`);
+      }
       const stdout = err && typeof err === "object" && "stdout" in err ? String(err.stdout).trim() : "";
       const stderr = err && typeof err === "object" && "stderr" in err ? String(err.stderr).trim() : "";
       const errorOutput = [stderr, stdout].filter(Boolean).join("\n") || String(err);
@@ -935,7 +981,7 @@ export class SeoValidator {
         name: "Next.js Build Gate",
         passed: false,
         message: `Build error: ${errorOutput.slice(0, 1000)}`,
-        durationMs: Date.now() - start,
+        durationMs,
       };
     }
   }

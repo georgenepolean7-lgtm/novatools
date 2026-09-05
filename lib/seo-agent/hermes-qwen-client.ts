@@ -6,6 +6,7 @@
 
 import { SEO_AGENT_CONFIG } from "./config";
 import { ToolDefinition } from "@/lib/tools/tool-types";
+import { getAllTools } from "@/lib/tools/registry";
 import { FactualContentSafetyValidator, FactualSafetyCheckResult } from "./factual-safety";
 import { SeoActionType } from "./types";
 
@@ -34,11 +35,29 @@ export class HermesQwenClient {
   private model: string;
   private ollamaBaseUrl: string;
   private customEndpoint: string;
+  private isLocalLlmAvailable: boolean | null = null;
 
   constructor() {
     this.model = SEO_AGENT_CONFIG.LLM.MODEL;
     this.ollamaBaseUrl = SEO_AGENT_CONFIG.LLM.OLLAMA_BASE_URL;
     this.customEndpoint = SEO_AGENT_CONFIG.LLM.CUSTOM_OPENAI_ENDPOINT;
+  }
+
+  /**
+   * Quick check for local Ollama reachability with single health-check cache.
+   */
+  private async isLlmReachable(): Promise<boolean> {
+    if (this.isLocalLlmAvailable !== null) {
+      return this.isLocalLlmAvailable;
+    }
+    const health = await this.checkHealth();
+    this.isLocalLlmAvailable = health.connected;
+    if (!this.isLocalLlmAvailable) {
+      console.log(
+        `[LLM Engine] Local LLM endpoint unreachable (${this.ollamaBaseUrl}). Deterministic semantic rules engine will be used directly for zero latency.`
+      );
+    }
+    return this.isLocalLlmAvailable;
   }
 
   /**
@@ -50,17 +69,19 @@ export class HermesQwenClient {
     model: string;
     message: string;
   }> {
+    let timeoutId: NodeJS.Timeout | null = null;
     try {
       const endpoint = this.customEndpoint || `${this.ollamaBaseUrl}/api/tags`;
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 4000);
+      timeoutId = setTimeout(() => controller.abort(), 2500);
+      if (typeof timeoutId.unref === "function") timeoutId.unref();
 
       const res = await fetch(endpoint, {
         signal: controller.signal,
       });
-      clearTimeout(timeoutId);
 
       if (res.ok) {
+        this.isLocalLlmAvailable = true;
         return {
           connected: true,
           status: "CONNECTED" as const,
@@ -68,6 +89,7 @@ export class HermesQwenClient {
           message: `Local Ollama instance active with model ${this.model}`,
         };
       }
+      this.isLocalLlmAvailable = false;
       return {
         connected: false,
         status: "NOT_CONNECTED" as const,
@@ -75,12 +97,15 @@ export class HermesQwenClient {
         message: `Ollama returned HTTP ${res.status}: ${res.statusText}`,
       };
     } catch (err) {
+      this.isLocalLlmAvailable = false;
       return {
         connected: false,
         status: "NOT_CONNECTED" as const,
         model: this.model,
-        message: `Ollama service unreachable at ${this.ollamaBaseUrl} (${err instanceof Error ? err.message : String(err)}). Local deterministic semantic engine active.`,
+        message: `Local Ollama instance not reachable: ${err instanceof Error ? err.message : String(err)}`,
       };
+    } finally {
+      if (timeoutId) clearTimeout(timeoutId);
     }
   }
 
@@ -91,37 +116,53 @@ export class HermesQwenClient {
   async generateOptimization(
     tool: ToolDefinition,
     actionType: SeoActionType,
-    context: { primaryQuery?: string; reason: string; avgPosition?: number; ctr?: number; multiSourceContext?: string }
+    context: {
+      primaryQuery?: string;
+      reason: string;
+      avgPosition?: number;
+      ctr?: number;
+      multiSourceContext?: string;
+      hasMeasurableTraffic?: boolean;
+      objectiveDefect?: boolean;
+    }
   ): Promise<SemanticOptimizationResult> {
     const prompt = this.buildPrompt(tool, actionType, context);
     let result: SemanticOptimizationResult | null = null;
 
-    // Try calling local Ollama / Hermes runner with bounded watchdog
-    try {
-      const completion = await this.callLlm(prompt);
-      if (completion) {
-        result = this.parseLlmResponse(completion, tool);
+    // Check if local LLM is online before initiating expensive call
+    const canCallLlm = await this.isLlmReachable();
+    if (canCallLlm) {
+      try {
+        const completion = await this.callLlm(prompt);
+        if (completion) {
+          result = this.parseLlmResponse(completion, tool);
+        }
+      } catch (err) {
+        this.isLocalLlmAvailable = false;
+        const isTimeout = err instanceof Error && err.message.startsWith("TIMEOUT:");
+        console.warn(
+          `[SEO Agent] LLM generation ${isTimeout ? "timed out" : "failed"} for /${tool.slug}. Disabling remote LLM for current run and falling back to deterministic semantic rules.`
+        );
       }
-    } catch (err) {
-      const isTimeout = err instanceof Error && err.message.startsWith("TIMEOUT:");
-      console.warn(
-        `[SEO Agent] LLM generation ${isTimeout ? "timed out" : "unavailable"} for /${tool.slug}. Falling back to deterministic semantic rules.`
-      );
-      // Local LLM offline / error / timeout - fallback to deterministic high-quality rules
     }
 
     if (!result) {
       result = this.generateDeterministicSemanticFallback(tool, actionType, context);
     }
 
-    // Run strict factual content safety verification
+    // Run strict factual content safety verification with evidence context
+    const evidenceContext = {
+      hasMeasurableTraffic: Boolean(context.hasMeasurableTraffic),
+      objectiveDefect: Boolean(context.objectiveDefect),
+    };
+
     let safety = FactualContentSafetyValidator.validate(tool, actionType, {
       seoTitle: result.seoTitle,
       seoDescription: result.seoDescription,
       faqs: result.faqs,
       contentSuggestions: result.contentSuggestions,
       internalLinks: result.internalLinkSuggestions,
-    });
+    }, evidenceContext);
 
     // If AI generation has unverified claims, fall back to grounded deterministic output
     if (!safety.isSafe) {
@@ -132,7 +173,7 @@ export class HermesQwenClient {
         faqs: fallbackResult.faqs,
         contentSuggestions: fallbackResult.contentSuggestions,
         internalLinks: fallbackResult.internalLinkSuggestions,
-      });
+      }, evidenceContext);
       if (fallbackSafety.isSafe) {
         result = fallbackResult;
         safety = fallbackSafety;
@@ -194,12 +235,14 @@ Return ONLY a valid JSON object in this exact schema:
 
   private async callLlm(prompt: string): Promise<string | null> {
     const controller = new AbortController();
-    const timeoutMs = SEO_AGENT_CONFIG.TIMEOUTS?.LLM_TIMEOUT_MS || SEO_AGENT_CONFIG.LLM.TIMEOUT_MS || 120000;
+    const timeoutMs = SEO_AGENT_CONFIG.TIMEOUTS?.LLM_TIMEOUT_MS || SEO_AGENT_CONFIG.LLM?.TIMEOUT_MS || 12000;
     let isTimedOut = false;
-    const timeoutId = setTimeout(() => {
+    let timeoutId: NodeJS.Timeout | null = null;
+    timeoutId = setTimeout(() => {
       isTimedOut = true;
       controller.abort();
     }, timeoutMs);
+    if (typeof timeoutId.unref === "function") timeoutId.unref();
 
     try {
       const url = this.customEndpoint || `${this.ollamaBaseUrl}/api/generate`;
@@ -215,7 +258,6 @@ Return ONLY a valid JSON object in this exact schema:
           temperature: SEO_AGENT_CONFIG.LLM.TEMPERATURE,
         }),
       });
-      clearTimeout(timeoutId);
 
       if (!res.ok) return null;
       const json = await res.json();
@@ -235,11 +277,12 @@ Return ONLY a valid JSON object in this exact schema:
 
       return null;
     } catch (_err) {
-      clearTimeout(timeoutId);
       if (isTimedOut) {
         throw new Error(`TIMEOUT: LLM generation exceeded ${timeoutMs}ms`);
       }
       return null;
+    } finally {
+      if (timeoutId) clearTimeout(timeoutId);
     }
   }
 
@@ -478,32 +521,53 @@ Return ONLY a valid JSON object in this exact schema:
     }
 
     // If existing metadata is already healthy, preserve it!
-    const titleLength = (seoTitle || "").length;
-    const descLength = (seoDescription || "").length;
+    const titleLength = (seoTitle || "").trim().length;
+    const descLength = (seoDescription || "").trim().length;
     const titleNeedsWork = actionType === "TITLE_OPTIMIZATION" || titleLength < 30 || titleLength > 65;
     const descNeedsWork = actionType === "DESCRIPTION_OPTIMIZATION" || descLength < 80 || descLength > 165;
 
     if (titleNeedsWork) {
+      let candidateTitle = "";
       if (context.primaryQuery && context.primaryQuery.length > 3 && !context.primaryQuery.includes("http")) {
-        const capitalizedQuery = context.primaryQuery.charAt(0).toUpperCase() + context.primaryQuery.slice(1);
-        seoTitle = `${capitalizedQuery} - ${tool.name} | Nova Tools`;
-      } else {
-        seoTitle = `${tool.name} Online Tool | Nova Tools`;
+        const cleanQuery = context.primaryQuery.replace(/\b(online|free|tool)\b/gi, "").trim();
+        const capQuery = cleanQuery.charAt(0).toUpperCase() + cleanQuery.slice(1);
+        if (capQuery.length >= 4 && !tool.name.toLowerCase().includes(capQuery.toLowerCase())) {
+          candidateTitle = `${capQuery} - ${tool.name} | Nova Tools`;
+        }
       }
-      if (seoTitle.length > 60) {
-        seoTitle = `${tool.name} | Nova Tools`;
+      if (!candidateTitle || candidateTitle.length > 60 || candidateTitle.length < 35) {
+        if (tool.name.toLowerCase().includes("converter") || tool.name.toLowerCase().includes("generator") || tool.name.toLowerCase().includes("calculator")) {
+          candidateTitle = `${tool.name} Online | Nova Tools`;
+        } else {
+          candidateTitle = `${tool.name} Online Tool | Nova Tools`;
+        }
       }
+      if (candidateTitle.length > 60) {
+        candidateTitle = `${tool.name} | Nova Tools`;
+      }
+      if (candidateTitle.length < 35 && tool.category) {
+        const catLabel = tool.category.charAt(0).toUpperCase() + tool.category.slice(1);
+        candidateTitle = `${tool.name} - Free ${catLabel} Tool | Nova Tools`;
+      }
+      seoTitle = candidateTitle;
     }
 
     if (descNeedsWork) {
+      const baseText = (tool.shortDescription || tool.longDescription || "").trim();
+      let extendedDesc = "";
       if (isFileTool) {
-        seoDescription = `${tool.shortDescription || tool.longDescription} Fast in-browser processing with total privacy on Nova Tools.`;
+        extendedDesc = `${baseText} Fast in-browser file processing with complete local privacy on Nova Tools.`;
+      } else if (tool.category === "calculators" || tool.category === "finance") {
+        extendedDesc = `${baseText} Instant client-side calculations with accurate real-time results on Nova Tools.`;
       } else {
-        seoDescription = `${tool.shortDescription || tool.longDescription} Instant calculations with accurate real-time results on Nova Tools.`;
+        extendedDesc = `${baseText} Free, fast in-browser data utility with immediate results on Nova Tools.`;
       }
-      if (seoDescription.length > 155) {
-        seoDescription = seoDescription.slice(0, 152) + "...";
+      if (extendedDesc.length > 155) {
+        const truncated = extendedDesc.slice(0, 155);
+        const lastSpace = truncated.lastIndexOf(" ");
+        extendedDesc = (lastSpace > 110 ? truncated.slice(0, lastSpace) : truncated).replace(/[.,;]$/, "") + ".";
       }
+      seoDescription = extendedDesc;
     }
 
     const isFaqAction =
@@ -545,10 +609,24 @@ Return ONLY a valid JSON object in this exact schema:
       }
     }
 
+    let internalLinkSuggestions: string[] | undefined;
+    if (actionType === "INTERNAL_LINKS" || context.reason?.toLowerCase().includes("link") || context.reason?.toLowerCase().includes("orphan")) {
+      const allTools = getAllTools();
+      const existing = new Set(tool.relatedTools || []);
+      const siblings = allTools
+        .filter((t) => t.slug !== tool.slug && t.category === tool.category && !existing.has(t.slug))
+        .map((t) => t.slug)
+        .slice(0, 3);
+      if (siblings.length > 0) {
+        internalLinkSuggestions = siblings;
+      }
+    }
+
     return {
       seoTitle,
       seoDescription,
       faqs,
+      internalLinkSuggestions,
       reasoning: `Deterministic page-specific optimization for ${tool.slug} (${context.reason})`,
       reasoningSummary: `Deterministic page-specific optimization for ${tool.slug} (${context.reason})`,
       modelUsed: "deterministic-rules-engine",

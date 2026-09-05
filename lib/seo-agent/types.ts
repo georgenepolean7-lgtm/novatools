@@ -8,7 +8,7 @@ export type ConnectorStatus = "CONNECTED" | "NOT_CONNECTED" | "PENDING" | "ERROR
 
 export type GA4DataApiStatus = "CONNECTED" | "NOT_CONFIGURED" | "AUTH_ERROR" | "API_ERROR" | "NO_DATA";
 
-export type CycleExecutionStatus = "SUCCESS" | "FAILED" | "SKIPPED" | "ROLLED_BACK" | "BLOCKED_PENDING_REAL_DATA" | "NEEDS_REVIEW";
+export type CycleExecutionStatus = "SUCCESS" | "FAILED" | "SKIPPED" | "ROLLED_BACK" | "BLOCKED_PENDING_REAL_DATA" | "NEEDS_REVIEW" | "COMPLETED" | "PARTIAL";
 
 export interface MetricProvenance {
   source: "GOOGLE_SEARCH_CONSOLE" | "GOOGLE_ANALYTICS_4" | "BING_WEBMASTER_TOOLS" | "MICROSOFT_CLARITY" | "GOOGLE_ADS" | "COMPOSIO" | "INTERNAL_REGISTRY";
@@ -345,7 +345,7 @@ export interface CycleHistoryRecord {
   rollback: number;
   deployment: number;
   indexNow: number;
-  finalStatus: "COMPLETED" | "COMPLETED_WITH_ROLLBACKS" | "DRY_RUN" | "BLOCKED_PENDING_REAL_DATA" | "PAUSED_KILL_SWITCH" | "FAILED";
+  finalStatus: "COMPLETED" | "PARTIAL" | "COMPLETED_WITH_ROLLBACKS" | "DRY_RUN" | "BLOCKED_PENDING_REAL_DATA" | "PAUSED_KILL_SWITCH" | "FAILED";
   summary?: string;
   isDryRun?: boolean;
 }
@@ -365,7 +365,7 @@ export interface DailyCycleStatus {
   deployments: number;
   indexNowBroadcasts: number;
   lastCycleAt: string | null;
-  currentCycleStatus: "IDLE" | "RUNNING" | "COMPLETED" | "COMPLETED_WITH_ROLLBACKS" | "DRY_RUN" | "PAUSED_KILL_SWITCH" | "BLOCKED_PENDING_REAL_DATA" | "FAILED";
+  currentCycleStatus: "IDLE" | "RUNNING" | "COMPLETED" | "PARTIAL" | "COMPLETED_WITH_ROLLBACKS" | "DRY_RUN" | "PAUSED_KILL_SWITCH" | "BLOCKED_PENDING_REAL_DATA" | "FAILED";
   killSwitchActive: boolean;
 }
 

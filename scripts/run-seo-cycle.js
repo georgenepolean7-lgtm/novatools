@@ -100,6 +100,20 @@ async function runStandaloneCycle() {
     console.log(`Summary:                          ${result.summary}`);
     console.log("================================================================================");
 
+    if (result.timing) {
+      console.log("\n⏱️  CYCLE TIMING BREAKDOWN:");
+      console.log("--------------------------------------------------------------------------------");
+      console.log(`• Telemetry Ingestion:     ${result.timing.telemetryIngestionMs}ms (${(result.timing.telemetryIngestionMs / 1000).toFixed(2)}s)`);
+      console.log(`• Opportunity Scoring:     ${result.timing.opportunityScoringMs}ms (${(result.timing.opportunityScoringMs / 1000).toFixed(2)}s)`);
+      console.log(`• Hermes/Qwen LLM:         ${result.timing.llmMs}ms (${(result.timing.llmMs / 1000).toFixed(2)}s)`);
+      console.log(`• Optimization Patch:      ${result.timing.optimizationMs}ms (${(result.timing.optimizationMs / 1000).toFixed(2)}s)`);
+      console.log(`• Validation (Stage A/B):  ${result.timing.validationMs}ms (${(result.timing.validationMs / 1000).toFixed(2)}s)`);
+      console.log(`• Next.js Production Build:${result.timing.buildMs}ms (${(result.timing.buildMs / 1000).toFixed(2)}s)`);
+      console.log(`• Deployment (Git/Push):   ${result.timing.deploymentMs}ms (${(result.timing.deploymentMs / 1000).toFixed(2)}s)`);
+      console.log(`• Total Autonomous Cycle:  ${result.timing.totalCycleMs}ms (${(result.timing.totalCycleMs / 1000).toFixed(2)}s)`);
+      console.log("--------------------------------------------------------------------------------");
+    }
+
     if (result.multiSourceMatrix && result.multiSourceMatrix.length > 0) {
       console.log("\n📡 MULTI-SOURCE TELEMETRY STATUS MATRIX:");
       console.log("--------------------------------------------------------------------------------");
@@ -184,6 +198,10 @@ async function runStandaloneCycle() {
 
     process.exit(result.status === "BLOCKED_PENDING_REAL_DATA" && !isDryRun ? 2 : 0);
   } catch (err) {
+    if (err && (err.message === "SEO cycle already running" || String(err).includes("SEO cycle already running"))) {
+      console.error("SEO cycle already running");
+      process.exit(1);
+    }
     console.error("❌ Autonomous SEO cycle execution failed:", err);
     process.exit(1);
   }

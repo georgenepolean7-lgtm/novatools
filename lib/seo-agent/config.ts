@@ -34,13 +34,26 @@ export const SEO_AGENT_CONFIG = {
     DEFAULT_DAYS: 14,
   },
 
+  // Standard Canonical Metadata Limits & Thresholds
+  METADATA: {
+    MIN_TITLE_LENGTH: 30,
+    OPTIMAL_MIN_TITLE_LENGTH: 35,
+    OPTIMAL_MAX_TITLE_LENGTH: 60,
+    MAX_TITLE_LENGTH: 65,
+
+    MIN_DESCRIPTION_LENGTH: 80,
+    OPTIMAL_MIN_DESCRIPTION_LENGTH: 110,
+    OPTIMAL_MAX_DESCRIPTION_LENGTH: 155,
+    MAX_DESCRIPTION_LENGTH: 165,
+  },
+
   // LLM Engine (Hermes + Ollama / Qwen setup as per architectural guide)
   LLM: {
     MODEL: process.env.SEO_AGENT_MODEL || "qwen3:4b",
     FALLBACK_MODEL: "qwen2.5:3b",
     OLLAMA_BASE_URL: process.env.OLLAMA_BASE_URL || "http://localhost:11434",
     CUSTOM_OPENAI_ENDPOINT: process.env.SEO_AGENT_LLM_ENDPOINT || "",
-    TIMEOUT_MS: 30000,
+    TIMEOUT_MS: 12000,
     TEMPERATURE: 0.2, // Low temperature for deterministic factual generation
   },
 
@@ -67,8 +80,9 @@ export const SEO_AGENT_CONFIG = {
 
   // Bounded Execution Timeouts & Watchdogs (Task 4)
   TIMEOUTS: {
-    LLM_TIMEOUT_MS: 30000,
-    LLM_MS: 30000,
+    CYCLE_TIMEOUT_MS: 1200000,
+    LLM_TIMEOUT_MS: 12000,
+    LLM_MS: 12000,
     OPPORTUNITY_PROCESSING_MS: 150000,
     BATCH_VALIDATION_MS: 600000,
     TYPESCRIPT_TIMEOUT_MS: 90000,

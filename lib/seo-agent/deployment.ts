@@ -25,6 +25,8 @@ export class SeoDeploymentEngine {
     pageSlug: string,
     timeoutMs: number = SEO_AGENT_CONFIG.TIMEOUTS?.GIT_COMMIT_TIMEOUT_MS || 30000
   ): Promise<{ success: boolean; commitHash?: string; message: string }> {
+    console.log("[SEO][git_commit] started");
+    const start = Date.now();
     try {
       const commitMessage = `seo(auto): ${actionSummary.slice(0, 60)} [${pageSlug}]`;
 
@@ -44,6 +46,9 @@ export class SeoDeploymentEngine {
         "Git Commit"
       );
 
+      const durationMs = Date.now() - start;
+      console.log(`[SEO][git_commit] completed in ${durationMs}ms`);
+
       // Extract hash
       const hashMatch = stdout.match(/\[(?:[^\s]+)\s+([a-f0-9]+)\]/i);
       const commitHash = hashMatch ? hashMatch[1] : undefined;
@@ -54,6 +59,13 @@ export class SeoDeploymentEngine {
         message: commitMessage,
       };
     } catch (err) {
+      const durationMs = Date.now() - start;
+      const isTimeout = err instanceof Error && err.message.startsWith("TIMEOUT:");
+      if (isTimeout) {
+        console.log(`[SEO][git_commit] timeout after ${durationMs}ms`);
+      } else {
+        console.log(`[SEO][git_commit] failed`);
+      }
       return {
         success: false,
         message: `Git commit failed: ${err instanceof Error ? err.message : String(err)}`,
@@ -68,6 +80,8 @@ export class SeoDeploymentEngine {
   async pushToProduction(
     timeoutMs: number = SEO_AGENT_CONFIG.TIMEOUTS?.GIT_PUSH_TIMEOUT_MS || 60000
   ): Promise<{ success: boolean; message: string }> {
+    console.log("[SEO][deployment] started");
+    const start = Date.now();
     try {
       // Push current branch to origin
       const { stdout } = await execWithWatchdog(
@@ -76,11 +90,20 @@ export class SeoDeploymentEngine {
         timeoutMs,
         "Git Push"
       );
+      const durationMs = Date.now() - start;
+      console.log(`[SEO][deployment] completed in ${durationMs}ms`);
       return {
         success: true,
         message: `Pushed successfully: ${stdout.trim().slice(0, 100)}`,
       };
     } catch (err) {
+      const durationMs = Date.now() - start;
+      const isTimeout = err instanceof Error && err.message.startsWith("TIMEOUT:");
+      if (isTimeout) {
+        console.log(`[SEO][deployment] timeout after ${durationMs}ms`);
+      } else {
+        console.log(`[SEO][deployment] failed`);
+      }
       return {
         success: false,
         message: `Git push failed: ${err instanceof Error ? err.message : String(err)}`,
