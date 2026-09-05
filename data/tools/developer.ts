@@ -1192,7 +1192,7 @@ export const developerTools: ToolDefinition[] = [
       { step: 2, title: "Explain", instruction: "View plain English schedule description." },
     ],
     faq: [{ question: "What are the 5 cron fields in order?", answer: "Minute (0-59), Hour (0-23), Day of Month (1-31), Month (1-12), Day of Week (0-7)." }],
-    relatedTools: ["unix-timestamp-converter", "api-payload-size-calculator"],
+    relatedTools: ["unix-timestamp-converter", "api-payload-size-calculator", "json-formatter", "json-minifier", "json-validator"],
     seoTitle: "Cron Expression Parser & Human Schedule Ex",
     seoDescription: "Parse Cron expressions into plain English schedules online. Free in-browser crontab schedule explainer.",
     canonicalUrl: "/cron-expression-descriptor",
