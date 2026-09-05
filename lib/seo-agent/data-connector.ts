@@ -416,18 +416,23 @@ export class SeoDataConnector {
           };
         }
 
-        const payload = {
+        // Composio's current GSC schema uses snake_case argument names.
+        // Keep the request aligned with the live GOOGLE_SEARCH_CONSOLE_SEARCH_ANALYTICS_QUERY tool.
+        const payload: Record<string, unknown> = {
           connected_account_id: gscAcc.id,
-          user_id: gscAcc.user_id,
-          entity_id: gscAcc.user_id,
           arguments: {
-            siteUrl: this.gscProperty,
-            startDate: dateRange.startDate,
-            endDate: dateRange.endDate,
-            dimensions: ["PAGE", "QUERY"],
-            rowLimit: 500,
+            site_url: this.gscProperty,
+            start_date: dateRange.startDate,
+            end_date: dateRange.endDate,
+            dimensions: ["page", "query"],
+            row_limit: 500,
+            data_state: "final",
           },
         };
+
+        if (gscAcc.user_id) {
+          payload.user_id = gscAcc.user_id;
+        }
 
         const res = await fetchWithTimeout(
           `${this.composioBaseUrl}/tools/execute/${SEO_AGENT_CONFIG.COMPOSIO.GSC_ACTION_NAME}`,
@@ -444,20 +449,50 @@ export class SeoDataConnector {
 
         if (res.ok) {
           const json = await res.json();
-          const rows: Array<{
-            keys: string[];
-            clicks: number;
-            impressions: number;
-            ctr: number;
-            position: number;
-          }> =
-            json?.data?.response_data?.rows ||
-            json?.data?.rows ||
-            json?.response?.data?.rows ||
-            json?.rows ||
-            [];
+
+          // Composio v3 wraps tool results in a response envelope. Different
+          // toolkit/runtime versions have returned the Search Console rows at
+          // slightly different nested paths, so unwrap only known row shapes.
+          const isGscRowArray = (value: unknown): value is Array<{
+            keys?: unknown;
+            clicks?: unknown;
+            impressions?: unknown;
+            ctr?: unknown;
+            position?: unknown;
+          }> =>
+            Array.isArray(value) &&
+            value.every((row) => row && typeof row === "object" && (
+              "keys" in row || "clicks" in row || "impressions" in row
+            ));
+
+          const parseNestedJson = (value: unknown): unknown => {
+            if (typeof value !== "string") return value;
+            try {
+              return JSON.parse(value);
+            } catch {
+              return value;
+            }
+          };
+
+          const envelope = parseNestedJson(json);
+          const candidates: unknown[] = [
+            (envelope as any)?.data?.response_data?.rows,
+            (envelope as any)?.data?.data?.rows,
+            (envelope as any)?.data?.response?.data?.rows,
+            (envelope as any)?.data?.rows,
+            (envelope as any)?.response?.data?.rows,
+            (envelope as any)?.response_data?.rows,
+            (envelope as any)?.rows,
+          ];
+
+          const rows = candidates
+            .map(parseNestedJson)
+            .find(isGscRowArray) || [];
 
           const metrics: GSCPageMetric[] = rows.map((row) => {
+            const keys = Array.isArray(row.keys) ? row.keys.map(String) : [];
+            const page = keys[0] || "";
+            const query = keys[1] || "";
             const page = row.keys?.[0] || "";
             const query = row.keys?.[1] || "";
             const provenance: MetricProvenance = {
@@ -473,10 +508,10 @@ export class SeoDataConnector {
             return {
               page,
               query,
-              clicks: row.clicks || 0,
-              impressions: row.impressions || 0,
-              ctr: row.ctr || 0,
-              position: row.position || 0,
+              clicks: Number(row.clicks) || 0,
+              impressions: Number(row.impressions) || 0,
+              ctr: Number(row.ctr) || 0,
+              position: Number(row.position) || 0,
               dateRange,
               provenance,
             };
