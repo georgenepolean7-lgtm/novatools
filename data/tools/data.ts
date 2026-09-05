@@ -310,7 +310,7 @@ export const dataTools: ToolDefinition[] = [
       { step: 2, title: "Convert", instruction: "Click Execute to produce XML document." },
     ],
     faq: [{ question: "Does it include the XML declaration header?", answer: "Yes, output includes `<?xml version='1.0' encoding='UTF-8'?>`." }],
-    relatedTools: ["xml-to-json", "json-to-csv", "json-to-yaml", "yaml-to-json", "csv-to-json"],
+    relatedTools: ["xml-to-json", "json-to-csv", "json-to-yaml", "yaml-to-json", "csv-to-json", "csv-to-markdown-table", "markdown-table-to-csv", "json-to-typescript-interfaces"],
     seoTitle: "JSON to XML Converter - Data Converter",
     seoDescription: "Convert JSON objects and arrays into well-formed XML online. Fast developer tool.",
     canonicalUrl: "/json-to-xml",

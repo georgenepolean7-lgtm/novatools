@@ -20,7 +20,12 @@ export const webmasterTools: ToolDefinition[] = [
       { step: 2, title: "Calculate Subnet", instruction: "Click 'Calculate Subnet' to inspect subnet details." },
       { step: 3, title: "Review Range", instruction: "View total addresses, netmask, and usable host count." },
     ],
-    faq: [{ question: "How many usable hosts are in a /24 subnet?", answer: "A /24 subnet has 256 total IP addresses and 254 usable host addresses (subtracting network and broadcast IPs)." }],
+    faq: [
+{ question: "How many usable hosts are in a /24 subnet?", answer: "A /24 subnet has 256 total IP addresses and 254 usable host addresses (subtracting network and broadcast IPs)." },
+      { question: "Does CIDR Subnet Calculator (IPv4) support supports /0 through /32 cidr prefixes?", answer: "Yes. CIDR Subnet Calculator (IPv4) provides supports /0 through /32 cidr prefixes natively in your browser with real-time feedback." },
+      { question: "Does CIDR Subnet Calculator (IPv4) support computes netmask, total ips, usable hosts?", answer: "Yes. CIDR Subnet Calculator (IPv4) provides computes netmask, total ips, usable hosts natively in your browser with real-time feedback." },
+      { question: "Does CIDR Subnet Calculator (IPv4) support class a/b/c detection?", answer: "Yes. CIDR Subnet Calculator (IPv4) provides class a/b/c detection natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["user-agent-parser", "htaccess-redirect-generator", "robots-txt-generator"],
     seoTitle: "CIDR Subnet Calculator (IPv4)",
     seoDescription: "Calculate IPv4 subnet masks, total IP addresses, and usable host ranges online with CIDR notation. Fast network engineering tool.",

@@ -57,7 +57,7 @@ export const qrTools: ToolDefinition[] = [
       { step: 3, title: "Print or Display", instruction: "Download PNG and print for your home or office." },
     ],
     faq: [{ question: "Is my WiFi password safe?", answer: "Yes, the QR code is drawn directly in your browser's canvas. No credentials leave your device." }],
-    relatedTools: ["qr-code-generator", "password-generator"],
+    relatedTools: ["qr-code-generator", "password-generator", "vcard-qr-code-generator", "email-qr-code-generator", "sms-qr-code-generator"],
     seoTitle: "WiFi QR Code Generator",
     seoDescription: "Create WiFi QR codes online for fast guest login. Share your home or office WiFi securely with instant scanning.",
     canonicalUrl: "/wifi-qr-code-generator",
@@ -213,7 +213,7 @@ export const qrTools: ToolDefinition[] = [
       { question: "Does Barcode Generator (Code 128 / Code 39) support crisp high-resolution 1d raster rendering?", answer: "Yes. Barcode Generator (Code 128 / Code 39) provides crisp high-resolution 1d raster rendering natively in your browser with real-time feedback." },
       { question: "Does Barcode Generator (Code 128 / Code 39) support printable png download?", answer: "Yes. Barcode Generator (Code 128 / Code 39) provides printable png download natively in your browser with real-time feedback." }
     ],
-    relatedTools: ["qr-code-generator", "file-metadata-inspector"],
+    relatedTools: ["qr-code-generator", "file-metadata-inspector", "wifi-qr-code-generator", "vcard-qr-code-generator", "email-qr-code-generator"],
     seoTitle: "Barcode Generator (Code 128 / Code 39)",
     seoDescription: "Generate high-resolution Code 128 barcodes online for product SKUs and inventory labels. Free in-browser tool.",
     canonicalUrl: "/barcode-code128-generator",
