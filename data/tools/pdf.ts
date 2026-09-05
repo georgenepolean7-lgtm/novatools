@@ -57,7 +57,10 @@ export const pdfTools: ToolDefinition[] = [
     ],
     faq: [
 { question: "Is there a limit on how many PDFs I can merge?", answer: "No, you can combine as many files as your device's memory can handle." },
-      { question: "How do I merge multiple PDFs?", answer: "Drag and drop your PDF files into the interface. The tool will combine them in the order you added them. No files are stored on our servers." }
+      { question: "How do I merge multiple PDFs?", answer: "Drag and drop your PDF files into the interface. The tool will combine them in the order you added them. No files are stored on our servers." },
+      { question: "Does Merge PDF support drag and drop reordering?", answer: "Yes. Merge PDF provides drag and drop reordering natively in your browser with real-time feedback." },
+      { question: "Does Merge PDF support merge unlimited pdf files?", answer: "Yes. Merge PDF provides merge unlimited pdf files natively in your browser with real-time feedback." },
+      { question: "Does Merge PDF support 100% client-side privacy?", answer: "Yes. Merge PDF provides 100% client-side privacy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["compress-pdf", "split-pdf", "pdf-page-extractor"],
     seoTitle: "Merge PDF - Combine PDF Files",
@@ -96,7 +99,10 @@ export const pdfTools: ToolDefinition[] = [
     faq: [
 { question: "Can I extract non-consecutive pages?", answer: "Yes, you can enter comma-separated numbers and ranges like 1, 4, 7-10." },
       { question: "How do I split a PDF into individual pages?", answer: "Select the PDF file, choose the page range, and click 'Split'. The tool processes it in your browser with no file storage." },
-      { question: "Can I split specific page ranges in a PDF?", answer: "Yes. Enter start and end page numbers to split custom ranges. The tool handles this in your browser." }
+      { question: "Can I split specific page ranges in a PDF?", answer: "Yes. Enter start and end page numbers to split custom ranges. The tool handles this in your browser." },
+      { question: "Does Split PDF support split by custom range?", answer: "Yes. Split PDF provides split by custom range natively in your browser with real-time feedback." },
+      { question: "Does Split PDF support split all pages to zip?", answer: "Yes. Split PDF provides split all pages to zip natively in your browser with real-time feedback." },
+      { question: "Does Split PDF support page selection previews?", answer: "Yes. Split PDF provides page selection previews natively in your browser with real-time feedback." }
     ],
     relatedTools: ["merge-pdf", "pdf-page-extractor", "pdf-page-deleter"],
     seoTitle: "Split PDF - Separate PDF Pages",

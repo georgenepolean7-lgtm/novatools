@@ -203,7 +203,10 @@ export const qrTools: ToolDefinition[] = [
     faq: [
 { question: "Can standard USB laser scanners read this barcode?", answer: "Yes, Code 128 is the universal standard supported by 100% of handheld barcode scanners and POS terminals." },
       { question: "How do I generate a Code 128 barcode?", answer: "Enter your text in the input field, select Code 128, and click Generate. The barcode appears instantly in your browser." },
-      { question: "Can I use this for inventory labels?", answer: "Yes. This tool creates high-resolution barcodes for product SKUs and inventory labels directly in your browser." }
+      { question: "Can I use this for inventory labels?", answer: "Yes. This tool creates high-resolution barcodes for product SKUs and inventory labels directly in your browser." },
+      { question: "Does Barcode Generator (Code 128 / Code 39) support full ascii alphanumeric code 128 standard?", answer: "Yes. Barcode Generator (Code 128 / Code 39) provides full ascii alphanumeric code 128 standard natively in your browser with real-time feedback." },
+      { question: "Does Barcode Generator (Code 128 / Code 39) support crisp high-resolution 1d raster rendering?", answer: "Yes. Barcode Generator (Code 128 / Code 39) provides crisp high-resolution 1d raster rendering natively in your browser with real-time feedback." },
+      { question: "Does Barcode Generator (Code 128 / Code 39) support printable png download?", answer: "Yes. Barcode Generator (Code 128 / Code 39) provides printable png download natively in your browser with real-time feedback." }
     ],
     relatedTools: ["qr-code-generator", "file-metadata-inspector"],
     seoTitle: "Barcode Generator (Code 128 / Code 39)",

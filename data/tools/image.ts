@@ -20,7 +20,12 @@ export const imageTools: ToolDefinition[] = [
       { step: 2, title: "Set Target Size", instruction: "Choose a target size (e.g. 50KB) or drag the quality slider." },
       { step: 3, title: "Download", instruction: "Save your compressed image immediately." },
     ],
-    faq: [{ question: "Is my photo uploaded to a server?", answer: "No, compression runs 100% on your device using HTML5 Canvas." }],
+    faq: [
+{ question: "Is my photo uploaded to a server?", answer: "No, compression runs 100% on your device using HTML5 Canvas." },
+      { question: "Does Compress Image (JPG, PNG, WebP) support exact target kb size control?", answer: "Yes. Compress Image (JPG, PNG, WebP) provides exact target kb size control natively in your browser with real-time feedback." },
+      { question: "Does Compress Image (JPG, PNG, WebP) support supports jpg, png, and webp?", answer: "Yes. Compress Image (JPG, PNG, WebP) provides supports jpg, png, and webp natively in your browser with real-time feedback." },
+      { question: "Does Compress Image (JPG, PNG, WebP) support side-by-side preview?", answer: "Yes. Compress Image (JPG, PNG, WebP) provides side-by-side preview natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["image-resizer", "signature-resizer", "image-cropper", "webp-converter"],
     seoTitle: "Compress Image - Reduce Image Size",
     seoDescription: "Compress JPG, PNG, and WebP images to exact target sizes (20KB, 50KB, 100KB) online. 100% in-browser privacy.",
@@ -55,7 +60,12 @@ export const imageTools: ToolDefinition[] = [
       { step: 2, title: "Enter Dimensions", instruction: "Input desired width and height." },
       { step: 3, title: "Download", instruction: "Download resized image in original or new format." },
     ],
-    faq: [{ question: "Can I keep the original aspect ratio?", answer: "Yes, lock the aspect ratio icon to automatically calculate height from width." }],
+    faq: [
+{ question: "Can I keep the original aspect ratio?", answer: "Yes, lock the aspect ratio icon to automatically calculate height from width." },
+      { question: "Does Image Resizer (Pixels, CM, MM) support units in pixels, cm, mm, inches?", answer: "Yes. Image Resizer (Pixels, CM, MM) provides units in pixels, cm, mm, inches natively in your browser with real-time feedback." },
+      { question: "Does Image Resizer (Pixels, CM, MM) support aspect ratio lock?", answer: "Yes. Image Resizer (Pixels, CM, MM) provides aspect ratio lock natively in your browser with real-time feedback." },
+      { question: "Does Image Resizer (Pixels, CM, MM) support preset dimensions for social media?", answer: "Yes. Image Resizer (Pixels, CM, MM) provides preset dimensions for social media natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["compress-image", "signature-resizer", "image-cropper"],
     seoTitle: "Image Resizer - Resize Dimensions",
     seoDescription: "Resize photos and images by pixels, centimeters, and millimeters online. Fast, high-quality, in-browser image resizing.",
@@ -90,7 +100,12 @@ export const imageTools: ToolDefinition[] = [
       { step: 2, title: "Select Exam Preset", instruction: "Choose standard 20KB or 50KB limit." },
       { step: 3, title: "Download", instruction: "Download the compliance-ready signature image." },
     ],
-    faq: [{ question: "Does it work for UPSC and SSC exams?", answer: "Yes, standard 140x60 pixels and 10KB - 20KB boundaries are pre-configured." }],
+    faq: [
+{ question: "Does it work for UPSC and SSC exams?", answer: "Yes, standard 140x60 pixels and 10KB - 20KB boundaries are pre-configured." },
+      { question: "Does Signature Resizer (20KB - 50KB) support presets for upsc, ssc, tnpsc, banking?", answer: "Yes. Signature Resizer (20KB - 50KB) provides presets for upsc, ssc, tnpsc, banking natively in your browser with real-time feedback." },
+      { question: "Does Signature Resizer (20KB - 50KB) support strict 20kb and 50kb limits?", answer: "Yes. Signature Resizer (20KB - 50KB) provides strict 20kb and 50kb limits natively in your browser with real-time feedback." },
+      { question: "Does Signature Resizer (20KB - 50KB) support enhances black ink contrast?", answer: "Yes. Signature Resizer (20KB - 50KB) provides enhances black ink contrast natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["compress-image", "image-resizer", "image-cropper"],
     seoTitle: "Signature Resizer - Resize for Forms",
     seoDescription: "Resize and compress signature images to 20KB or 50KB online for government exams and job applications. Fast and private.",

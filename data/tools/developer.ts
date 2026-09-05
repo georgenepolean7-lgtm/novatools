@@ -95,7 +95,12 @@ export const developerTools: ToolDefinition[] = [
       { step: 2, title: "Validate", instruction: "Click 'Validate JSON' to verify compliance." },
       { step: 3, title: "Review Errors", instruction: "Read the syntax validation report." },
     ],
-    faq: [{ question: "What causes JSON syntax errors?", answer: "Trailing commas, missing quotes, single quotes, or unescaped characters." }],
+    faq: [
+{ question: "What causes JSON syntax errors?", answer: "Trailing commas, missing quotes, single quotes, or unescaped characters." },
+      { question: "Does JSON Syntax Validator support instant syntax check?", answer: "Yes. JSON Syntax Validator provides instant syntax check natively in your browser with real-time feedback." },
+      { question: "Does JSON Syntax Validator support pinpoints syntax errors?", answer: "Yes. JSON Syntax Validator provides pinpoints syntax errors natively in your browser with real-time feedback." },
+      { question: "Does JSON Syntax Validator support zero data retention?", answer: "Yes. JSON Syntax Validator provides zero data retention natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["json-formatter", "json-minifier", "json-to-csv"],
     seoTitle: "JSON Syntax Validator - Check JSON Syntax",
     seoDescription: "Validate and lint JSON strings online. Instantly detect syntax errors with line numbers in your browser.",
@@ -346,7 +351,12 @@ export const developerTools: ToolDefinition[] = [
       { step: 1, title: "Generate", instruction: "Click 'Generate UUID' to create a random UUID v4." },
       { step: 2, title: "Copy", instruction: "Copy the generated UUID directly to your clipboard." },
     ],
-    faq: [{ question: "Are these UUIDs collision-proof?", answer: "UUID v4 provides 122 bits of entropy, making collision practically impossible." }],
+    faq: [
+{ question: "Are these UUIDs collision-proof?", answer: "UUID v4 provides 122 bits of entropy, making collision practically impossible." },
+      { question: "Does UUID v4 Generator support cryptographically secure random values?", answer: "Yes. UUID v4 Generator provides cryptographically secure random values natively in your browser with real-time feedback." },
+      { question: "Does UUID v4 Generator support single or batch generation?", answer: "Yes. UUID v4 Generator provides single or batch generation natively in your browser with real-time feedback." },
+      { question: "Does UUID v4 Generator support one-click copy?", answer: "Yes. UUID v4 Generator provides one-click copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["jwt-decoder", "hash-generator", "password-generator"],
     seoTitle: "UUID v4 Generator - V4 Random UUIDs",
     seoDescription: "Generate cryptographically secure UUID v4 and GUIDs online. Fast, free, RFC 4122 compliant.",
@@ -562,7 +572,12 @@ export const developerTools: ToolDefinition[] = [
       { step: 2, title: "Convert", instruction: "Click 'Convert Hex to RGB'." },
       { step: 3, title: "Copy", instruction: "Copy the RGB string." },
     ],
-    faq: [{ question: "Does it require the '#' symbol?", answer: "Both '#3B82F6' and '3B82F6' are automatically accepted." }],
+    faq: [
+{ question: "Does it require the '#' symbol?", answer: "Both '#3B82F6' and '3B82F6' are automatically accepted." },
+      { question: "Does Hex to RGB Color Converter support supports 3 and 6 digit hex?", answer: "Yes. Hex to RGB Color Converter provides supports 3 and 6 digit hex natively in your browser with real-time feedback." },
+      { question: "Does Hex to RGB Color Converter support outputs rgb and rgba?", answer: "Yes. Hex to RGB Color Converter provides outputs rgb and rgba natively in your browser with real-time feedback." },
+      { question: "Does Hex to RGB Color Converter support instant copy?", answer: "Yes. Hex to RGB Color Converter provides instant copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["rgb-to-hex-converter", "color-contrast-checker"],
     seoTitle: "Hex to RGB Color Converter",
     seoDescription: "Convert Hex color codes to RGB and RGBA formats online. Fast in-browser CSS color converter.",
@@ -947,7 +962,10 @@ export const developerTools: ToolDefinition[] = [
     ],
     faq: [
 { question: "Does it support Unicode emoji?", answer: "Yes, multi-byte UTF-8 emoji and non-Latin characters are converted correctly." },
-      { question: "How does ASCII to Hex Converter calculate results?", answer: "Calculations execute client-side directly in your browser using standard JavaScript mathematical logic for immediate results." }
+      { question: "How does ASCII to Hex Converter calculate results?", answer: "Calculations execute client-side directly in your browser using standard JavaScript mathematical logic for immediate results." },
+      { question: "Does ASCII to Hex Converter support space-separated hex bytes?", answer: "Yes. ASCII to Hex Converter provides space-separated hex bytes natively in your browser with real-time feedback." },
+      { question: "Does ASCII to Hex Converter support 0x-prefixed byte array format?", answer: "Yes. ASCII to Hex Converter provides 0x-prefixed byte array format natively in your browser with real-time feedback." },
+      { question: "Does ASCII to Hex Converter support full utf-8 support?", answer: "Yes. ASCII to Hex Converter provides full utf-8 support natively in your browser with real-time feedback." }
     ],
     relatedTools: ["hex-to-ascii-converter", "binary-to-decimal-converter", "base64-encoder"],
     seoTitle: "ASCII to Hex Converter - Text to Hex",

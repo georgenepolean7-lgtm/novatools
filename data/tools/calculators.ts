@@ -1111,7 +1111,10 @@ export const calculatorTools: ToolDefinition[] = [
     ],
     faq: [
 { question: "How is uncompressed audio size calculated?", answer: "Size (Bytes) = Sample Rate (Hz) x (Bit Depth / 8) x Channels x Duration (Seconds)." },
-      { question: "How do I calculate audio file size?", answer: "Enter your audio's sample rate, bit depth, and duration to get accurate file size and bitrate estimates in real-time." }
+      { question: "How do I calculate audio file size?", answer: "Enter your audio's sample rate, bit depth, and duration to get accurate file size and bitrate estimates in real-time." },
+      { question: "Does Audio File Size & Bitrate Calculator (WAV / MP3 / AAC) support 44.1khz, 48khz, 96khz rates?", answer: "Yes. Audio File Size & Bitrate Calculator (WAV / MP3 / AAC) provides 44.1khz, 48khz, 96khz rates natively in your browser with real-time feedback." },
+      { question: "Does Audio File Size & Bitrate Calculator (WAV / MP3 / AAC) support 16-bit, 24-bit, 32-bit depth?", answer: "Yes. Audio File Size & Bitrate Calculator (WAV / MP3 / AAC) provides 16-bit, 24-bit, 32-bit depth natively in your browser with real-time feedback." },
+      { question: "Does Audio File Size & Bitrate Calculator (WAV / MP3 / AAC) support stereo/mono channels?", answer: "Yes. Audio File Size & Bitrate Calculator (WAV / MP3 / AAC) provides stereo/mono channels natively in your browser with real-time feedback." }
     ],
     relatedTools: ["audio-duration-to-samples-converter", "audio-bpm-tempo-delay-calculator"],
     seoTitle: "Audio File Size & Bitrate Calculator (WAV",

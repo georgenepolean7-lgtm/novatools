@@ -127,7 +127,12 @@ export const textTools: ToolDefinition[] = [
       { step: 1, title: "Paste Text", instruction: "Input text in any language or script." },
       { step: 2, title: "Analyze", instruction: "Click Process to generate character distribution." },
     ],
-    faq: [{ question: "How does it handle emojis and complex scripts?", answer: "It uses Intl.Segmenter to accurately identify user-perceived grapheme clusters." }],
+    faq: [
+{ question: "How does it handle emojis and complex scripts?", answer: "It uses Intl.Segmenter to accurately identify user-perceived grapheme clusters." },
+      { question: "Does Character Frequency & Vowel Analyzer support vowel vs consonant separation?", answer: "Yes. Character Frequency & Vowel Analyzer provides vowel vs consonant separation natively in your browser with real-time feedback." },
+      { question: "Does Character Frequency & Vowel Analyzer support punctuation and digit counting?", answer: "Yes. Character Frequency & Vowel Analyzer provides punctuation and digit counting natively in your browser with real-time feedback." },
+      { question: "Does Character Frequency & Vowel Analyzer support intl.segmenter unicode grapheme support?", answer: "Yes. Character Frequency & Vowel Analyzer provides intl.segmenter unicode grapheme support natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["character-counter", "word-frequency-counter"],
     seoTitle: "Character Frequency & Vowel Analyzer",
     seoDescription: "Count vowels, consonants, digits, and special characters online with Unicode grapheme support.",
@@ -486,7 +491,10 @@ export const textTools: ToolDefinition[] = [
     ],
     faq: [
 { question: "What is camelCase?", answer: "A naming convention where words are joined without spaces, and each word after the first begins with a capital letter (e.g., firstName)." },
-      { question: "How do I convert text to camelCase?", answer: "Enter your text in the input box, click 'Convert', and the tool instantly returns camelCase formatted text for JavaScript use." }
+      { question: "How do I convert text to camelCase?", answer: "Enter your text in the input box, click 'Convert', and the tool instantly returns camelCase formatted text for JavaScript use." },
+      { question: "Does camelCase String Converter support strips special punctuation?", answer: "Yes. camelCase String Converter provides strips special punctuation natively in your browser with real-time feedback." },
+      { question: "Does camelCase String Converter support preserves alphanumeric word boundaries?", answer: "Yes. camelCase String Converter provides preserves alphanumeric word boundaries natively in your browser with real-time feedback." },
+      { question: "Does camelCase String Converter support instant conversion?", answer: "Yes. camelCase String Converter provides instant conversion natively in your browser with real-time feedback." }
     ],
     relatedTools: ["snake-case-converter", "kebab-case-converter", "pascalcase-converter"],
     seoTitle: "camelCase String Converter",
