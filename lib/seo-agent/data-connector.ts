@@ -500,7 +500,7 @@ export class SeoDataConnector {
               retrievalTimestamp: timestamp,
               pageOrQuery: page,
               metric: "GSC_SEARCH_ANALYTICS_ROW",
-              value: row.clicks || 0,
+              value: Number(row.clicks) || 0,
             };
 
             return {
