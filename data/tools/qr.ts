@@ -21,7 +21,7 @@ export const qrTools: ToolDefinition[] = [
       { step: 3, title: "Download", instruction: "Download the high-resolution PNG image." },
     ],
     faq: [{ question: "Do these QR codes expire?", answer: "No, these are standard static QR codes that never expire and will work forever." }],
-    relatedTools: ["wifi-qr-code-generator", "barcode-generator", "url-encoder"],
+    relatedTools: ["wifi-qr-code-generator", "barcode-code128-generator", "url-encoder"],
     seoTitle: "QR Code Generator (URL, WiFi, Text)",
     seoDescription: "Generate custom QR codes for URLs, WiFi, and text online. Free, high-resolution PNG download with 100% in-browser privacy.",
     canonicalUrl: "/qr-code-generator",
@@ -92,7 +92,12 @@ export const qrTools: ToolDefinition[] = [
       { step: 2, title: "Generate QR", instruction: "Click Execute to render formatted vCard code." },
       { step: 3, title: "Download", instruction: "Download PNG for printing on physical business cards." },
     ],
-    faq: [{ question: "Will iPhone and Android camera apps recognize this?", answer: "Yes, both iOS and Android native camera apps natively prompt 'Add to Contacts' when scanning vCard 3.0 QR codes." }],
+    faq: [
+{ question: "Will iPhone and Android camera apps recognize this?", answer: "Yes, both iOS and Android native camera apps natively prompt 'Add to Contacts' when scanning vCard 3.0 QR codes." },
+      { question: "Does vCard Contact QR Code Generator support complies with vcard 3.0 specification?", answer: "Yes. vCard Contact QR Code Generator provides complies with vcard 3.0 specification natively in your browser with real-time feedback." },
+      { question: "Does vCard Contact QR Code Generator support instant smartphone address book import?", answer: "Yes. vCard Contact QR Code Generator provides instant smartphone address book import natively in your browser with real-time feedback." },
+      { question: "Does vCard Contact QR Code Generator support high-res png download?", answer: "Yes. vCard Contact QR Code Generator provides high-res png download natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["qr-code-generator", "email-qr-code-generator"],
     seoTitle: "vCard Contact QR Code Generator",
     seoDescription: "Create vCard 3.0 contact QR codes online for digital business cards. Free, private in-browser QR generator.",

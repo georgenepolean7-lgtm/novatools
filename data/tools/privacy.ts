@@ -55,7 +55,12 @@ export const privacyTools: ToolDefinition[] = [
       { step: 1, title: "Type Password", instruction: "Enter any test password." },
       { step: 2, title: "Inspect Entropy", instruction: "Review the calculated bits of security and vulnerability rating." },
     ],
-    faq: [{ question: "Is it safe to type my real password?", answer: "All computations run purely in local JavaScript, but we always advise testing representative sample patterns rather than active credentials." }],
+    faq: [
+{ question: "Is it safe to type my real password?", answer: "All computations run purely in local JavaScript, but we always advise testing representative sample patterns rather than active credentials." },
+      { question: "Does Password Strength & Entropy Meter support calculates shannon entropy in bits?", answer: "Yes. Password Strength & Entropy Meter provides calculates shannon entropy in bits natively in your browser with real-time feedback." },
+      { question: "Does Password Strength & Entropy Meter support detects uppercase, numbers, and symbols?", answer: "Yes. Password Strength & Entropy Meter provides detects uppercase, numbers, and symbols natively in your browser with real-time feedback." },
+      { question: "Does Password Strength & Entropy Meter support 100% local in-browser computation?", answer: "Yes. Password Strength & Entropy Meter provides 100% local in-browser computation natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["password-generator", "hash-generator", "jwt-decoder"],
     seoTitle: "Password Strength & Entropy Meter",
     seoDescription: "Test password strength and calculate entropy bits online with 100% in-browser privacy. Free password resilience checker.",
@@ -161,7 +166,12 @@ export const privacyTools: ToolDefinition[] = [
       { step: 1, title: "Enter IP with CIDR", instruction: "Type IP address with prefix (e.g. 192.168.1.0/24 or 10.0.0.0/16)." },
       { step: 2, title: "Calculate", instruction: "Click Execute to compute network metrics." },
     ],
-    faq: [{ question: "How many usable hosts are in a /24 subnet?", answer: "254 usable host addresses (256 total minus network and broadcast addresses)." }],
+    faq: [
+{ question: "How many usable hosts are in a /24 subnet?", answer: "254 usable host addresses (256 total minus network and broadcast addresses)." },
+      { question: "Does IPv4 Subnet Calculator (CIDR) support supports /0 through /32 cidr prefixes?", answer: "Yes. IPv4 Subnet Calculator (CIDR) provides supports /0 through /32 cidr prefixes natively in your browser with real-time feedback." },
+      { question: "Does IPv4 Subnet Calculator (CIDR) support computes usable ip boundaries?", answer: "Yes. IPv4 Subnet Calculator (CIDR) provides computes usable ip boundaries natively in your browser with real-time feedback." },
+      { question: "Does IPv4 Subnet Calculator (CIDR) support wildcard mask calculation?", answer: "Yes. IPv4 Subnet Calculator (CIDR) provides wildcard mask calculation natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["ipv4-address-converter", "ipv6-validator"],
     seoTitle: "IPv4 Subnet Calculator (CIDR)",
     seoDescription: "Calculate IPv4 subnets, usable host ranges, broadcast IPs, and masks online. Free network calculator.",
@@ -441,7 +451,12 @@ export const privacyTools: ToolDefinition[] = [
       { step: 1, title: "Enter Text", instruction: "Input plain text string." },
       { step: 2, title: "Encode", instruction: "Click Execute to generate Base32 string." },
     ],
-    faq: [{ question: "Why is Base32 used in 2FA/TOTP seeds?", answer: "Base32 uses only uppercase letters and digits 2-7, eliminating ambiguous characters like 0/O and 1/l." }],
+    faq: [
+{ question: "Why is Base32 used in 2FA/TOTP seeds?", answer: "Base32 uses only uppercase letters and digits 2-7, eliminating ambiguous characters like 0/O and 1/l." },
+      { question: "Does Base32 Text Encoder (RFC 4648) support rfc 4648 standard alphabet (a-z, 2-7)?", answer: "Yes. Base32 Text Encoder (RFC 4648) provides rfc 4648 standard alphabet (a-z, 2-7) natively in your browser with real-time feedback." },
+      { question: "Does Base32 Text Encoder (RFC 4648) support handles utf-8 input?", answer: "Yes. Base32 Text Encoder (RFC 4648) provides handles utf-8 input natively in your browser with real-time feedback." },
+      { question: "Does Base32 Text Encoder (RFC 4648) support instant copy?", answer: "Yes. Base32 Text Encoder (RFC 4648) provides instant copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["base32-decoder", "base64-encoder", "base58-encoder"],
     seoTitle: "Base32 Text Encoder (RFC 4648)",
     seoDescription: "Encode text to RFC 4648 Base32 format online. Fast, secure in-browser Base32 converter.",

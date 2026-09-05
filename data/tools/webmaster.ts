@@ -208,7 +208,12 @@ export const webmasterTools: ToolDefinition[] = [
       { step: 2, title: "Generate", instruction: "Click Execute to generate Nginx configuration." },
       { step: 3, title: "Deploy", instruction: "Copy into `/etc/nginx/sites-available/` and reload Nginx." },
     ],
-    faq: [{ question: "Why are X-Forwarded-For headers essential?", answer: "They preserve the client's original IP address when requests are forwarded through the Nginx proxy to your backend server." }],
+    faq: [
+{ question: "Why are X-Forwarded-For headers essential?", answer: "They preserve the client's original IP address when requests are forwarded through the Nginx proxy to your backend server." },
+      { question: "Does Nginx Reverse Proxy Config Generator support custom upstream port and domain?", answer: "Yes. Nginx Reverse Proxy Config Generator provides custom upstream port and domain natively in your browser with real-time feedback." },
+      { question: "Does Nginx Reverse Proxy Config Generator support websocket upgrade headers?", answer: "Yes. Nginx Reverse Proxy Config Generator provides websocket upgrade headers natively in your browser with real-time feedback." },
+      { question: "Does Nginx Reverse Proxy Config Generator support ssl and http/2 directives?", answer: "Yes. Nginx Reverse Proxy Config Generator provides ssl and http/2 directives natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["htaccess-redirect-generator", "cors-header-generator"],
     seoTitle: "Nginx Reverse Proxy Config Generator",
     seoDescription: "Generate production-ready Nginx reverse proxy configuration files online with SSL and WebSocket support.",

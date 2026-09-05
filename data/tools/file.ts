@@ -91,7 +91,12 @@ export const fileTools: ToolDefinition[] = [
       { step: 2, title: "Configure Rules", instruction: "Set prefix, suffix, and sequential numbering options." },
       { step: 3, title: "Copy Renamed List", instruction: "Copy the transformed filename list." },
     ],
-    faq: [{ question: "Can I use this for shell scripts or PowerShell?", answer: "Yes, the resulting list can be pasted directly into rename scripts or batch tools." }],
+    faq: [
+{ question: "Can I use this for shell scripts or PowerShell?", answer: "Yes, the resulting list can be pasted directly into rename scripts or batch tools." },
+      { question: "Does Batch File Renamer & Pattern Generator support zero-padded sequential numbering (001, 002)?", answer: "Yes. Batch File Renamer & Pattern Generator provides zero-padded sequential numbering (001, 002) natively in your browser with real-time feedback." },
+      { question: "Does Batch File Renamer & Pattern Generator support prefix & suffix formatting?", answer: "Yes. Batch File Renamer & Pattern Generator provides prefix & suffix formatting natively in your browser with real-time feedback." },
+      { question: "Does Batch File Renamer & Pattern Generator support find and replace support?", answer: "Yes. Batch File Renamer & Pattern Generator provides find and replace support natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["text-file-merger", "file-metadata-inspector"],
     seoTitle: "Batch File Renamer & Pattern Generator",
     seoDescription: "Preview batch file renaming with sequential numbering, prefixes, and suffixes online. Free in-browser tool.",
@@ -164,7 +169,7 @@ export const fileTools: ToolDefinition[] = [
       { step: 3, title: "Download", instruction: "Save split chunks." },
     ],
     faq: [{ question: "Does this alter line formatting?", answer: "No, exact character casing, tabs, and line contents are strictly preserved." }],
-    relatedTools: ["text-file-merger", "duplicate-line-remover"],
+    relatedTools: ["text-file-merger", "remove-duplicate-lines"],
     seoTitle: "Text & Log File Splitter - File Utility",
     seoDescription: "Split large text and log files by line count online. Free, fast, private in-browser file splitter.",
     canonicalUrl: "/text-file-splitter",
