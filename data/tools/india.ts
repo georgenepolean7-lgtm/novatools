@@ -272,7 +272,7 @@ export const indiaTools: ToolDefinition[] = [
       { step: 2, title: "Convert", instruction: "Click Execute to produce formatted words string." },
     ],
     faq: [{ question: "Why does the Indian system differ from Million/Billion?", answer: "The Indian numbering system groups digits into thousands (3 digits), then subsequent groups of 2 digits (Lakhs, Crores, Arabs)." }],
-    relatedTools: ["number-to-words-converter", "gst-calculator"],
+    relatedTools: ["number-to-words-converter", "gst-calculator", "income-tax-regime-comparator", "gratuity-calculator", "ifsc-code-validator"],
     seoTitle: "Indian Rupee Number to Words Converter (La",
     seoDescription: "Convert numbers into Indian Rupee words (Lakhs, Crores) online for cheques and invoices. Fast and free.",
     canonicalUrl: "/indian-currency-words-converter",
