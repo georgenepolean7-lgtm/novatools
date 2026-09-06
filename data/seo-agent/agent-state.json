@@ -1,9 +1,9 @@
 {
   "killSwitchActive": false,
-  "lastCycleAt": "2026-09-06T15:12:40.453Z",
-  "dailyChangesCount": 0,
+  "lastCycleAt": "2026-09-06T15:57:51.028Z",
+  "dailyChangesCount": 1,
   "dailyChangesLastReset": "2026-09-06",
-  "weeklyChangesCount": 3,
+  "weeklyChangesCount": 4,
   "weeklyChangesLastReset": "2026-09-03",
   "audits": [
     {
@@ -9288,7 +9288,7 @@
         "ctr": 0,
         "position": 85.5
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 41,
       "scoreBreakdown": {
         "impressionPotential": 10,
@@ -9312,7 +9312,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9324,7 +9324,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9336,7 +9336,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9348,7 +9348,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9360,7 +9360,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9372,7 +9372,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9384,7 +9384,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9396,7 +9396,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9408,7 +9408,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9420,7 +9420,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9432,7 +9432,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9444,7 +9444,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9456,7 +9456,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9468,7 +9468,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9480,7 +9480,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9492,7 +9492,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9504,7 +9504,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9516,7 +9516,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9528,7 +9528,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9540,7 +9540,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9552,7 +9552,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9564,7 +9564,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9576,7 +9576,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9588,7 +9588,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9600,7 +9600,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9612,7 +9612,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9624,7 +9624,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9636,7 +9636,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9648,7 +9648,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9660,7 +9660,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9672,7 +9672,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9684,7 +9684,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9696,171 +9696,8 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
-          "metric": "GSC_SEARCH_ANALYTICS_ROW",
-          "value": 0
-        }
-      ]
-    },
-    {
-      "id": "weak-title-merge-pdf",
-      "pageSlug": "merge-pdf",
-      "pageUrl": "https://novatool.in/merge-pdf",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (29 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/pdf.ts",
-      "currentMetrics": {
-        "clicks": 1,
-        "impressions": 1,
-        "ctr": 100,
-        "position": 132,
-        "trafficSessions": 2
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 40,
-      "scoreBreakdown": {
-        "impressionPotential": 5,
-        "positionOpportunity": 4,
-        "ctrOpportunity": 5,
-        "trafficTrend": 5,
-        "businessRelevance": 13,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/pdf.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": [
-        {
-          "source": "GOOGLE_SEARCH_CONSOLE",
-          "property": "https://novatool.in/",
-          "dateRange": {
-            "startDate": "2026-08-09",
-            "endDate": "2026-09-06"
-          },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
-          "pageOrQuery": "https://novatool.in/merge-pdf",
-          "metric": "GSC_SEARCH_ANALYTICS_ROW",
-          "value": 1
-        },
-        {
-          "source": "GOOGLE_ANALYTICS_4",
-          "property": "548841684",
-          "dateRange": {
-            "startDate": "2026-08-09",
-            "endDate": "2026-09-06"
-          },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
-          "pageOrQuery": "/merge-pdf",
-          "metric": "GA4_DATA_API_ROW",
-          "value": 2
-        }
-      ]
-    },
-    {
-      "id": "weak-title-camelcase-converter",
-      "pageSlug": "camelcase-converter",
-      "pageUrl": "https://novatool.in/camelcase-converter",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (26 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/text.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 6,
-        "ctr": 0,
-        "position": 68.16666666666667
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 39,
-      "scoreBreakdown": {
-        "impressionPotential": 5,
-        "positionOpportunity": 4,
-        "ctrOpportunity": 10,
-        "trafficTrend": 2,
-        "businessRelevance": 10,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/text.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": [
-        {
-          "source": "GOOGLE_SEARCH_CONSOLE",
-          "property": "https://novatool.in/",
-          "dateRange": {
-            "startDate": "2026-08-09",
-            "endDate": "2026-09-06"
-          },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
-          "pageOrQuery": "https://novatool.in/camelcase-converter",
-          "metric": "GSC_SEARCH_ANALYTICS_ROW",
-          "value": 0
-        },
-        {
-          "source": "GOOGLE_SEARCH_CONSOLE",
-          "property": "https://novatool.in/",
-          "dateRange": {
-            "startDate": "2026-08-09",
-            "endDate": "2026-09-06"
-          },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
-          "pageOrQuery": "https://novatool.in/camelcase-converter",
-          "metric": "GSC_SEARCH_ANALYTICS_ROW",
-          "value": 0
-        },
-        {
-          "source": "GOOGLE_SEARCH_CONSOLE",
-          "property": "https://novatool.in/",
-          "dateRange": {
-            "startDate": "2026-08-09",
-            "endDate": "2026-09-06"
-          },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
-          "pageOrQuery": "https://novatool.in/camelcase-converter",
-          "metric": "GSC_SEARCH_ANALYTICS_ROW",
-          "value": 0
-        },
-        {
-          "source": "GOOGLE_SEARCH_CONSOLE",
-          "property": "https://novatool.in/",
-          "dateRange": {
-            "startDate": "2026-08-09",
-            "endDate": "2026-09-06"
-          },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
-          "pageOrQuery": "https://novatool.in/camelcase-converter",
-          "metric": "GSC_SEARCH_ANALYTICS_ROW",
-          "value": 0
-        },
-        {
-          "source": "GOOGLE_SEARCH_CONSOLE",
-          "property": "https://novatool.in/",
-          "dateRange": {
-            "startDate": "2026-08-09",
-            "endDate": "2026-09-06"
-          },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
-          "pageOrQuery": "https://novatool.in/camelcase-converter",
-          "metric": "GSC_SEARCH_ANALYTICS_ROW",
-          "value": 0
-        },
-        {
-          "source": "GOOGLE_SEARCH_CONSOLE",
-          "property": "https://novatool.in/",
-          "dateRange": {
-            "startDate": "2026-08-09",
-            "endDate": "2026-09-06"
-          },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
-          "pageOrQuery": "https://novatool.in/camelcase-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
         }
@@ -9880,7 +9717,7 @@
         "ctr": 0,
         "position": 58
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 39,
       "scoreBreakdown": {
         "impressionPotential": 5,
@@ -9904,7 +9741,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/aadhaar-verhoeff-checksum-validator",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9925,7 +9762,7 @@
         "ctr": 0,
         "position": 58
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 36,
       "scoreBreakdown": {
         "impressionPotential": 5,
@@ -9949,102 +9786,10 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
+          "retrievalTimestamp": "2026-09-06T15:54:58.429Z",
           "pageOrQuery": "https://novatool.in/aadhaar-verhoeff-checksum-validator",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
-        }
-      ]
-    },
-    {
-      "id": "weak-title-hex-to-rgb-converter",
-      "pageSlug": "hex-to-rgb-converter",
-      "pageUrl": "https://novatool.in/hex-to-rgb-converter",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (26 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0,
-        "trafficSessions": 1
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 20,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 10,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": [
-        {
-          "source": "GOOGLE_ANALYTICS_4",
-          "property": "548841684",
-          "dateRange": {
-            "startDate": "2026-08-09",
-            "endDate": "2026-09-06"
-          },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
-          "pageOrQuery": "/hex-to-rgb-converter",
-          "metric": "GA4_DATA_API_ROW",
-          "value": 1
-        }
-      ]
-    },
-    {
-      "id": "weak-title-hex-to-ascii-converter",
-      "pageSlug": "hex-to-ascii-converter",
-      "pageUrl": "https://novatool.in/hex-to-ascii-converter",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (27 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0,
-        "trafficSessions": 1
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 20,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 10,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": [
-        {
-          "source": "GOOGLE_ANALYTICS_4",
-          "property": "548841684",
-          "dateRange": {
-            "startDate": "2026-08-09",
-            "endDate": "2026-09-06"
-          },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
-          "pageOrQuery": "/hex-to-ascii-converter",
-          "metric": "GA4_DATA_API_ROW",
-          "value": 1
         }
       ]
     },
@@ -10063,7 +9808,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 20,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10087,7 +9832,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
+          "retrievalTimestamp": "2026-09-06T15:55:00.211Z",
           "pageOrQuery": "/speed-distance-time-calculator",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10109,7 +9854,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 20,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10133,7 +9878,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
+          "retrievalTimestamp": "2026-09-06T15:55:00.211Z",
           "pageOrQuery": "/business-hours-overlap-calculator",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10155,7 +9900,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 20,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10179,146 +9924,8 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
+          "retrievalTimestamp": "2026-09-06T15:55:00.211Z",
           "pageOrQuery": "/json-to-typescript-interfaces",
-          "metric": "GA4_DATA_API_ROW",
-          "value": 1
-        }
-      ]
-    },
-    {
-      "id": "weak-title-cidr-calculator",
-      "pageSlug": "cidr-calculator",
-      "pageUrl": "https://novatool.in/cidr-calculator",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (29 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/webmaster.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0,
-        "trafficSessions": 1
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 20,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 10,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/webmaster.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": [
-        {
-          "source": "GOOGLE_ANALYTICS_4",
-          "property": "548841684",
-          "dateRange": {
-            "startDate": "2026-08-09",
-            "endDate": "2026-09-06"
-          },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
-          "pageOrQuery": "/cidr-calculator",
-          "metric": "GA4_DATA_API_ROW",
-          "value": 1
-        }
-      ]
-    },
-    {
-      "id": "weak-title-ipv4-subnet-calculator",
-      "pageSlug": "ipv4-subnet-calculator",
-      "pageUrl": "https://novatool.in/ipv4-subnet-calculator",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (29 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/privacy.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0,
-        "trafficSessions": 1
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 20,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 10,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/privacy.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": [
-        {
-          "source": "GOOGLE_ANALYTICS_4",
-          "property": "548841684",
-          "dateRange": {
-            "startDate": "2026-08-09",
-            "endDate": "2026-09-06"
-          },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
-          "pageOrQuery": "/ipv4-subnet-calculator",
-          "metric": "GA4_DATA_API_ROW",
-          "value": 1
-        }
-      ]
-    },
-    {
-      "id": "weak-title-wifi-qr-code-generator",
-      "pageSlug": "wifi-qr-code-generator",
-      "pageUrl": "https://novatool.in/wifi-qr-code-generator",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (22 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/qr.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0,
-        "trafficSessions": 1
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 20,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 10,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/qr.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": [
-        {
-          "source": "GOOGLE_ANALYTICS_4",
-          "property": "548841684",
-          "dateRange": {
-            "startDate": "2026-08-09",
-            "endDate": "2026-09-06"
-          },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
-          "pageOrQuery": "/wifi-qr-code-generator",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
         }
@@ -10339,7 +9946,7 @@
         "position": 0,
         "trafficSessions": 3
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10363,7 +9970,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
+          "retrievalTimestamp": "2026-09-06T15:55:00.211Z",
           "pageOrQuery": "/code-indentation-converter",
           "metric": "GA4_DATA_API_ROW",
           "value": 3
@@ -10385,7 +9992,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10409,7 +10016,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
+          "retrievalTimestamp": "2026-09-06T15:55:00.211Z",
           "pageOrQuery": "/speed-distance-time-calculator",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10431,7 +10038,7 @@
         "position": 0,
         "trafficSessions": 2
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10455,7 +10062,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
+          "retrievalTimestamp": "2026-09-06T15:55:00.211Z",
           "pageOrQuery": "/inflation-calculator",
           "metric": "GA4_DATA_API_ROW",
           "value": 2
@@ -10477,7 +10084,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10501,7 +10108,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
+          "retrievalTimestamp": "2026-09-06T15:55:00.211Z",
           "pageOrQuery": "/business-hours-overlap-calculator",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10523,7 +10130,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10547,7 +10154,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
+          "retrievalTimestamp": "2026-09-06T15:55:00.211Z",
           "pageOrQuery": "/csv-to-json",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10569,7 +10176,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10593,7 +10200,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
+          "retrievalTimestamp": "2026-09-06T15:55:00.211Z",
           "pageOrQuery": "/json-to-xml",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10615,7 +10222,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10639,7 +10246,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
+          "retrievalTimestamp": "2026-09-06T15:55:00.211Z",
           "pageOrQuery": "/hash-type-identifier",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10661,7 +10268,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10685,7 +10292,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
+          "retrievalTimestamp": "2026-09-06T15:55:00.211Z",
           "pageOrQuery": "/hash-type-identifier",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10707,7 +10314,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10731,7 +10338,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
+          "retrievalTimestamp": "2026-09-06T15:55:00.211Z",
           "pageOrQuery": "/wifi-qr-code-generator",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10752,7 +10359,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10784,7 +10391,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10803,38 +10410,6 @@
       "provenance": []
     },
     {
-      "id": "weak-title-image-blur-sharpen-tool",
-      "pageSlug": "image-blur-sharpen-tool",
-      "pageUrl": "https://novatool.in/image-blur-sharpen-tool",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (28 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/image.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/image.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
       "id": "weak-links-reading-time-estimator",
       "pageSlug": "reading-time-estimator",
       "pageUrl": "https://novatool.in/reading-time-estimator",
@@ -10848,7 +10423,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10863,38 +10438,6 @@
         "type": "INTERNAL_LINKS",
         "targetFile": "data/tools/text.ts",
         "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-remove-empty-lines",
-      "pageSlug": "remove-empty-lines",
-      "pageUrl": "https://novatool.in/remove-empty-lines",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (26 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/text.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/text.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
       },
       "provenance": []
     },
@@ -10912,7 +10455,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10931,166 +10474,6 @@
       "provenance": []
     },
     {
-      "id": "weak-title-prefix-suffix-lines",
-      "pageSlug": "prefix-suffix-lines",
-      "pageUrl": "https://novatool.in/prefix-suffix-lines",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (28 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/text.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/text.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-extract-numbers",
-      "pageSlug": "extract-numbers",
-      "pageUrl": "https://novatool.in/extract-numbers",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (27 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/text.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/text.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-snake-case-converter",
-      "pageSlug": "snake-case-converter",
-      "pageUrl": "https://novatool.in/snake-case-converter",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (27 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/text.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/text.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-kebab-case-converter",
-      "pageSlug": "kebab-case-converter",
-      "pageUrl": "https://novatool.in/kebab-case-converter",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (27 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/text.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/text.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-pascalcase-converter",
-      "pageSlug": "pascalcase-converter",
-      "pageUrl": "https://novatool.in/pascalcase-converter",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (27 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/text.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/text.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
       "id": "weak-links-title-case-converter",
       "pageSlug": "title-case-converter",
       "pageUrl": "https://novatool.in/title-case-converter",
@@ -11104,7 +10487,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11136,7 +10519,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11151,38 +10534,6 @@
         "type": "INTERNAL_LINKS",
         "targetFile": "data/tools/text.ts",
         "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-text-to-morse-code",
-      "pageSlug": "text-to-morse-code",
-      "pageUrl": "https://novatool.in/text-to-morse-code",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (29 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/text.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/text.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
       },
       "provenance": []
     },
@@ -11200,7 +10551,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11215,294 +10566,6 @@
         "type": "INTERNAL_LINKS",
         "targetFile": "data/tools/text.ts",
         "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-morse-code-to-text",
-      "pageSlug": "morse-code-to-text",
-      "pageUrl": "https://novatool.in/morse-code-to-text",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (26 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/text.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/text.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-text-to-binary",
-      "pageSlug": "text-to-binary",
-      "pageUrl": "https://novatool.in/text-to-binary",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (29 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/text.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/text.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-json-formatter",
-      "pageSlug": "json-formatter",
-      "pageUrl": "https://novatool.in/json-formatter",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (27 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-json-minifier",
-      "pageSlug": "json-minifier",
-      "pageUrl": "https://novatool.in/json-minifier",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (26 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-sql-formatter",
-      "pageSlug": "sql-formatter",
-      "pageUrl": "https://novatool.in/sql-formatter",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (26 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-jwt-decoder",
-      "pageSlug": "jwt-decoder",
-      "pageUrl": "https://novatool.in/jwt-decoder",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (29 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-url-encoder",
-      "pageSlug": "url-encoder",
-      "pageUrl": "https://novatool.in/url-encoder",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (21 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-hash-generator",
-      "pageSlug": "hash-generator",
-      "pageUrl": "https://novatool.in/hash-generator",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (24 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-regex-tester",
-      "pageSlug": "regex-tester",
-      "pageUrl": "https://novatool.in/regex-tester",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (23 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
       },
       "provenance": []
     },
@@ -11520,7 +10583,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11535,102 +10598,6 @@
         "type": "INTERNAL_LINKS",
         "targetFile": "data/tools/developer.ts",
         "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-html-minifier",
-      "pageSlug": "html-minifier",
-      "pageUrl": "https://novatool.in/html-minifier",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (26 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-css-minifier",
-      "pageSlug": "css-minifier",
-      "pageUrl": "https://novatool.in/css-minifier",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (25 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-rgb-to-hex-converter",
-      "pageSlug": "rgb-to-hex-converter",
-      "pageUrl": "https://novatool.in/rgb-to-hex-converter",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (26 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
       },
       "provenance": []
     },
@@ -11648,7 +10615,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11667,166 +10634,6 @@
       "provenance": []
     },
     {
-      "id": "weak-title-px-to-rem-converter",
-      "pageSlug": "px-to-rem-converter",
-      "pageUrl": "https://novatool.in/px-to-rem-converter",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (28 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-css-box-shadow-generator",
-      "pageSlug": "css-box-shadow-generator",
-      "pageUrl": "https://novatool.in/css-box-shadow-generator",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (24 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-binary-to-decimal-converter",
-      "pageSlug": "binary-to-decimal-converter",
-      "pageUrl": "https://novatool.in/binary-to-decimal-converter",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (27 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-decimal-to-binary-converter",
-      "pageSlug": "decimal-to-binary-converter",
-      "pageUrl": "https://novatool.in/decimal-to-binary-converter",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (27 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-text-diff-checker",
-      "pageSlug": "text-diff-checker",
-      "pageUrl": "https://novatool.in/text-diff-checker",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (24 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
       "id": "weak-links-env-file-validator-formatter",
       "pageSlug": "env-file-validator-formatter",
       "pageUrl": "https://novatool.in/env-file-validator-formatter",
@@ -11840,7 +10647,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11872,7 +10679,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11904,7 +10711,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11936,7 +10743,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11955,166 +10762,6 @@
       "provenance": []
     },
     {
-      "id": "weak-desc-length-unit-converter",
-      "pageSlug": "length-unit-converter",
-      "pageUrl": "https://novatool.in/length-unit-converter",
-      "type": "WEAK_META_DESCRIPTION",
-      "reason": "Meta description length (76 characters) is outside optimal range (120-155 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/calculators.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "DESCRIPTION_OPTIMIZATION",
-        "targetFile": "data/tools/calculators.ts",
-        "summary": "Craft crisp 140-character summary highlighting instant client-side privacy."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-weight-unit-converter",
-      "pageSlug": "weight-unit-converter",
-      "pageUrl": "https://novatool.in/weight-unit-converter",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (28 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/calculators.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/calculators.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-desc-weight-unit-converter",
-      "pageSlug": "weight-unit-converter",
-      "pageUrl": "https://novatool.in/weight-unit-converter",
-      "type": "WEAK_META_DESCRIPTION",
-      "reason": "Meta description length (75 characters) is outside optimal range (120-155 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/calculators.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "DESCRIPTION_OPTIMIZATION",
-        "targetFile": "data/tools/calculators.ts",
-        "summary": "Craft crisp 140-character summary highlighting instant client-side privacy."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-temperature-converter",
-      "pageSlug": "temperature-converter",
-      "pageUrl": "https://novatool.in/temperature-converter",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (26 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/calculators.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/calculators.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-desc-digital-storage-converter",
-      "pageSlug": "digital-storage-converter",
-      "pageUrl": "https://novatool.in/digital-storage-converter",
-      "type": "WEAK_META_DESCRIPTION",
-      "reason": "Meta description length (76 characters) is outside optimal range (120-155 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/calculators.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "DESCRIPTION_OPTIMIZATION",
-        "targetFile": "data/tools/calculators.ts",
-        "summary": "Craft crisp 140-character summary highlighting instant client-side privacy."
-      },
-      "provenance": []
-    },
-    {
       "id": "weak-links-audio-duration-to-samples-converter",
       "pageSlug": "audio-duration-to-samples-converter",
       "pageUrl": "https://novatool.in/audio-duration-to-samples-converter",
@@ -12128,7 +10775,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12160,7 +10807,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12192,7 +10839,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12211,70 +10858,6 @@
       "provenance": []
     },
     {
-      "id": "weak-title-gratuity-calculator",
-      "pageSlug": "gratuity-calculator",
-      "pageUrl": "https://novatool.in/gratuity-calculator",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (27 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/india.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/india.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-ifsc-code-validator",
-      "pageSlug": "ifsc-code-validator",
-      "pageUrl": "https://novatool.in/ifsc-code-validator",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (26 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/india.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/india.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
       "id": "weak-links-indian-currency-words-converter",
       "pageSlug": "indian-currency-words-converter",
       "pageUrl": "https://novatool.in/indian-currency-words-converter",
@@ -12288,7 +10871,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12303,70 +10886,6 @@
         "type": "INTERNAL_LINKS",
         "targetFile": "data/tools/india.ts",
         "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-json-to-csv",
-      "pageSlug": "json-to-csv",
-      "pageUrl": "https://novatool.in/json-to-csv",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (21 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/data.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/data.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-xml-formatter",
-      "pageSlug": "xml-formatter",
-      "pageUrl": "https://novatool.in/xml-formatter",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (26 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/data.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/data.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
       },
       "provenance": []
     },
@@ -12384,7 +10903,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12403,70 +10922,6 @@
       "provenance": []
     },
     {
-      "id": "weak-title-xml-validator",
-      "pageSlug": "xml-validator",
-      "pageUrl": "https://novatool.in/xml-validator",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (29 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/data.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/data.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-title-csv-column-extractor",
-      "pageSlug": "csv-column-extractor",
-      "pageUrl": "https://novatool.in/csv-column-extractor",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (29 characters) is outside optimal range (35-60 chars).",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/data.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
-        "targetFile": "data/tools/data.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
-      },
-      "provenance": []
-    },
-    {
       "id": "weak-links-json-unflattener",
       "pageSlug": "json-unflattener",
       "pageUrl": "https://novatool.in/json-unflattener",
@@ -12480,7 +10935,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12512,7 +10967,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12531,11 +10986,11 @@
       "provenance": []
     },
     {
-      "id": "weak-title-json-path-query",
-      "pageSlug": "json-path-query",
-      "pageUrl": "https://novatool.in/json-path-query",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (26 characters) is outside optimal range (35-60 chars).",
+      "id": "weak-links-html-table-to-csv",
+      "pageSlug": "html-table-to-csv",
+      "pageUrl": "https://novatool.in/html-table-to-csv",
+      "type": "WEAK_INTERNAL_LINKING",
+      "reason": "Page has only 1 incoming internal link.",
       "riskLevel": "LOW",
       "targetFile": "data/tools/data.ts",
       "currentMetrics": {
@@ -12544,7 +10999,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12556,27 +11011,27 @@
         "riskPenalty": 0
       },
       "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
+        "type": "INTERNAL_LINKS",
         "targetFile": "data/tools/data.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
+        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
       },
       "provenance": []
     },
     {
-      "id": "weak-title-csv-to-html-table",
-      "pageSlug": "csv-to-html-table",
-      "pageUrl": "https://novatool.in/csv-to-html-table",
-      "type": "WEAK_TITLE",
-      "reason": "Title length (27 characters) is outside optimal range (35-60 chars).",
+      "id": "weak-links-cache-control-generator",
+      "pageSlug": "cache-control-generator",
+      "pageUrl": "https://novatool.in/cache-control-generator",
+      "type": "WEAK_INTERNAL_LINKING",
+      "reason": "Page has only 1 incoming internal link.",
       "riskLevel": "LOW",
-      "targetFile": "data/tools/data.ts",
+      "targetFile": "data/tools/webmaster.ts",
       "currentMetrics": {
         "clicks": 0,
         "impressions": 0,
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T15:12:38.464Z",
+      "detectedAt": "2026-09-06T15:55:16.738Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12588,15 +11043,1406 @@
         "riskPenalty": 0
       },
       "proposedAction": {
-        "type": "TITLE_OPTIMIZATION",
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/webmaster.ts",
+        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "weak-links-loan-amortization-schedule-calculator",
+      "pageSlug": "loan-amortization-schedule-calculator",
+      "pageUrl": "https://novatool.in/loan-amortization-schedule-calculator",
+      "type": "WEAK_INTERNAL_LINKING",
+      "reason": "Page has only 1 incoming internal link.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/finance.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 15,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 8,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/finance.ts",
+        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "weak-links-dividend-yield-calculator",
+      "pageSlug": "dividend-yield-calculator",
+      "pageUrl": "https://novatool.in/dividend-yield-calculator",
+      "type": "WEAK_INTERNAL_LINKING",
+      "reason": "Page has only 1 incoming internal link.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/finance.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 15,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 8,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/finance.ts",
+        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "weak-links-ipv6-compress-expand",
+      "pageSlug": "ipv6-compress-expand",
+      "pageUrl": "https://novatool.in/ipv6-compress-expand",
+      "type": "WEAK_INTERNAL_LINKING",
+      "reason": "Page has only 1 incoming internal link.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/privacy.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 15,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 8,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/privacy.ts",
+        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "weak-links-mime-type-lookup",
+      "pageSlug": "mime-type-lookup",
+      "pageUrl": "https://novatool.in/mime-type-lookup",
+      "type": "WEAK_INTERNAL_LINKING",
+      "reason": "Page has only 1 incoming internal link.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/privacy.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 15,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 8,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/privacy.ts",
+        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "weak-links-unicode-escape-decoder",
+      "pageSlug": "unicode-escape-decoder",
+      "pageUrl": "https://novatool.in/unicode-escape-decoder",
+      "type": "WEAK_INTERNAL_LINKING",
+      "reason": "Page has only 1 incoming internal link.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/privacy.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 15,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 8,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/privacy.ts",
+        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "weak-links-crc32-checksum-calculator",
+      "pageSlug": "crc32-checksum-calculator",
+      "pageUrl": "https://novatool.in/crc32-checksum-calculator",
+      "type": "WEAK_INTERNAL_LINKING",
+      "reason": "Page has only 1 incoming internal link.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/privacy.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 15,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 8,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/privacy.ts",
+        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "weak-links-port-number-lookup",
+      "pageSlug": "port-number-lookup",
+      "pageUrl": "https://novatool.in/port-number-lookup",
+      "type": "WEAK_INTERNAL_LINKING",
+      "reason": "Page has only 1 incoming internal link.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/privacy.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 15,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 8,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/privacy.ts",
+        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "weak-links-md5-checksum-generator",
+      "pageSlug": "md5-checksum-generator",
+      "pageUrl": "https://novatool.in/md5-checksum-generator",
+      "type": "WEAK_INTERNAL_LINKING",
+      "reason": "Page has only 1 incoming internal link.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/privacy.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 15,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 8,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/privacy.ts",
+        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "weak-links-file-extension-mime-detector",
+      "pageSlug": "file-extension-mime-detector",
+      "pageUrl": "https://novatool.in/file-extension-mime-detector",
+      "type": "WEAK_INTERNAL_LINKING",
+      "reason": "Page has only 1 incoming internal link.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/file.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 15,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 8,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/file.ts",
+        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-image-color-palette-extractor",
+      "pageSlug": "image-color-palette-extractor",
+      "pageUrl": "https://novatool.in/image-color-palette-extractor",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/image.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/image.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-image-blur-sharpen-tool",
+      "pageSlug": "image-blur-sharpen-tool",
+      "pageUrl": "https://novatool.in/image-blur-sharpen-tool",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/image.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/image.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-image-rounded-corner-generator",
+      "pageSlug": "image-rounded-corner-generator",
+      "pageUrl": "https://novatool.in/image-rounded-corner-generator",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/image.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/image.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-favicon-generator",
+      "pageSlug": "favicon-generator",
+      "pageUrl": "https://novatool.in/favicon-generator",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/image.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/image.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-image-aspect-ratio-resizer",
+      "pageSlug": "image-aspect-ratio-resizer",
+      "pageUrl": "https://novatool.in/image-aspect-ratio-resizer",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/image.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/image.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-image-dpi-converter",
+      "pageSlug": "image-dpi-converter",
+      "pageUrl": "https://novatool.in/image-dpi-converter",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/image.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/image.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-text-reverser",
+      "pageSlug": "text-reverser",
+      "pageUrl": "https://novatool.in/text-reverser",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/text.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/text.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-find-and-replace-text",
+      "pageSlug": "find-and-replace-text",
+      "pageUrl": "https://novatool.in/find-and-replace-text",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/text.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/text.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-nato-phonetic-alphabet",
+      "pageSlug": "nato-phonetic-alphabet",
+      "pageUrl": "https://novatool.in/nato-phonetic-alphabet",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/text.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/text.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-normalize-unicode-text",
+      "pageSlug": "normalize-unicode-text",
+      "pageUrl": "https://novatool.in/normalize-unicode-text",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/text.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/text.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-markdown-table-generator",
+      "pageSlug": "markdown-table-generator",
+      "pageUrl": "https://novatool.in/markdown-table-generator",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/text.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/text.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-cron-expression-descriptor",
+      "pageSlug": "cron-expression-descriptor",
+      "pageUrl": "https://novatool.in/cron-expression-descriptor",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/developer.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/developer.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-javascript-regex-string-escape",
+      "pageSlug": "javascript-regex-string-escape",
+      "pageUrl": "https://novatool.in/javascript-regex-string-escape",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/developer.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/developer.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-tip-calculator",
+      "pageSlug": "tip-calculator",
+      "pageUrl": "https://novatool.in/tip-calculator",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/calculators.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/calculators.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-digital-storage-converter",
+      "pageSlug": "digital-storage-converter",
+      "pageUrl": "https://novatool.in/digital-storage-converter",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/calculators.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/calculators.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-roman-numerals-converter",
+      "pageSlug": "roman-numerals-converter",
+      "pageUrl": "https://novatool.in/roman-numerals-converter",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/calculators.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/calculators.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-epf-calculator-india",
+      "pageSlug": "epf-calculator-india",
+      "pageUrl": "https://novatool.in/epf-calculator-india",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/india.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/india.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-pin-code-format-validator-india",
+      "pageSlug": "pin-code-format-validator-india",
+      "pageUrl": "https://novatool.in/pin-code-format-validator-india",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/india.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/india.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-tamil-unicode-codepoint-inspector",
+      "pageSlug": "tamil-unicode-codepoint-inspector",
+      "pageUrl": "https://novatool.in/tamil-unicode-codepoint-inspector",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/tamil.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/tamil.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-tamil-case-formatter",
+      "pageSlug": "tamil-case-formatter",
+      "pageUrl": "https://novatool.in/tamil-case-formatter",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/tamil.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/tamil.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-json-path-query",
+      "pageSlug": "json-path-query",
+      "pageUrl": "https://novatool.in/json-path-query",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/data.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
         "targetFile": "data/tools/data.ts",
-        "summary": "Format title tag with primary intent keyword and brand value."
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-json-data-statistics",
+      "pageSlug": "json-data-statistics",
+      "pageUrl": "https://novatool.in/json-data-statistics",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/data.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/data.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-csv-column-reorder",
+      "pageSlug": "csv-column-reorder",
+      "pageUrl": "https://novatool.in/csv-column-reorder",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/data.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/data.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-sql-to-json-converter",
+      "pageSlug": "sql-to-json-converter",
+      "pageUrl": "https://novatool.in/sql-to-json-converter",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/data.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/data.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-hreflang-tag-generator",
+      "pageSlug": "hreflang-tag-generator",
+      "pageUrl": "https://novatool.in/hreflang-tag-generator",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/seo.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/seo.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-heading-structure-analyzer",
+      "pageSlug": "heading-structure-analyzer",
+      "pageUrl": "https://novatool.in/heading-structure-analyzer",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/seo.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/seo.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-freelance-hourly-rate-calculator",
+      "pageSlug": "freelance-hourly-rate-calculator",
+      "pageUrl": "https://novatool.in/freelance-hourly-rate-calculator",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/finance.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/finance.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-savings-goal-planner-calculator",
+      "pageSlug": "savings-goal-planner-calculator",
+      "pageUrl": "https://novatool.in/savings-goal-planner-calculator",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/finance.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/finance.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-discount-percentage-calculator",
+      "pageSlug": "discount-percentage-calculator",
+      "pageUrl": "https://novatool.in/discount-percentage-calculator",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/finance.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/finance.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-study-time-planner-calculator",
+      "pageSlug": "study-time-planner-calculator",
+      "pageUrl": "https://novatool.in/study-time-planner-calculator",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/education.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/education.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-mac-address-lookup-validator",
+      "pageSlug": "mac-address-lookup-validator",
+      "pageUrl": "https://novatool.in/mac-address-lookup-validator",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/privacy.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/privacy.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-rot13-encoder-decoder",
+      "pageSlug": "rot13-encoder-decoder",
+      "pageUrl": "https://novatool.in/rot13-encoder-decoder",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/privacy.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/privacy.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-punycode-converter",
+      "pageSlug": "punycode-converter",
+      "pageUrl": "https://novatool.in/punycode-converter",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/privacy.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/privacy.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      },
+      "provenance": []
+    },
+    {
+      "id": "orphan-page-argon2-bcrypt-cost-calculator",
+      "pageSlug": "argon2-bcrypt-cost-calculator",
+      "pageUrl": "https://novatool.in/argon2-bcrypt-cost-calculator",
+      "type": "ORPHAN_PAGE",
+      "reason": "Page has 0 incoming links from other tools in the registry.",
+      "riskLevel": "LOW",
+      "targetFile": "data/tools/privacy.ts",
+      "currentMetrics": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0
+      },
+      "detectedAt": "2026-09-06T15:55:16.738Z",
+      "opportunityScore": 12,
+      "scoreBreakdown": {
+        "impressionPotential": 0,
+        "positionOpportunity": 0,
+        "ctrOpportunity": 0,
+        "trafficTrend": 2,
+        "businessRelevance": 5,
+        "pageQuality": 5,
+        "riskPenalty": 0
+      },
+      "proposedAction": {
+        "type": "INTERNAL_LINKS",
+        "targetFile": "data/tools/privacy.ts",
+        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
       },
       "provenance": []
     }
   ],
   "learningPatterns": [],
   "cycles": [
+    {
+      "date": "2026-09-06",
+      "cycleId": "cycle-1788710096105",
+      "opportunities": 83,
+      "selected": 79,
+      "processed": 20,
+      "successful": 20,
+      "failed": 59,
+      "rollback": 0,
+      "deployment": 20,
+      "indexNow": 20,
+      "finalStatus": "COMPLETED",
+      "summary": "Cycle cycle-1788710096105 finished (COMPLETED): 83 opportunities detected, 0 already optimized, 0 in cooldown, 0 no-op, 0 high-risk skipped, 20 optimized in atomic batches, 20 deployed, 20 IndexNow URLs broadcast.",
+      "isDryRun": false
+    },
     {
       "date": "2026-09-06",
       "cycleId": "cycle-1788707547896",
@@ -13031,30 +12877,537 @@
       "finalStatus": "DRY_RUN",
       "summary": "DRY RUN COMPLETED (Real Data Gate: AVAILABLE). Detected 161 opportunities, 0 high-risk skipped, 1 actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.",
       "isDryRun": true
-    },
-    {
-      "date": "2026-09-04",
-      "cycleId": "cycle-1788532577317",
-      "opportunities": 161,
-      "selected": 1,
-      "processed": 0,
-      "successful": 0,
-      "failed": 0,
-      "rollback": 0,
-      "deployment": 0,
-      "indexNow": 0,
-      "finalStatus": "DRY_RUN",
-      "summary": "DRY RUN COMPLETED (Real Data Gate: AVAILABLE). Detected 161 opportunities, 0 high-risk skipped, 1 actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.",
-      "isDryRun": true
     }
   ],
-  "successfulBatchesToday": 0,
-  "failedBatchesToday": 0,
+  "successfulBatchesToday": 1,
+  "failedBatchesToday": 3,
   "rollbacksToday": 0,
-  "deploymentsToday": 0,
-  "indexNowBroadcastsToday": 0,
-  "currentCycleStatus": "DRY_RUN",
+  "deploymentsToday": 20,
+  "indexNowBroadcastsToday": 20,
+  "currentCycleStatus": "COMPLETED",
   "optimizations": [
+    {
+      "id": "opt-cycle-1788710096105-px-to-rem-converter-1788710271016",
+      "pageSlug": "px-to-rem-converter",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "ba708ec77d84ff29",
+      "timestamp": "2026-09-06T15:57:51.016Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "PX to REM Converter Online Tool | Nova Tools",
+        "description": "Use this px to rem converter online tool to convert CSS pixels to REM units. Get fast client-side results in your browser, with no data upload required.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Why use REM instead of PX in CSS?"
+        ],
+        "relatedTools": [
+          "css-minifier",
+          "hex-to-rgb-converter",
+          "json-formatter",
+          "json-minifier",
+          "json-validator"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-html-minifier-1788710271009",
+      "pageSlug": "html-minifier",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "6b5e54dfb8891520",
+      "timestamp": "2026-09-06T15:57:51.009Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "HTML Minifier Online Tool | Nova Tools",
+        "description": "Use this html minifier online tool to minify HTML markup. Get fast client-side results in your browser, with no data upload required.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Does minifying break script tags?"
+        ],
+        "relatedTools": [
+          "css-minifier",
+          "json-minifier",
+          "json-formatter",
+          "json-validator",
+          "sql-formatter"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-morse-code-to-text-1788710271001",
+      "pageSlug": "morse-code-to-text",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "a13d8c6cc621a499",
+      "timestamp": "2026-09-06T15:57:51.001Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "Morse Code to Text Online Tool | Nova Tools",
+        "description": "Use this morse code to text online tool to decode Morse code into readable text. Get fast client-side results in your browser.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "How should words be separated in Morse code input?"
+        ],
+        "relatedTools": [
+          "text-to-morse-code",
+          "binary-to-text",
+          "remove-duplicate-lines",
+          "sort-lines",
+          "word-frequency-counter"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-sentence-case-converter-1788710270991",
+      "pageSlug": "sentence-case-converter",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "28892f3a636bd7a5",
+      "timestamp": "2026-09-06T15:57:50.991Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "Sentence Case Converter - Free Online Tool",
+        "description": "Convert text to proper sentence case online. Automatically capitalize the start of each sentence.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Does it work across multiple paragraphs?"
+        ],
+        "relatedTools": [
+          "title-case-converter",
+          "case-converter",
+          "remove-duplicate-lines",
+          "sort-lines",
+          "word-frequency-counter"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-title-case-converter-1788710270979",
+      "pageSlug": "title-case-converter",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "e1dda4269a384800",
+      "timestamp": "2026-09-06T15:57:50.979Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "Title Case Converter (AP & Chicago Style)",
+        "description": "Convert text to formal Title Case online with AP and Chicago style capitalization rules.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Why are some words lowercase in Title Case?"
+        ],
+        "relatedTools": [
+          "sentence-case-converter",
+          "case-converter",
+          "remove-duplicate-lines",
+          "sort-lines",
+          "word-frequency-counter"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-prefix-suffix-lines-1788710270972",
+      "pageSlug": "prefix-suffix-lines",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "5aec39fbb88d5c7f",
+      "timestamp": "2026-09-06T15:57:50.972Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "Prefix Suffix Lines Online Tool | Nova Tools",
+        "description": "Use this prefix suffix lines online tool to add prefixes or suffixes to multiple text lines. Get fast client-side results in your browser.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Can I add line numbers automatically?"
+        ],
+        "relatedTools": [
+          "sort-lines",
+          "remove-duplicate-lines",
+          "word-frequency-counter",
+          "character-frequency-analyzer",
+          "reading-time-estimator"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-reading-time-estimator-1788710270962",
+      "pageSlug": "reading-time-estimator",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "c46f3a82add8ea78",
+      "timestamp": "2026-09-06T15:57:50.962Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "Reading Time & Speech Duration Estimator",
+        "description": "Estimate silent reading time and speech duration for articles and presentations online.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What reading speed is assumed?"
+        ],
+        "relatedTools": [
+          "word-counter",
+          "word-frequency-counter",
+          "remove-duplicate-lines",
+          "sort-lines",
+          "character-frequency-analyzer"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-html-to-markdown-converter-1788710270950",
+      "pageSlug": "html-to-markdown-converter",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "b439cc85ed02bd89",
+      "timestamp": "2026-09-06T15:57:50.950Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "HTML to Markdown Converter - PDF Utility",
+        "description": "Convert HTML code to GitHub Flavored Markdown online. Fast, clean, in-browser HTML to MD converter.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Are complex tables converted?"
+        ],
+        "relatedTools": [
+          "markdown-to-html-converter",
+          "text-cleaner",
+          "compress-pdf",
+          "merge-pdf",
+          "split-pdf"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-pdf-grayscale-converter-1788710270926",
+      "pageSlug": "pdf-grayscale-converter",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "0fe1b4ed82da6237",
+      "timestamp": "2026-09-06T15:57:50.926Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "PDF Grayscale & Black/White Converter",
+        "description": "Convert color PDF files to black and white grayscale online. Save ink, toner, and bandwidth.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Does grayscale reduce file size?"
+        ],
+        "relatedTools": [
+          "compress-pdf",
+          "image-grayscale-filter",
+          "merge-pdf",
+          "split-pdf",
+          "pdf-password-protect"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-wifi-qr-code-generator-1788710270918",
+      "pageSlug": "wifi-qr-code-generator",
+      "opportunityType": "THIN_PAGE_CONTENT",
+      "actionType": "FAQ_ENRICHMENT",
+      "contentFingerprint": "39a8aa10c3879bac",
+      "timestamp": "2026-09-06T15:57:50.918Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "WiFi QR Code Generator Online | Nova Tools",
+        "description": "Create WiFi QR codes online for fast guest login. Share your home or office WiFi securely with instant scanning.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Is my WiFi password safe?"
+        ],
+        "relatedTools": [
+          "qr-code-generator",
+          "password-generator",
+          "vcard-qr-code-generator",
+          "email-qr-code-generator",
+          "sms-qr-code-generator"
+        ],
+        "reasoningSummary": "Add high-value technical FAQ and how-to guidance tailored to the tool's browser engine."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-hash-type-identifier-1788710270907",
+      "pageSlug": "hash-type-identifier",
+      "opportunityType": "THIN_PAGE_CONTENT",
+      "actionType": "FAQ_ENRICHMENT",
+      "contentFingerprint": "3689db6fc6446b44",
+      "timestamp": "2026-09-06T15:57:50.907Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "Hash Type Identifier & Detector",
+        "description": "Identify unknown hash types and algorithms online by pattern analysis. Fast in-browser tool.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Can it identify salted hashes like Bcrypt?"
+        ],
+        "relatedTools": [
+          "hash-generator",
+          "uuid-validator-parser",
+          "password-generator",
+          "password-strength-checker",
+          "hmac-generator"
+        ],
+        "reasoningSummary": "Add high-value technical FAQ and how-to guidance tailored to the tool's browser engine."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-json-to-xml-1788710270896",
+      "pageSlug": "json-to-xml",
+      "opportunityType": "THIN_PAGE_CONTENT",
+      "actionType": "FAQ_ENRICHMENT",
+      "contentFingerprint": "4ec698bab35cbbe5",
+      "timestamp": "2026-09-06T15:57:50.896Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "JSON to XML Converter - Data Converter",
+        "description": "Convert JSON objects and arrays into well-formed XML online. Fast developer tool.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Does it include the XML declaration header?"
+        ],
+        "relatedTools": [
+          "xml-to-json",
+          "json-to-csv",
+          "json-to-yaml",
+          "yaml-to-json",
+          "csv-to-json",
+          "csv-to-markdown-table",
+          "markdown-table-to-csv",
+          "json-to-typescript-interfaces"
+        ],
+        "reasoningSummary": "Add high-value technical FAQ and how-to guidance tailored to the tool's browser engine."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-csv-to-json-1788710270889",
+      "pageSlug": "csv-to-json",
+      "opportunityType": "THIN_PAGE_CONTENT",
+      "actionType": "FAQ_ENRICHMENT",
+      "contentFingerprint": "81427eb42c23379b",
+      "timestamp": "2026-09-06T15:57:50.889Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "CSV to JSON Converter Online | Nova Tools",
+        "description": "Convert CSV spreadsheets into JSON arrays of objects online. Fast, secure in-browser parser.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Does it support commas inside quoted fields?"
+        ],
+        "relatedTools": [
+          "json-to-csv",
+          "csv-to-sql-insert",
+          "csv-to-markdown-table"
+        ],
+        "reasoningSummary": "Add high-value technical FAQ and how-to guidance tailored to the tool's browser engine."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-inflation-calculator-1788710270874",
+      "pageSlug": "inflation-calculator",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "917b2e211faaf800",
+      "timestamp": "2026-09-06T15:57:50.874Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "Inflation Calculator - Future Value",
+        "description": "Calculate the impact of inflation on future purchasing power and expenses online. Fast and accurate.",
+        "faqCount": 4,
+        "faqQuestions": [
+          "What is the average inflation rate in India?",
+          "Does Inflation & Purchasing Power Calculator support projects future cost equivalent?",
+          "Does Inflation & Purchasing Power Calculator support calculates purchasing power reduction?",
+          "Does Inflation & Purchasing Power Calculator support instant calculation?"
+        ],
+        "relatedTools": [
+          "compound-interest-calculator",
+          "sip-calculator"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-code-indentation-converter-1788710270862",
+      "pageSlug": "code-indentation-converter",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "08d80799d8654530",
+      "timestamp": "2026-09-06T15:57:50.862Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "Code Indentation Converter (Spaces ↔ Tabs)",
+        "description": "Convert code indentation between spaces and tabs online. Fast, clean in-browser indentation formatter.",
+        "faqCount": 4,
+        "faqQuestions": [
+          "Does this alter string literals inside code?",
+          "Does Code Indentation Converter (Spaces ↔ Tabs) support supports 2 spaces, 4 spaces, and tabs (\\t)?",
+          "Does Code Indentation Converter (Spaces ↔ Tabs) support trims trailing whitespace?",
+          "Does Code Indentation Converter (Spaces ↔ Tabs) support preserves inner code formatting?"
+        ],
+        "relatedTools": [
+          "text-cleaner",
+          "json-formatter"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-json-to-typescript-interfaces-1788710270856",
+      "pageSlug": "json-to-typescript-interfaces",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "8408a7bf8205dfc0",
+      "timestamp": "2026-09-06T15:57:50.856Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "JSON to TypeScript Interface Generator",
+        "description": "Generate strongly-typed TypeScript interfaces from JSON payloads online. Free developer tool.",
+        "faqCount": 4,
+        "faqQuestions": [
+          "Does it support arrays of objects?",
+          "Does JSON to TypeScript Interface Generator support infers string, number, boolean, array types?",
+          "Does JSON to TypeScript Interface Generator support custom interface naming?",
+          "Does JSON to TypeScript Interface Generator support strict typescript syntax?"
+        ],
+        "relatedTools": [
+          "json-validator",
+          "json-formatter"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-business-hours-overlap-calculator-1788710270846",
+      "pageSlug": "business-hours-overlap-calculator",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "29d4b473d7969712",
+      "timestamp": "2026-09-06T15:57:50.846Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "Business Hours International Overlap Calcu",
+        "description": "Calculate common working hours overlap between international cities online. Ideal for remote distributed teams.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What is the best overlap between India (IST) and US East Coast (EST)?"
+        ],
+        "relatedTools": [
+          "world-clock-timezone-converter",
+          "working-days-business-calculator",
+          "loan-emi-calculator",
+          "sip-calculator",
+          "compound-interest-calculator"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-speed-distance-time-calculator-1788710270839",
+      "pageSlug": "speed-distance-time-calculator",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "2a800971bf3ec9ab",
+      "timestamp": "2026-09-06T15:57:50.839Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "Speed Distance Time - Motion Calculator",
+        "description": "Calculate speed, distance, or travel time online. Fast, free kinematics physics calculator.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What is the formula for speed?"
+        ],
+        "relatedTools": [
+          "fuel-cost-calculator",
+          "time-calculator",
+          "loan-emi-calculator",
+          "sip-calculator",
+          "compound-interest-calculator"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-aadhaar-verhoeff-checksum-validator-1788710270828",
+      "pageSlug": "aadhaar-verhoeff-checksum-validator",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "ae300fffa9f8328a",
+      "timestamp": "2026-09-06T15:57:50.828Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "Aadhaar Checksum - Verhoeff Check",
+        "description": "Validate Indian Aadhaar number format and calculate Verhoeff checksum online. 100% private and secure.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Is my Aadhaar number sent to UIDAI or any server?"
+        ],
+        "relatedTools": [
+          "pan-card-format-validator",
+          "ifsc-code-validator",
+          "gst-calculator",
+          "income-tax-regime-comparator",
+          "gratuity-calculator"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788710096105-cgpa-to-percentage-converter-1788710270820",
+      "pageSlug": "cgpa-to-percentage-converter",
+      "opportunityType": "THIN_PAGE_CONTENT",
+      "actionType": "FAQ_ENRICHMENT",
+      "contentFingerprint": "ee154ceb7345f2b0",
+      "timestamp": "2026-09-06T15:57:50.820Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "6ec4573",
+      "details": {
+        "title": "CGPA to Percentage Converter (CBSE / AICTE",
+        "description": "Convert 10-point CGPA to percentage online using CBSE and AICTE official formulas. Fast, accurate grade converter.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Why is CGPA multiplied by 9.5?"
+        ],
+        "relatedTools": [
+          "gpa-calculator",
+          "percentage-calculator",
+          "citation-generator",
+          "weighted-grade-calculator",
+          "attendance-percentage-calculator",
+          "exam-score-target-calculator"
+        ],
+        "reasoningSummary": "Add high-value technical FAQ and how-to guidance tailored to the tool's browser engine."
+      }
+    },
     {
       "id": "opt-hist-aspect-ratio-calculator-3c809e2",
       "pageSlug": "aspect-ratio-calculator",
