@@ -219,7 +219,7 @@ export const qrTools: ToolDefinition[] = [
       { question: "Does Barcode Generator (Code 128 / Code 39) support printable png download?", answer: "Yes. Barcode Generator (Code 128 / Code 39) provides printable png download natively in your browser with real-time feedback." }
     ],
     relatedTools: ["qr-code-generator", "file-metadata-inspector", "wifi-qr-code-generator", "vcard-qr-code-generator", "email-qr-code-generator"],
-    seoTitle: "Barcode Generator (Code 128 / Code 39)",
+    seoTitle: "Barcode Generator (Code 128 / Code 39) Online | Nova Tools",
     seoDescription: "Generate high-resolution Code 128 barcodes online for product SKUs and inventory labels. Free in-browser tool.",
     canonicalUrl: "/barcode-code128-generator",
     processingType: "client",

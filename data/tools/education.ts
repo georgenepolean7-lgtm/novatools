@@ -62,7 +62,7 @@ export const educationTools: ToolDefinition[] = [
       { question: "Does CGPA to Percentage Converter (CBSE / AICTE) support division classification (first / second division)?", answer: "Yes. CGPA to Percentage Converter (CBSE / AICTE) provides division classification (first / second division) natively in your browser with real-time feedback." }
     ],
     relatedTools: ["gpa-calculator", "percentage-calculator", "citation-generator", "weighted-grade-calculator", "attendance-percentage-calculator", "exam-score-target-calculator"],
-    seoTitle: "CGPA to Percentage Converter (CBSE / AICTE",
+    seoTitle: "CGPA to Percentage Converter | Nova Tools",
     seoDescription: "Convert 10-point CGPA to percentage online using CBSE and AICTE official formulas. Fast, accurate grade converter.",
     canonicalUrl: "/cgpa-to-percentage-converter",
     processingType: "client",

@@ -969,7 +969,7 @@ export const developerTools: ToolDefinition[] = [
     ],
     relatedTools: ["hex-to-ascii-converter", "binary-to-decimal-converter", "base64-encoder"],
     seoTitle: "ASCII to Hex Converter - Text to Hex",
-    seoDescription: "Convert ASCII text to hexadecimal byte values online. Supports UTF-8 characters and multi-byte strings.",
+    seoDescription: "Convert text characters and ASCII strings into hexadecimal byte representations. Free, fast in-browser data utility with immediate results on Nova Tools.",
     canonicalUrl: "/ascii-to-hex-converter",
     processingType: "client",
     privacyMessage: "100% in-browser conversion.",

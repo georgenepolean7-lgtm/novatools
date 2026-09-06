@@ -474,7 +474,7 @@ export const calculatorTools: ToolDefinition[] = [
     ],
     relatedTools: ["image-resizer", "px-to-rem-converter"],
     seoTitle: "Aspect Ratio - Image & Video Dimensions",
-    seoDescription: "Calculate proportional aspect ratios for images, video, and screens online. Fast dimension calculator.",
+    seoDescription: "Calculate proportionate dimensions and maintain aspect ratios (16:9, 4:3, 1:1) when resizing images. Instant client-side calculations with accurate.",
     canonicalUrl: "/aspect-ratio-calculator",
     processingType: "client",
     privacyMessage: "100% in-browser calculation.",
@@ -1147,7 +1147,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does Audio File Size & Bitrate Calculator (WAV / MP3 / AAC) support stereo/mono channels?", answer: "Yes. Audio File Size & Bitrate Calculator (WAV / MP3 / AAC) provides stereo/mono channels natively in your browser with real-time feedback." }
     ],
     relatedTools: ["audio-duration-to-samples-converter", "audio-bpm-tempo-delay-calculator"],
-    seoTitle: "Audio File Size & Bitrate Calculator (WAV",
+    seoTitle: "Audio File Size & Bitrate Calculator | Nova Tools",
     seoDescription: "Calculate WAV, MP3, and AAC audio file sizes online based on sample rate, bit depth, and duration. Free audio engineering tool.",
     canonicalUrl: "/audio-file-bitrate-size-calculator",
     processingType: "client",
