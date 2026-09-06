@@ -14,6 +14,18 @@ import { ValidationSummary, ValidationCheckResult, StageAValidationResult } from
 import { SEO_AGENT_CONFIG } from "./config";
 import { FactualContentSafetyValidator } from "./factual-safety";
 
+export interface PostPatchMetadataOverrides {
+  name?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  canonicalUrl?: string;
+  faqs?: Array<{ question: string; answer: string }>;
+  faq?: Array<{ question: string; answer: string }>;
+  relatedTools?: string[];
+  titleWasPatched?: boolean;
+  descWasPatched?: boolean;
+}
+
 /**
  * Normalizes tool slugs for robust canonical comparison:
  * strips leading/trailing slashes, trims whitespace, and lowercases.
@@ -191,7 +203,7 @@ export class SeoValidator {
    * Validates post-patch state after optimizer modification, ensuring patched fields
    * conform to canonical metadata limits while allowing unpatched pre-change metadata.
    */
-  validatePageStageA(slug: string, postPatchOverrides?: PostPatchMetadataOverrides): StageAValidationResult {
+  validatePageStageA(slug: string, postPatchOverrides: PostPatchMetadataOverrides = {}): StageAValidationResult {
     const start = Date.now();
     const checks: ValidationCheckResult[] = [];
     const cleanSlug = normalizeToolSlug(slug);
@@ -392,25 +404,21 @@ export class SeoValidator {
         slug,
         failureReason: `Tool ${tool.slug} is missing required name for schema markup.`,
         durationMs: Date.now() - start,
-        checks: [
-          ...checks,
-          { name: "Metadata Invariants Gate", passed: false, message: `Tool ${tool.slug} is missing required name for schema markup.` },
-        ],
+        checks: [...checks, { name: "Metadata Invariants Gate", passed: false, message: `Tool ${tool.slug} is missing required name for schema markup.` }],
       };
     }
 
     const titleWasPatched =
+      Boolean(postPatchOverrides?.titleWasPatched) ||
       (postPatchOverrides?.seoTitle !== undefined && postPatchOverrides.seoTitle.trim() !== (tool.seoTitle || "").trim()) ||
       (onDiskTitle !== undefined && onDiskTitle.trim() !== (tool.seoTitle || "").trim());
 
     const descWasPatched =
+      Boolean(postPatchOverrides?.descWasPatched) ||
       (postPatchOverrides?.seoDescription !== undefined && postPatchOverrides.seoDescription.trim() !== (tool.seoDescription || "").trim()) ||
       (onDiskDesc !== undefined && onDiskDesc.trim() !== (tool.seoDescription || "").trim());
 
-    const minTitle = SEO_AGENT_CONFIG.METADATA.MIN_TITLE_LENGTH; // 30
-    const maxTitle = SEO_AGENT_CONFIG.METADATA.MAX_TITLE_LENGTH; // 65
-    const minDesc = SEO_AGENT_CONFIG.METADATA.MIN_DESCRIPTION_LENGTH; // 80
-    const maxDesc = SEO_AGENT_CONFIG.METADATA.MAX_DESCRIPTION_LENGTH; // 165
+    const meta = SEO_AGENT_CONFIG.METADATA;
 
     // Validate title:
     if (!effectiveTitle || effectiveTitle.length === 0) {
@@ -426,33 +434,17 @@ export class SeoValidator {
       };
     }
 
-    if (titleWasPatched) {
-      if (effectiveTitle.length < minTitle || effectiveTitle.length > maxTitle) {
-        return {
-          passed: false,
-          slug,
-          failureReason: `Tool ${tool.slug} post-patch seoTitle length out of bounds (${effectiveTitle.length} chars). Expected ${minTitle}-${maxTitle}.`,
-          durationMs: Date.now() - start,
-          checks: [
-            ...checks,
-            { name: "Metadata Invariants Gate", passed: false, message: `Post-patch seoTitle length out of bounds: ${effectiveTitle.length} (expected ${minTitle}-${maxTitle})` },
-          ],
-        };
-      }
-    } else {
-      // Unchanged pre-existing title: reject only if malformed or exceeds max boundary
-      if (effectiveTitle.length > maxTitle) {
-        return {
-          passed: false,
-          slug,
-          failureReason: `Tool ${tool.slug} seoTitle exceeds maximum allowed length (${effectiveTitle.length} chars > ${maxTitle}).`,
-          durationMs: Date.now() - start,
-          checks: [
-            ...checks,
-            { name: "Metadata Invariants Gate", passed: false, message: `seoTitle exceeds maximum bounds: ${effectiveTitle.length} > ${maxTitle}` },
-          ],
-        };
-      }
+    if (effectiveTitle.length > meta.MAX_TITLE_LENGTH || (titleWasPatched && effectiveTitle.length < meta.MIN_TITLE_LENGTH)) {
+      return {
+        passed: false,
+        slug,
+        failureReason: `Tool ${tool.slug} seoTitle length out of bounds (${effectiveTitle.length} chars). Expected ${meta.MIN_TITLE_LENGTH}-${meta.MAX_TITLE_LENGTH}.`,
+        durationMs: Date.now() - start,
+        checks: [
+          ...checks,
+          { name: "Metadata Invariants Gate", passed: false, message: `seoTitle length out of bounds: ${effectiveTitle.length}` },
+        ],
+      };
     }
 
     // Validate description:
@@ -469,39 +461,23 @@ export class SeoValidator {
       };
     }
 
-    if (descWasPatched) {
-      if (effectiveDescription.length < minDesc || effectiveDescription.length > maxDesc) {
-        return {
-          passed: false,
-          slug,
-          failureReason: `Tool ${tool.slug} post-patch seoDescription length out of bounds (${effectiveDescription.length} chars). Expected ${minDesc}-${maxDesc}.`,
-          durationMs: Date.now() - start,
-          checks: [
-            ...checks,
-            { name: "Metadata Invariants Gate", passed: false, message: `Post-patch seoDescription length out of bounds: ${effectiveDescription.length} (expected ${minDesc}-${maxDesc})` },
-          ],
-        };
-      }
-    } else {
-      // Unchanged pre-existing description: reject only if malformed or exceeds max boundary
-      if (effectiveDescription.length > maxDesc) {
-        return {
-          passed: false,
-          slug,
-          failureReason: `Tool ${tool.slug} seoDescription exceeds maximum allowed length (${effectiveDescription.length} chars > ${maxDesc}).`,
-          durationMs: Date.now() - start,
-          checks: [
-            ...checks,
-            { name: "Metadata Invariants Gate", passed: false, message: `seoDescription exceeds maximum bounds: ${effectiveDescription.length} > ${maxDesc}` },
-          ],
-        };
-      }
+    if (effectiveDescription.length > meta.MAX_DESCRIPTION_LENGTH || (descWasPatched && effectiveDescription.length < meta.MIN_DESCRIPTION_LENGTH)) {
+      return {
+        passed: false,
+        slug,
+        failureReason: `Tool ${tool.slug} seoDescription length out of bounds (${effectiveDescription.length} chars). Expected ${meta.MIN_DESCRIPTION_LENGTH}-${meta.MAX_DESCRIPTION_LENGTH}.`,
+        durationMs: Date.now() - start,
+        checks: [
+          ...checks,
+          { name: "Metadata Invariants Gate", passed: false, message: `seoDescription length out of bounds: ${effectiveDescription.length}` },
+        ],
+      };
     }
 
     checks.push({
       name: "Metadata Invariants Gate",
       passed: true,
-      message: `Metadata invariants (name, seoTitle, seoDescription) verified within bounds.`,
+      message: "Metadata invariants verified against canonical configured bounds.",
       durationMs: Date.now() - start,
     });
 
@@ -573,8 +549,8 @@ export class SeoValidator {
     const factualCheck = FactualContentSafetyValidator.validate(tool, "CONTENT_UPDATE", {
       seoTitle: effectiveTitle,
       seoDescription: effectiveDescription,
-      faqs: postPatchOverrides?.faq || tool.faq,
-      internalLinks: postPatchOverrides?.relatedTools || tool.relatedTools,
+      faqs: postPatchOverrides?.faqs ?? postPatchOverrides?.faq ?? tool.faq,
+      internalLinks: postPatchOverrides?.relatedTools ?? tool.relatedTools,
     });
     if (!factualCheck.isSafe) {
       return {

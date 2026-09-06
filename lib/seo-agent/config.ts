@@ -17,7 +17,7 @@ export const SEO_AGENT_CONFIG = {
   BUDGETS: {
     MAX_PAGE_CHANGES_PER_DAILY_CYCLE: 80,
     BATCH_SIZE: 20,
-    MAX_PAGE_CHANGES_PER_WEEK: 560, // No artificial weekly bottleneck; daily cap of 80 applies
+    MAX_PAGE_CHANGES_PER_WEEK: 560,
     MAX_FAQS_PER_OPTIMIZATION: 3,
     FAQ_CONTENT_THRESHOLD: 8,
     MAX_FAQS_PER_PAGE: 8,
@@ -54,10 +54,10 @@ export const SEO_AGENT_CONFIG = {
     OLLAMA_BASE_URL: process.env.OLLAMA_BASE_URL || "http://localhost:11434",
     CUSTOM_OPENAI_ENDPOINT: process.env.SEO_AGENT_LLM_ENDPOINT || "",
     TIMEOUT_MS: 12000,
-    TEMPERATURE: 0.2, // Low temperature for deterministic factual generation
+    TEMPERATURE: 0.2,
   },
 
-  // Composio v3 Integration
+  // Composio v3.1 Integration
   COMPOSIO: {
     API_KEY: process.env.COMPOSIO_API_KEY || "",
     GSC_ACTION_NAME: "GOOGLE_SEARCH_CONSOLE_SEARCH_ANALYTICS_QUERY",
@@ -66,11 +66,13 @@ export const SEO_AGENT_CONFIG = {
     BING_PAGE_PERF_ACTION: "BING_WEBMASTER_TOOLS_GET_PAGE_PERFORMANCE",
     BING_LIST_SITES_ACTION: "BING_WEBMASTER_TOOLS_LIST_SITES",
     CLARITY_EXPORT_ACTION: "MICROSOFT_CLARITY_DATA_EXPORT",
-    GOOGLEADS_ACTION: "GOOGLEADS_GET_CUSTOMER_LISTS",
-    BASE_URL: "https://backend.composio.dev/api/v3",
+    GOOGLEADS_ACTION_NAME: "GOOGLEADS_GET_CUSTOMER_LISTS",
+    // Composio's current connected-account and tool-execution APIs use v3.1.
+    BASE_URL: "https://backend.composio.dev/api/v3.1",
+    ACCOUNTS_MS: 10000,
   },
 
-  // Telemetry Ingestion Timeouts (Production-grade timeouts against hung connections)
+  // Telemetry Ingestion Timeouts
   TELEMETRY_TIMEOUTS: {
     INDIVIDUAL_REQUEST_MS: 25000,
     OVERALL_INGESTION_MS: 60000,
@@ -78,7 +80,7 @@ export const SEO_AGENT_CONFIG = {
     COMPOSIO_ACCOUNTS_MS: 10000,
   },
 
-  // Bounded Execution Timeouts & Watchdogs (Task 4)
+  // Bounded Execution Timeouts & Watchdogs
   TIMEOUTS: {
     CYCLE_TIMEOUT_MS: 1200000,
     LLM_TIMEOUT_MS: 12000,
@@ -101,7 +103,7 @@ export const SEO_AGENT_CONFIG = {
     INDEXNOW_MS: 15000,
   },
 
-  // IndexNow Configuration (Reusing existing Nova Tools infrastructure)
+  // IndexNow Configuration
   INDEXNOW: {
     KEY: process.env.INDEXNOW_KEY || "a52a86efe6f041bd931a36f0e2bdadd8",
     ENDPOINTS: [
@@ -110,12 +112,10 @@ export const SEO_AGENT_CONFIG = {
     ],
   },
 
-  // Whitelisted files that the autonomous agent is permitted to optimize
   WHITELISTED_MODIFICATION_DIRECTORIES: [
     "data/tools/",
   ],
 
-  // Protected paths that the agent is strictly prohibited from touching
   PROTECTED_PATHS: [
     "app/auth",
     "app/api/auth",
@@ -132,7 +132,6 @@ export const SEO_AGENT_CONFIG = {
     "next.config.ts",
   ],
 
-  // Risk Classification
   RISK_RULES: {
     LOW: [
       "TITLE_IMPROVEMENT",

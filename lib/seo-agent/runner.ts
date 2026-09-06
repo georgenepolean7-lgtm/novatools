@@ -1085,9 +1085,11 @@ export class SeoAgentRunner {
               const stageAStart = Date.now();
               const stageAResult = this.validator.validatePageStageA(opp.pageSlug, {
                 seoTitle: semanticResult.seoTitle,
-                seoDescription: semanticResult.seoDescription,
+                faqs: semanticResult.faqs,
                 faq: semanticResult.faqs,
                 relatedTools: semanticResult.internalLinkSuggestions,
+                titleWasPatched: opp.proposedAction.type === "TITLE_OPTIMIZATION",
+                descWasPatched: opp.proposedAction.type === "DESCRIPTION_OPTIMIZATION",
               });
               totalValidationMs += Date.now() - stageAStart;
               if (!stageAResult.passed) {

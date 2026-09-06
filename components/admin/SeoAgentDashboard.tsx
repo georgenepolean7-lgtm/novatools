@@ -50,6 +50,7 @@ export default function SeoAgentDashboard() {
   const [searchQuery, setSearchQuery] = useState("");
   const [lastExecutionResult, setLastExecutionResult] = useState<Record<string, unknown> | null>(null);
   const [message, setMessage] = useState<{ type: "success" | "error" | "info"; text: string } | null>(null);
+  const [connectingProvider, setConnectingProvider] = useState<"gsc" | "ga4" | null>(null);
 
   const fetchStatus = async () => {
     try {
@@ -70,6 +71,24 @@ export default function SeoAgentDashboard() {
   };
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const connected = params.get("seo_connected");
+    const alreadyConnected = params.get("already_connected") === "1";
+    if (connected === "gsc" || connected === "ga4") {
+      setTimeout(() => {
+        setMessage({
+          type: "success",
+          text: alreadyConnected
+            ? `${connected === "gsc" ? "Google Search Console" : "Google Analytics 4"} is already connected.`
+            : `${connected === "gsc" ? "Google Search Console" : "Google Analytics 4"} authorization completed. Refreshing telemetry status...`,
+        });
+        window.history.replaceState({}, "", "/admin/seo");
+        fetchStatus();
+      }, 0);
+    }
+  }, []);
+
+  useEffect(() => {
     let ignore = false;
     fetch("/api/admin/seo-agent/status")
       .then((res) => (res.ok ? res.json() : null))
@@ -88,6 +107,11 @@ export default function SeoAgentDashboard() {
       ignore = true;
     };
   }, []);
+
+  const handleConnectProvider = (provider: "gsc" | "ga4") => {
+    setConnectingProvider(provider);
+    window.location.href = `/api/admin/seo-agent/connect?provider=${provider}`;
+  };
 
   const toggleKillSwitch = async () => {
     if (!status) return;
@@ -526,9 +550,29 @@ export default function SeoAgentDashboard() {
                 </p>
               </div>
 
-              <span className="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-[11px] font-mono">
-                Truthful Telemetry Enforcement Active
-              </span>
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => handleConnectProvider("gsc")}
+                  disabled={connectingProvider !== null}
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-950 border border-cyan-500/30 text-cyan-300 text-[11px] font-bold hover:bg-cyan-500/10 disabled:opacity-50"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  {connectingProvider === "gsc" ? "Connecting GSC..." : "Connect GSC"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleConnectProvider("ga4")}
+                  disabled={connectingProvider !== null}
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-950 border border-violet-500/30 text-violet-300 text-[11px] font-bold hover:bg-violet-500/10 disabled:opacity-50"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  {connectingProvider === "ga4" ? "Connecting GA4..." : "Connect GA4"}
+                </button>
+                <span className="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-[11px] font-mono">
+                  Truthful Telemetry Enforcement Active
+                </span>
+              </div>
             </div>
 
             {/* Matrix Table */}

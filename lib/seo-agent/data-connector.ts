@@ -86,6 +86,18 @@ async function fetchWithTimeout(
   }
 }
 
+function getNested(obj: unknown, ...keys: string[]): unknown {
+  let current = obj;
+  for (const key of keys) {
+    if (current && typeof current === "object" && key in (current as Record<string, unknown>)) {
+      current = (current as Record<string, unknown>)[key];
+    } else {
+      return undefined;
+    }
+  }
+  return current;
+}
+
 export class SeoDataConnector {
   private composioApiKey: string;
   private gscProperty: string;
@@ -416,18 +428,90 @@ export class SeoDataConnector {
           };
         }
 
-        const payload = {
+        // First discover the exact Search Console property authorized for this account.
+        // GSC is strict about property identity: URL-prefix properties use the full URL
+        // and domain properties use sc-domain:example.com. Reusing a hard-coded property
+        // that differs from the connected account can validly return zero rows.
+        const listSitesPayload: Record<string, unknown> = {
           connected_account_id: gscAcc.id,
-          user_id: gscAcc.user_id,
-          entity_id: gscAcc.user_id,
+          arguments: {},
+        };
+        if (gscAcc.user_id) listSitesPayload.user_id = gscAcc.user_id;
+
+        const listSitesRes = await fetchWithTimeout(
+          `${this.composioBaseUrl}/tools/execute/GOOGLE_SEARCH_CONSOLE_LIST_SITES`,
+          {
+            method: "POST",
+            headers: {
+              "x-api-key": this.composioApiKey,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(listSitesPayload),
+          },
+          SEO_AGENT_CONFIG.COMPOSIO.ACCOUNTS_MS || 10000
+        );
+
+        let authorizedProperties: string[] = [];
+        if (listSitesRes.ok) {
+          const sitesJson = await listSitesRes.json();
+          const parseJson = (value: unknown): unknown => {
+            if (typeof value !== "string") return value;
+            try { return JSON.parse(value); } catch { return value; }
+          };
+          const sitesEnvelope = parseJson(sitesJson);
+          const siteCandidates = [
+            getNested(sitesEnvelope, "data", "response_data", "siteEntry"),
+            getNested(sitesEnvelope, "data", "response_data", "site_entry"),
+            getNested(sitesEnvelope, "data", "response_data", "sites"),
+            getNested(sitesEnvelope, "data", "data", "siteEntry"),
+            getNested(sitesEnvelope, "data", "siteEntry"),
+            getNested(sitesEnvelope, "data", "sites"),
+            getNested(sitesEnvelope, "response_data", "siteEntry"),
+            getNested(sitesEnvelope, "siteEntry"),
+            getNested(sitesEnvelope, "sites"),
+          ];
+          const siteArray = (siteCandidates.map(parseJson).find((v) => Array.isArray(v)) as unknown[] | undefined) || [];
+          authorizedProperties = siteArray
+            .map((site) => {
+              const siteObj = site && typeof site === "object" ? (site as Record<string, unknown>) : null;
+              return String(siteObj?.siteUrl || siteObj?.site_url || "").trim();
+            })
+            .filter(Boolean);
+        }
+
+        const configuredProperty = this.gscProperty.trim();
+        const configuredHost = (() => {
+          try { return new URL(configuredProperty).hostname.replace(/^www\\./, "").toLowerCase(); }
+          catch { return configuredProperty.replace(/^sc-domain:/i, "").replace(/^www\\./, "").toLowerCase(); }
+        })();
+
+        const selectedProperty =
+          authorizedProperties.find((p) => p === configuredProperty) ||
+          authorizedProperties.find((p) => {
+            try { return new URL(p).hostname.replace(/^www\\./, "").toLowerCase() === configuredHost; }
+            catch { return p.replace(/^sc-domain:/i, "").replace(/^www\\./, "").toLowerCase() === configuredHost; }
+          }) ||
+          configuredProperty;
+
+        console.log(
+          `[SEO][GSC] Authorized properties: ${authorizedProperties.length}; configured='${configuredProperty}'; selected='${selectedProperty}'`
+        );
+
+        // Composio's current GSC schema uses snake_case argument names.
+        const payload: Record<string, unknown> = {
+          connected_account_id: gscAcc.id,
+          version: "20260806_00",
           arguments: {
-            siteUrl: this.gscProperty,
-            startDate: dateRange.startDate,
-            endDate: dateRange.endDate,
-            dimensions: ["PAGE", "QUERY"],
-            rowLimit: 500,
+            site_url: selectedProperty,
+            start_date: dateRange.startDate,
+            end_date: dateRange.endDate,
+            dimensions: ["page", "query"],
+            row_limit: 500,
+            data_state: "final",
           },
         };
+
+        if (gscAcc.user_id) payload.user_id = gscAcc.user_id;
 
         const res = await fetchWithTimeout(
           `${this.composioBaseUrl}/tools/execute/${SEO_AGENT_CONFIG.COMPOSIO.GSC_ACTION_NAME}`,
@@ -444,39 +528,69 @@ export class SeoDataConnector {
 
         if (res.ok) {
           const json = await res.json();
-          const rows: Array<{
-            keys: string[];
-            clicks: number;
-            impressions: number;
-            ctr: number;
-            position: number;
-          }> =
-            json?.data?.response_data?.rows ||
-            json?.data?.rows ||
-            json?.response?.data?.rows ||
-            json?.rows ||
-            [];
+
+          // Composio v3 wraps tool results in a response envelope. Different
+          // toolkit/runtime versions have returned the Search Console rows at
+          // slightly different nested paths, so unwrap only known row shapes.
+          const isGscRowArray = (value: unknown): value is Array<{
+            keys?: unknown;
+            clicks?: unknown;
+            impressions?: unknown;
+            ctr?: unknown;
+            position?: unknown;
+          }> =>
+            Array.isArray(value) &&
+            value.every((row) => row && typeof row === "object" && (
+              "keys" in row || "clicks" in row || "impressions" in row
+            ));
+
+          const parseNestedJson = (value: unknown): unknown => {
+            if (typeof value !== "string") return value;
+            try {
+              return JSON.parse(value);
+            } catch {
+              return value;
+            }
+          };
+
+          const envelope = parseNestedJson(json);
+          const candidates: unknown[] = [
+            getNested(envelope, "data", "response_data", "rows"),
+            getNested(envelope, "data", "response_data", "data", "rows"),
+            getNested(envelope, "data", "response_data", "response", "rows"),
+            getNested(envelope, "data", "data", "rows"),
+            getNested(envelope, "data", "response", "data", "rows"),
+            getNested(envelope, "data", "rows"),
+            getNested(envelope, "response", "data", "rows"),
+            getNested(envelope, "response_data", "rows"),
+            getNested(envelope, "rows"),
+          ];
+
+          const rows = candidates
+            .map(parseNestedJson)
+            .find(isGscRowArray) || [];
 
           const metrics: GSCPageMetric[] = rows.map((row) => {
-            const page = row.keys?.[0] || "";
-            const query = row.keys?.[1] || "";
+            const keys = Array.isArray(row.keys) ? row.keys.map(String) : [];
+            const page = keys[0] || "";
+            const query = keys[1] || "";
             const provenance: MetricProvenance = {
               source: "GOOGLE_SEARCH_CONSOLE",
-              property: this.gscProperty,
+              property: selectedProperty,
               dateRange,
               retrievalTimestamp: timestamp,
               pageOrQuery: page,
               metric: "GSC_SEARCH_ANALYTICS_ROW",
-              value: row.clicks || 0,
+              value: Number(row.clicks) || 0,
             };
 
             return {
               page,
               query,
-              clicks: row.clicks || 0,
-              impressions: row.impressions || 0,
-              ctr: row.ctr || 0,
-              position: row.position || 0,
+              clicks: Number(row.clicks) || 0,
+              impressions: Number(row.impressions) || 0,
+              ctr: Number(row.ctr) || 0,
+              position: Number(row.position) || 0,
               dateRange,
               provenance,
             };
@@ -485,7 +599,7 @@ export class SeoDataConnector {
           return {
             metrics,
             status: "CONNECTED",
-            provenanceReport: `Retrieved ${metrics.length} real GSC metrics from ${this.gscProperty} for ${dateRange.startDate} to ${dateRange.endDate}`,
+            provenanceReport: `Retrieved ${metrics.length} real GSC metrics from ${selectedProperty} for ${dateRange.startDate} to ${dateRange.endDate}`,
           };
         } else {
           const errorBody = await res.text().catch(() => "");

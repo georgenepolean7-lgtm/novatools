@@ -358,7 +358,7 @@ export const imageTools: ToolDefinition[] = [
     ],
     faq: [{ question: "Can I use this for background wallpapers?", answer: "Yes, it creates silky-smooth blurred textures ideal for UI mockups and web headers." }],
     relatedTools: ["image-grayscale-filter", "compress-image", "image-resizer", "signature-resizer", "jpg-to-png"],
-    seoTitle: "Image Blur & Gaussian Filter",
+    seoTitle: "Image Blur & Gaussian Filter Tool Online Tool | Nova Tools",
     seoDescription: "Apply Gaussian blur to images online. Fast, private in-browser image filter editor.",
     canonicalUrl: "/image-blur-sharpen-tool",
     processingType: "client",

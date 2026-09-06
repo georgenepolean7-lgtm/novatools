@@ -63,7 +63,7 @@ export const pdfTools: ToolDefinition[] = [
       { question: "Does Merge PDF support 100% client-side privacy?", answer: "Yes. Merge PDF provides 100% client-side privacy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["compress-pdf", "split-pdf", "pdf-page-extractor"],
-    seoTitle: "Merge PDF - Combine PDF Files",
+    seoTitle: "Merge PDF - Free Pdf Tool | Nova Tools",
     seoDescription: "Combine multiple PDF documents into a single file online. Easy drag-and-drop reordering with 100% in-browser privacy.",
     canonicalUrl: "/merge-pdf",
     processingType: "client",
