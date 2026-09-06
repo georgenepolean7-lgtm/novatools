@@ -241,7 +241,7 @@ export const educationTools: ToolDefinition[] = [
       { step: 3, title: "Calculate", instruction: "View recommended weekly and daily study time." },
     ],
     faq: [{ question: "What is the standard college study hour rule?", answer: "The standard academic rule recommends 2 hours of independent study per week for every 1 credit hour enrolled." }],
-    relatedTools: ["gpa-calculator", "attendance-percentage-calculator", "cgpa-to-percentage-converter", "citation-generator", "weighted-grade-calculator"],
+    relatedTools: ["gpa-calculator", "attendance-percentage-calculator", "cgpa-to-percentage-converter", "citation-generator", "weighted-grade-calculator", "exam-score-target-calculator"],
     seoTitle: "College Study Time Planner & Schedule Esti",
     seoDescription: "Estimate recommended weekly and daily study hours based on semester credit units online. Free student study planner.",
     canonicalUrl: "/study-time-planner-calculator",
