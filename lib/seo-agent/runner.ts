@@ -881,6 +881,7 @@ export class SeoAgentRunner {
     for (let bIndex = 0; bIndex < batches.length; bIndex++) {
       const batch = batches[bIndex];
       const batchModifiedFiles: Array<{ targetFile: string; previousContent: string }> = [];
+      const batchOriginalFileContents = new Map<string, string>();
       const batchChangedSlugs: string[] = [];
       let batchOptimizerFailures = 0;
 
@@ -1036,6 +1037,9 @@ export class SeoAgentRunner {
               const optPatchStart = Date.now();
               const applyResult = await this.optimizer.applyOptimization(opp, semanticResult);
               totalOptimizationMs += Date.now() - optPatchStart;
+              if (applyResult.success && !batchOriginalFileContents.has(applyResult.targetFile)) {
+                batchOriginalFileContents.set(applyResult.targetFile, applyResult.previousContent);
+              }
               if (!applyResult.success) {
                 console.log(`   [Optimizer] Patch could not be applied: ${applyResult.errorMessage}`);
                 if (applyResult.errorMessage?.includes("NO_ACTIONABLE_CHANGE")) {
@@ -1283,8 +1287,8 @@ export class SeoAgentRunner {
         console.error(`   Action Taken:           Atomic rollback of all ${batchModifiedFiles.length} file(s) in batch...`);
         console.error(`===================================================================================\n`);
 
-        for (const snap of batchModifiedFiles) {
-          this.optimizer.rollbackFile(snap.targetFile, snap.previousContent);
+        for (const [file, originalContent] of batchOriginalFileContents.entries()) {
+          this.optimizer.rollbackFile(file, originalContent);
         }
 
         const failAudit: SeoAuditRecord = {
@@ -1311,8 +1315,9 @@ export class SeoAgentRunner {
 
       // Step E: Git commit batch
       const commitStart = Date.now();
+      const uniqueTargetFiles = Array.from(new Set(batchModifiedFiles.map((b) => b.targetFile))).join(" ");
       const commitRes = await this.deployment.createAutonomousCommit(
-        batchModifiedFiles.map((b) => b.targetFile).join(" "),
+        uniqueTargetFiles,
         `Autonomous SEO batch ${bIndex + 1}: optimized ${batchChangedSlugs.length} pages`,
         batchChangedSlugs.join(",")
       );
@@ -1321,8 +1326,8 @@ export class SeoAgentRunner {
       if (!commitRes.success) {
         failedBatches++;
         rollbacksCount += batchModifiedFiles.length;
-        for (const snap of batchModifiedFiles) {
-          this.optimizer.rollbackFile(snap.targetFile, snap.previousContent);
+        for (const [file, originalContent] of batchOriginalFileContents.entries()) {
+          this.optimizer.rollbackFile(file, originalContent);
         }
         continue;
       }
@@ -1335,8 +1340,8 @@ export class SeoAgentRunner {
         failedBatches++;
         rollbacksCount += batchModifiedFiles.length;
         await this.deployment.rollbackCommit();
-        for (const snap of batchModifiedFiles) {
-          this.optimizer.rollbackFile(snap.targetFile, snap.previousContent);
+        for (const [file, originalContent] of batchOriginalFileContents.entries()) {
+          this.optimizer.rollbackFile(file, originalContent);
         }
         continue;
       }
