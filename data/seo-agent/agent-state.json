@@ -1,11 +1,137 @@
 {
   "killSwitchActive": false,
-  "lastCycleAt": "2026-09-06T13:46:16.150Z",
+  "lastCycleAt": "2026-09-06T15:12:40.453Z",
   "dailyChangesCount": 0,
   "dailyChangesLastReset": "2026-09-06",
   "weeklyChangesCount": 3,
   "weeklyChangesLastReset": "2026-09-03",
   "audits": [
+    {
+      "id": "audit-cycle-1788707547896-budget-deferred",
+      "timestamp": "2026-09-06T15:12:27.896Z",
+      "action": "BUDGET_LIMIT_DEFERRED",
+      "status": "SKIPPED",
+      "riskLevel": "LOW",
+      "details": {
+        "count": 39,
+        "message": "Opportunities deferred to next scheduled cycle to respect budget."
+      },
+      "provenance": []
+    },
+    {
+      "id": "audit-cycle-1788707506612-real-data-blocked",
+      "timestamp": "2026-09-06T15:11:46.612Z",
+      "action": "REAL_DATA_GATE_BLOCKED",
+      "status": "SKIPPED",
+      "riskLevel": "HIGH",
+      "details": {
+        "message": "BLOCKED: Zero real GSC telemetry data retrieved. Real Data Gate prevents autonomous changes without authenticated live metrics. Missing/Pending: Google Search Console real telemetry (0 rows retrieved from https://novatool.in/; provenance: Prior GSC comparison not fetched).",
+        "missingConnectors": []
+      },
+      "provenance": []
+    },
+    {
+      "id": "audit-cycle-1788707093546-budget-deferred",
+      "timestamp": "2026-09-06T15:04:53.546Z",
+      "action": "BUDGET_LIMIT_DEFERRED",
+      "status": "SKIPPED",
+      "riskLevel": "LOW",
+      "details": {
+        "count": 39,
+        "message": "Opportunities deferred to next scheduled cycle to respect budget."
+      },
+      "provenance": []
+    },
+    {
+      "id": "audit-cycle-1788707070960-real-data-blocked",
+      "timestamp": "2026-09-06T15:04:30.960Z",
+      "action": "REAL_DATA_GATE_BLOCKED",
+      "status": "SKIPPED",
+      "riskLevel": "HIGH",
+      "details": {
+        "message": "BLOCKED: Zero real GSC telemetry data retrieved. Real Data Gate prevents autonomous changes without authenticated live metrics. Missing/Pending: Google Search Console (NOT_CONNECTED), Google Analytics 4 (NOT_CONNECTED).",
+        "missingConnectors": [
+          "Google Search Console (NOT_CONNECTED)",
+          "Google Analytics 4 (NOT_CONNECTED)"
+        ]
+      },
+      "provenance": []
+    },
+    {
+      "id": "audit-cycle-1788707016056-budget-deferred",
+      "timestamp": "2026-09-06T15:03:36.056Z",
+      "action": "BUDGET_LIMIT_DEFERRED",
+      "status": "SKIPPED",
+      "riskLevel": "LOW",
+      "details": {
+        "count": 39,
+        "message": "Opportunities deferred to next scheduled cycle to respect budget."
+      },
+      "provenance": []
+    },
+    {
+      "id": "audit-cycle-1788706993777-budget-deferred",
+      "timestamp": "2026-09-06T15:03:13.777Z",
+      "action": "BUDGET_LIMIT_DEFERRED",
+      "status": "SKIPPED",
+      "riskLevel": "LOW",
+      "details": {
+        "count": 39,
+        "message": "Opportunities deferred to next scheduled cycle to respect budget."
+      },
+      "provenance": []
+    },
+    {
+      "id": "audit-cycle-1788706967614-real-data-blocked",
+      "timestamp": "2026-09-06T15:02:47.614Z",
+      "action": "REAL_DATA_GATE_BLOCKED",
+      "status": "SKIPPED",
+      "riskLevel": "HIGH",
+      "details": {
+        "message": "BLOCKED: Zero real GSC telemetry data retrieved. Real Data Gate prevents autonomous changes without authenticated live metrics. Missing/Pending: Google Search Console real telemetry (0 rows retrieved from https://novatool.in/; provenance: Prior GSC comparison not fetched).",
+        "missingConnectors": []
+      },
+      "provenance": []
+    },
+    {
+      "id": "audit-cycle-1788705907280-budget-deferred",
+      "timestamp": "2026-09-06T14:45:07.280Z",
+      "action": "BUDGET_LIMIT_DEFERRED",
+      "status": "SKIPPED",
+      "riskLevel": "LOW",
+      "details": {
+        "count": 39,
+        "message": "Opportunities deferred to next scheduled cycle to respect budget."
+      },
+      "provenance": []
+    },
+    {
+      "id": "audit-cycle-1788705510304-real-data-blocked",
+      "timestamp": "2026-09-06T14:38:30.304Z",
+      "action": "REAL_DATA_GATE_BLOCKED",
+      "status": "SKIPPED",
+      "riskLevel": "HIGH",
+      "details": {
+        "message": "BLOCKED: Zero real GSC telemetry data retrieved. Real Data Gate prevents autonomous changes without authenticated live metrics. Missing/Pending: Google Search Console (ERROR), Google Analytics 4 (ERROR).",
+        "missingConnectors": [
+          "Google Search Console (ERROR)",
+          "Google Analytics 4 (ERROR)"
+        ]
+      },
+      "provenance": []
+    },
+    {
+      "id": "audit-cycle-1788705452552-real-data-blocked",
+      "timestamp": "2026-09-06T14:37:32.552Z",
+      "action": "REAL_DATA_GATE_BLOCKED",
+      "status": "SKIPPED",
+      "riskLevel": "HIGH",
+      "details": {
+        "message": "BLOCKED: Zero real GSC telemetry data retrieved. Real Data Gate prevents autonomous changes without authenticated live metrics. Missing/Pending: Google Search Console real telemetry (0 rows retrieved from https://novatool.in/; provenance: Prior GSC comparison not fetched).",
+        "missingConnectors": []
+      },
+      "provenance": []
+    },
     {
       "id": "audit-cycle-1788702332597-budget-deferred",
       "timestamp": "2026-09-06T13:45:32.597Z",
@@ -9145,156 +9271,6 @@
         ]
       },
       "provenance": []
-    },
-    {
-      "id": "audit-cycle-1788444625653-real-data-gate",
-      "timestamp": "2026-09-03T14:10:25.653Z",
-      "action": "REAL_DATA_GATE_BLOCKED",
-      "status": "BLOCKED_PENDING_REAL_DATA",
-      "riskLevel": "LOW",
-      "details": {
-        "message": "REAL_SEO_DATA_REQUIRED=true: Production SEO modifications blocked because real Search Console telemetry is unconfigured. The LLM engine must never make production changes without real search evidence.",
-        "missingConnectors": [
-          "Google Search Console (ERROR)",
-          "Google Analytics 4 (ERROR)"
-        ]
-      },
-      "provenance": []
-    },
-    {
-      "id": "audit-cycle-1788444503326-real-data-gate",
-      "timestamp": "2026-09-03T14:08:23.326Z",
-      "action": "REAL_DATA_GATE_BLOCKED",
-      "status": "BLOCKED_PENDING_REAL_DATA",
-      "riskLevel": "LOW",
-      "details": {
-        "message": "REAL_SEO_DATA_REQUIRED=true: Production SEO modifications blocked because real Search Console telemetry is unconfigured. The LLM engine must never make production changes without real search evidence.",
-        "missingConnectors": [
-          "Google Search Console (ERROR)",
-          "Google Analytics 4 (ERROR)"
-        ]
-      },
-      "provenance": []
-    },
-    {
-      "id": "audit-cycle-1788443990506-real-data-gate",
-      "timestamp": "2026-09-03T13:59:50.506Z",
-      "action": "REAL_DATA_GATE_BLOCKED",
-      "status": "BLOCKED_PENDING_REAL_DATA",
-      "riskLevel": "LOW",
-      "details": {
-        "message": "REAL_SEO_DATA_REQUIRED=true: Production SEO modifications blocked because real Search Console telemetry is unconfigured. The LLM engine must never make production changes without real search evidence.",
-        "missingConnectors": [
-          "Google Search Console (ERROR)",
-          "Google Analytics 4 (ERROR)"
-        ]
-      },
-      "provenance": []
-    },
-    {
-      "id": "audit-cycle-1788443911899-real-data-gate",
-      "timestamp": "2026-09-03T13:58:31.899Z",
-      "action": "REAL_DATA_GATE_BLOCKED",
-      "status": "BLOCKED_PENDING_REAL_DATA",
-      "riskLevel": "LOW",
-      "details": {
-        "message": "REAL_SEO_DATA_REQUIRED=true: Production SEO modifications blocked because real Search Console telemetry is unconfigured. The LLM engine must never make production changes without real search evidence.",
-        "missingConnectors": [
-          "Google Search Console (ERROR)",
-          "Google Analytics 4 (ERROR)"
-        ]
-      },
-      "provenance": []
-    },
-    {
-      "id": "audit-cycle-1788443566934-real-data-gate",
-      "timestamp": "2026-09-03T13:52:46.934Z",
-      "action": "REAL_DATA_GATE_BLOCKED",
-      "status": "BLOCKED_PENDING_REAL_DATA",
-      "riskLevel": "LOW",
-      "details": {
-        "message": "REAL_SEO_DATA_REQUIRED=true: Production SEO modifications blocked because real Search Console telemetry is unconfigured. The LLM engine must never make production changes without real search evidence.",
-        "missingConnectors": [
-          "Google Search Console (ERROR)",
-          "Google Analytics 4 (ERROR)"
-        ]
-      },
-      "provenance": []
-    },
-    {
-      "id": "audit-cycle-1788442001230-real-data-gate",
-      "timestamp": "2026-09-03T13:26:41.230Z",
-      "action": "REAL_DATA_GATE_BLOCKED",
-      "status": "BLOCKED_PENDING_REAL_DATA",
-      "riskLevel": "LOW",
-      "details": {
-        "message": "REAL_SEO_DATA_REQUIRED=true: Production SEO modifications blocked because real Search Console telemetry is unconfigured. The LLM engine must never make production changes without real search evidence.",
-        "missingConnectors": [
-          "Google Search Console (ERROR)",
-          "Google Analytics 4 (ERROR)"
-        ]
-      },
-      "provenance": []
-    },
-    {
-      "id": "audit-cycle-1788441886400-real-data-gate",
-      "timestamp": "2026-09-03T13:24:46.400Z",
-      "action": "REAL_DATA_GATE_BLOCKED",
-      "status": "BLOCKED_PENDING_REAL_DATA",
-      "riskLevel": "LOW",
-      "details": {
-        "message": "REAL_SEO_DATA_REQUIRED=true: Production SEO modifications blocked because real Search Console telemetry is unconfigured. The LLM engine must never make production changes without real search evidence.",
-        "missingConnectors": [
-          "Google Search Console (ERROR)",
-          "Google Analytics 4 (ERROR)"
-        ]
-      },
-      "provenance": []
-    },
-    {
-      "id": "audit-cycle-1788441428663-real-data-gate",
-      "timestamp": "2026-09-03T13:17:08.663Z",
-      "action": "REAL_DATA_GATE_BLOCKED",
-      "status": "BLOCKED_PENDING_REAL_DATA",
-      "riskLevel": "LOW",
-      "details": {
-        "message": "REAL_SEO_DATA_REQUIRED=true: Production SEO modifications blocked because real Search Console telemetry is unconfigured. The LLM engine must never make production changes without real search evidence.",
-        "missingConnectors": [
-          "Google Search Console (ERROR)",
-          "Google Analytics 4 (ERROR)"
-        ]
-      },
-      "provenance": []
-    },
-    {
-      "id": "audit-cycle-1788440853700-real-data-gate",
-      "timestamp": "2026-09-03T13:07:33.700Z",
-      "action": "REAL_DATA_GATE_BLOCKED",
-      "status": "BLOCKED_PENDING_REAL_DATA",
-      "riskLevel": "LOW",
-      "details": {
-        "message": "REAL_SEO_DATA_REQUIRED=true: Production SEO modifications blocked because real Search Console telemetry is unconfigured. The LLM engine must never make production changes without real search evidence.",
-        "missingConnectors": [
-          "Google Search Console (PENDING)",
-          "Google Analytics 4 (PENDING)"
-        ]
-      },
-      "provenance": []
-    },
-    {
-      "id": "audit-cycle-1788440588199-real-data-gate",
-      "timestamp": "2026-09-03T13:03:08.199Z",
-      "action": "REAL_DATA_GATE_BLOCKED",
-      "status": "BLOCKED_PENDING_REAL_DATA",
-      "riskLevel": "LOW",
-      "details": {
-        "message": "REAL_SEO_DATA_REQUIRED=true: Production SEO modifications blocked because real Search Console telemetry is unconfigured. The LLM engine must never make production changes without real search evidence.",
-        "missingConnectors": [
-          "Google Search Console (NOT_CONNECTED)",
-          "Google Analytics 4 (NOT_CONNECTED)"
-        ]
-      },
-      "provenance": []
     }
   ],
   "opportunities": [
@@ -9312,7 +9288,7 @@
         "ctr": 0,
         "position": 85.5
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 41,
       "scoreBreakdown": {
         "impressionPotential": 10,
@@ -9336,7 +9312,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9348,7 +9324,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9360,7 +9336,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9372,7 +9348,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9384,7 +9360,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9396,7 +9372,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9408,7 +9384,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9420,7 +9396,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9432,7 +9408,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9444,7 +9420,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9456,7 +9432,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9468,7 +9444,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9480,7 +9456,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9492,7 +9468,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9504,7 +9480,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9516,7 +9492,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9528,7 +9504,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9540,7 +9516,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9552,7 +9528,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9564,7 +9540,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9576,7 +9552,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9588,7 +9564,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9600,7 +9576,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9612,7 +9588,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9624,7 +9600,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9636,7 +9612,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9648,7 +9624,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9660,7 +9636,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9672,7 +9648,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9684,7 +9660,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9696,7 +9672,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9708,7 +9684,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9720,7 +9696,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/cgpa-to-percentage-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9742,7 +9718,7 @@
         "position": 132,
         "trafficSessions": 2
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 40,
       "scoreBreakdown": {
         "impressionPotential": 5,
@@ -9766,7 +9742,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/merge-pdf",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 1
@@ -9778,7 +9754,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/merge-pdf",
           "metric": "GA4_DATA_API_ROW",
           "value": 2
@@ -9799,7 +9775,7 @@
         "ctr": 0,
         "position": 68.16666666666667
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 39,
       "scoreBreakdown": {
         "impressionPotential": 5,
@@ -9823,7 +9799,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/camelcase-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9835,7 +9811,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/camelcase-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9847,7 +9823,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/camelcase-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9859,7 +9835,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/camelcase-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9871,7 +9847,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/camelcase-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9883,7 +9859,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/camelcase-converter",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9904,7 +9880,7 @@
         "ctr": 0,
         "position": 58
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 39,
       "scoreBreakdown": {
         "impressionPotential": 5,
@@ -9928,7 +9904,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/aadhaar-verhoeff-checksum-validator",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9949,7 +9925,7 @@
         "ctr": 0,
         "position": 58
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 36,
       "scoreBreakdown": {
         "impressionPotential": 5,
@@ -9973,7 +9949,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:36.716Z",
+          "retrievalTimestamp": "2026-09-06T15:12:30.394Z",
           "pageOrQuery": "https://novatool.in/aadhaar-verhoeff-checksum-validator",
           "metric": "GSC_SEARCH_ANALYTICS_ROW",
           "value": 0
@@ -9995,7 +9971,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 20,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10019,7 +9995,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/hex-to-rgb-converter",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10041,7 +10017,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 20,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10065,7 +10041,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/hex-to-ascii-converter",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10087,7 +10063,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 20,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10111,7 +10087,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/speed-distance-time-calculator",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10133,7 +10109,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 20,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10157,7 +10133,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/business-hours-overlap-calculator",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10179,7 +10155,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 20,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10203,7 +10179,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/json-to-typescript-interfaces",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10225,7 +10201,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 20,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10249,7 +10225,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/cidr-calculator",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10271,7 +10247,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 20,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10295,7 +10271,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/ipv4-subnet-calculator",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10317,7 +10293,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 20,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10341,7 +10317,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/wifi-qr-code-generator",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10363,7 +10339,7 @@
         "position": 0,
         "trafficSessions": 3
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10387,7 +10363,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/code-indentation-converter",
           "metric": "GA4_DATA_API_ROW",
           "value": 3
@@ -10409,7 +10385,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10433,7 +10409,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/speed-distance-time-calculator",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10455,7 +10431,7 @@
         "position": 0,
         "trafficSessions": 2
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10479,7 +10455,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/inflation-calculator",
           "metric": "GA4_DATA_API_ROW",
           "value": 2
@@ -10501,7 +10477,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10525,7 +10501,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/business-hours-overlap-calculator",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10547,7 +10523,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10571,7 +10547,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/csv-to-json",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10593,7 +10569,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10617,7 +10593,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/json-to-xml",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10639,7 +10615,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10663,7 +10639,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/hash-type-identifier",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10685,7 +10661,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10709,7 +10685,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/hash-type-identifier",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10731,7 +10707,7 @@
         "position": 0,
         "trafficSessions": 1
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 17,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10755,7 +10731,7 @@
             "startDate": "2026-08-09",
             "endDate": "2026-09-06"
           },
-          "retrievalTimestamp": "2026-09-06T13:45:37.732Z",
+          "retrievalTimestamp": "2026-09-06T15:12:31.104Z",
           "pageOrQuery": "/wifi-qr-code-generator",
           "metric": "GA4_DATA_API_ROW",
           "value": 1
@@ -10776,7 +10752,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10808,7 +10784,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10840,7 +10816,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10872,7 +10848,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10904,7 +10880,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10936,7 +10912,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10968,7 +10944,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11000,7 +10976,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11032,7 +11008,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11064,7 +11040,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11096,7 +11072,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11128,7 +11104,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11160,7 +11136,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11192,7 +11168,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11224,7 +11200,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11256,7 +11232,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11288,7 +11264,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11320,7 +11296,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11352,7 +11328,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11384,7 +11360,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11416,7 +11392,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11448,7 +11424,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11480,7 +11456,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11512,7 +11488,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11544,7 +11520,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11576,7 +11552,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11608,7 +11584,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11640,7 +11616,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11672,7 +11648,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11704,7 +11680,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11736,7 +11712,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11768,7 +11744,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11800,7 +11776,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11832,7 +11808,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11864,7 +11840,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11896,7 +11872,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11928,7 +11904,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11960,7 +11936,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11992,7 +11968,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12024,7 +12000,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12056,7 +12032,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12088,7 +12064,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12120,7 +12096,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12152,7 +12128,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12184,7 +12160,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12216,7 +12192,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12248,7 +12224,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12280,7 +12256,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12312,7 +12288,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12344,7 +12320,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12376,7 +12352,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12408,7 +12384,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12440,7 +12416,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12472,7 +12448,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12504,7 +12480,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12536,7 +12512,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12568,7 +12544,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12600,7 +12576,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T13:46:01.804Z",
+      "detectedAt": "2026-09-06T15:12:38.464Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -12621,6 +12597,156 @@
   ],
   "learningPatterns": [],
   "cycles": [
+    {
+      "date": "2026-09-06",
+      "cycleId": "cycle-1788707547896",
+      "opportunities": 138,
+      "selected": 0,
+      "processed": 0,
+      "successful": 0,
+      "failed": 0,
+      "rollback": 0,
+      "deployment": 0,
+      "indexNow": 0,
+      "finalStatus": "DRY_RUN",
+      "summary": "DRY RUN COMPLETED (Real Data Gate: AVAILABLE). Detected 138 opportunities, 0 already optimized, 0 in cooldown, 0 no-op, 0 high-risk skipped, 0 actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.",
+      "isDryRun": true
+    },
+    {
+      "date": "2026-09-06",
+      "cycleId": "cycle-1788707506612",
+      "opportunities": 0,
+      "selected": 0,
+      "processed": 0,
+      "successful": 0,
+      "failed": 0,
+      "rollback": 0,
+      "deployment": 0,
+      "indexNow": 0,
+      "finalStatus": "BLOCKED_PENDING_REAL_DATA",
+      "summary": "BLOCKED: Zero real GSC telemetry data retrieved. Real Data Gate prevents autonomous changes without authenticated live metrics. Missing/Pending: Google Search Console real telemetry (0 rows retrieved from https://novatool.in/; provenance: Prior GSC comparison not fetched).",
+      "isDryRun": false
+    },
+    {
+      "date": "2026-09-06",
+      "cycleId": "cycle-1788707093546",
+      "opportunities": 138,
+      "selected": 1,
+      "processed": 0,
+      "successful": 0,
+      "failed": 0,
+      "rollback": 0,
+      "deployment": 0,
+      "indexNow": 0,
+      "finalStatus": "DRY_RUN",
+      "summary": "DRY RUN COMPLETED (Real Data Gate: AVAILABLE). Detected 138 opportunities, 0 already optimized, 0 in cooldown, 0 no-op, 0 high-risk skipped, 1 actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.",
+      "isDryRun": true
+    },
+    {
+      "date": "2026-09-06",
+      "cycleId": "cycle-1788707070960",
+      "opportunities": 0,
+      "selected": 0,
+      "processed": 0,
+      "successful": 0,
+      "failed": 0,
+      "rollback": 0,
+      "deployment": 0,
+      "indexNow": 0,
+      "finalStatus": "BLOCKED_PENDING_REAL_DATA",
+      "summary": "BLOCKED: Zero real GSC telemetry data retrieved. Real Data Gate prevents autonomous changes without authenticated live metrics. Missing/Pending: Google Search Console (NOT_CONNECTED), Google Analytics 4 (NOT_CONNECTED).",
+      "isDryRun": true
+    },
+    {
+      "date": "2026-09-06",
+      "cycleId": "cycle-1788707016056",
+      "opportunities": 138,
+      "selected": 0,
+      "processed": 0,
+      "successful": 0,
+      "failed": 0,
+      "rollback": 0,
+      "deployment": 0,
+      "indexNow": 0,
+      "finalStatus": "DRY_RUN",
+      "summary": "DRY RUN COMPLETED (Real Data Gate: AVAILABLE). Detected 138 opportunities, 0 already optimized, 0 in cooldown, 0 no-op, 0 high-risk skipped, 0 actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.",
+      "isDryRun": true
+    },
+    {
+      "date": "2026-09-06",
+      "cycleId": "cycle-1788706993777",
+      "opportunities": 138,
+      "selected": 1,
+      "processed": 0,
+      "successful": 0,
+      "failed": 0,
+      "rollback": 0,
+      "deployment": 0,
+      "indexNow": 0,
+      "finalStatus": "DRY_RUN",
+      "summary": "DRY RUN COMPLETED (Real Data Gate: AVAILABLE). Detected 138 opportunities, 0 already optimized, 0 in cooldown, 0 no-op, 0 high-risk skipped, 1 actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.",
+      "isDryRun": true
+    },
+    {
+      "date": "2026-09-06",
+      "cycleId": "cycle-1788706967614",
+      "opportunities": 0,
+      "selected": 0,
+      "processed": 0,
+      "successful": 0,
+      "failed": 0,
+      "rollback": 0,
+      "deployment": 0,
+      "indexNow": 0,
+      "finalStatus": "BLOCKED_PENDING_REAL_DATA",
+      "summary": "BLOCKED: Zero real GSC telemetry data retrieved. Real Data Gate prevents autonomous changes without authenticated live metrics. Missing/Pending: Google Search Console real telemetry (0 rows retrieved from https://novatool.in/; provenance: Prior GSC comparison not fetched).",
+      "isDryRun": false
+    },
+    {
+      "date": "2026-09-06",
+      "cycleId": "cycle-1788705907280",
+      "opportunities": 138,
+      "selected": 1,
+      "processed": 0,
+      "successful": 0,
+      "failed": 0,
+      "rollback": 0,
+      "deployment": 0,
+      "indexNow": 0,
+      "finalStatus": "DRY_RUN",
+      "summary": "DRY RUN COMPLETED (Real Data Gate: AVAILABLE). Detected 138 opportunities, 0 already optimized, 0 in cooldown, 0 no-op, 0 high-risk skipped, 1 actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.",
+      "isDryRun": true
+    },
+    {
+      "date": "2026-09-06",
+      "cycleId": "cycle-1788705510304",
+      "opportunities": 0,
+      "selected": 0,
+      "processed": 0,
+      "successful": 0,
+      "failed": 0,
+      "rollback": 0,
+      "deployment": 0,
+      "indexNow": 0,
+      "finalStatus": "BLOCKED_PENDING_REAL_DATA",
+      "summary": "BLOCKED: Zero real GSC telemetry data retrieved. Real Data Gate prevents autonomous changes without authenticated live metrics. Missing/Pending: Google Search Console (ERROR), Google Analytics 4 (ERROR).",
+      "isDryRun": true
+    },
+    {
+      "date": "2026-09-06",
+      "cycleId": "cycle-1788705452552",
+      "opportunities": 0,
+      "selected": 0,
+      "processed": 0,
+      "successful": 0,
+      "failed": 0,
+      "rollback": 0,
+      "deployment": 0,
+      "indexNow": 0,
+      "finalStatus": "BLOCKED_PENDING_REAL_DATA",
+      "summary": "BLOCKED: Zero real GSC telemetry data retrieved. Real Data Gate prevents autonomous changes without authenticated live metrics. Missing/Pending: Google Search Console real telemetry (0 rows retrieved from https://novatool.in/; provenance: Prior GSC comparison not fetched).",
+      "isDryRun": false
+    },
     {
       "date": "2026-09-06",
       "cycleId": "cycle-1788702332597",
@@ -12920,156 +13046,6 @@
       "finalStatus": "DRY_RUN",
       "summary": "DRY RUN COMPLETED (Real Data Gate: AVAILABLE). Detected 161 opportunities, 0 high-risk skipped, 1 actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.",
       "isDryRun": true
-    },
-    {
-      "date": "2026-09-04",
-      "cycleId": "cycle-1788531831943",
-      "opportunities": 161,
-      "selected": 1,
-      "processed": 0,
-      "successful": 0,
-      "failed": 0,
-      "rollback": 0,
-      "deployment": 0,
-      "indexNow": 0,
-      "finalStatus": "DRY_RUN",
-      "summary": "DRY RUN COMPLETED (Real Data Gate: AVAILABLE). Detected 161 opportunities, 0 high-risk skipped, 1 actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.",
-      "isDryRun": true
-    },
-    {
-      "date": "2026-09-04",
-      "cycleId": "cycle-1788531076995",
-      "opportunities": 161,
-      "selected": 1,
-      "processed": 0,
-      "successful": 0,
-      "failed": 0,
-      "rollback": 0,
-      "deployment": 0,
-      "indexNow": 0,
-      "finalStatus": "DRY_RUN",
-      "summary": "DRY RUN COMPLETED (Real Data Gate: AVAILABLE). Detected 161 opportunities, 0 high-risk skipped, 1 actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.",
-      "isDryRun": true
-    },
-    {
-      "date": "2026-09-04",
-      "cycleId": "cycle-1788528923603",
-      "opportunities": 162,
-      "selected": 1,
-      "processed": 1,
-      "successful": 1,
-      "failed": 0,
-      "rollback": 0,
-      "deployment": 1,
-      "indexNow": 1,
-      "finalStatus": "COMPLETED",
-      "summary": "Cycle cycle-1788528923603 finished: 162 opportunities detected, 0 high-risk skipped, 1 optimized in atomic batches, 1 deployed, 1 IndexNow URLs broadcast.",
-      "isDryRun": false
-    },
-    {
-      "date": "2026-09-04",
-      "cycleId": "cycle-1788528752566",
-      "opportunities": 162,
-      "selected": 1,
-      "processed": 0,
-      "successful": 0,
-      "failed": 0,
-      "rollback": 0,
-      "deployment": 0,
-      "indexNow": 0,
-      "finalStatus": "DRY_RUN",
-      "summary": "DRY RUN COMPLETED (Real Data Gate: AVAILABLE). Detected 162 opportunities, 0 high-risk skipped, 1 actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.",
-      "isDryRun": true
-    },
-    {
-      "date": "2026-09-04",
-      "cycleId": "cycle-1788527389088",
-      "opportunities": 162,
-      "selected": 1,
-      "processed": 0,
-      "successful": 0,
-      "failed": 1,
-      "rollback": 0,
-      "deployment": 0,
-      "indexNow": 0,
-      "finalStatus": "COMPLETED",
-      "summary": "Cycle cycle-1788527389088 finished: 162 opportunities detected, 0 high-risk skipped, 0 optimized in atomic batches, 0 deployed, 0 IndexNow URLs broadcast.",
-      "isDryRun": false
-    },
-    {
-      "date": "2026-09-04",
-      "cycleId": "cycle-1788527089923",
-      "opportunities": 162,
-      "selected": 1,
-      "processed": 0,
-      "successful": 0,
-      "failed": 0,
-      "rollback": 0,
-      "deployment": 0,
-      "indexNow": 0,
-      "finalStatus": "DRY_RUN",
-      "summary": "DRY RUN COMPLETED (Real Data Gate: AVAILABLE). Detected 162 opportunities, 0 high-risk skipped, 1 actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.",
-      "isDryRun": true
-    },
-    {
-      "date": "2026-09-04",
-      "cycleId": "cycle-1788524960715",
-      "opportunities": 162,
-      "selected": 1,
-      "processed": 1,
-      "successful": 1,
-      "failed": 0,
-      "rollback": 0,
-      "deployment": 1,
-      "indexNow": 1,
-      "finalStatus": "COMPLETED",
-      "summary": "Cycle cycle-1788524960715 finished: 162 opportunities detected, 0 high-risk skipped, 1 optimized in atomic batches, 1 deployed, 1 IndexNow URLs broadcast.",
-      "isDryRun": false
-    },
-    {
-      "date": "2026-09-04",
-      "cycleId": "cycle-1788524831878",
-      "opportunities": 162,
-      "selected": 1,
-      "processed": 0,
-      "successful": 0,
-      "failed": 0,
-      "rollback": 0,
-      "deployment": 0,
-      "indexNow": 0,
-      "finalStatus": "DRY_RUN",
-      "summary": "DRY RUN COMPLETED (Real Data Gate: AVAILABLE). Detected 162 opportunities, 0 high-risk skipped, 1 actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.",
-      "isDryRun": true
-    },
-    {
-      "date": "2026-09-04",
-      "cycleId": "cycle-1788524115934",
-      "opportunities": 162,
-      "selected": 1,
-      "processed": 0,
-      "successful": 0,
-      "failed": 0,
-      "rollback": 0,
-      "deployment": 0,
-      "indexNow": 0,
-      "finalStatus": "DRY_RUN",
-      "summary": "DRY RUN COMPLETED (Real Data Gate: AVAILABLE). Detected 162 opportunities, 0 high-risk skipped, 1 actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.",
-      "isDryRun": true
-    },
-    {
-      "date": "2026-09-04",
-      "cycleId": "cycle-1788523428503",
-      "opportunities": 162,
-      "selected": 1,
-      "processed": 1,
-      "successful": 1,
-      "failed": 0,
-      "rollback": 0,
-      "deployment": 1,
-      "indexNow": 1,
-      "finalStatus": "COMPLETED",
-      "summary": "Cycle cycle-1788523428503 finished: 162 opportunities detected, 0 high-risk skipped, 1 optimized in atomic batches, 1 deployed, 1 IndexNow URLs broadcast.",
-      "isDryRun": false
     }
   ],
   "successfulBatchesToday": 0,

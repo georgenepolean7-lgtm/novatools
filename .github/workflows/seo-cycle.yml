@@ -1,0 +1,57 @@
+name: Autonomous SEO Cycle Worker
+
+on:
+  workflow_dispatch:
+    inputs:
+      dryRun:
+        description: 'Dry Run mode (no file mutations)'
+        required: false
+        default: 'false'
+        type: boolean
+      slug:
+        description: 'Target single tool slug (optional)'
+        required: false
+        default: ''
+        type: string
+  schedule:
+    # Run once daily at 04:00 UTC
+    - cron: '0 4 * * *'
+
+jobs:
+  run-seo-cycle:
+    name: SEO Agent Cycle Runner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Execute Dedicated SEO Cycle Worker
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL || 'https://novatool.in' }}
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          GA4_CLIENT_EMAIL: ${{ secrets.GA4_CLIENT_EMAIL }}
+          GA4_PRIVATE_KEY: ${{ secrets.GA4_PRIVATE_KEY }}
+          BING_API_KEY: ${{ secrets.BING_API_KEY }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: |
+          ARGS=""
+          if [ "${{ github.event.inputs.dryRun }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          if [ -n "${{ github.event.inputs.slug }}" ]; then
+            ARGS="$ARGS --slug ${{ github.event.inputs.slug }}"
+          fi
+          node scripts/run-seo-cycle.js $ARGS

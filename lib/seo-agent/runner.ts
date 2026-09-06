@@ -868,11 +868,13 @@ export class SeoAgentRunner {
     let successfulBatches = 0;
     let failedBatches = 0;
     let rollbacksCount = 0;
+    let totalOptimizerFailures = 0;
 
     for (let bIndex = 0; bIndex < batches.length; bIndex++) {
       const batch = batches[bIndex];
       const batchModifiedFiles: Array<{ targetFile: string; previousContent: string }> = [];
       const batchChangedSlugs: string[] = [];
+      let batchOptimizerFailures = 0;
 
         for (let oppIdx = 0; oppIdx < batch.length; oppIdx++) {
         const opp = batch[oppIdx];
@@ -1045,6 +1047,33 @@ export class SeoAgentRunner {
                   };
                   this.auditStore.recordAudit(noChangeAudit);
                   auditRecords.push(noChangeAudit);
+                } else {
+                  // Explicit Optimizer Failure Audit (Task 4)
+                  batchOptimizerFailures++;
+                  totalOptimizerFailures++;
+                  const environment = process.env.VERCEL === "1" ? "VERCEL_SERVERLESS" : "STANDALONE_WORKER";
+                  const failAudit: SeoAuditRecord = {
+                    id: `audit-${cycleId}-${opp.id}-optimizer-apply-failed`,
+                    timestamp: new Date().toISOString(),
+                    action: "OPTIMIZER_APPLY_FAILED",
+                    status: "FAILED",
+                    riskLevel: opp.riskLevel,
+                    pageSlug: opp.pageSlug,
+                    pageUrl: opp.pageUrl,
+                    details: {
+                      pageSlug: opp.pageSlug,
+                      targetFile: applyResult.targetFile || opp.proposedAction.targetFile || "data/tools/*.ts",
+                      errorMessage: applyResult.errorMessage || "Unknown optimizer apply error",
+                      cycleId,
+                      timestamp: new Date().toISOString(),
+                      environment,
+                      failureStage: "OPTIMIZER_APPLY",
+                      actionType: opp.proposedAction.type,
+                    },
+                    provenance: opp.provenance,
+                  };
+                  this.auditStore.recordAudit(failAudit);
+                  auditRecords.push(failAudit);
                 }
                 return;
               }
@@ -1126,6 +1155,26 @@ export class SeoAgentRunner {
       }
 
       if (batchModifiedFiles.length === 0) {
+        if (batchOptimizerFailures > 0) {
+          failedBatches++;
+          const batchFailAudit: SeoAuditRecord = {
+            id: `audit-${cycleId}-batch-${bIndex}-optimizer-all-failed`,
+            timestamp: new Date().toISOString(),
+            action: "BATCH_OPTIMIZER_ALL_FAILED",
+            status: "FAILED",
+            riskLevel: "LOW",
+            details: {
+              batchIndex: bIndex,
+              batchSize: batch.length,
+              optimizerFailures: batchOptimizerFailures,
+              reason: `Batch ${bIndex + 1} had zero modified files because ${batchOptimizerFailures} candidate optimizer operations failed.`,
+              environment: process.env.VERCEL === "1" ? "VERCEL_SERVERLESS" : "STANDALONE_WORKER",
+            },
+            provenance: [],
+          };
+          this.auditStore.recordAudit(batchFailAudit);
+          auditRecords.push(batchFailAudit);
+        }
         continue;
       }
 
@@ -1323,22 +1372,26 @@ export class SeoAgentRunner {
       }
     }
 
-    console.log(`Batch processing finished. Successful batches: ${successfulBatches}, Failed batches: ${failedBatches}, Rollbacks: ${rollbacksCount}`);
+    console.log(`Batch processing finished. Successful batches: ${successfulBatches}, Failed batches: ${failedBatches}, Rollbacks: ${rollbacksCount}, Optimizer Failures: ${totalOptimizerFailures}`);
 
     let finalCycleStatus: "COMPLETED" | "PARTIAL" | "FAILED";
-    if (failedBatches === 0 && rollbacksCount === 0) {
+    if (appliedCount > 0 && failedBatches === 0 && rollbacksCount === 0) {
       finalCycleStatus = "COMPLETED";
-    } else if (successfulBatches > 0) {
+    } else if (appliedCount > 0 && (failedBatches > 0 || rollbacksCount > 0)) {
       finalCycleStatus = "PARTIAL";
+    } else if (appliedCount === 0 && targetOpportunities.length === 0) {
+      // Zero opportunities required modification (all already optimized or in cooldown)
+      finalCycleStatus = "COMPLETED";
     } else {
+      // Mutations were attempted (targetOpportunities > 0) but zero succeeded
       finalCycleStatus = "FAILED";
     }
 
-    const isRolledBackCycle = finalCycleStatus === "FAILED";
+    const isFailedCycle = finalCycleStatus === "FAILED";
 
     // 7. SUBMIT TO INDEXNOW SUMMARY
-    const summary = isRolledBackCycle
-      ? `Cycle ${cycleId} finished with failures: ${rawOpportunities.length} opportunities detected, ${filteredAlreadyOptimized.length} already optimized, ${filteredCooldown.length} in cooldown, ${filteredNoOp.length} no-op, ${skippedHighRisk.length} high-risk skipped, ${rollbacksCount} changes rolled back after batch validation failure. 0 files permanently modified, 0 deployments executed.`
+    const summary = isFailedCycle
+      ? `Cycle ${cycleId} finished with failures: ${rawOpportunities.length} opportunities detected, ${filteredAlreadyOptimized.length} already optimized, ${filteredCooldown.length} in cooldown, ${filteredNoOp.length} no-op, ${skippedHighRisk.length} high-risk skipped, ${totalOptimizerFailures} optimizer failures, ${rollbacksCount} changes rolled back. 0 files permanently modified, 0 deployments executed.`
       : `Cycle ${cycleId} finished (${finalCycleStatus}): ${rawOpportunities.length} opportunities detected, ${filteredAlreadyOptimized.length} already optimized, ${filteredCooldown.length} in cooldown, ${filteredNoOp.length} no-op, ${skippedHighRisk.length} high-risk skipped, ${appliedCount} optimized in atomic batches, ${deployedCount} deployed, ${changedSlugs.length} IndexNow URLs broadcast.`;
 
     this.auditStore.recordCycleRun({
@@ -1346,7 +1399,7 @@ export class SeoAgentRunner {
       cycleId,
       opportunities: rawOpportunities.length,
       selected: targetOpportunities.length,
-      processed: appliedCount + rollbacksCount,
+      processed: appliedCount + rollbacksCount + totalOptimizerFailures,
       successful: appliedCount,
       failed: targetOpportunities.length - appliedCount,
       rollback: rollbacksCount,
@@ -1358,7 +1411,7 @@ export class SeoAgentRunner {
     });
 
     return {
-      success: !isRolledBackCycle,
+      success: !isFailedCycle,
       status: finalCycleStatus,
       realDataStatus,
       missingConnectors,

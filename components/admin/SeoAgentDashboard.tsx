@@ -48,7 +48,7 @@ export default function SeoAgentDashboard() {
   const [activeTab, setActiveTab] = useState<"matrix" | "history" | "opportunities" | "safety">("matrix");
   const [opportunityFilter, setOpportunityFilter] = useState<"ALL" | "SAFE" | "ZERO_TRAFFIC">("ALL");
   const [searchQuery, setSearchQuery] = useState("");
-  const [, setLastExecutionResult] = useState<unknown>(null);
+  const [lastExecutionResult, setLastExecutionResult] = useState<Record<string, unknown> | null>(null);
   const [message, setMessage] = useState<{ type: "success" | "error" | "info"; text: string } | null>(null);
 
   const fetchStatus = async () => {
@@ -137,9 +137,13 @@ export default function SeoAgentDashboard() {
         body: JSON.stringify({ dryRun: true }),
       });
       const data = await res.json();
+      setLastExecutionResult(data);
       if (res.ok) {
-        setLastExecutionResult(data);
-        setMessage({ type: "success", text: data.summary || "Dry run completed successfully with zero mutations." });
+        if (data.status === "BLOCKED_PENDING_REAL_DATA" || data.status === "BLOCKED") {
+          setMessage({ type: "error", text: `BLOCKED: ${data.summary || data.message || "Pending real telemetry data."}` });
+        } else {
+          setMessage({ type: "success", text: data.summary || "Dry run completed successfully with zero mutations." });
+        }
         await fetchStatus();
       } else {
         setMessage({ type: "error", text: data.error || data.details || "Dry run execution failed." });
@@ -158,7 +162,7 @@ export default function SeoAgentDashboard() {
       setRunningProduction(true);
       setMessage({
         type: "info",
-        text: "Executing live production cycle (80-page cap, 20-page atomic batches, rollback enabled)...",
+        text: "Evaluating production cycle launch...",
       });
       const res = await fetch("/api/admin/seo-agent/run", {
         method: "POST",
@@ -166,8 +170,26 @@ export default function SeoAgentDashboard() {
         body: JSON.stringify({ dryRun: false, confirmed: true }),
       });
       const data = await res.json();
-      if (res.ok) {
-        setLastExecutionResult(data);
+      setLastExecutionResult(data);
+      if (data.status === "DISPATCHED") {
+        setMessage({
+          type: "info",
+          text: `Cycle DISPATCHED to dedicated worker (${data.target || "worker"}). Awaiting worker execution report.`,
+        });
+        await fetchStatus();
+      } else if (data.status === "BLOCKED" || data.dispatchRequired) {
+        setMessage({
+          type: "error",
+          text: `WORKER DISPATCH REQUIRED: ${data.message || data.error}`,
+        });
+        await fetchStatus();
+      } else if (data.status === "FAILED") {
+        setMessage({
+          type: "error",
+          text: `Cycle FAILED: ${data.summary || data.error || "Attempted mutations failed."}`,
+        });
+        await fetchStatus();
+      } else if (res.ok) {
         setMessage({ type: "success", text: data.summary || "Production cycle executed successfully." });
         await fetchStatus();
       } else {
@@ -259,13 +281,57 @@ export default function SeoAgentDashboard() {
         </div>
       )}
 
+      {/* Worker Dispatch / Execution Notice Banner */}
+      {lastExecutionResult && (Boolean(lastExecutionResult.dispatchRequired) || lastExecutionResult.status === "BLOCKED" || lastExecutionResult.status === "DISPATCHED") && (
+        <div
+          className={`p-5 rounded-2xl border space-y-2 shadow-lg backdrop-blur-md ${
+            lastExecutionResult.status === "DISPATCHED"
+              ? "bg-blue-500/10 border-blue-500/30 text-blue-200"
+              : "bg-amber-500/10 border-amber-500/30 text-amber-200"
+          }`}
+        >
+          <div className="flex flex-wrap items-center justify-between gap-2 font-bold text-xs uppercase tracking-wider">
+            <span className="flex items-center gap-2">
+              {lastExecutionResult.status === "DISPATCHED" ? (
+                <CheckCircle2 className="w-4 h-4 text-blue-400" />
+              ) : (
+                <AlertTriangle className="w-4 h-4 text-amber-400" />
+              )}
+              <span>
+                {lastExecutionResult.status === "DISPATCHED"
+                  ? "Mutation Worker Dispatched"
+                  : "Dedicated Worker Dispatch Required (Vercel Serverless Guardrail)"}
+              </span>
+            </span>
+            <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-700 text-slate-300 font-mono">
+              Target: {String(lastExecutionResult.workerScript || "scripts/run-seo-cycle.js")}
+            </span>
+          </div>
+          <p className="text-xs text-slate-300 font-sans leading-relaxed">
+            {String(lastExecutionResult.message || lastExecutionResult.error || "")}
+          </p>
+          {Boolean(lastExecutionResult.workerCommand) && (
+            <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-cyan-300 font-mono text-xs flex flex-wrap items-center justify-between gap-3">
+              <code>{String(lastExecutionResult.workerCommand)}</code>
+              <span className="text-[10px] text-slate-400 font-sans font-semibold">Dedicated Worker CLI</span>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* 1. TOP HEADER & CONTROLS TOOLBAR */}
       <div className="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 shadow-2xl backdrop-blur-xl flex flex-wrap items-center justify-between gap-6">
         <div className="space-y-1">
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <span
               className={`w-3 h-3 rounded-full ${
-                daily.killSwitchActive ? "bg-rose-500 animate-ping" : "bg-emerald-400 animate-pulse"
+                daily.killSwitchActive || daily.currentCycleStatus === "FAILED" || daily.currentCycleStatus === "BLOCKED"
+                  ? "bg-rose-500 animate-ping"
+                  : daily.currentCycleStatus === "RUNNING"
+                  ? "bg-amber-400 animate-pulse"
+                  : daily.currentCycleStatus === "DISPATCHED"
+                  ? "bg-blue-400 animate-pulse"
+                  : "bg-emerald-400 animate-pulse"
               }`}
             />
             <h2 className="text-xl font-black text-white tracking-tight">
@@ -279,6 +345,27 @@ export default function SeoAgentDashboard() {
               }`}
             >
               {daily.killSwitchActive ? "PAUSED (KILL SWITCH ACTIVE)" : "AUTONOMOUS MODE ACTIVE"}
+            </span>
+            <span
+              className={`px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider font-mono ${
+                daily.currentCycleStatus === "FAILED"
+                  ? "bg-rose-500/15 text-rose-300 border border-rose-500/30"
+                  : daily.currentCycleStatus === "BLOCKED" ||
+                    daily.currentCycleStatus === "BLOCKED_PENDING_REAL_DATA" ||
+                    daily.currentCycleStatus === "PAUSED_KILL_SWITCH"
+                  ? "bg-rose-500/15 text-rose-300 border border-rose-500/30"
+                  : daily.currentCycleStatus === "DISPATCHED"
+                  ? "bg-blue-500/15 text-blue-300 border border-blue-500/30"
+                  : daily.currentCycleStatus === "RUNNING"
+                  ? "bg-amber-500/15 text-amber-300 border border-amber-500/30"
+                  : daily.currentCycleStatus === "COMPLETED"
+                  ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30"
+                  : daily.currentCycleStatus === "DRY_RUN"
+                  ? "bg-cyan-500/15 text-cyan-300 border border-cyan-500/30"
+                  : "bg-slate-500/15 text-slate-300 border border-slate-500/30"
+              }`}
+            >
+              CYCLE: {daily.currentCycleStatus || "IDLE"}
             </span>
           </div>
           <p className="text-xs text-slate-400">
@@ -658,6 +745,10 @@ export default function SeoAgentDashboard() {
                             ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30"
                             : c.finalStatus === "DRY_RUN"
                             ? "bg-cyan-500/15 text-cyan-300 border border-cyan-500/30"
+                            : c.finalStatus === "DISPATCHED"
+                            ? "bg-blue-500/15 text-blue-300 border border-blue-500/30"
+                            : c.finalStatus === "PARTIAL"
+                            ? "bg-amber-500/15 text-amber-300 border border-amber-500/30"
                             : "bg-rose-500/15 text-rose-300 border border-rose-500/30"
                         }`}
                       >
