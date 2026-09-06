@@ -211,7 +211,7 @@ export class SeoAgentRunner {
   /**
    * Executes the full autonomous SEO cycle without requiring human approval.
    */
-  async runCycle(options: { dryRun?: boolean; forceSingleSlug?: string } = {}): Promise<CycleRunResult> {
+  async runCycle(options: { dryRun?: boolean; forceSingleSlug?: string; maxBatches?: number } = {}): Promise<CycleRunResult> {
     const cycleId = `cycle-${Date.now()}`;
     const timestamp = new Date().toISOString();
     const auditRecords: SeoAuditRecord[] = [];
@@ -860,10 +860,12 @@ export class SeoAgentRunner {
 
     // 6. PRODUCTION ATOMIC BATCH PROCESSOR (MAX 80/DAY, 20 PAGES PER ATOMIC BATCH)
     const batchSize = SEO_AGENT_CONFIG.BUDGETS.BATCH_SIZE;
-    const batches: SeoOpportunity[][] = [];
+    const rawBatches: SeoOpportunity[][] = [];
     for (let i = 0; i < targetOpportunities.length; i += batchSize) {
-      batches.push(targetOpportunities.slice(i, i + batchSize));
+      rawBatches.push(targetOpportunities.slice(i, i + batchSize));
     }
+    const maxBatches = options.maxBatches !== undefined ? options.maxBatches : rawBatches.length;
+    const batches = rawBatches.slice(0, maxBatches);
 
     let successfulBatches = 0;
     let failedBatches = 0;
