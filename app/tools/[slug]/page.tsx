@@ -44,7 +44,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${page.title} | Nova Tools`,
+    title: { absolute: `${page.title} | Nova Tools` },
     description: page.description,
     alternates: {
       canonical: `https://novatool.in/tools/${page.slug}`,

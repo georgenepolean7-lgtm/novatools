@@ -210,11 +210,17 @@ export function evaluateOpportunityIdempotency(
   if (actionType === "TITLE_OPTIMIZATION" && opp.type === "WEAK_TITLE") {
     const titleLen = (tool.seoTitle || "").trim().length;
     const hasLegacyBoilerplate = (tool.seoTitle || "").includes("Free, Fast & Private");
-    if (titleLen >= 30 && titleLen <= 65 && !hasLegacyBoilerplate) {
+    const hasBrand = (tool.seoTitle || "").includes("Nova Tools") || (tool.seoTitle || "").includes("Nova");
+    if (
+      titleLen >= SEO_AGENT_CONFIG.METADATA.OPTIMAL_MIN_TITLE_LENGTH &&
+      titleLen <= SEO_AGENT_CONFIG.METADATA.OPTIMAL_MAX_TITLE_LENGTH &&
+      hasBrand &&
+      !hasLegacyBoilerplate
+    ) {
       return {
         status: "NO_MEANINGFUL_CHANGE",
         isActionable: false,
-        reason: `Current title is already in compliant length range (${titleLen} characters).`,
+        reason: `Current title is already in optimal length range (${titleLen} characters) with brand value.`,
       };
     }
   }
@@ -225,11 +231,15 @@ export function evaluateOpportunityIdempotency(
     const hasLegacyBoilerplate =
       (tool.seoDescription || "").includes("Free, Fast & Private") ||
       (!isFileTool && (tool.seoDescription || "").includes("zero file uploads"));
-    if (descLen >= 80 && descLen <= 165 && !hasLegacyBoilerplate) {
+    if (
+      descLen >= SEO_AGENT_CONFIG.METADATA.OPTIMAL_MIN_DESCRIPTION_LENGTH &&
+      descLen <= SEO_AGENT_CONFIG.METADATA.OPTIMAL_MAX_DESCRIPTION_LENGTH &&
+      !hasLegacyBoilerplate
+    ) {
       return {
         status: "NO_MEANINGFUL_CHANGE",
         isActionable: false,
-        reason: `Current meta description is already in compliant length range (${descLen} characters).`,
+        reason: `Current meta description is already in optimal length range (${descLen} characters).`,
       };
     }
   }

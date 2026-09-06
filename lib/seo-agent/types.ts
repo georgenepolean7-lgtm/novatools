@@ -170,6 +170,7 @@ export interface SeoOpportunity {
     trafficTrend: number;
     businessRelevance: number;
     pageQuality: number;
+    objectiveDefect?: number;
     riskPenalty: number;
   };
   proposedAction: {

@@ -276,7 +276,7 @@ Return ONLY a valid JSON object in this exact schema:
       if (json?.choices?.[0]?.message?.content) return json.choices[0].message.content;
 
       return null;
-    } catch (_err) {
+    } catch {
       if (isTimedOut) {
         throw new Error(`TIMEOUT: LLM generation exceeded ${timeoutMs}ms`);
       }
@@ -523,8 +523,15 @@ Return ONLY a valid JSON object in this exact schema:
     // If existing metadata is already healthy, preserve it!
     const titleLength = (seoTitle || "").trim().length;
     const descLength = (seoDescription || "").trim().length;
-    const titleNeedsWork = actionType === "TITLE_OPTIMIZATION" || titleLength < 30 || titleLength > 65;
-    const descNeedsWork = actionType === "DESCRIPTION_OPTIMIZATION" || descLength < 80 || descLength > 165;
+    const titleNeedsWork =
+      actionType === "TITLE_OPTIMIZATION" ||
+      titleLength < SEO_AGENT_CONFIG.METADATA.OPTIMAL_MIN_TITLE_LENGTH ||
+      titleLength > SEO_AGENT_CONFIG.METADATA.OPTIMAL_MAX_TITLE_LENGTH ||
+      (!seoTitle?.includes("Nova Tools") && !seoTitle?.includes("Nova"));
+    const descNeedsWork =
+      actionType === "DESCRIPTION_OPTIMIZATION" ||
+      descLength < SEO_AGENT_CONFIG.METADATA.OPTIMAL_MIN_DESCRIPTION_LENGTH ||
+      descLength > SEO_AGENT_CONFIG.METADATA.OPTIMAL_MAX_DESCRIPTION_LENGTH;
 
     if (titleNeedsWork) {
       let candidateTitle = "";
@@ -543,7 +550,12 @@ Return ONLY a valid JSON object in this exact schema:
         }
       }
       if (candidateTitle.length > 60) {
-        candidateTitle = `${tool.name} | Nova Tools`;
+        const maxNameLen = 60 - " | Nova Tools".length;
+        const cleanedName = tool.name.replace(/\s+\([^)]*\)$/, "").trim();
+        const shortName = cleanedName.length <= maxNameLen
+          ? cleanedName
+          : cleanedName.slice(0, maxNameLen).trim().replace(/\s+\S*$/, "");
+        candidateTitle = `${shortName} | Nova Tools`;
       }
       if (candidateTitle.length < 35 && tool.category) {
         const catLabel = tool.category.charAt(0).toUpperCase() + tool.category.slice(1);

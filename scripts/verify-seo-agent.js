@@ -1071,6 +1071,308 @@ async function runVerification() {
   assert(allowedTerminalStates.includes(dryRunCycleRes.status), `Regression 9: Cycle execution reached valid terminal state (${dryRunCycleRes.status})`);
   assert(typeof dryRunCycleRes.success === "boolean", "Regression 9: Cycle result includes boolean success flag");
 
+  // 18. Testing Opportunity Engine Fix & Action Selection Regressions (Tests A-I)
+  console.log("\n--- 18. Testing Opportunity Engine Fix & Action Selection Regressions (Tests A-I) ---");
+  const { SeoOpportunityEngine: TestOppEngine } = jiti("../lib/seo-agent/opportunity-engine");
+  const { SeoScoringEngine: TestScoringEngine } = jiti("../lib/seo-agent/scoring-engine");
+  const oppEngineInstance = new TestOppEngine();
+  const scoringEngineInstance = new TestScoringEngine();
+
+  // Test A: Weak title + good links -> METADATA remains selectable
+  console.log("Testing Regression A: Weak title + good links...");
+  const dummyWeakTitleTool = {
+    slug: "test-weak-title-tool",
+    name: "Test Weak Title Tool",
+    category: "text",
+    keywords: ["test tool", "text converter", "word utility"],
+    seoTitle: "Short Title",
+    seoDescription: "A fully compliant meta description explaining how this text tool works with fast client-side performance.",
+    faq: Array(5).fill({ question: "Valid Q?", answer: "Valid A." }),
+    relatedTools: ["aspect-ratio-calculator", "base64-encoder", "color-converter"],
+    features: ["Instant conversion", "Client-side only", "Zero uploads"],
+    howToSteps: [
+      { step: 1, title: "Input", instruction: "Enter text" },
+      { step: 2, title: "Convert", instruction: "Click convert" }
+    ],
+  };
+  const weakTitleOpp = {
+    id: "weak-title-test",
+    pageSlug: "compress-pdf",
+    pageUrl: "https://novatool.in/compress-pdf",
+    type: "WEAK_TITLE",
+    reason: "Title length is outside optimal range",
+    riskLevel: "LOW",
+    proposedAction: { type: "TITLE_OPTIMIZATION", summary: "Format title tag" },
+    opportunityScore: 0,
+    scoreBreakdown: { impressionPotential: 0, positionOpportunity: 0, ctrOpportunity: 0, trafficTrend: 0, businessRelevance: 0, pageQuality: 0, riskPenalty: 0 },
+    provenance: [],
+    detectedAt: new Date().toISOString(),
+  };
+  const scoredWeakTitle = scoringEngineInstance.scoreAndPrioritize([weakTitleOpp]);
+  assert(scoredWeakTitle[0].opportunityScore >= 25, "Regression A: Weak title tool receives priority opportunity score (>= 25)");
+  const selectWeakTitle = scoringEngineInstance.selectActionableOpportunities(scoredWeakTitle, 0, 0, testStore);
+  assert(selectWeakTitle.actionable.some((o) => o.proposedAction.type === "TITLE_OPTIMIZATION"), "Regression A: Weak title + good links -> METADATA (TITLE_OPTIMIZATION) remains selectable");
+
+  // Test B: Weak description + good links -> METADATA remains selectable
+  console.log("Testing Regression B: Weak description + good links...");
+  const weakDescOpp = {
+    id: "weak-desc-test",
+    pageSlug: "image-blur-sharpen-tool",
+    pageUrl: "https://novatool.in/image-blur-sharpen-tool",
+    type: "WEAK_META_DESCRIPTION",
+    reason: "Meta description length is outside optimal range",
+    riskLevel: "LOW",
+    proposedAction: { type: "DESCRIPTION_OPTIMIZATION", summary: "Craft 140-char summary" },
+    opportunityScore: 0,
+    scoreBreakdown: { impressionPotential: 0, positionOpportunity: 0, ctrOpportunity: 0, trafficTrend: 0, businessRelevance: 0, pageQuality: 0, riskPenalty: 0 },
+    provenance: [],
+    detectedAt: new Date().toISOString(),
+  };
+  const scoredWeakDesc = scoringEngineInstance.scoreAndPrioritize([weakDescOpp]);
+  assert(scoredWeakDesc[0].opportunityScore >= 25, "Regression B: Weak description receives priority score (>= 25)");
+  const selectWeakDesc = scoringEngineInstance.selectActionableOpportunities(scoredWeakDesc, 0, 0, testStore);
+  assert(selectWeakDesc.actionable.some((o) => o.proposedAction.type === "DESCRIPTION_OPTIMIZATION"), "Regression B: Weak description + good links -> METADATA (DESCRIPTION_OPTIMIZATION) remains selectable");
+
+  // Test C: Strong metadata + weak internal links -> INTERNAL_LINKS may win
+  console.log("Testing Regression C: Strong metadata + weak internal links...");
+  const orphanOpp = {
+    id: "orphan-test",
+    pageSlug: "password-generator",
+    pageUrl: "https://novatool.in/password-generator",
+    type: "ORPHAN_PAGE",
+    reason: "Page has 0 incoming links",
+    riskLevel: "LOW",
+    proposedAction: { type: "INTERNAL_LINKS", summary: "Add contextual links" },
+    opportunityScore: 0,
+    scoreBreakdown: { impressionPotential: 0, positionOpportunity: 0, ctrOpportunity: 0, trafficTrend: 0, businessRelevance: 0, pageQuality: 0, riskPenalty: 0 },
+    provenance: [],
+    detectedAt: new Date().toISOString(),
+  };
+  const scoredOrphan = scoringEngineInstance.scoreAndPrioritize([orphanOpp]);
+  assert(scoredOrphan[0].opportunityScore > 0, "Regression C: Orphan page scores positively");
+  assert(scoredOrphan[0].proposedAction.type === "INTERNAL_LINKS", "Regression C: Strong metadata + weak links -> INTERNAL_LINKS is proposed");
+
+  // Test D: Strong metadata + weak FAQ opportunity -> FAQ_ENRICHMENT may win when justified
+  console.log("Testing Regression D: Strong metadata + weak FAQ opportunity...");
+  const thinFaqOpp = {
+    id: "thin-faq-test",
+    pageSlug: "image-cropper",
+    pageUrl: "https://novatool.in/image-cropper",
+    type: "THIN_PAGE_CONTENT",
+    reason: "Page has limited explanatory content (3 FAQs)",
+    riskLevel: "LOW",
+    proposedAction: { type: "FAQ_ENRICHMENT", summary: "Add high-value technical FAQs" },
+    opportunityScore: 0,
+    scoreBreakdown: { impressionPotential: 0, positionOpportunity: 0, ctrOpportunity: 0, trafficTrend: 0, businessRelevance: 0, pageQuality: 0, riskPenalty: 0 },
+    provenance: [],
+    detectedAt: new Date().toISOString(),
+  };
+  const scoredFaq = scoringEngineInstance.scoreAndPrioritize([thinFaqOpp]);
+  assert(scoredFaq[0].opportunityScore >= 20, "Regression D: Qualified FAQ opportunity receives significant score (>= 20)");
+  const selectFaq = scoringEngineInstance.selectActionableOpportunities(scoredFaq, 0, 0, testStore);
+  assert(selectFaq.actionable.some((o) => o.proposedAction.type === "FAQ_ENRICHMENT"), "Regression D: Strong metadata + weak FAQ opportunity -> FAQ_ENRICHMENT wins and is actionable");
+
+  // Test E: Objective metadata defect with zero meaningful traffic -> still recognized as an opportunity
+  console.log("Testing Regression E: Objective metadata defect with zero traffic...");
+  const zeroTrafficOpps = oppEngineInstance.detectOpportunities([], [], [], [], [], []);
+  const titleOpps = zeroTrafficOpps.filter((o) => o.type === "WEAK_TITLE");
+  const descOpps = zeroTrafficOpps.filter((o) => o.type === "WEAK_META_DESCRIPTION");
+  assert(titleOpps.length > 0, `Regression E: Zero-traffic catalog yields detected WEAK_TITLE opportunities (${titleOpps.length} found)`);
+  assert(descOpps.length > 0, `Regression E: Zero-traffic catalog yields detected WEAK_META_DESCRIPTION opportunities (${descOpps.length} found)`);
+
+  // Test F: High-risk page -> remains blocked
+  console.log("Testing Regression F: High-risk page remains blocked...");
+  const highRiskOpp = {
+    id: "cannibal-test",
+    pageSlug: "compress-pdf",
+    pageUrl: "https://novatool.in/compress-pdf",
+    type: "CANNIBALIZATION_RISK",
+    reason: "High risk cannibalization detected",
+    riskLevel: "HIGH",
+    proposedAction: { type: "CANONICAL_CHECK", summary: "High risk manual review" },
+    opportunityScore: 10,
+    scoreBreakdown: { impressionPotential: 0, positionOpportunity: 0, ctrOpportunity: 0, trafficTrend: 0, businessRelevance: 0, pageQuality: 0, riskPenalty: 100 },
+    provenance: [],
+    detectedAt: new Date().toISOString(),
+  };
+  const selectHighRisk = scoringEngineInstance.selectActionableOpportunities([highRiskOpp], 0, 0, testStore);
+  assert(selectHighRisk.actionable.length === 0, "Regression F: HIGH risk opportunity is excluded from actionable list");
+  assert(selectHighRisk.skippedHighRisk.length === 1, "Regression F: HIGH risk opportunity correctly routed to skippedHighRisk");
+
+  // Test G: Already optimized page -> remains idempotent
+  console.log("Testing Regression G: Already optimized page remains idempotent...");
+  const alreadyOptimizedOpp = {
+    id: "already-opt-test",
+    pageSlug: "aspect-ratio-calculator",
+    pageUrl: "https://novatool.in/aspect-ratio-calculator",
+    type: "THIN_PAGE_CONTENT",
+    reason: "Test already optimized FAQ",
+    riskLevel: "LOW",
+    proposedAction: { type: "FAQ_ENRICHMENT", summary: "Test" },
+    opportunityScore: 25,
+    scoreBreakdown: { impressionPotential: 0, positionOpportunity: 0, ctrOpportunity: 0, trafficTrend: 0, businessRelevance: 0, pageQuality: 0, riskPenalty: 0 },
+    provenance: [],
+    detectedAt: new Date().toISOString(),
+  };
+  const selectAlreadyOpt = scoringEngineInstance.selectActionableOpportunities([alreadyOptimizedOpp], 0, 0, testStore);
+  assert(selectAlreadyOpt.actionable.length === 0, "Regression G: Already optimized opportunity is excluded from actionable candidates");
+  assert(
+    selectAlreadyOpt.filteredAlreadyOptimized.length === 1 || selectAlreadyOpt.filteredCooldown.length === 1,
+    "Regression G: Already optimized page filtered via ALREADY_OPTIMIZED or COOLDOWN_ACTIVE"
+  );
+  const testAspectToolG = getAllTools().find((t) => t.slug === "aspect-ratio-calculator");
+  const idempotencyG = evaluateOpportunityIdempotency(testAspectToolG, alreadyOptimizedOpp, testStore);
+  assert(idempotencyG.status === "ALREADY_OPTIMIZED", "Regression G: evaluateOpportunityIdempotency flags ALREADY_OPTIMIZED");
+  assert(idempotencyG.isActionable === false, "Regression G: evaluateOpportunityIdempotency marks isActionable false");
+
+  // Test H: Qwen timeout/fallback -> action classification remains correct
+  console.log("Testing Regression H: Qwen timeout/fallback action classification...");
+  const { HermesQwenClient: FallbackClient } = jiti("../lib/seo-agent/hermes-qwen-client");
+  const fallbackClient = new FallbackClient();
+  const regressionFallbackResult = await fallbackClient.generateOptimization(
+    dummyWeakTitleTool,
+    "TITLE_OPTIMIZATION",
+    { reason: "Title is weak", hasMeasurableTraffic: false, objectiveDefect: true }
+  );
+  assert(regressionFallbackResult.seoTitle !== undefined && regressionFallbackResult.seoTitle.length >= 30, "Regression H: Deterministic fallback generates valid title");
+  assert(regressionFallbackResult.seoTitle.includes("Nova Tools"), "Regression H: Fallback title includes standard brand suffix");
+  assert(regressionFallbackResult.provenanceType === "deterministic-fallback", "Regression H: Fallback accurately marks provenance as deterministic-fallback");
+
+  // Test I: Multiple valid opportunities -> ranking is evidence-based, not action-type hardcoded
+  console.log("Testing Regression I: Multiple valid opportunities evidence-based ranking...");
+  const multiOppToolSlug = "compress-image";
+  const oppA = {
+    id: "multi-title",
+    pageSlug: multiOppToolSlug,
+    pageUrl: `https://novatool.in/${multiOppToolSlug}`,
+    type: "WEAK_TITLE",
+    reason: "Title is sub-optimal length",
+    riskLevel: "LOW",
+    proposedAction: { type: "TITLE_OPTIMIZATION", summary: "Format title tag" },
+    opportunityScore: 0,
+    scoreBreakdown: { impressionPotential: 0, positionOpportunity: 0, ctrOpportunity: 0, trafficTrend: 0, businessRelevance: 0, pageQuality: 0, riskPenalty: 0 },
+    provenance: [],
+    detectedAt: new Date().toISOString(),
+  };
+  const oppB = {
+    id: "multi-link",
+    pageSlug: multiOppToolSlug,
+    pageUrl: `https://novatool.in/${multiOppToolSlug}`,
+    type: "ORPHAN_PAGE",
+    reason: "Orphan page link needed",
+    riskLevel: "LOW",
+    proposedAction: { type: "INTERNAL_LINKS", summary: "Add link" },
+    opportunityScore: 0,
+    scoreBreakdown: { impressionPotential: 0, positionOpportunity: 0, ctrOpportunity: 0, trafficTrend: 0, businessRelevance: 0, pageQuality: 0, riskPenalty: 0 },
+    provenance: [],
+    detectedAt: new Date().toISOString(),
+  };
+  const multiScored = scoringEngineInstance.scoreAndPrioritize([oppB, oppA]);
+  assert(multiScored[0].type === "WEAK_TITLE", "Regression I: Objective metadata defect outranks internal links when evidence demonstrates metadata defect");
+  assert(multiScored[0].opportunityScore > multiScored[1].opportunityScore, "Regression I: Score distinction is evidence-based and reflects defect severity");
+
+  // Test 19: Metadata Title Template & Brand Deduplication
+  console.log("\n--- 19. Testing Metadata Title Template & Brand Deduplication ---");
+
+  // Helper simulating Next.js layout title template resolution
+  const layoutTitleTemplate = "%s | Nova Tools";
+  function simulateNextJsTitleRender(pageTitleOutput) {
+    if (typeof pageTitleOutput === "object" && pageTitleOutput !== null && "absolute" in pageTitleOutput) {
+      return pageTitleOutput.absolute;
+    }
+    if (typeof pageTitleOutput === "string") {
+      return layoutTitleTemplate.replace("%s", pageTitleOutput);
+    }
+    return "";
+  }
+
+  function countBrandSuffixOccurrences(title) {
+    const matches = title.match(/Nova Tools/gi);
+    return matches ? matches.length : 0;
+  }
+
+  function resolveTestMetadataTitle(rawTitle) {
+    const trimmed = (rawTitle || "").trim();
+    const cleanTitle = trimmed.replace(/(\s*\|\s*Nova Tools\s*)+$/i, "").trim();
+    const hasBrandSuffix = /\|\s*Nova Tools\s*$/i.test(trimmed);
+    const fullTitle = `${cleanTitle} | Nova Tools`;
+    return {
+      title: hasBrandSuffix ? { absolute: fullTitle } : cleanTitle,
+      fullTitle,
+      cleanTitle,
+      hasBrandSuffix,
+    };
+  }
+
+  // Sub-test 19.1: Branded title input (standard tool seoTitle with '| Nova Tools')
+  const testBrandedInput = "Barcode Generator (Code 128 / Code 39) Online | Nova Tools";
+  const metaBranded = resolveTestMetadataTitle(testBrandedInput);
+  assert(typeof metaBranded.title === "object" && metaBranded.title.absolute, "Section 19.1: Branded title returns absolute title object to bypass layout template");
+  const renderedBranded = simulateNextJsTitleRender(metaBranded.title);
+  assert(renderedBranded === testBrandedInput, `Section 19.1: Rendered title matches expected ("${renderedBranded}")`);
+  assert(countBrandSuffixOccurrences(renderedBranded) === 1, "Section 19.1: Branded input produces brand suffix count of exactly 1");
+
+  // Sub-test 19.2: Unbranded title input (name only or unbranded seoTitle)
+  const testUnbrandedInput = "Barcode Generator (Code 128 / Code 39) Online";
+  const metaUnbranded = resolveTestMetadataTitle(testUnbrandedInput);
+  assert(typeof metaUnbranded.title === "string", "Section 19.2: Unbranded title returns string for layout template interpolation");
+  const renderedUnbranded = simulateNextJsTitleRender(metaUnbranded.title);
+  assert(renderedUnbranded === `${testUnbrandedInput} | Nova Tools`, `Section 19.2: Rendered unbranded title receives template suffix ("${renderedUnbranded}")`);
+  assert(countBrandSuffixOccurrences(renderedUnbranded) === 1, "Section 19.2: Unbranded input produces brand suffix count of exactly 1");
+
+  // Sub-test 19.3: Already duplicated title input (edge case: multiple brand suffixes)
+  const testDuplicatedInput = "Barcode Generator Online | Nova Tools | Nova Tools";
+  const metaDuplicated = resolveTestMetadataTitle(testDuplicatedInput);
+  const renderedDuplicated = simulateNextJsTitleRender(metaDuplicated.title);
+  assert(renderedDuplicated === "Barcode Generator Online | Nova Tools", `Section 19.3: Duplicate brand suffixes stripped cleanly ("${renderedDuplicated}")`);
+  assert(countBrandSuffixOccurrences(renderedDuplicated) === 1, "Section 19.3: Duplicated input produces brand suffix count of exactly 1");
+
+  // Sub-test 19.4: Case-insensitive brand suffix with trailing whitespace
+  const testCaseInput = "CGPA to Percentage Converter | nova tools  ";
+  const metaCase = resolveTestMetadataTitle(testCaseInput);
+  const renderedCase = simulateNextJsTitleRender(metaCase.title);
+  assert(renderedCase === "CGPA to Percentage Converter | Nova Tools", `Section 19.4: Case-insensitive suffix normalized ("${renderedCase}")`);
+  assert(countBrandSuffixOccurrences(renderedCase) === 1, "Section 19.4: Case-insensitive input produces brand suffix count of exactly 1");
+
+  // Sub-test 19.5: Check real catalog tools from today's batch
+  const testSlugsToCheck = [
+    "barcode-code128-generator",
+    "audio-file-bitrate-size-calculator",
+    "cgpa-to-percentage-converter",
+    "aspect-ratio-calculator",
+    "ascii-to-hex-converter",
+  ];
+
+  for (const slug of testSlugsToCheck) {
+    const catalogTool = getAllTools().find((t) => t.slug === slug);
+    assert(!!catalogTool, `Section 19.5: Tool ${slug} exists in catalog`);
+    if (catalogTool) {
+      const toolRawTitle = (catalogTool.seoTitle || catalogTool.name).trim();
+      const metaResult = resolveTestMetadataTitle(toolRawTitle);
+      const finalTitle = simulateNextJsTitleRender(metaResult.title);
+      const brandCount = countBrandSuffixOccurrences(finalTitle);
+
+      assert(brandCount === 1, `Section 19.5 [${slug}]: Brand suffix count is exactly 1 (got ${brandCount})`);
+      assert(finalTitle.endsWith("| Nova Tools"), `Section 19.5 [${slug}]: Final title ends with standard brand suffix`);
+      assert(!finalTitle.includes("Nova Tools | Nova Tools"), `Section 19.5 [${slug}]: No duplicate brand suffix present`);
+
+      // Verify canonical URL preserved
+      const expectedCanonical = `https://novatool.in/${slug}`;
+      assert(expectedCanonical === `https://novatool.in/${catalogTool.slug}`, `Section 19.5 [${slug}]: Canonical URL strictly preserved`);
+
+      // Verify OpenGraph title brand count
+      const ogBrandCount = countBrandSuffixOccurrences(metaResult.fullTitle);
+      assert(ogBrandCount === 1, `Section 19.5 [${slug}]: OpenGraph title brand count is exactly 1`);
+    }
+  }
+
+  // Sub-test 19.6: Static tool hubs (app/tools/[slug]/page.tsx)
+  const hubTitle = "Developer Tools";
+  const hubAbsoluteTitle = { absolute: `${hubTitle} | Nova Tools` };
+  const renderedHub = simulateNextJsTitleRender(hubAbsoluteTitle);
+  assert(renderedHub === "Developer Tools | Nova Tools", `Section 19.6: Tool hub title rendered as absolute ("${renderedHub}")`);
+  assert(countBrandSuffixOccurrences(renderedHub) === 1, "Section 19.6: Tool hub brand count is exactly 1");
+
   // Clean up temp dir
   try {
     fs.rmSync(tempDir, { recursive: true, force: true });

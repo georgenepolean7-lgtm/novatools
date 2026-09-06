@@ -28,8 +28,8 @@ export class SeoOpportunityEngine {
     gscMetrics: GSCPageMetric[],
     ga4Metrics: GA4TrafficMetric[],
     priorGscMetrics: GSCPageMetric[] = [],
-    bingMetrics: BingPerformanceMetric[] = [],
-    clarityMetrics: ClarityUxMetric[] = [],
+    _bingMetrics: BingPerformanceMetric[] = [],
+    _clarityMetrics: ClarityUxMetric[] = [],
     resolvedOpportunities: string[] = []
   ): SeoOpportunity[] {
     const allTools = getAllTools();
@@ -99,7 +99,7 @@ export class SeoOpportunityEngine {
       if (ga4) provenance.push(ga4.provenance);
 
       // Rule A: Position 4-10 Striking Distance (High CTR upside)
-      if (avgPosition >= 4.0 && avgPosition <= 10.0 && totalImpressions >= 50) {
+      if (avgPosition >= 4.0 && avgPosition <= 10.0 && totalImpressions >= 10) {
         opportunities.push(
           this.createOpportunity({
             id: `pos-4-10-${pageSlug}`,
@@ -119,7 +119,7 @@ export class SeoOpportunityEngine {
       }
 
       // Rule B: Position 11-20 Page 2 Breakout
-      if (avgPosition >= 11.0 && avgPosition <= 20.0 && totalImpressions >= 100) {
+      if (avgPosition >= 11.0 && avgPosition <= 20.0 && totalImpressions >= 15) {
         opportunities.push(
           this.createOpportunity({
             id: `pos-11-20-${pageSlug}`,
@@ -139,7 +139,7 @@ export class SeoOpportunityEngine {
       }
 
       // Rule C: High Impressions, Low CTR (Underperforming Snippet)
-      if (totalImpressions >= 200 && avgCtr < 2.0 && avgPosition <= 15) {
+      if (totalImpressions >= 25 && avgCtr < 3.0 && avgPosition <= 20) {
         opportunities.push(
           this.createOpportunity({
             id: `high-imp-low-ctr-${pageSlug}`,
@@ -199,23 +199,21 @@ export class SeoOpportunityEngine {
       }
 
       // Rule I: Thin Pages (Evaluated via Holistic Useful Content Depth)
-      // Safety Rule: Zero-traffic pages never receive speculative FAQ/content changes.
       const contentDepth = evaluateUsefulContentDepth(tool);
-      const hasSearchEvidence = totalImpressions > 0 || (ga4?.sessions || 0) > 0;
       const isFaqResolved =
         resolvedSet.has(`thin-content-${pageSlug}`) ||
         resolvedSet.has(`${pageSlug}:FAQ_ENRICHMENT`) ||
         resolvedSet.has(`${pageSlug}:THIN_PAGE_CONTENT`);
 
-      // Genuinely thin page check: only flagged if content depth is truly lacking AND has search demand
-      if (contentDepth.isThin && hasSearchEvidence && !isFaqResolved) {
+      // Genuinely thin page check: flagged if content depth is truly lacking
+      if (contentDepth.isThin && !isFaqResolved) {
         opportunities.push(
           this.createOpportunity({
             id: `thin-content-${pageSlug}`,
             pageSlug,
             pageUrl,
             type: "THIN_PAGE_CONTENT",
-            reason: `Tool has limited explanatory content (${contentDepth.faqCount} FAQs, depth score: ${contentDepth.depthScore}/100) with search evidence (${totalImpressions} GSC imp, ${ga4?.sessions || 0} GA4 sessions).`,
+            reason: `Tool has limited explanatory content (${contentDepth.faqCount} FAQs, depth score: ${contentDepth.depthScore}/100)${totalImpressions > 0 ? ` with search evidence (${totalImpressions} GSC imp)` : ""}.`,
             riskLevel: "LOW",
             targetFile,
             actionType: "FAQ_ENRICHMENT",
@@ -280,9 +278,13 @@ export class SeoOpportunityEngine {
         resolvedSet.has(`${pageSlug}:TITLE_OPTIMIZATION`) ||
         resolvedSet.has(`${pageSlug}:WEAK_TITLE`);
       const hasLegacyTitleBoilerplate = (tool.seoTitle || "").includes("Free, Fast & Private");
+      const hasBrand = (tool.seoTitle || "").includes("Nova Tools") || (tool.seoTitle || "").includes("Nova");
+      const isTitleOutsideOptimal =
+        titleLen < SEO_AGENT_CONFIG.METADATA.OPTIMAL_MIN_TITLE_LENGTH ||
+        titleLen > SEO_AGENT_CONFIG.METADATA.OPTIMAL_MAX_TITLE_LENGTH;
 
-      // Title is genuinely weak if under 30 chars, over 65 chars, or contains deprecated boilerplate
-      if ((titleLen < 30 || titleLen > 65 || hasLegacyTitleBoilerplate) && !isTitleResolved) {
+      // Title has an objective defect if outside optimal range (35-60), lacks brand suffix, or contains deprecated boilerplate
+      if ((isTitleOutsideOptimal || hasLegacyTitleBoilerplate || !hasBrand) && !isTitleResolved) {
         opportunities.push(
           this.createOpportunity({
             id: `weak-title-${pageSlug}`,
@@ -291,7 +293,9 @@ export class SeoOpportunityEngine {
             type: "WEAK_TITLE",
             reason: hasLegacyTitleBoilerplate
               ? `Title contains deprecated boilerplate ('Free, Fast & Private').`
-              : `Title length (${titleLen} characters) is outside optimal range (35-60 chars).`,
+              : !hasBrand
+              ? `Title lacks standard brand suffix ('| Nova Tools').`
+              : `Title length (${titleLen} characters) is outside optimal range (${SEO_AGENT_CONFIG.METADATA.OPTIMAL_MIN_TITLE_LENGTH}-${SEO_AGENT_CONFIG.METADATA.OPTIMAL_MAX_TITLE_LENGTH} chars).`,
             riskLevel: "LOW",
             targetFile,
             actionType: "TITLE_OPTIMIZATION",
@@ -313,9 +317,12 @@ export class SeoOpportunityEngine {
       const hasLegacyDescBoilerplate =
         (tool.seoDescription || "").includes("Free, Fast & Private") ||
         (!isFileTool && (tool.seoDescription || "").includes("zero file uploads"));
+      const isDescOutsideOptimal =
+        descLen < SEO_AGENT_CONFIG.METADATA.OPTIMAL_MIN_DESCRIPTION_LENGTH ||
+        descLen > SEO_AGENT_CONFIG.METADATA.OPTIMAL_MAX_DESCRIPTION_LENGTH;
 
-      // Description is genuinely weak if under 80 chars, over 165 chars, or contains deprecated boilerplate
-      if ((descLen < 80 || descLen > 165 || hasLegacyDescBoilerplate) && !isDescResolved) {
+      // Description has an objective defect if outside optimal range (110-155) or contains deprecated boilerplate
+      if ((isDescOutsideOptimal || hasLegacyDescBoilerplate) && !isDescResolved) {
         opportunities.push(
           this.createOpportunity({
             id: `weak-desc-${pageSlug}`,
@@ -324,7 +331,7 @@ export class SeoOpportunityEngine {
             type: "WEAK_META_DESCRIPTION",
             reason: hasLegacyDescBoilerplate
               ? `Meta description contains deprecated boilerplate.`
-              : `Meta description length (${descLen} characters) is outside optimal range (120-155 chars).`,
+              : `Meta description length (${descLen} characters) is outside optimal range (${SEO_AGENT_CONFIG.METADATA.OPTIMAL_MIN_DESCRIPTION_LENGTH}-${SEO_AGENT_CONFIG.METADATA.OPTIMAL_MAX_DESCRIPTION_LENGTH} chars).`,
             riskLevel: "LOW",
             targetFile,
             actionType: "DESCRIPTION_OPTIMIZATION",

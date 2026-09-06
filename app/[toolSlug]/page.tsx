@@ -25,10 +25,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const fullTitle = `${tool.seoTitle} | Nova Tools`;
+  const rawTitle = (tool.seoTitle || tool.name).trim();
+  const cleanTitle = rawTitle.replace(/(\s*\|\s*Nova Tools\s*)+$/i, "").trim();
+  const hasBrandSuffix = /\|\s*Nova Tools\s*$/i.test(rawTitle);
+  const fullTitle = `${cleanTitle} | Nova Tools`;
 
   return {
-    title: tool.seoTitle,
+    title: hasBrandSuffix ? { absolute: fullTitle } : cleanTitle,
     description: tool.seoDescription,
     alternates: {
       canonical: `https://novatool.in/${tool.slug}`,

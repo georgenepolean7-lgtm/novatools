@@ -24,7 +24,8 @@ export class SeoScoringEngine {
           breakdown.ctrOpportunity +
           breakdown.trafficTrend +
           breakdown.businessRelevance +
-          breakdown.pageQuality -
+          breakdown.pageQuality +
+          (breakdown.objectiveDefect || 0) -
           breakdown.riskPenalty
       );
 
@@ -172,18 +173,26 @@ export class SeoScoringEngine {
     }
 
     if (actionType === "TITLE_OPTIMIZATION" && opp.type === "WEAK_TITLE") {
-      const titleLen = (tool.seoTitle || "").length;
-      if (titleLen >= 35 && titleLen <= 60) {
+      const titleLen = (tool.seoTitle || "").trim().length;
+      const hasBrand = (tool.seoTitle || "").includes("Nova Tools") || (tool.seoTitle || "").includes("Nova");
+      if (
+        titleLen >= SEO_AGENT_CONFIG.METADATA.OPTIMAL_MIN_TITLE_LENGTH &&
+        titleLen <= SEO_AGENT_CONFIG.METADATA.OPTIMAL_MAX_TITLE_LENGTH &&
+        hasBrand
+      ) {
         return {
           noOp: true,
-          reason: `Current title is already in optimal length range (${titleLen} characters).`,
+          reason: `Current title is already in optimal length range (${titleLen} characters) with brand value.`,
         };
       }
     }
 
     if (actionType === "DESCRIPTION_OPTIMIZATION" && opp.type === "WEAK_META_DESCRIPTION") {
-      const descLen = (tool.seoDescription || "").length;
-      if (descLen >= 120 && descLen <= 155) {
+      const descLen = (tool.seoDescription || "").trim().length;
+      if (
+        descLen >= SEO_AGENT_CONFIG.METADATA.OPTIMAL_MIN_DESCRIPTION_LENGTH &&
+        descLen <= SEO_AGENT_CONFIG.METADATA.OPTIMAL_MAX_DESCRIPTION_LENGTH
+      ) {
         return {
           noOp: true,
           reason: `Current meta description is already in optimal length range (${descLen} characters).`,
@@ -259,11 +268,48 @@ export class SeoScoringEngine {
 
     // 6. Page Quality Factor (0 to 10 points)
     let pageQuality = 8;
-    if (opp.type === "THIN_PAGE_CONTENT" || opp.type === "ORPHAN_PAGE") {
-      pageQuality = 5;
+    if (opp.type === "ORPHAN_PAGE") {
+      pageQuality = 6;
     }
 
-    // 7. Risk Penalty
+    // 7. Objective Defect Prioritization (0 to 15 points)
+    // Deterministic quality defects receive priority based on on-page SEO defect severity
+    const tool = getToolBySlug(opp.pageSlug);
+    let objectiveDefect = 0;
+    if (opp.type === "WEAK_TITLE" && tool) {
+      const titleLen = (tool.seoTitle || "").trim().length;
+      const hasLegacy = (tool.seoTitle || "").includes("Free, Fast & Private");
+      if (titleLen < 35 || titleLen > 60 || hasLegacy) {
+        objectiveDefect = 12; // High priority: Title tag is primary on-page ranking and SERP headline signal
+      } else {
+        objectiveDefect = 8;  // Minor defect (brand suffix formatting)
+      }
+    } else if (opp.type === "WEAK_META_DESCRIPTION" && tool) {
+      const descLen = (tool.seoDescription || "").trim().length;
+      const hasLegacy = (tool.seoDescription || "").includes("Free, Fast & Private");
+      if (descLen < 110 || descLen > 155 || hasLegacy) {
+        objectiveDefect = 11; // Medium-high priority: Snippet description quality
+      } else {
+        objectiveDefect = 7;
+      }
+    } else if (opp.type === "THIN_PAGE_CONTENT" && tool) {
+      const faqCount = tool.faq?.length || 0;
+      if (faqCount <= 1) {
+        objectiveDefect = 10; // FAQ deficiency (page has <= 1 FAQ)
+      } else if (faqCount < 4) {
+        objectiveDefect = 8;  // Moderate FAQ deficiency (2-3 FAQs)
+      } else {
+        objectiveDefect = 5;
+      }
+    } else if (opp.type === "POSITION_4_10_OPPORTUNITY" || opp.type === "HIGH_IMPRESSIONS_LOW_CTR") {
+      objectiveDefect = 14; // High upside search query snippet optimization
+    } else if (opp.type === "ORPHAN_PAGE") {
+      objectiveDefect = 6;  // Structural orphan utility
+    } else if (opp.type === "WEAK_INTERNAL_LINKING") {
+      objectiveDefect = 4;  // Structural weak links
+    }
+
+    // 8. Risk Penalty
     let riskPenalty = 0;
     if (opp.riskLevel === "HIGH") {
       riskPenalty = 100; // Heavily penalize high risk
@@ -280,6 +326,7 @@ export class SeoScoringEngine {
       trafficTrend,
       businessRelevance,
       pageQuality,
+      objectiveDefect,
       riskPenalty,
     };
   }

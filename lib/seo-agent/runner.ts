@@ -771,13 +771,18 @@ export class SeoAgentRunner {
           (opp.currentMetrics?.impressions || 0) > 0 ||
           (opp.currentMetrics?.clicks || 0) > 0 ||
           (opp.currentMetrics?.trafficSessions || 0) > 0;
+        const titleLen = (realTool.seoTitle || "").trim().length;
+        const descLen = (realTool.seoDescription || "").trim().length;
+        const hasBrand = (realTool.seoTitle || "").includes("Nova Tools") || (realTool.seoTitle || "").includes("Nova");
         const hasObjectiveDefect =
           opp.type === "WEAK_TITLE" ||
           opp.type === "WEAK_META_DESCRIPTION" ||
-          (realTool.seoTitle || "").trim().length < 30 ||
-          (realTool.seoTitle || "").trim().length > 65 ||
-          (realTool.seoDescription || "").trim().length < 80 ||
-          (realTool.seoDescription || "").trim().length > 165 ||
+          opp.type === "THIN_PAGE_CONTENT" ||
+          titleLen < SEO_AGENT_CONFIG.METADATA.OPTIMAL_MIN_TITLE_LENGTH ||
+          titleLen > SEO_AGENT_CONFIG.METADATA.OPTIMAL_MAX_TITLE_LENGTH ||
+          !hasBrand ||
+          descLen < SEO_AGENT_CONFIG.METADATA.OPTIMAL_MIN_DESCRIPTION_LENGTH ||
+          descLen > SEO_AGENT_CONFIG.METADATA.OPTIMAL_MAX_DESCRIPTION_LENGTH ||
           (realTool.seoTitle || "").includes("Free, Fast & Private") ||
           (realTool.seoDescription || "").includes("Free, Fast & Private");
 
@@ -935,13 +940,18 @@ export class SeoAgentRunner {
                 (opp.currentMetrics?.impressions || 0) > 0 ||
                 (opp.currentMetrics?.clicks || 0) > 0 ||
                 (opp.currentMetrics?.trafficSessions || 0) > 0;
+              const titleLen = (realTool.seoTitle || "").trim().length;
+              const descLen = (realTool.seoDescription || "").trim().length;
+              const hasBrand = (realTool.seoTitle || "").includes("Nova Tools") || (realTool.seoTitle || "").includes("Nova");
               const hasObjectiveDefect =
                 opp.type === "WEAK_TITLE" ||
                 opp.type === "WEAK_META_DESCRIPTION" ||
-                (realTool.seoTitle || "").trim().length < 30 ||
-                (realTool.seoTitle || "").trim().length > 65 ||
-                (realTool.seoDescription || "").trim().length < 80 ||
-                (realTool.seoDescription || "").trim().length > 165 ||
+                opp.type === "THIN_PAGE_CONTENT" ||
+                titleLen < SEO_AGENT_CONFIG.METADATA.OPTIMAL_MIN_TITLE_LENGTH ||
+                titleLen > SEO_AGENT_CONFIG.METADATA.OPTIMAL_MAX_TITLE_LENGTH ||
+                !hasBrand ||
+                descLen < SEO_AGENT_CONFIG.METADATA.OPTIMAL_MIN_DESCRIPTION_LENGTH ||
+                descLen > SEO_AGENT_CONFIG.METADATA.OPTIMAL_MAX_DESCRIPTION_LENGTH ||
                 (realTool.seoTitle || "").includes("Free, Fast & Private") ||
                 (realTool.seoDescription || "").includes("Free, Fast & Private");
 
