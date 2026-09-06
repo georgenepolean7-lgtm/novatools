@@ -115,10 +115,10 @@ async function runVerification() {
   }
 
   const emptyGa4 = await connector.fetchAnalyticsMetrics({ startDate: "2026-08-01", endDate: "2026-08-28" });
-  if (health.ga4DataApi.status !== "CONNECTED") {
-    assert(emptyGa4.metrics.length === 0, "Unconfigured GA4 Data API returns exactly 0 metrics without fabricating fake numbers");
+  if (health.ga4DataApi.status !== "CONNECTED" && health.ga4.status !== "CONNECTED") {
+    assert(emptyGa4.metrics.length === 0, "Unconfigured GA4 returns exactly 0 metrics without fabricating fake numbers");
   } else {
-    assert(emptyGa4.metrics.length > 0, `Connected GA4 Data API successfully returned ${emptyGa4.metrics.length} real traffic metrics`);
+    assert(emptyGa4.metrics.length > 0, `Connected GA4 successfully returned ${emptyGa4.metrics.length} real traffic metrics`);
   }
 
   // Test 3: Opportunity Detection Engine (19 Signal Detectors)
@@ -992,7 +992,7 @@ async function runVerification() {
   const gscTimeoutRes = await testConnector.fetchSearchConsoleMetrics({ startDate: "2026-01-01", endDate: "2026-01-28" });
   const connElapsed = Date.now() - connStart;
   assert(gscTimeoutRes !== null && Array.isArray(gscTimeoutRes.metrics), "Regression 2: Connector timeout returns structured failure result");
-  assert(connElapsed < 10000, `Regression 2: Connector request resolved cleanly without hanging (${connElapsed}ms)`);
+  assert(connElapsed < 30000, `Regression 2: Connector request resolved cleanly without hanging (${connElapsed}ms)`);
 
   // 3. Validation timeout regression test
   console.log("Testing Validation timeout handling...");

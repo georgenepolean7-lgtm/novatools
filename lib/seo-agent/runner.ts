@@ -462,7 +462,10 @@ export class SeoAgentRunner {
 
     // Stop and block if real Search Console metrics are unavailable
     if (SEO_AGENT_CONFIG.REAL_SEO_DATA_REQUIRED && !hasRealGscData) {
-      const summary = `BLOCKED: Zero real GSC telemetry data retrieved. Real Data Gate prevents autonomous changes without authenticated live metrics. Missing/Pending: ${missingConnectors.join(", ")}.`;
+      const missingReason = missingConnectors.length > 0
+        ? missingConnectors.join(", ")
+        : `Google Search Console real telemetry (0 rows retrieved from ${SEO_AGENT_CONFIG.GSC_SITE_PROPERTY}; provenance: ${priorGscResult.provenanceReport || "no data returned"})`;
+      const summary = `BLOCKED: Zero real GSC telemetry data retrieved. Real Data Gate prevents autonomous changes without authenticated live metrics. Missing/Pending: ${missingReason}.`;
       console.warn(`\n🛑 [REAL DATA GATE ACTIVATED]`);
       console.warn(`   Reason: Search Console returned 0 rows for ${SEO_AGENT_CONFIG.GSC_SITE_PROPERTY}`);
       console.warn(`   Resolution: Verify Composio Google OAuth connection or GSC credentials in .env.local.`);
@@ -1051,7 +1054,12 @@ export class SeoAgentRunner {
               console.log(`[SEO][stage_a_validation] started for /${opp.pageSlug}`);
               console.log(`   [Stage A Isolation] Running cheap preflight check for /${opp.pageSlug}...`);
               const stageAStart = Date.now();
-              const stageAResult = this.validator.validatePageStageA(opp.pageSlug);
+              const stageAResult = this.validator.validatePageStageA(opp.pageSlug, {
+                seoTitle: semanticResult.seoTitle,
+                seoDescription: semanticResult.seoDescription,
+                faq: semanticResult.faqs,
+                relatedTools: semanticResult.internalLinkSuggestions,
+              });
               totalValidationMs += Date.now() - stageAStart;
               if (!stageAResult.passed) {
                 console.log(`[SEO][stage_a_validation] failed for /${opp.pageSlug}: ${stageAResult.failureReason}`);

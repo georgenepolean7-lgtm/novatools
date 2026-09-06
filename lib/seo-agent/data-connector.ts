@@ -487,6 +487,13 @@ export class SeoDataConnector {
             status: "CONNECTED",
             provenanceReport: `Retrieved ${metrics.length} real GSC metrics from ${this.gscProperty} for ${dateRange.startDate} to ${dateRange.endDate}`,
           };
+        } else {
+          const errorBody = await res.text().catch(() => "");
+          return {
+            metrics: [],
+            status: "ERROR",
+            provenanceReport: `Composio GSC API returned HTTP ${res.status} (${res.statusText}): ${errorBody.slice(0, 300)}. Zero fabricated metrics returned.`,
+          };
         }
       } catch (err) {
         return {
@@ -678,11 +685,18 @@ export class SeoDataConnector {
           status: "CONNECTED",
           provenanceReport: `Retrieved ${metrics.length} real Bing Webmaster Tools rows for ${this.gscProperty}`,
         };
+      } else {
+        const errorBody = await res.text().catch(() => "");
+        return {
+          metrics: [],
+          status: "ERROR",
+          provenanceReport: `Composio Bing API returned HTTP ${res.status} (${res.statusText}): ${errorBody.slice(0, 300)}. Zero fabricated metrics returned.`,
+        };
       }
     } catch (err) {
       return {
         metrics: [],
-        status: "NOT_CONNECTED",
+        status: "ERROR",
         provenanceReport: `Bing Webmaster Tools request failed or timed out: ${err instanceof Error ? err.message : String(err)}. Zero fabricated metrics returned.`,
       };
     }
@@ -910,7 +924,7 @@ export class SeoDataConnector {
         provenanceImplemented: true,
         errorReason: ga4Result.status !== "CONNECTED" ? ga4Result.provenanceReport : undefined,
         lastSuccessfulRetrieval: ga4Result.metrics.length > 0 ? "Current cycle (GA4 Data API v1beta)" : undefined,
-        provenanceDetails: "Direct Google Analytics Data API (runReport) on Property ID: 479153549",
+        provenanceDetails: `Direct Google Analytics Data API (runReport) on Property ID: ${this.ga4PropertyId}`,
       },
       {
         sourceName: "Bing Webmaster Tools",
@@ -1063,7 +1077,7 @@ export class SeoDataConnector {
         provenanceImplemented: true,
         errorReason: ga4.status !== "CONNECTED" ? ga4.provenanceReport : undefined,
         lastSuccessfulRetrieval: ga4.metrics.length > 0 ? "Current cycle (GA4 Data API v1beta)" : undefined,
-        provenanceDetails: "Direct Google Analytics Data API (runReport) on Property ID: 479153549",
+        provenanceDetails: `Direct Google Analytics Data API (runReport) on Property ID: ${this.ga4PropertyId}`,
       },
       {
         sourceName: "Bing Webmaster Tools",

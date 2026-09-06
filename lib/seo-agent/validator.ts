@@ -77,6 +77,107 @@ export function execWithWatchdog(
   });
 }
 
+export interface PostPatchMetadataOverrides {
+  seoTitle?: string;
+  seoDescription?: string;
+  name?: string;
+  canonicalUrl?: string;
+  faq?: Array<{ question: string; answer: string }>;
+  relatedTools?: string[];
+}
+
+/**
+ * Safely extracts the enclosing tool block { ... } for a given slug from raw TypeScript file content.
+ */
+export function extractToolBlockFromContent(
+  content: string,
+  toolSlug: string
+): { blockStart: number; blockEnd: number; block: string } | null {
+  const escapedSlug = toolSlug.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const slugRegex = new RegExp(`slug:\\s*["']${escapedSlug}["']`);
+  const slugMatch = content.match(slugRegex);
+  if (!slugMatch || slugMatch.index === undefined) return null;
+
+  const slugPos = slugMatch.index;
+  let depth = 0;
+  let blockStart = -1;
+  let inString: string | null = null;
+  let isEscaped = false;
+
+  for (let i = slugPos; i >= 0; i--) {
+    const char = content[i];
+    if (isEscaped) {
+      isEscaped = false;
+      continue;
+    }
+    if (char === "\\") {
+      isEscaped = true;
+      continue;
+    }
+    if (inString) {
+      if (char === inString) inString = null;
+      continue;
+    }
+    if (char === '"' || char === "'" || char === "`") {
+      inString = char;
+      continue;
+    }
+    if (char === "}") {
+      depth++;
+    } else if (char === "{") {
+      if (depth === 0) {
+        blockStart = i;
+        break;
+      }
+      depth--;
+    }
+  }
+
+  if (blockStart === -1) blockStart = content.lastIndexOf("{", slugPos);
+  if (blockStart === -1) return null;
+
+  depth = 0;
+  let blockEnd = -1;
+  inString = null;
+  isEscaped = false;
+
+  for (let i = blockStart; i < content.length; i++) {
+    const char = content[i];
+    if (isEscaped) {
+      isEscaped = false;
+      continue;
+    }
+    if (char === "\\") {
+      isEscaped = true;
+      continue;
+    }
+    if (inString) {
+      if (char === inString) inString = null;
+      continue;
+    }
+    if (char === '"' || char === "'" || char === "`") {
+      inString = char;
+      continue;
+    }
+    if (char === "{") depth++;
+    else if (char === "}") {
+      depth--;
+      if (depth === 0) {
+        blockEnd = i;
+        break;
+      }
+    }
+  }
+
+  if (blockEnd === -1) return null;
+
+  return {
+    blockStart,
+    blockEnd,
+    block: content.substring(blockStart, blockEnd + 1),
+  };
+}
+
 export class SeoValidator {
   private workspaceRoot: string;
 
@@ -87,8 +188,10 @@ export class SeoValidator {
   /**
    * Stage A: Cheap, fast per-page validation before expensive global builds.
    * Isolates failures to the single offending page without failing the entire batch.
+   * Validates post-patch state after optimizer modification, ensuring patched fields
+   * conform to canonical metadata limits while allowing unpatched pre-change metadata.
    */
-  validatePageStageA(slug: string): StageAValidationResult {
+  validatePageStageA(slug: string, postPatchOverrides?: PostPatchMetadataOverrides): StageAValidationResult {
     const start = Date.now();
     const checks: ValidationCheckResult[] = [];
     const cleanSlug = normalizeToolSlug(slug);
@@ -152,6 +255,11 @@ export class SeoValidator {
     });
 
     // 3. Syntax-safe patch check (TypeScript AST diagnostics on category file)
+    let onDiskTitle: string | undefined;
+    let onDiskDesc: string | undefined;
+    let onDiskName: string | undefined;
+    let onDiskCanonical: string | undefined;
+
     const categoryFullPath = path.join(this.workspaceRoot, categoryFileRel);
     if (fs.existsSync(categoryFullPath)) {
       try {
@@ -181,6 +289,19 @@ export class SeoValidator {
               },
             ],
           };
+        }
+
+        // Extract on-disk tool block properties to validate post-patch state directly from disk
+        const parsedBlock = extractToolBlockFromContent(fileContent, cleanSlug);
+        if (parsedBlock) {
+          const tMatch = parsedBlock.block.match(/seoTitle:\s*(?:"((?:\\.|[^"\\])*)"|'((?:\\.|[^'\\])*)')/);
+          if (tMatch) onDiskTitle = tMatch[1] || tMatch[2];
+          const dMatch = parsedBlock.block.match(/seoDescription:\s*(?:"((?:\\.|[^"\\])*)"|'((?:\\.|[^'\\])*)')/);
+          if (dMatch) onDiskDesc = dMatch[1] || dMatch[2];
+          const nMatch = parsedBlock.block.match(/name:\s*(?:"((?:\\.|[^"\\])*)"|'((?:\\.|[^'\\])*)')/);
+          if (nMatch) onDiskName = nMatch[1] || nMatch[2];
+          const cMatch = parsedBlock.block.match(/canonicalUrl:\s*(?:"((?:\\.|[^"\\])*)"|'((?:\\.|[^'\\])*)')/);
+          if (cMatch) onDiskCanonical = cMatch[1] || cMatch[2];
         }
       } catch (err) {
         return {
@@ -226,26 +347,27 @@ export class SeoValidator {
       };
     }
     const expectedCanonical = `https://${SEO_AGENT_CONFIG.SITE_DOMAIN}/${cleanSlug}`;
-    if (tool.canonicalUrl) {
+    const effectiveCanonical = (postPatchOverrides?.canonicalUrl ?? onDiskCanonical ?? tool.canonicalUrl ?? "").trim();
+    if (effectiveCanonical) {
       let normalizedToolCanonical: string;
-      if (tool.canonicalUrl.startsWith("http://") || tool.canonicalUrl.startsWith("https://")) {
-        normalizedToolCanonical = tool.canonicalUrl.trim().replace(/\/+$/, "");
+      if (effectiveCanonical.startsWith("http://") || effectiveCanonical.startsWith("https://")) {
+        normalizedToolCanonical = effectiveCanonical.replace(/\/+$/, "");
       } else {
-        const cleanPath = normalizeToolSlug(tool.canonicalUrl);
+        const cleanPath = normalizeToolSlug(effectiveCanonical);
         normalizedToolCanonical = `https://${SEO_AGENT_CONFIG.SITE_DOMAIN}/${cleanPath}`;
       }
       if (normalizedToolCanonical !== expectedCanonical) {
         return {
           passed: false,
           slug,
-          failureReason: `Tool ${tool.slug} canonicalUrl mismatch: declared '${tool.canonicalUrl}', expected '${expectedCanonical}'`,
+          failureReason: `Tool ${tool.slug} canonicalUrl mismatch: declared '${effectiveCanonical}', expected '${expectedCanonical}'`,
           durationMs: Date.now() - start,
           checks: [
             ...checks,
             {
               name: "Canonical Invariant Gate",
               passed: false,
-              message: `Canonical mismatch: declared '${tool.canonicalUrl}', expected '${expectedCanonical}'`,
+              message: `Canonical mismatch: declared '${effectiveCanonical}', expected '${expectedCanonical}'`,
               durationMs: Date.now() - start,
             },
           ],
@@ -260,7 +382,11 @@ export class SeoValidator {
     });
 
     // 5. Metadata invariants
-    if (!tool.name || tool.name.trim().length === 0) {
+    const effectiveName = (postPatchOverrides?.name ?? onDiskName ?? tool.name ?? "").trim();
+    const effectiveTitle = (postPatchOverrides?.seoTitle ?? onDiskTitle ?? tool.seoTitle ?? "").trim();
+    const effectiveDescription = (postPatchOverrides?.seoDescription ?? onDiskDesc ?? tool.seoDescription ?? "").trim();
+
+    if (!effectiveName || effectiveName.length === 0) {
       return {
         passed: false,
         slug,
@@ -272,30 +398,106 @@ export class SeoValidator {
         ],
       };
     }
-    if (tool.seoTitle && (tool.seoTitle.trim().length < 20 || tool.seoTitle.trim().length > 75)) {
+
+    const titleWasPatched =
+      (postPatchOverrides?.seoTitle !== undefined && postPatchOverrides.seoTitle.trim() !== (tool.seoTitle || "").trim()) ||
+      (onDiskTitle !== undefined && onDiskTitle.trim() !== (tool.seoTitle || "").trim());
+
+    const descWasPatched =
+      (postPatchOverrides?.seoDescription !== undefined && postPatchOverrides.seoDescription.trim() !== (tool.seoDescription || "").trim()) ||
+      (onDiskDesc !== undefined && onDiskDesc.trim() !== (tool.seoDescription || "").trim());
+
+    const minTitle = SEO_AGENT_CONFIG.METADATA.MIN_TITLE_LENGTH; // 30
+    const maxTitle = SEO_AGENT_CONFIG.METADATA.MAX_TITLE_LENGTH; // 65
+    const minDesc = SEO_AGENT_CONFIG.METADATA.MIN_DESCRIPTION_LENGTH; // 80
+    const maxDesc = SEO_AGENT_CONFIG.METADATA.MAX_DESCRIPTION_LENGTH; // 165
+
+    // Validate title:
+    if (!effectiveTitle || effectiveTitle.length === 0) {
       return {
         passed: false,
         slug,
-        failureReason: `Tool ${tool.slug} seoTitle length out of bounds (${tool.seoTitle.trim().length} chars). Expected 20-75.`,
+        failureReason: `Tool ${tool.slug} has an empty seoTitle.`,
         durationMs: Date.now() - start,
         checks: [
           ...checks,
-          { name: "Metadata Invariants Gate", passed: false, message: `seoTitle length out of bounds: ${tool.seoTitle.length}` },
+          { name: "Metadata Invariants Gate", passed: false, message: `Tool ${tool.slug} has an empty seoTitle.` },
         ],
       };
     }
-    if (tool.seoDescription && (tool.seoDescription.trim().length < 80 || tool.seoDescription.trim().length > 170)) {
+
+    if (titleWasPatched) {
+      if (effectiveTitle.length < minTitle || effectiveTitle.length > maxTitle) {
+        return {
+          passed: false,
+          slug,
+          failureReason: `Tool ${tool.slug} post-patch seoTitle length out of bounds (${effectiveTitle.length} chars). Expected ${minTitle}-${maxTitle}.`,
+          durationMs: Date.now() - start,
+          checks: [
+            ...checks,
+            { name: "Metadata Invariants Gate", passed: false, message: `Post-patch seoTitle length out of bounds: ${effectiveTitle.length} (expected ${minTitle}-${maxTitle})` },
+          ],
+        };
+      }
+    } else {
+      // Unchanged pre-existing title: reject only if malformed or exceeds max boundary
+      if (effectiveTitle.length > maxTitle) {
+        return {
+          passed: false,
+          slug,
+          failureReason: `Tool ${tool.slug} seoTitle exceeds maximum allowed length (${effectiveTitle.length} chars > ${maxTitle}).`,
+          durationMs: Date.now() - start,
+          checks: [
+            ...checks,
+            { name: "Metadata Invariants Gate", passed: false, message: `seoTitle exceeds maximum bounds: ${effectiveTitle.length} > ${maxTitle}` },
+          ],
+        };
+      }
+    }
+
+    // Validate description:
+    if (!effectiveDescription || effectiveDescription.length === 0) {
       return {
         passed: false,
         slug,
-        failureReason: `Tool ${tool.slug} seoDescription length out of bounds (${tool.seoDescription.trim().length} chars). Expected 80-170.`,
+        failureReason: `Tool ${tool.slug} has an empty seoDescription.`,
         durationMs: Date.now() - start,
         checks: [
           ...checks,
-          { name: "Metadata Invariants Gate", passed: false, message: `seoDescription length out of bounds: ${tool.seoDescription.length}` },
+          { name: "Metadata Invariants Gate", passed: false, message: `Tool ${tool.slug} has an empty seoDescription.` },
         ],
       };
     }
+
+    if (descWasPatched) {
+      if (effectiveDescription.length < minDesc || effectiveDescription.length > maxDesc) {
+        return {
+          passed: false,
+          slug,
+          failureReason: `Tool ${tool.slug} post-patch seoDescription length out of bounds (${effectiveDescription.length} chars). Expected ${minDesc}-${maxDesc}.`,
+          durationMs: Date.now() - start,
+          checks: [
+            ...checks,
+            { name: "Metadata Invariants Gate", passed: false, message: `Post-patch seoDescription length out of bounds: ${effectiveDescription.length} (expected ${minDesc}-${maxDesc})` },
+          ],
+        };
+      }
+    } else {
+      // Unchanged pre-existing description: reject only if malformed or exceeds max boundary
+      if (effectiveDescription.length > maxDesc) {
+        return {
+          passed: false,
+          slug,
+          failureReason: `Tool ${tool.slug} seoDescription exceeds maximum allowed length (${effectiveDescription.length} chars > ${maxDesc}).`,
+          durationMs: Date.now() - start,
+          checks: [
+            ...checks,
+            { name: "Metadata Invariants Gate", passed: false, message: `seoDescription exceeds maximum bounds: ${effectiveDescription.length} > ${maxDesc}` },
+          ],
+        };
+      }
+    }
+
     checks.push({
       name: "Metadata Invariants Gate",
       passed: true,
@@ -369,10 +571,10 @@ export class SeoValidator {
 
     // 8. Factual safety check
     const factualCheck = FactualContentSafetyValidator.validate(tool, "CONTENT_UPDATE", {
-      seoTitle: tool.seoTitle,
-      seoDescription: tool.seoDescription,
-      faqs: tool.faq,
-      internalLinks: tool.relatedTools,
+      seoTitle: effectiveTitle,
+      seoDescription: effectiveDescription,
+      faqs: postPatchOverrides?.faq || tool.faq,
+      internalLinks: postPatchOverrides?.relatedTools || tool.relatedTools,
     });
     if (!factualCheck.isSafe) {
       return {
