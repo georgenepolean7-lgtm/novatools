@@ -998,7 +998,7 @@ export const calculatorTools: ToolDefinition[] = [
     faq: [{ question: "How many feet are in a meter?", answer: "1 meter is approximately 3.28084 feet." }],
     relatedTools: ["weight-unit-converter", "temperature-converter"],
     seoTitle: "Length & Distance Unit Converter",
-    seoDescription: "Convert length and distance units online across metric and imperial systems.",
+    seoDescription: "Convert length units across Kilometers, Meters, Centimeters, Miles, Feet, and Inches. Instant client-side calculations with accurate real-time results on.",
     canonicalUrl: "/length-unit-converter",
     processingType: "client",
     privacyMessage: "100% in-browser conversion.",
