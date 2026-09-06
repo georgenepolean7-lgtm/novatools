@@ -56,7 +56,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 2, title: "Convert", instruction: "Click Execute to parse CSV into JSON objects." },
       { step: 3, title: "Export", instruction: "Copy or download formatted .json output." },
     ],
-    faq: [{ question: "Does it support commas inside quoted fields?", answer: "Yes, RFC 4180 quoted strings with commas and escaped quotes are handled accurately." }],
+    faq: [
+{ question: "Does it support commas inside quoted fields?", answer: "Yes, RFC 4180 quoted strings with commas and escaped quotes are handled accurately." },
+      { question: "Does CSV to JSON Converter support header row auto-mapping?", answer: "Yes. CSV to JSON Converter provides header row auto-mapping natively in your browser with real-time feedback." },
+      { question: "Does CSV to JSON Converter support quotes and multiline field parsing?", answer: "Yes. CSV to JSON Converter provides quotes and multiline field parsing natively in your browser with real-time feedback." },
+      { question: "Does CSV to JSON Converter support custom delimiter support?", answer: "Yes. CSV to JSON Converter provides custom delimiter support natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["json-to-csv", "csv-to-sql-insert", "csv-to-markdown-table"],
     seoTitle: "CSV to JSON Converter Online | Nova Tools",
     seoDescription: "Convert CSV spreadsheets into JSON arrays of objects online. Fast, secure in-browser parser.",
@@ -169,7 +174,7 @@ export const dataTools: ToolDefinition[] = [
       { question: "Does JSON to TypeScript Interface Generator support custom interface naming?", answer: "Yes. JSON to TypeScript Interface Generator provides custom interface naming natively in your browser with real-time feedback." },
       { question: "Does JSON to TypeScript Interface Generator support strict typescript syntax?", answer: "Yes. JSON to TypeScript Interface Generator provides strict typescript syntax natively in your browser with real-time feedback." }
     ],
-    relatedTools: ["json-validator", "json-formatter"],
+    relatedTools: ["json-validator", "json-formatter", "json-to-csv", "csv-to-json", "csv-to-markdown-table"],
     seoTitle: "JSON to TypeScript Interface Generator",
     seoDescription: "Generate strongly-typed TypeScript interfaces from JSON payloads online. Free developer tool.",
     canonicalUrl: "/json-to-typescript-interfaces",
@@ -309,7 +314,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 1, title: "Paste JSON", instruction: "Input valid JSON string." },
       { step: 2, title: "Convert", instruction: "Click Execute to produce XML document." },
     ],
-    faq: [{ question: "Does it include the XML declaration header?", answer: "Yes, output includes `<?xml version='1.0' encoding='UTF-8'?>`." }],
+    faq: [
+{ question: "Does it include the XML declaration header?", answer: "Yes, output includes `<?xml version='1.0' encoding='UTF-8'?>`." },
+      { question: "Does JSON to XML Converter support automatic xml declaration header?", answer: "Yes. JSON to XML Converter provides automatic xml declaration header natively in your browser with real-time feedback." },
+      { question: "Does JSON to XML Converter support nested tag nesting?", answer: "Yes. JSON to XML Converter provides nested tag nesting natively in your browser with real-time feedback." },
+      { question: "Does JSON to XML Converter support sanitizes tag names?", answer: "Yes. JSON to XML Converter provides sanitizes tag names natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["xml-to-json", "json-to-csv", "json-to-yaml", "yaml-to-json", "csv-to-json", "csv-to-markdown-table", "markdown-table-to-csv", "json-to-typescript-interfaces"],
     seoTitle: "JSON to XML Converter - Data Converter",
     seoDescription: "Convert JSON objects and arrays into well-formed XML online. Fast developer tool.",

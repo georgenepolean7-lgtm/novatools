@@ -876,7 +876,12 @@ export const privacyTools: ToolDefinition[] = [
       { step: 1, title: "Paste Hash String", instruction: "Input unknown hash or token." },
       { step: 2, title: "Analyze", instruction: "Click Execute to view candidate hash algorithms." },
     ],
-    faq: [{ question: "Can it identify salted hashes like Bcrypt?", answer: "Yes, standard modular crypt prefixes like `$2a$` and `$argon2` are automatically recognized." }],
+    faq: [
+{ question: "Can it identify salted hashes like Bcrypt?", answer: "Yes, standard modular crypt prefixes like `$2a$` and `$argon2` are automatically recognized." },
+      { question: "Does Hash Type Identifier & Detector support identifies md5, sha-1, sha-256, sha-512, bcrypt, argon2, jwt?", answer: "Yes. Hash Type Identifier & Detector provides identifies md5, sha-1, sha-256, sha-512, bcrypt, argon2, jwt natively in your browser with real-time feedback." },
+      { question: "Does Hash Type Identifier & Detector support length and character set heuristics?", answer: "Yes. Hash Type Identifier & Detector provides length and character set heuristics natively in your browser with real-time feedback." },
+      { question: "Does Hash Type Identifier & Detector support instant detection?", answer: "Yes. Hash Type Identifier & Detector provides instant detection natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["hash-generator", "uuid-validator-parser", "password-generator", "password-strength-checker", "hmac-generator"],
     seoTitle: "Hash Type Identifier & Detector",
     seoDescription: "Identify unknown hash types and algorithms online by pattern analysis. Fast in-browser tool.",

@@ -55,7 +55,12 @@ export const educationTools: ToolDefinition[] = [
       { step: 2, title: "Select Scale", instruction: "Choose 10-Point or 4.0-Point scale." },
       { step: 3, title: "Convert", instruction: "View the official percentage score and division rank." },
     ],
-    faq: [{ question: "Why is CGPA multiplied by 9.5?", answer: "CBSE and AICTE analyzed past board marks and established that multiplying 10-point CGPA by 9.5 gives the statistically closest percentage representation." }],
+    faq: [
+{ question: "Why is CGPA multiplied by 9.5?", answer: "CBSE and AICTE analyzed past board marks and established that multiplying 10-point CGPA by 9.5 gives the statistically closest percentage representation." },
+      { question: "Does CGPA to Percentage Converter (CBSE / AICTE) support standard cbse / aicte formula (cgpa x 9.5)?", answer: "Yes. CGPA to Percentage Converter (CBSE / AICTE) provides standard cbse / aicte formula (cgpa x 9.5) natively in your browser with real-time feedback." },
+      { question: "Does CGPA to Percentage Converter (CBSE / AICTE) support 4.0 scale support?", answer: "Yes. CGPA to Percentage Converter (CBSE / AICTE) provides 4.0 scale support natively in your browser with real-time feedback." },
+      { question: "Does CGPA to Percentage Converter (CBSE / AICTE) support division classification (first / second division)?", answer: "Yes. CGPA to Percentage Converter (CBSE / AICTE) provides division classification (first / second division) natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["gpa-calculator", "percentage-calculator", "citation-generator", "weighted-grade-calculator", "attendance-percentage-calculator", "exam-score-target-calculator"],
     seoTitle: "CGPA to Percentage Converter (CBSE / AICTE",
     seoDescription: "Convert 10-point CGPA to percentage online using CBSE and AICTE official formulas. Fast, accurate grade converter.",

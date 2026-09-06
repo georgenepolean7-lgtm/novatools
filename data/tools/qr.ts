@@ -56,7 +56,12 @@ export const qrTools: ToolDefinition[] = [
       { step: 2, title: "Generate Code", instruction: "Click 'Generate WiFi QR Code'." },
       { step: 3, title: "Print or Display", instruction: "Download PNG and print for your home or office." },
     ],
-    faq: [{ question: "Is my WiFi password safe?", answer: "Yes, the QR code is drawn directly in your browser's canvas. No credentials leave your device." }],
+    faq: [
+{ question: "Is my WiFi password safe?", answer: "Yes, the QR code is drawn directly in your browser's canvas. No credentials leave your device." },
+      { question: "Does WiFi QR Code Generator support wpa/wpa2, wep, and open network modes?", answer: "Yes. WiFi QR Code Generator provides wpa/wpa2, wep, and open network modes natively in your browser with real-time feedback." },
+      { question: "Does WiFi QR Code Generator support hidden ssid support?", answer: "Yes. WiFi QR Code Generator provides hidden ssid support natively in your browser with real-time feedback." },
+      { question: "Does WiFi QR Code Generator support high-res printable png?", answer: "Yes. WiFi QR Code Generator provides high-res printable png natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["qr-code-generator", "password-generator", "vcard-qr-code-generator", "email-qr-code-generator", "sms-qr-code-generator"],
     seoTitle: "WiFi QR Code Generator Online | Nova Tools",
     seoDescription: "Create WiFi QR codes online for fast guest login. Share your home or office WiFi securely with instant scanning.",
