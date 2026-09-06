@@ -36,6 +36,7 @@ export interface RunCycleOptions {
   dryRun?: boolean;
   forceSingleSlug?: string;
   maxBatches?: number;
+  batchSize?: number;
 }
 
 export interface CycleRunResult {
@@ -864,8 +865,8 @@ export class SeoAgentRunner {
       };
     }
 
-    // 6. PRODUCTION ATOMIC BATCH PROCESSOR (MAX 80/DAY, 20 PAGES PER ATOMIC BATCH)
-    const batchSize = SEO_AGENT_CONFIG.BUDGETS.BATCH_SIZE;
+    // 6. PRODUCTION ATOMIC BATCH PROCESSOR (MAX 80/DAY, CONFIGURABLE ATOMIC BATCH SIZE)
+    const batchSize = options.batchSize && options.batchSize > 0 ? options.batchSize : SEO_AGENT_CONFIG.BUDGETS.BATCH_SIZE;
     const rawBatches: SeoOpportunity[][] = [];
     for (let i = 0; i < targetOpportunities.length; i += batchSize) {
       rawBatches.push(targetOpportunities.slice(i, i + batchSize));

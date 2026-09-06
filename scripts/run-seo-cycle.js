@@ -38,6 +38,8 @@ const slugIndex = args.indexOf("--slug");
 const targetSlug = slugIndex !== -1 && args[slugIndex + 1] ? args[slugIndex + 1] : undefined;
 const maxBatchesIndex = args.indexOf("--max-batches");
 const maxBatches = maxBatchesIndex !== -1 && args[maxBatchesIndex + 1] ? parseInt(args[maxBatchesIndex + 1], 10) : (args.includes("--single-batch") ? 1 : undefined);
+const batchSizeIndex = args.indexOf("--batch-size");
+const batchSize = batchSizeIndex !== -1 && args[batchSizeIndex + 1] ? parseInt(args[batchSizeIndex + 1], 10) : undefined;
 
 async function runStandaloneCycle() {
   console.log("================================================================================");
@@ -48,7 +50,8 @@ async function runStandaloneCycle() {
   console.log(`   Timestamp: ${new Date().toISOString()}`);
   console.log(`   Mode: ${isDryRun ? "DRY RUN (Analysis & Scoring Only)" : "AUTONOMOUS PRODUCTION EXECUTION"}`);
   if (targetSlug) console.log(`   Target Slug Override: /${targetSlug}`);
-  if (maxBatches !== undefined) console.log(`   Batch Limit: Maximum ${maxBatches} batch(es) (Atomic 20-page cap)`);
+  if (maxBatches !== undefined) console.log(`   Batch Limit: Maximum ${maxBatches} batch(es)`);
+  if (batchSize !== undefined) console.log(`   Atomic Batch Size Override: ${batchSize} page(s) per atomic batch`);
   console.log("================================================================================\n");
 
   try {
@@ -69,6 +72,7 @@ async function runStandaloneCycle() {
       dryRun: isDryRun,
       forceSingleSlug: targetSlug,
       maxBatches,
+      batchSize,
     });
 
     console.log("\n================================================================================");
