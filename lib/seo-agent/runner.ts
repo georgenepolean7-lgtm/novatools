@@ -32,6 +32,12 @@ import {
 } from "./types";
 import { SEO_AGENT_CONFIG } from "./config";
 
+export interface RunCycleOptions {
+  dryRun?: boolean;
+  forceSingleSlug?: string;
+  maxBatches?: number;
+}
+
 export interface CycleRunResult {
   success: boolean;
   status: "COMPLETED" | "PARTIAL" | "FAILED" | "COMPLETED_WITH_ROLLBACKS" | "BLOCKED_PENDING_REAL_DATA" | "PAUSED_KILL_SWITCH" | "DRY_RUN";
@@ -211,7 +217,7 @@ export class SeoAgentRunner {
   /**
    * Executes the full autonomous SEO cycle without requiring human approval.
    */
-  async runCycle(options: { dryRun?: boolean; forceSingleSlug?: string; maxBatches?: number } = {}): Promise<CycleRunResult> {
+  async runCycle(options: RunCycleOptions = {}): Promise<CycleRunResult> {
     const cycleId = `cycle-${Date.now()}`;
     const timestamp = new Date().toISOString();
     const auditRecords: SeoAuditRecord[] = [];
@@ -331,7 +337,7 @@ export class SeoAgentRunner {
   }
 
   private async executeCycleBody(
-    options: { dryRun?: boolean; forceSingleSlug?: string },
+    options: RunCycleOptions,
     cycleId: string,
     timestamp: string,
     auditRecords: SeoAuditRecord[]
