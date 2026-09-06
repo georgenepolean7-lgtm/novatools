@@ -1,9 +1,9 @@
 {
   "killSwitchActive": false,
-  "lastCycleAt": "2026-09-06T16:05:25.779Z",
-  "dailyChangesCount": 2,
+  "lastCycleAt": "2026-09-06T16:17:32.852Z",
+  "dailyChangesCount": 3,
   "dailyChangesLastReset": "2026-09-06",
-  "weeklyChangesCount": 5,
+  "weeklyChangesCount": 6,
   "weeklyChangesLastReset": "2026-09-03",
   "audits": [
     {
@@ -9275,521 +9275,9 @@
   ],
   "opportunities": [
     {
-      "id": "weak-links-env-file-validator-formatter",
-      "pageSlug": "env-file-validator-formatter",
-      "pageUrl": "https://novatool.in/env-file-validator-formatter",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-package-json-semver-inspector",
-      "pageSlug": "package-json-semver-inspector",
-      "pageUrl": "https://novatool.in/package-json-semver-inspector",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-api-payload-size-calculator",
-      "pageSlug": "api-payload-size-calculator",
-      "pageUrl": "https://novatool.in/api-payload-size-calculator",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/developer.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/developer.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-fuel-cost-calculator",
-      "pageSlug": "fuel-cost-calculator",
-      "pageUrl": "https://novatool.in/fuel-cost-calculator",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/calculators.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/calculators.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-audio-duration-to-samples-converter",
-      "pageSlug": "audio-duration-to-samples-converter",
-      "pageUrl": "https://novatool.in/audio-duration-to-samples-converter",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/calculators.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/calculators.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-audio-metadata-inspector",
-      "pageSlug": "audio-metadata-inspector",
-      "pageUrl": "https://novatool.in/audio-metadata-inspector",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/calculators.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/calculators.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-week-number-iso-calculator",
-      "pageSlug": "week-number-iso-calculator",
-      "pageUrl": "https://novatool.in/week-number-iso-calculator",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/calculators.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/calculators.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-epf-calculator-india",
-      "pageSlug": "epf-calculator-india",
-      "pageUrl": "https://novatool.in/epf-calculator-india",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/india.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/india.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-pin-code-format-validator-india",
-      "pageSlug": "pin-code-format-validator-india",
-      "pageUrl": "https://novatool.in/pin-code-format-validator-india",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/india.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/india.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-xml-validator",
-      "pageSlug": "xml-validator",
-      "pageUrl": "https://novatool.in/xml-validator",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/data.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/data.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-json-unflattener",
-      "pageSlug": "json-unflattener",
-      "pageUrl": "https://novatool.in/json-unflattener",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/data.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/data.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-json-key-sorter",
-      "pageSlug": "json-key-sorter",
-      "pageUrl": "https://novatool.in/json-key-sorter",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/data.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/data.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-html-table-to-csv",
-      "pageSlug": "html-table-to-csv",
-      "pageUrl": "https://novatool.in/html-table-to-csv",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/data.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/data.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-cache-control-generator",
-      "pageSlug": "cache-control-generator",
-      "pageUrl": "https://novatool.in/cache-control-generator",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/webmaster.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/webmaster.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-loan-amortization-schedule-calculator",
-      "pageSlug": "loan-amortization-schedule-calculator",
-      "pageUrl": "https://novatool.in/loan-amortization-schedule-calculator",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/finance.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/finance.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-dividend-yield-calculator",
-      "pageSlug": "dividend-yield-calculator",
-      "pageUrl": "https://novatool.in/dividend-yield-calculator",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/finance.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/finance.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-ipv6-compress-expand",
-      "pageSlug": "ipv6-compress-expand",
-      "pageUrl": "https://novatool.in/ipv6-compress-expand",
+      "id": "weak-links-mac-address-lookup-validator",
+      "pageSlug": "mac-address-lookup-validator",
+      "pageUrl": "https://novatool.in/mac-address-lookup-validator",
       "type": "WEAK_INTERNAL_LINKING",
       "reason": "Page has only 1 incoming internal link.",
       "riskLevel": "LOW",
@@ -9800,103 +9288,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/privacy.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-mime-type-lookup",
-      "pageSlug": "mime-type-lookup",
-      "pageUrl": "https://novatool.in/mime-type-lookup",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/privacy.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/privacy.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-unicode-escape-decoder",
-      "pageSlug": "unicode-escape-decoder",
-      "pageUrl": "https://novatool.in/unicode-escape-decoder",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/privacy.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 15,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 8,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/privacy.ts",
-        "summary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
-      "id": "weak-links-crc32-checksum-calculator",
-      "pageSlug": "crc32-checksum-calculator",
-      "pageUrl": "https://novatool.in/crc32-checksum-calculator",
-      "type": "WEAK_INTERNAL_LINKING",
-      "reason": "Page has only 1 incoming internal link.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/privacy.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -9928,7 +9320,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -9960,7 +9352,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -9992,7 +9384,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 15,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10024,7 +9416,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10056,7 +9448,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10088,7 +9480,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10120,7 +9512,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10152,7 +9544,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10184,7 +9576,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10216,7 +9608,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10248,7 +9640,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10280,7 +9672,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10312,7 +9704,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10344,7 +9736,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10376,7 +9768,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10408,7 +9800,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10440,7 +9832,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10472,7 +9864,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10504,7 +9896,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10536,7 +9928,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10568,7 +9960,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10600,7 +9992,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10632,7 +10024,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10664,7 +10056,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10696,7 +10088,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10715,38 +10107,6 @@
       "provenance": []
     },
     {
-      "id": "orphan-page-freelance-hourly-rate-calculator",
-      "pageSlug": "freelance-hourly-rate-calculator",
-      "pageUrl": "https://novatool.in/freelance-hourly-rate-calculator",
-      "type": "ORPHAN_PAGE",
-      "reason": "Page has 0 incoming links from other tools in the registry.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/finance.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 12,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 5,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/finance.ts",
-        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
       "id": "orphan-page-savings-goal-planner-calculator",
       "pageSlug": "savings-goal-planner-calculator",
       "pageUrl": "https://novatool.in/savings-goal-planner-calculator",
@@ -10760,7 +10120,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10792,7 +10152,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10824,7 +10184,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10843,38 +10203,6 @@
       "provenance": []
     },
     {
-      "id": "orphan-page-mac-address-lookup-validator",
-      "pageSlug": "mac-address-lookup-validator",
-      "pageUrl": "https://novatool.in/mac-address-lookup-validator",
-      "type": "ORPHAN_PAGE",
-      "reason": "Page has 0 incoming links from other tools in the registry.",
-      "riskLevel": "LOW",
-      "targetFile": "data/tools/privacy.ts",
-      "currentMetrics": {
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0
-      },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
-      "opportunityScore": 12,
-      "scoreBreakdown": {
-        "impressionPotential": 0,
-        "positionOpportunity": 0,
-        "ctrOpportunity": 0,
-        "trafficTrend": 2,
-        "businessRelevance": 5,
-        "pageQuality": 5,
-        "riskPenalty": 0
-      },
-      "proposedAction": {
-        "type": "INTERNAL_LINKS",
-        "targetFile": "data/tools/privacy.ts",
-        "summary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
-      },
-      "provenance": []
-    },
-    {
       "id": "orphan-page-rot13-encoder-decoder",
       "pageSlug": "rot13-encoder-decoder",
       "pageUrl": "https://novatool.in/rot13-encoder-decoder",
@@ -10888,7 +10216,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10920,7 +10248,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10952,7 +10280,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -10984,7 +10312,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11016,7 +10344,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11048,7 +10376,7 @@
         "ctr": 0,
         "position": 0
       },
-      "detectedAt": "2026-09-06T16:03:19.295Z",
+      "detectedAt": "2026-09-06T16:15:42.240Z",
       "opportunityScore": 12,
       "scoreBreakdown": {
         "impressionPotential": 0,
@@ -11069,6 +10397,21 @@
   ],
   "learningPatterns": [],
   "cycles": [
+    {
+      "date": "2026-09-06",
+      "cycleId": "cycle-1788711324381",
+      "opportunities": 35,
+      "selected": 35,
+      "processed": 35,
+      "successful": 35,
+      "failed": 0,
+      "rollback": 0,
+      "deployment": 35,
+      "indexNow": 35,
+      "finalStatus": "COMPLETED",
+      "summary": "Cycle cycle-1788711324381 finished (COMPLETED): 35 opportunities detected, 0 already optimized, 0 in cooldown, 0 no-op, 0 high-risk skipped, 35 optimized in atomic batches, 35 deployed, 35 IndexNow URLs broadcast.",
+      "isDryRun": false
+    },
     {
       "date": "2026-09-06",
       "cycleId": "cycle-1788710585129",
@@ -11503,30 +10846,919 @@
       "finalStatus": "DRY_RUN",
       "summary": "DRY RUN COMPLETED (Real Data Gate: AVAILABLE). Detected 161 opportunities, 0 already optimized, 1 in cooldown, 0 no-op, 0 high-risk skipped, 1 actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.",
       "isDryRun": true
-    },
-    {
-      "date": "2026-09-04",
-      "cycleId": "cycle-1788535192509",
-      "opportunities": 161,
-      "selected": 1,
-      "processed": 0,
-      "successful": 0,
-      "failed": 0,
-      "rollback": 0,
-      "deployment": 0,
-      "indexNow": 0,
-      "finalStatus": "DRY_RUN",
-      "summary": "DRY RUN COMPLETED (Real Data Gate: AVAILABLE). Detected 161 opportunities, 0 high-risk skipped, 1 actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.",
-      "isDryRun": true
     }
   ],
-  "successfulBatchesToday": 2,
+  "successfulBatchesToday": 4,
   "failedBatchesToday": 5,
   "rollbacksToday": 0,
-  "deploymentsToday": 40,
-  "indexNowBroadcastsToday": 40,
+  "deploymentsToday": 75,
+  "indexNowBroadcastsToday": 75,
   "currentCycleStatus": "COMPLETED",
   "optimizations": [
+    {
+      "id": "opt-cycle-1788711324381-data-url-file-converter-1788711452840",
+      "pageSlug": "data-url-file-converter",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "b0f2d6d889fd75fa",
+      "timestamp": "2026-09-06T16:17:32.840Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "File to Base64 Data URL Converter",
+        "description": "Convert files and images into inline Base64 Data URL schemes online. Fast, private in-browser Data URI encoder.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What is a Data URL?"
+        ],
+        "relatedTools": [
+          "image-to-base64",
+          "base64-encoder",
+          "file-checksum-sha256",
+          "file-metadata-inspector",
+          "batch-file-renamer-preview"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-duplicate-file-finder-by-hash-1788711452834",
+      "pageSlug": "duplicate-file-finder-by-hash",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "25b64acab88cda17",
+      "timestamp": "2026-09-06T16:17:32.834Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Duplicate File Finder & Hash Comparator",
+        "description": "Detect duplicate files by comparing cryptographic SHA-256 hashes online. 100% private and secure.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Can two different files have the same SHA-256 hash?"
+        ],
+        "relatedTools": [
+          "file-checksum-sha256",
+          "file-metadata-inspector",
+          "batch-file-renamer-preview",
+          "text-file-merger",
+          "text-file-splitter"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-sha3-hash-calculator-1788711452827",
+      "pageSlug": "sha3-hash-calculator",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "c82c21de91734992",
+      "timestamp": "2026-09-06T16:17:32.827Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "SHA-3 Hash Calculator (Keccak-256)",
+        "description": "Calculate modern SHA-3 and Keccak-256 cryptographic hashes online. Fast and free.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "How does SHA-3 differ from SHA-2?"
+        ],
+        "relatedTools": [
+          "hash-generator",
+          "hmac-generator",
+          "password-generator",
+          "password-strength-checker",
+          "uuid-validator-parser"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-argon2-bcrypt-cost-calculator-1788711452821",
+      "pageSlug": "argon2-bcrypt-cost-calculator",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "29dd429b145449d6",
+      "timestamp": "2026-09-06T16:17:32.821Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Bcrypt & Argon2 Work Factor Estimator",
+        "description": "Estimate Bcrypt work factors and Argon2 key derivation times online for secure authentication.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What is the recommended Bcrypt cost factor?"
+        ],
+        "relatedTools": [
+          "password-strength-checker",
+          "hash-generator",
+          "password-generator",
+          "hmac-generator",
+          "uuid-validator-parser"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-punycode-converter-1788711452814",
+      "pageSlug": "punycode-converter",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "649ab923357a9367",
+      "timestamp": "2026-09-06T16:17:32.814Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Punycode Domain Name Converter (IDN to ASC",
+        "description": "Convert internationalized domain names to Punycode (xn--) and back online. Fast and free.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What is Punycode?"
+        ],
+        "relatedTools": [
+          "unicode-escape-encoder",
+          "url-encoder",
+          "password-generator",
+          "password-strength-checker",
+          "hmac-generator"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-rot13-encoder-decoder-1788711452809",
+      "pageSlug": "rot13-encoder-decoder",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "df414ab852b7970a",
+      "timestamp": "2026-09-06T16:17:32.809Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "ROT13 Cipher & Decoder (Caesar Shift 13)",
+        "description": "Encode and decode text using the classic ROT13 cipher online. Fast spoiler obfuscator.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Is ROT13 secure encryption?"
+        ],
+        "relatedTools": [
+          "text-to-morse-code",
+          "base64-encoder",
+          "password-generator",
+          "password-strength-checker",
+          "hmac-generator"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-study-time-planner-calculator-1788711452803",
+      "pageSlug": "study-time-planner-calculator",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "37e01c4e566baa55",
+      "timestamp": "2026-09-06T16:17:32.803Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "College Study Time Planner & Schedule Esti",
+        "description": "Estimate recommended weekly and daily study hours based on semester credit units online. Free student study planner.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What is the standard college study hour rule?"
+        ],
+        "relatedTools": [
+          "gpa-calculator",
+          "attendance-percentage-calculator",
+          "cgpa-to-percentage-converter",
+          "citation-generator",
+          "weighted-grade-calculator"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-discount-percentage-calculator-1788711452796",
+      "pageSlug": "discount-percentage-calculator",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "0871a20215a2215a",
+      "timestamp": "2026-09-06T16:17:32.796Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Shopping Discount & Final Price Savings Ca",
+        "description": "Calculate discount percentage, final sale price, and total savings online. Fast, free in-browser shopping tool.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "How do I calculate a 20% discount?"
+        ],
+        "relatedTools": [
+          "profit-margin-calculator",
+          "sales-tax-calculator",
+          "roi-calculator",
+          "break-even-calculator",
+          "cash-flow-burn-rate-calculator"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-savings-goal-planner-calculator-1788711452790",
+      "pageSlug": "savings-goal-planner-calculator",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "82789a141796c625",
+      "timestamp": "2026-09-06T16:17:32.790Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Savings Goal & Monthly Deposit Planner",
+        "description": "Calculate how much you need to save each month to reach your financial target online. Free savings planner.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Does this factor compound interest?"
+        ],
+        "relatedTools": [
+          "sip-calculator",
+          "compound-interest-calculator",
+          "profit-margin-calculator",
+          "roi-calculator",
+          "break-even-calculator"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-heading-structure-analyzer-1788711452783",
+      "pageSlug": "heading-structure-analyzer",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "41ed1622a7417b6e",
+      "timestamp": "2026-09-06T16:17:32.783Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "HTML Heading Structure Analyzer (H1-H6)",
+        "description": "Analyze HTML heading tags and hierarchy online for optimal on-page SEO and accessibility.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Should a webpage have more than one H1 tag?"
+        ],
+        "relatedTools": [
+          "keyword-density-checker",
+          "meta-tag-generator",
+          "robots-txt-generator",
+          "serp-snippet-preview",
+          "open-graph-meta-generator"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-hreflang-tag-generator-1788711452776",
+      "pageSlug": "hreflang-tag-generator",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "0222fbba025d3545",
+      "timestamp": "2026-09-06T16:17:32.776Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Hreflang Tag Generator for Multi-Language",
+        "description": "Generate hreflang HTML tags online for multi-language and regional SEO optimization.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What does hreflang='x-default' do?"
+        ],
+        "relatedTools": [
+          "meta-tag-generator",
+          "canonical-url-generator",
+          "robots-txt-generator",
+          "keyword-density-checker",
+          "serp-snippet-preview"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-sql-to-json-converter-1788711452771",
+      "pageSlug": "sql-to-json-converter",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "b6ccb9b2c18eefae",
+      "timestamp": "2026-09-06T16:17:32.772Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "SQL to JSON Converter Online Tool | Nova Tools",
+        "description": "Use this sql to json converter online tool to convert SQL query results into JSON. Get fast client-side results in your browser.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Does this support multi-row inserts?"
+        ],
+        "relatedTools": [
+          "csv-to-sql-insert",
+          "json-to-csv",
+          "csv-to-json",
+          "csv-to-markdown-table",
+          "markdown-table-to-csv"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-csv-column-reorder-1788711452765",
+      "pageSlug": "csv-column-reorder",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "8a0de4f74dd9770d",
+      "timestamp": "2026-09-06T16:17:32.765Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "CSV Column Reorder Online Tool | Nova Tools",
+        "description": "Use this csv column reorder online tool to reorder CSV columns. Get fast client-side results in your browser, with no data upload required.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What does column index '1, 0' mean?"
+        ],
+        "relatedTools": [
+          "csv-column-extractor",
+          "csv-delimiter-converter"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-json-data-statistics-1788711452760",
+      "pageSlug": "json-data-statistics",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "c6733300f895f346",
+      "timestamp": "2026-09-06T16:17:32.760Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "JSON Dataset Statistics & Analyzer",
+        "description": "Calculate sums, averages, and statistics on JSON datasets online. Fast and free.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Does it identify non-numeric fields?"
+        ],
+        "relatedTools": [
+          "json-validator",
+          "json-to-csv",
+          "csv-to-json",
+          "csv-to-markdown-table",
+          "markdown-table-to-csv"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-json-path-query-1788711452754",
+      "pageSlug": "json-path-query",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "9c4245dd4f72e477",
+      "timestamp": "2026-09-06T16:17:32.754Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "JSONPath Query Online Tool | Nova Tools",
+        "description": "Use this jsonpath query online tool to query JSON data with JSONPath expressions. Get fast client-side results in your browser.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Can I query array elements?"
+        ],
+        "relatedTools": [
+          "json-flattener",
+          "json-validator",
+          "json-to-csv",
+          "csv-to-json",
+          "csv-to-markdown-table"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-tamil-case-formatter-1788711452748",
+      "pageSlug": "tamil-case-formatter",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "d05cfbb865d712dd",
+      "timestamp": "2026-09-06T16:17:32.748Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Tamil Honorifics & Quotation Formatter",
+        "description": "Format standard Tamil honorific titles and quotation marks online. Fast, clean, free in-browser tool.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Which honorifics are supported?"
+        ],
+        "relatedTools": [
+          "tamil-text-cleaner",
+          "case-converter",
+          "tamil-image-to-text",
+          "bamini-to-unicode-converter",
+          "tanglish-to-tamil-transliteration"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-tamil-unicode-codepoint-inspector-1788711452742",
+      "pageSlug": "tamil-unicode-codepoint-inspector",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "ec6baa27993fcb98",
+      "timestamp": "2026-09-06T16:17:32.742Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Tamil Unicode Code Point & Hex Inspector",
+        "description": "Inspect Unicode hex code points for Tamil characters online. Fast, accurate developer typography tool.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What is the Unicode block for Tamil?"
+        ],
+        "relatedTools": [
+          "tamil-unicode-normalizer",
+          "ascii-to-hex-converter",
+          "tamil-image-to-text",
+          "bamini-to-unicode-converter",
+          "tanglish-to-tamil-transliteration"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-roman-numerals-converter-1788711452737",
+      "pageSlug": "roman-numerals-converter",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "b11e22671c1409a0",
+      "timestamp": "2026-09-06T16:17:32.737Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Roman Numerals Converter (Numbers ↔ Roman)",
+        "description": "Convert decimal numbers to Roman numerals and decode Roman numerals to numbers online. Free in-browser math tool.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What is the maximum standard Roman numeral supported?"
+        ],
+        "relatedTools": [
+          "number-to-words-converter",
+          "age-calculator",
+          "loan-emi-calculator",
+          "sip-calculator",
+          "compound-interest-calculator"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-digital-storage-converter-1788711452730",
+      "pageSlug": "digital-storage-converter",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "6b904941a94efcf2",
+      "timestamp": "2026-09-06T16:17:32.730Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Digital Storage Converter Online Tool | Nova Tools",
+        "description": "Use this digital storage converter online tool to convert digital storage units. Get fast client-side results in your browser.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "How many Megabytes are in a Gigabyte?"
+        ],
+        "relatedTools": [
+          "length-unit-converter",
+          "compress-image"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-tip-calculator-1788711452725",
+      "pageSlug": "tip-calculator",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "89d04f1685a12102",
+      "timestamp": "2026-09-06T16:17:32.725Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Tip Calculator - Split Restaurant Bill",
+        "description": "Calculate restaurant tips and split bills evenly per person online. Fast and easy.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What is a customary tip percentage?"
+        ],
+        "relatedTools": [
+          "sales-tax-calculator",
+          "discount-calculator",
+          "loan-emi-calculator",
+          "sip-calculator",
+          "compound-interest-calculator"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-javascript-regex-string-escape-1788711452719",
+      "pageSlug": "javascript-regex-string-escape",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "cb06f224be55ca6a",
+      "timestamp": "2026-09-06T16:17:32.719Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "RegExp & JavaScript String Escape Utility",
+        "description": "Escape special characters for RegExp and JavaScript string literals online. Fast, free in-browser developer tool.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Which characters are escaped?"
+        ],
+        "relatedTools": [
+          "regex-tester",
+          "url-encoder",
+          "json-formatter",
+          "json-minifier",
+          "json-validator"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-cron-expression-descriptor-1788711452713",
+      "pageSlug": "cron-expression-descriptor",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "9ed52c3fce6d4d6f",
+      "timestamp": "2026-09-06T16:17:32.713Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Cron Expression Parser & Human Schedule Ex",
+        "description": "Parse Cron expressions into plain English schedules online. Free in-browser crontab schedule explainer.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What are the 5 cron fields in order?"
+        ],
+        "relatedTools": [
+          "unix-timestamp-converter",
+          "api-payload-size-calculator",
+          "json-formatter",
+          "json-minifier",
+          "json-validator"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-markdown-table-generator-1788711452708",
+      "pageSlug": "markdown-table-generator",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "a67719cca9d40370",
+      "timestamp": "2026-09-06T16:17:32.708Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Markdown Table Generator & GFM Grid Format",
+        "description": "Generate clean Markdown tables for GitHub README files and documentation online. Fast, free in-browser tool.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Is this syntax compatible with GitHub and GitLab?"
+        ],
+        "relatedTools": [
+          "csv-to-markdown-table",
+          "text-diff-checker",
+          "remove-duplicate-lines",
+          "sort-lines",
+          "word-frequency-counter"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-normalize-unicode-text-1788711452703",
+      "pageSlug": "normalize-unicode-text",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "11d4b7fd311753d7",
+      "timestamp": "2026-09-06T16:17:32.703Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Unicode Text Normalizer (NFC, NFD, NFKC, N",
+        "description": "Normalize Unicode text across NFC, NFD, NFKC, and NFKD forms online. Multi-script support.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What is NFC vs NFD?"
+        ],
+        "relatedTools": [
+          "character-frequency-analyzer",
+          "slug-generator",
+          "remove-duplicate-lines",
+          "sort-lines",
+          "word-frequency-counter"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-nato-phonetic-alphabet-1788711452696",
+      "pageSlug": "nato-phonetic-alphabet",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "94157aa17ae8edc8",
+      "timestamp": "2026-09-06T16:17:32.696Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "NATO Phonetic Alphabet Translator",
+        "description": "Translate words and letters into the NATO phonetic alphabet (Alfa, Bravo, Charlie) online.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Why is 'Alfa' spelled with an 'f'?"
+        ],
+        "relatedTools": [
+          "text-to-morse-code",
+          "character-frequency-analyzer",
+          "remove-duplicate-lines",
+          "sort-lines",
+          "word-frequency-counter"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-image-dpi-converter-1788711452691",
+      "pageSlug": "image-dpi-converter",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "4bf54ece1d76e5ca",
+      "timestamp": "2026-09-06T16:17:32.691Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Image DPI & Print Resolution Calculator (3",
+        "description": "Calculate photo print dimensions in inches and centimeters at 300 DPI, 150 DPI, and 72 DPI online. Free print sizing tool.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Why is 300 DPI considered the photo print standard?"
+        ],
+        "relatedTools": [
+          "image-resizer",
+          "aspect-ratio-calculator",
+          "compress-image",
+          "signature-resizer",
+          "jpg-to-png"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-image-aspect-ratio-resizer-1788711452683",
+      "pageSlug": "image-aspect-ratio-resizer",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "5dd85cd55a388e3d",
+      "timestamp": "2026-09-06T16:17:32.683Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Social Media Image Aspect Ratio & Size Cal",
+        "description": "Calculate social media aspect ratios and image resolutions for Instagram, YouTube, and Facebook online.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What is the ideal ratio for Instagram Reels / Stories?"
+        ],
+        "relatedTools": [
+          "image-resizer",
+          "compress-image",
+          "signature-resizer",
+          "jpg-to-png",
+          "png-to-jpg"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-favicon-generator-1788711452662",
+      "pageSlug": "favicon-generator",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "fb7304963f37effe",
+      "timestamp": "2026-09-06T16:17:32.662Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Favicon & Apple Touch Icon Generator",
+        "description": "Generate multi-size website favicons and Apple Touch icons from logos online. Free, fast in-browser tool.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What is the recommended source image size?"
+        ],
+        "relatedTools": [
+          "image-resizer",
+          "png-to-jpg",
+          "compress-image",
+          "signature-resizer",
+          "jpg-to-png"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-image-rounded-corner-generator-1788711452655",
+      "pageSlug": "image-rounded-corner-generator",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "749e03977b3b3bc8",
+      "timestamp": "2026-09-06T16:17:32.655Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Image Rounded Corner & Circle Crop Generat",
+        "description": "Add rounded corners and circle crops to images online with transparent PNG backgrounds.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Will corners be transparent?"
+        ],
+        "relatedTools": [
+          "image-resizer",
+          "compress-image",
+          "signature-resizer",
+          "jpg-to-png",
+          "png-to-jpg"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-image-blur-sharpen-tool-1788711452647",
+      "pageSlug": "image-blur-sharpen-tool",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "3c99f43b1360c4e1",
+      "timestamp": "2026-09-06T16:17:32.647Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Image Blur & Gaussian Filter Tool Online Tool | Nova Tools",
+        "description": "Apply Gaussian blur to images online. Fast, private in-browser image filter editor.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Can I use this for background wallpapers?"
+        ],
+        "relatedTools": [
+          "image-grayscale-filter",
+          "compress-image",
+          "image-resizer",
+          "signature-resizer",
+          "jpg-to-png"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-image-color-palette-extractor-1788711452641",
+      "pageSlug": "image-color-palette-extractor",
+      "opportunityType": "ORPHAN_PAGE",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "bbba947876bd4217",
+      "timestamp": "2026-09-06T16:17:32.641Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "Image Color Palette & Dominant Color Extra",
+        "description": "Extract dominant color palettes and HEX codes from photos online. Free, private in-browser color picker.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Are my private graphics uploaded?"
+        ],
+        "relatedTools": [
+          "compress-image",
+          "image-resizer",
+          "signature-resizer",
+          "jpg-to-png",
+          "png-to-jpg"
+        ],
+        "reasoningSummary": "Add contextual links from related tools in the same category (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-file-extension-mime-detector-1788711452634",
+      "pageSlug": "file-extension-mime-detector",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "3a905a0a64360f29",
+      "timestamp": "2026-09-06T16:17:32.634Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "File Binary Signature & Magic Number Detec",
+        "description": "Identify true file formats from binary header bytes online. Detect disguised or extension-less files in your browser.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What is a Magic Number?"
+        ],
+        "relatedTools": [
+          "file-metadata-inspector",
+          "file-checksum-sha256",
+          "batch-file-renamer-preview",
+          "text-file-merger",
+          "text-file-splitter"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-md5-checksum-generator-1788711452628",
+      "pageSlug": "md5-checksum-generator",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "bab32b29990c5faa",
+      "timestamp": "2026-09-06T16:17:32.628Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "MD5 Hash & Checksum Generator (Legacy)",
+        "description": "Generate 128-bit MD5 hashes and checksums online for file integrity verification. Fast and free.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "Is MD5 secure for passwords?"
+        ],
+        "relatedTools": [
+          "hash-generator",
+          "crc32-checksum-calculator",
+          "password-generator",
+          "password-strength-checker",
+          "hmac-generator"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-port-number-lookup-1788711452622",
+      "pageSlug": "port-number-lookup",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "705ae42e92d991bc",
+      "timestamp": "2026-09-06T16:17:32.622Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "TCP/UDP Port Number Lookup & Reference",
+        "description": "Lookup standard TCP/UDP network port numbers and services online. Fast sysadmin reference.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What port does HTTPS use?"
+        ],
+        "relatedTools": [
+          "http-status-code-checker",
+          "ipv4-subnet-calculator",
+          "password-generator",
+          "password-strength-checker",
+          "hmac-generator"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
+    {
+      "id": "opt-cycle-1788711324381-mac-address-lookup-validator-1788711452616",
+      "pageSlug": "mac-address-lookup-validator",
+      "opportunityType": "WEAK_INTERNAL_LINKING",
+      "actionType": "INTERNAL_LINKS",
+      "contentFingerprint": "154521ea01158d59",
+      "timestamp": "2026-09-06T16:17:32.616Z",
+      "commitStatus": "DEPLOYED",
+      "commitHash": "fa6fad7",
+      "details": {
+        "title": "MAC Address Validator & Notation Converter",
+        "description": "Validate MAC addresses and convert between colon, hyphen, and Cisco dot formats online.",
+        "faqCount": 1,
+        "faqQuestions": [
+          "What is the OUI prefix in a MAC address?"
+        ],
+        "relatedTools": [
+          "ipv4-subnet-calculator",
+          "ipv4-address-converter",
+          "password-generator",
+          "password-strength-checker",
+          "hmac-generator"
+        ],
+        "reasoningSummary": "Establish bidirectional connections with sibling utilities in data/tools/ (internal linking only; title and description are preserved)."
+      }
+    },
     {
       "id": "opt-cycle-1788710585129-crc32-checksum-calculator-1788710725770",
       "pageSlug": "crc32-checksum-calculator",
