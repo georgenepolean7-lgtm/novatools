@@ -67,7 +67,7 @@ export const imageTools: ToolDefinition[] = [
       { question: "Does Image Resizer (Pixels, CM, MM) support preset dimensions for social media?", answer: "Yes. Image Resizer (Pixels, CM, MM) provides preset dimensions for social media natively in your browser with real-time feedback." }
     ],
     relatedTools: ["compress-image", "signature-resizer", "image-cropper"],
-    seoTitle: "Image Resizer - Resize Dimensions",
+    seoTitle: "Image Resizer (Pixels, CM, MM) Online Tool | Nova Tools",
     seoDescription: "Resize photos and images by pixels, centimeters, and millimeters online. Fast, high-quality, in-browser image resizing.",
     canonicalUrl: "/image-resizer",
     processingType: "client",
@@ -107,7 +107,7 @@ export const imageTools: ToolDefinition[] = [
       { question: "Does Signature Resizer (20KB - 50KB) support enhances black ink contrast?", answer: "Yes. Signature Resizer (20KB - 50KB) provides enhances black ink contrast natively in your browser with real-time feedback." }
     ],
     relatedTools: ["compress-image", "image-resizer", "image-cropper"],
-    seoTitle: "Signature Resizer - Resize for Forms",
+    seoTitle: "Signature Resizer (20KB - 50KB) Online Tool | Nova Tools",
     seoDescription: "Resize and compress signature images to 20KB or 50KB online for government exams and job applications. Fast and private.",
     canonicalUrl: "/signature-resizer",
     processingType: "client",

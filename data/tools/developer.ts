@@ -782,7 +782,7 @@ export const developerTools: ToolDefinition[] = [
       ],
     },
     relatedTools: ["html-entity-encoder", "url-decoder", "base64-decoder"],
-    seoTitle: "HTML Entity Decoder - Online Named, Decimal & Hex Unescaper",
+    seoTitle: "HTML Entity Decoder Online Tool | Nova Tools",
     seoDescription: "Decode named, decimal, and hexadecimal HTML entities back into clean readable text online. 100% private in-browser HTML unescaper.",
     canonicalUrl: "/html-entity-decoder",
     processingType: "client",

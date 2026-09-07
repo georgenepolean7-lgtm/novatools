@@ -99,7 +99,7 @@ export const financeTools: ToolDefinition[] = [
       { question: "Does Break-Even Point Calculator support essential for business planning?", answer: "Yes. Break-Even Point Calculator provides essential for business planning natively in your browser with real-time feedback." }
     ],
     relatedTools: ["profit-margin-calculator", "roi-calculator", "discount-calculator"],
-    seoTitle: "Break-Even Calculator - Unit Sales Point",
+    seoTitle: "Break-Even Point Calculator Online | Nova Tools",
     seoDescription: "Calculate your business break-even point in units and revenue online. Accurate cost and contribution margin calculator.",
     canonicalUrl: "/break-even-calculator",
     processingType: "client",

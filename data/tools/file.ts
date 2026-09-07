@@ -99,7 +99,7 @@ export const fileTools: ToolDefinition[] = [
     ],
     relatedTools: ["text-file-merger", "file-metadata-inspector"],
     seoTitle: "Batch File Renamer & Pattern Generator",
-    seoDescription: "Preview batch file renaming with sequential numbering, prefixes, and suffixes online. Free in-browser tool.",
+    seoDescription: "Preview batch renaming for photo lists and documents with sequential numbering (001, 002), prefixes, and find/replace. Fast in-browser file processing.",
     canonicalUrl: "/batch-file-renamer-preview",
     processingType: "client",
     privacyMessage: "100% in-browser generation.",

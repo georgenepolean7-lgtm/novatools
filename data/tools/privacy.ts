@@ -174,7 +174,7 @@ export const privacyTools: ToolDefinition[] = [
     ],
     relatedTools: ["ipv4-address-converter", "ipv6-validator"],
     seoTitle: "IPv4 Subnet Calculator (CIDR) Online | Nova Tools",
-    seoDescription: "Calculate IPv4 subnets, usable host ranges, broadcast IPs, and masks online. Free network calculator.",
+    seoDescription: "Calculate network address, broadcast address, usable IP range, host count, and wildcard mask from CIDR. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/ipv4-subnet-calculator",
     processingType: "client",
     privacyMessage: "100% in-browser calculation.",
