@@ -1375,6 +1375,7 @@ export class SeoAgentRunner {
       totalDeploymentMs += Date.now() - commitStart;
 
       if (!commitRes.success) {
+        console.error(`\n❌ [Autonomous Git Commit Failed] ${commitRes.message}`);
         failedBatches++;
         rollbacksCount += batchModifiedFiles.length;
         for (const [file, originalContent] of batchOriginalFileContents.entries()) {
