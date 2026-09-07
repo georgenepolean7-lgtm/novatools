@@ -37,6 +37,7 @@ export interface RunCycleOptions {
   forceSingleSlug?: string;
   maxBatches?: number;
   batchSize?: number;
+  maxPages?: number;
 }
 
 export interface ValidationFailureDetail {
@@ -57,6 +58,14 @@ export interface CycleRunResult {
   cycleId: string;
   timestamp: string;
   opportunitiesDetected: number;
+  selected?: number;
+  processed?: number;
+  optimized?: number;
+  rolledBack?: number;
+  deployed?: number;
+  indexNowSubmitted?: number;
+  failed?: number;
+  finalStatus?: string;
   filteredAlreadyOptimized?: number;
   filteredCooldown?: number;
   filteredNoOp?: number;
@@ -754,7 +763,8 @@ export class SeoAgentRunner {
         }
       }
     } else {
-      targetOpportunities = actionable;
+      const maxPages = options.maxPages || SEO_AGENT_CONFIG.BUDGETS.MAX_PAGE_CHANGES_PER_CYCLE || 40;
+      targetOpportunities = actionable.slice(0, maxPages);
     }
 
     let appliedCount = 0;
@@ -763,8 +773,8 @@ export class SeoAgentRunner {
 
     // DRY-RUN MODE: Reason about top opportunities without modifying files
     if (options.dryRun) {
-      // In dry-run mode, reason on the top actionable candidates to demonstrate live Qwen outputs
-      const dryRunBatch = targetOpportunities.slice(0, 3);
+      // In dry-run mode, reason on all selected actionable candidates (up to 40)
+      const dryRunBatch = targetOpportunities;
       let oppIdx = 0;
       for (const opp of dryRunBatch) {
         oppIdx++;
@@ -832,7 +842,7 @@ export class SeoAgentRunner {
         }
       }
 
-      const summary = `DRY RUN COMPLETED (Real Data Gate: ${realDataStatus}). Detected ${rawOpportunities.length} opportunities, ${filteredAlreadyOptimized.length} already optimized, ${filteredCooldown.length} in cooldown, ${filteredNoOp.length} no-op, ${skippedHighRisk.length} high-risk skipped, ${targetOpportunities.length} actionable (capped at 80/day, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.`;
+      const summary = `DRY RUN COMPLETED (Real Data Gate: ${realDataStatus}). Detected ${rawOpportunities.length} opportunities, ${filteredAlreadyOptimized.length} already optimized, ${filteredCooldown.length} in cooldown, ${filteredNoOp.length} no-op, ${skippedHighRisk.length} high-risk skipped, ${targetOpportunities.length} actionable (capped at 40/cycle, processed in 20-page atomic batches). ZERO files modified, ZERO deployments executed.`;
 
       this.auditStore.recordCycleRun({
         date: timestamp.split("T")[0],
@@ -857,6 +867,14 @@ export class SeoAgentRunner {
         cycleId,
         timestamp,
         opportunitiesDetected: rawOpportunities.length,
+        selected: targetOpportunities.length,
+        processed: dryRunBatch.length,
+        optimized: 0,
+        rolledBack: 0,
+        deployed: 0,
+        indexNowSubmitted: 0,
+        failed: 0,
+        finalStatus: "DRY_RUN",
         filteredAlreadyOptimized: filteredAlreadyOptimized.length,
         filteredCooldown: filteredCooldown.length,
         filteredNoOp: filteredNoOp.length,
@@ -885,13 +903,14 @@ export class SeoAgentRunner {
       };
     }
 
-    // 6. PRODUCTION ATOMIC BATCH PROCESSOR (MAX 80/DAY, CONFIGURABLE ATOMIC BATCH SIZE)
+    // 6. PRODUCTION ATOMIC BATCH PROCESSOR (MAX 40/CYCLE, 20-PAGE ATOMIC BATCHES)
     const batchSize = options.batchSize && options.batchSize > 0 ? options.batchSize : SEO_AGENT_CONFIG.BUDGETS.BATCH_SIZE;
     const rawBatches: SeoOpportunity[][] = [];
     for (let i = 0; i < targetOpportunities.length; i += batchSize) {
       rawBatches.push(targetOpportunities.slice(i, i + batchSize));
     }
-    const maxBatches = options.maxBatches !== undefined ? options.maxBatches : rawBatches.length;
+    const defaultMaxBatches = SEO_AGENT_CONFIG.BUDGETS.MAX_BATCHES_PER_CYCLE || 2;
+    const maxBatches = options.maxBatches !== undefined ? options.maxBatches : defaultMaxBatches;
     const batches = rawBatches.slice(0, maxBatches);
 
     let successfulBatches = 0;
@@ -910,6 +929,25 @@ export class SeoAgentRunner {
         const opp = batch[oppIdx];
         const realTool = getToolBySlug(opp.pageSlug);
         if (!realTool) continue;
+
+        // 5. Never execute HIGH-risk opportunities automatically (defense-in-depth safety gate)
+        if (opp.riskLevel === "HIGH") {
+          console.warn(`\n🛡️ [HIGH-RISK BLOCKED] /${opp.pageSlug} (${opp.proposedAction.type}) has HIGH risk. Skipping autonomous execution.`);
+          const highRiskAudit: SeoAuditRecord = {
+            id: `audit-${cycleId}-${opp.id}-high-risk-blocked`,
+            timestamp: new Date().toISOString(),
+            action: "HIGH_RISK_SKIPPED",
+            status: "SKIPPED",
+            riskLevel: "HIGH",
+            pageSlug: opp.pageSlug,
+            pageUrl: opp.pageUrl,
+            details: { reason: "HIGH-risk opportunities must never be executed automatically." },
+            provenance: opp.provenance,
+          };
+          this.auditStore.recordAudit(highRiskAudit);
+          auditRecords.push(highRiskAudit);
+          continue;
+        }
 
         console.log(`\n[Heartbeat | Candidate ${oppIdx + 1}/${batch.length} (Batch ${bIndex + 1}/${batches.length}) | Elapsed: ${getElapsed()}] Evaluating /${opp.pageSlug} (${opp.proposedAction.type})...`);
 
@@ -1442,7 +1480,10 @@ export class SeoAgentRunner {
     console.log(`Batch processing finished. Successful batches: ${successfulBatches}, Failed batches: ${failedBatches}, Rollbacks: ${rollbacksCount}, Optimizer Failures: ${totalOptimizerFailures}`);
 
     let finalCycleStatus: "COMPLETED" | "PARTIAL" | "FAILED";
-    if (appliedCount > 0 && failedBatches === 0 && rollbacksCount === 0) {
+    if (rollbacksCount > 0 && appliedCount === 0) {
+      // All modified pages were rolled back -> NEVER report COMPLETED as successful
+      finalCycleStatus = "FAILED";
+    } else if (appliedCount > 0 && failedBatches === 0 && rollbacksCount === 0) {
       finalCycleStatus = "COMPLETED";
     } else if (appliedCount > 0 && (failedBatches > 0 || rollbacksCount > 0)) {
       finalCycleStatus = "PARTIAL";
@@ -1485,6 +1526,14 @@ export class SeoAgentRunner {
       cycleId,
       timestamp,
       opportunitiesDetected: rawOpportunities.length,
+      selected: targetOpportunities.length,
+      processed: appliedCount + rollbacksCount + totalOptimizerFailures,
+      optimized: appliedCount,
+      rolledBack: rollbacksCount,
+      deployed: deployedCount,
+      indexNowSubmitted: changedSlugs.length,
+      failed: targetOpportunities.length - appliedCount,
+      finalStatus: finalCycleStatus,
       filteredAlreadyOptimized: filteredAlreadyOptimized.length,
       filteredCooldown: filteredCooldown.length,
       filteredNoOp: filteredNoOp.length,

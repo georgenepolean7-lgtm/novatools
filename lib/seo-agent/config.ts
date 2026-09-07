@@ -15,7 +15,9 @@ export const SEO_AGENT_CONFIG = {
 
   // Autonomous Operation Budgets (Deterministic hard limits)
   BUDGETS: {
+    MAX_PAGE_CHANGES_PER_CYCLE: 40,
     MAX_PAGE_CHANGES_PER_DAILY_CYCLE: 80,
+    MAX_BATCHES_PER_CYCLE: 2,
     BATCH_SIZE: 20,
     MAX_PAGE_CHANGES_PER_WEEK: 560,
     MAX_FAQS_PER_OPTIMIZATION: 3,

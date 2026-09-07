@@ -62,7 +62,8 @@ export class SeoScoringEngine {
       0,
       SEO_AGENT_CONFIG.BUDGETS.MAX_PAGE_CHANGES_PER_WEEK - weeklyChangesAlreadyDone
     );
-    const effectiveBudget = Math.min(dailyBudgetRemaining, weeklyBudgetRemaining);
+    const cycleBudget = SEO_AGENT_CONFIG.BUDGETS.MAX_PAGE_CHANGES_PER_CYCLE || 40;
+    const effectiveBudget = Math.min(dailyBudgetRemaining, weeklyBudgetRemaining, cycleBudget);
 
     const actionable: SeoOpportunity[] = [];
     const skippedHighRisk: SeoOpportunity[] = [];

@@ -37,9 +37,11 @@ const isVerbose = args.includes("--verbose");
 const slugIndex = args.indexOf("--slug");
 const targetSlug = slugIndex !== -1 && args[slugIndex + 1] ? args[slugIndex + 1] : undefined;
 const maxBatchesIndex = args.indexOf("--max-batches");
-const maxBatches = maxBatchesIndex !== -1 && args[maxBatchesIndex + 1] ? parseInt(args[maxBatchesIndex + 1], 10) : (args.includes("--single-batch") ? 1 : undefined);
+const maxBatches = maxBatchesIndex !== -1 && args[maxBatchesIndex + 1] ? parseInt(args[maxBatchesIndex + 1], 10) : (args.includes("--single-batch") ? 1 : 2);
 const batchSizeIndex = args.indexOf("--batch-size");
-const batchSize = batchSizeIndex !== -1 && args[batchSizeIndex + 1] ? parseInt(args[batchSizeIndex + 1], 10) : undefined;
+const batchSize = batchSizeIndex !== -1 && args[batchSizeIndex + 1] ? parseInt(args[batchSizeIndex + 1], 10) : 20;
+const maxPagesIndex = args.indexOf("--max-pages");
+const maxPages = maxPagesIndex !== -1 && args[maxPagesIndex + 1] ? parseInt(args[maxPagesIndex + 1], 10) : 40;
 
 async function runStandaloneCycle() {
   console.log("================================================================================");
@@ -50,8 +52,9 @@ async function runStandaloneCycle() {
   console.log(`   Timestamp: ${new Date().toISOString()}`);
   console.log(`   Mode: ${isDryRun ? "DRY RUN (Analysis & Scoring Only)" : "AUTONOMOUS PRODUCTION EXECUTION"}`);
   if (targetSlug) console.log(`   Target Slug Override: /${targetSlug}`);
-  if (maxBatches !== undefined) console.log(`   Batch Limit: Maximum ${maxBatches} batch(es)`);
-  if (batchSize !== undefined) console.log(`   Atomic Batch Size Override: ${batchSize} page(s) per atomic batch`);
+  console.log(`   Target Cap: Maximum ${maxPages} page(s) per cycle`);
+  console.log(`   Batch Limit: Maximum ${maxBatches} batch(es)`);
+  console.log(`   Atomic Batch Size: ${batchSize} page(s) per atomic batch`);
   console.log("================================================================================\n");
 
   try {
@@ -73,6 +76,7 @@ async function runStandaloneCycle() {
       forceSingleSlug: targetSlug,
       maxBatches,
       batchSize,
+      maxPages,
     });
 
     console.log("\n================================================================================");
@@ -85,6 +89,18 @@ async function runStandaloneCycle() {
       console.log(`Missing Real Telemetry:   ${result.missingConnectors.join(", ")}`);
     }
     console.log(`Kill Switch Status:       ${result.killSwitchActive ? "ACTIVE (PAUSED)" : "INACTIVE (OPERATIONAL)"}`);
+    console.log("--------------------------------------------------------------------------------");
+    console.log("📋 CORE SEO CYCLE METRICS (40-PAGE PRODUCTION BATCH GATE):");
+    console.log(`• Opportunities Detected: ${result.opportunitiesDetected}`);
+    console.log(`• Selected:               ${result.selected !== undefined ? result.selected : (result.selectedOpportunities?.length || 0)}`);
+    console.log(`• Processed:              ${result.processed !== undefined ? result.processed : (isDryRun ? (result.selectedOpportunities?.length || 0) : result.optimizationsApplied)}`);
+    console.log(`• Optimized:              ${result.optimized !== undefined ? result.optimized : result.optimizationsApplied}`);
+    console.log(`• Rolled Back:            ${result.rolledBack !== undefined ? result.rolledBack : 0}`);
+    console.log(`• Deployed:               ${result.deployed !== undefined ? result.deployed : result.deploymentsCompleted}`);
+    console.log(`• IndexNow Submitted:     ${result.indexNowSubmitted !== undefined ? result.indexNowSubmitted : result.indexNowUrlsSubmitted.length}`);
+    console.log(`• Failed:                 ${result.failed !== undefined ? result.failed : 0}`);
+    console.log(`• Final Status:           ${result.finalStatus || result.status || (result.success ? "COMPLETED" : "FAILED")}`);
+    console.log("--------------------------------------------------------------------------------");
     console.log(`Opportunities Detected:           ${result.opportunitiesDetected}`);
     if (result.filteredAlreadyOptimized !== undefined) {
       console.log(`Filtered as Already Optimized:    ${result.filteredAlreadyOptimized}`);

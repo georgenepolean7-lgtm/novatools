@@ -434,7 +434,7 @@ export class SeoValidator {
       };
     }
 
-    if (effectiveTitle.length > meta.MAX_TITLE_LENGTH || (titleWasPatched && effectiveTitle.length < meta.MIN_TITLE_LENGTH)) {
+    if (titleWasPatched && (effectiveTitle.length < meta.MIN_TITLE_LENGTH || effectiveTitle.length > meta.MAX_TITLE_LENGTH)) {
       return {
         passed: false,
         slug,
