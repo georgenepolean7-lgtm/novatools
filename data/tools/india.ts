@@ -61,7 +61,7 @@ export const indiaTools: ToolDefinition[] = [
     ],
     faq: [{ question: "What is the standard deduction in the New Tax Regime?", answer: "Under Budget 2024, the standard deduction for salaried individuals in the New Tax Regime is ₹75,000 (and ₹50,000 in the Old Regime)." }],
     relatedTools: ["gst-calculator", "gratuity-calculator", "sip-calculator"],
-    seoTitle: "Old vs New Tax Regime Comparator",
+    seoTitle: "Old vs New Tax Regime Comparator Online Tool | Nova Tools",
     seoDescription: "Compare Old vs New Income Tax Regime in India online. Find which tax regime saves you more money based on Budget 2024 slabs.",
     canonicalUrl: "/income-tax-regime-comparator",
     processingType: "client",
