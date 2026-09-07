@@ -201,7 +201,7 @@ export const seoTools: ToolDefinition[] = [
     ],
     faq: [{ question: "Why is JSON-LD preferred over Microdata?", answer: "Google officially recommends JSON-LD because it is decoupled from HTML presentation and easier to maintain." }],
     relatedTools: ["meta-tag-generator", "canonical-url-generator", "robots-txt-generator", "keyword-density-checker", "serp-snippet-preview"],
-    seoTitle: "Schema Markup Generator (JSON-LD)",
+    seoTitle: "Schema Markup Generator (JSON-LD) Online | Nova Tools",
     seoDescription: "Generate Google-compliant JSON-LD structured data for Articles, FAQs, and Organizations online.",
     canonicalUrl: "/schema-markup-generator",
     processingType: "client",

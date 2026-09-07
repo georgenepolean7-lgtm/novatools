@@ -92,7 +92,7 @@ export const accessibilityTools: ToolDefinition[] = [
     ],
     faq: [{ question: "What is the primary rule of ARIA?", answer: "The First Rule of ARIA is: Do not use ARIA if a native HTML5 semantic element (like <button> or <dialog>) already exists." }],
     relatedTools: ["accessible-form-label-checker", "color-contrast-checker", "html-image-alt-text-checker", "touch-target-size-checker", "heading-accessibility-hierarchy-checker"],
-    seoTitle: "ARIA Validator - WAI-ARIA Syntax",
+    seoTitle: "WAI-ARIA Attribute & Role Syntax Validator | Nova Tools",
     seoDescription: "Validate ARIA accessibility attributes and roles in HTML snippets online. Free in-browser W3C WAI-ARIA tool.",
     canonicalUrl: "/aria-attribute-reference-validator",
     processingType: "client",

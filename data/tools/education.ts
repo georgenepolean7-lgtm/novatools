@@ -206,7 +206,7 @@ export const educationTools: ToolDefinition[] = [
     ],
     faq: [{ question: "What if the required score is over 100%?", answer: "The calculator indicates that the target grade is mathematically impossible without extra credit." }],
     relatedTools: ["weighted-grade-calculator", "gpa-calculator", "cgpa-to-percentage-converter", "citation-generator", "attendance-percentage-calculator"],
-    seoTitle: "Final Exam Target Score Calculator",
+    seoTitle: "Final Exam Target Score Calculator Online | Nova Tools",
     seoDescription: "Calculate the exact score you need on your final exam to get your desired course grade. Free student grade tool.",
     canonicalUrl: "/exam-score-target-calculator",
     processingType: "client",
