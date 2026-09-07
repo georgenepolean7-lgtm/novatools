@@ -104,7 +104,7 @@ export const qrTools: ToolDefinition[] = [
       { question: "Does vCard Contact QR Code Generator support high-res png download?", answer: "Yes. vCard Contact QR Code Generator provides high-res png download natively in your browser with real-time feedback." }
     ],
     relatedTools: ["qr-code-generator", "email-qr-code-generator"],
-    seoTitle: "vCard Contact QR Code Generator",
+    seoTitle: "vCard Contact QR Code Generator Online | Nova Tools",
     seoDescription: "Create vCard 3.0 contact QR codes online for digital business cards. Free, private in-browser QR generator.",
     canonicalUrl: "/vcard-qr-code-generator",
     processingType: "client",

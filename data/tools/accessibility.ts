@@ -163,7 +163,7 @@ export const accessibilityTools: ToolDefinition[] = [
     faq: [{ question: "Is a 'placeholder' attribute sufficient as a label?", answer: "No. Placeholders disappear upon typing and are not reliably announced as labels by screen readers." }],
     relatedTools: ["html-image-alt-text-checker", "color-contrast-checker"],
     seoTitle: "Form Label Checker - Form Accessibility",
-    seoDescription: "Audit HTML form inputs for accessible labels and WCAG 3.3.2 compliance online. Free in-browser tool.",
+    seoDescription: "Audit form <input>, <select>, and <textarea> elements for accessible <label for='...'> or aria-label bindings. Free, fast in-browser data utility with.",
     canonicalUrl: "/accessible-form-label-checker",
     processingType: "client",
     privacyMessage: "100% private in-browser HTML parsing.",

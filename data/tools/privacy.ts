@@ -62,7 +62,7 @@ export const privacyTools: ToolDefinition[] = [
       { question: "Does Password Strength & Entropy Meter support 100% local in-browser computation?", answer: "Yes. Password Strength & Entropy Meter provides 100% local in-browser computation natively in your browser with real-time feedback." }
     ],
     relatedTools: ["password-generator", "hash-generator", "jwt-decoder"],
-    seoTitle: "Password Strength & Entropy Meter",
+    seoTitle: "Password Strength & Entropy Meter Online Tool | Nova Tools",
     seoDescription: "Test password strength and calculate entropy bits online with 100% in-browser privacy. Free password resilience checker.",
     canonicalUrl: "/password-strength-checker",
     processingType: "client",
@@ -458,7 +458,7 @@ export const privacyTools: ToolDefinition[] = [
       { question: "Does Base32 Text Encoder (RFC 4648) support instant copy?", answer: "Yes. Base32 Text Encoder (RFC 4648) provides instant copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["base32-decoder", "base64-encoder", "base58-encoder"],
-    seoTitle: "Base32 Text Encoder (RFC 4648)",
+    seoTitle: "Base32 Text Encoder (RFC 4648) Online Tool | Nova Tools",
     seoDescription: "Encode text to RFC 4648 Base32 format online. Fast, secure in-browser Base32 converter.",
     canonicalUrl: "/base32-encoder",
     processingType: "client",
@@ -883,7 +883,7 @@ export const privacyTools: ToolDefinition[] = [
       { question: "Does Hash Type Identifier & Detector support instant detection?", answer: "Yes. Hash Type Identifier & Detector provides instant detection natively in your browser with real-time feedback." }
     ],
     relatedTools: ["hash-generator", "uuid-validator-parser", "password-generator", "password-strength-checker", "hmac-generator"],
-    seoTitle: "Hash Type Identifier & Detector",
+    seoTitle: "Hash Type Identifier & Detector Online Tool | Nova Tools",
     seoDescription: "Identify unknown hash types and algorithms online by pattern analysis. Fast in-browser tool.",
     canonicalUrl: "/hash-type-identifier",
     processingType: "client",

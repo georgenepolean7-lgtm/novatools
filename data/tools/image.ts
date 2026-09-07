@@ -27,7 +27,7 @@ export const imageTools: ToolDefinition[] = [
       { question: "Does Compress Image (JPG, PNG, WebP) support side-by-side preview?", answer: "Yes. Compress Image (JPG, PNG, WebP) provides side-by-side preview natively in your browser with real-time feedback." }
     ],
     relatedTools: ["image-resizer", "signature-resizer", "image-cropper", "webp-converter"],
-    seoTitle: "Compress Image - Reduce Image Size",
+    seoTitle: "Compress Image (JPG, PNG, WebP) Online Tool | Nova Tools",
     seoDescription: "Compress JPG, PNG, and WebP images to exact target sizes (20KB, 50KB, 100KB) online. 100% in-browser privacy.",
     canonicalUrl: "/compress-image",
     processingType: "client",

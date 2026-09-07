@@ -135,7 +135,7 @@ export const textTools: ToolDefinition[] = [
     ],
     relatedTools: ["character-counter", "word-frequency-counter"],
     seoTitle: "Character Frequency & Vowel Analyzer",
-    seoDescription: "Count vowels, consonants, digits, and special characters online with Unicode grapheme support.",
+    seoDescription: "Count vowels, consonants, digits, punctuation, and Unicode graphemes in text. Free, fast in-browser data utility with immediate results on Nova Tools.",
     canonicalUrl: "/character-frequency-analyzer",
     processingType: "client",
     privacyMessage: "100% private in-browser analysis.",

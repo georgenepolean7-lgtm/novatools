@@ -109,7 +109,7 @@ export const webmasterTools: ToolDefinition[] = [
       { question: "Does .htaccess 301 Redirect Generator support one-click copy?", answer: "Yes. .htaccess 301 Redirect Generator provides one-click copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["robots-txt-generator", "meta-tag-generator", "cidr-calculator"],
-    seoTitle: ".htaccess 301 Redirect Generator",
+    seoTitle: ".htaccess 301 Redirect Generator Online | Nova Tools",
     seoDescription: "Generate Apache .htaccess 301 permanent and 302 temporary redirect rules online. Fast, clean, SEO-safe URL redirection generator.",
     canonicalUrl: "/htaccess-redirect-generator",
     processingType: "client",
