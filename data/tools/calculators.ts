@@ -26,7 +26,7 @@ export const calculatorTools: ToolDefinition[] = [
     ],
     relatedTools: ["sip-calculator", "compound-interest-calculator", "cagr-calculator"],
     seoTitle: "Loan EMI Calculator Online | Nova Tools",
-    seoDescription: "Calculate loan EMI, interest payable, and total loan payment online. Fast, accurate, and free EMI calculator.",
+    seoDescription: "Calculate exact monthly loan EMIs, interest payable, and total cost of home & car loans. Instant client-side calculations with accurate real-time results.",
     canonicalUrl: "/loan-emi-calculator",
     processingType: "client",
     privacyMessage: "Financial computations run 100% locally in your browser.",
