@@ -102,7 +102,7 @@ export const developerTools: ToolDefinition[] = [
       { question: "Does JSON Syntax Validator support zero data retention?", answer: "Yes. JSON Syntax Validator provides zero data retention natively in your browser with real-time feedback." }
     ],
     relatedTools: ["json-formatter", "json-minifier", "json-to-csv"],
-    seoTitle: "JSON Syntax Validator - Check JSON Syntax",
+    seoTitle: "JSON Syntax Validator Online Tool | Nova Tools",
     seoDescription: "Validate JSON syntax and detect parsing errors with line numbers. Free, fast in-browser data utility with immediate results on Nova Tools.",
     canonicalUrl: "/json-validator",
     processingType: "client",
@@ -358,7 +358,7 @@ export const developerTools: ToolDefinition[] = [
       { question: "Does UUID v4 Generator support one-click copy?", answer: "Yes. UUID v4 Generator provides one-click copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["jwt-decoder", "hash-generator", "password-generator"],
-    seoTitle: "UUID v4 Generator - V4 Random UUIDs",
+    seoTitle: "UUID v4 Generator Online | Nova Tools",
     seoDescription: "Generate cryptographically secure random Version 4 UUIDs & GUIDs instantly. Free, fast in-browser data utility with immediate results on Nova Tools.",
     canonicalUrl: "/uuid-generator",
     processingType: "client",
@@ -1086,7 +1086,7 @@ export const developerTools: ToolDefinition[] = [
       { question: "Does YAML to JSON Converter support instant copy?", answer: "Yes. YAML to JSON Converter provides instant copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["json-to-yaml", "json-formatter", "json-validator"],
-    seoTitle: "YAML to JSON Converter - Developer Utility",
+    seoTitle: "YAML to JSON Converter Online | Nova Tools",
     seoDescription: "Convert YAML files and configurations into standard, valid RFC 8259 JSON format. Free, fast in-browser data utility with immediate results on Nova Tools.",
     canonicalUrl: "/yaml-to-json",
     processingType: "client",
@@ -1339,7 +1339,7 @@ export const developerTools: ToolDefinition[] = [
       { question: "Does Code Indentation Converter (Spaces ↔ Tabs) support preserves inner code formatting?", answer: "Yes. Code Indentation Converter (Spaces ↔ Tabs) provides preserves inner code formatting natively in your browser with real-time feedback." }
     ],
     relatedTools: ["text-cleaner", "json-formatter", "json-minifier", "json-validator", "sql-formatter"],
-    seoTitle: "Code Indentation Converter (Spaces ↔ Tabs)",
+    seoTitle: "Code Indentation Converter | Nova Tools",
     seoDescription: "Convert source code indentation between 2 spaces, 4 spaces, and hard Tabs (\\t) while trimming trailing whitespace. Free, fast in-browser data utility with.",
     canonicalUrl: "/code-indentation-converter",
     processingType: "client",

@@ -66,7 +66,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does SIP Investment & Wealth Calculator support instant projection?", answer: "Yes. SIP Investment & Wealth Calculator provides instant projection natively in your browser with real-time feedback." }
     ],
     relatedTools: ["loan-emi-calculator", "compound-interest-calculator", "cagr-calculator"],
-    seoTitle: "SIP Calculator - Mutual Fund Returns",
+    seoTitle: "SIP Investment & Wealth Calculator Online | Nova Tools",
     seoDescription: "Calculate future wealth growth and maturity returns from mutual fund Systematic Investment Plans (SIP). Instant client-side calculations with accurate.",
     canonicalUrl: "/sip-calculator",
     processingType: "client",
@@ -107,7 +107,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does Compound Interest Calculator support instant calculation?", answer: "Yes. Compound Interest Calculator provides instant calculation natively in your browser with real-time feedback." }
     ],
     relatedTools: ["simple-interest-calculator", "sip-calculator", "cagr-calculator"],
-    seoTitle: "Compound Interest - Investment Growth",
+    seoTitle: "Compound Interest Calculator Online | Nova Tools",
     seoDescription: "Calculate compound interest gains and final maturity balance with annual and monthly compounding. Instant client-side calculations with accurate real-time.",
     canonicalUrl: "/compound-interest-calculator",
     processingType: "client",
@@ -509,7 +509,7 @@ export const calculatorTools: ToolDefinition[] = [
     ],
     faq: [{ question: "What is the formula for speed?", answer: "Speed = Distance / Time." }],
     relatedTools: ["fuel-cost-calculator", "time-calculator", "loan-emi-calculator", "sip-calculator", "compound-interest-calculator", "simple-interest-calculator", "percentage-calculator", "percentage-change-calculator"],
-    seoTitle: "Speed Distance Time - Motion Calculator",
+    seoTitle: "Speed, Distance & Time Calculator Online | Nova Tools",
     seoDescription: "Solve for Speed (S = D/T), Distance (D = S × T), or Travel Time (T = D/S) instantly. Instant client-side calculations with accurate real-time results on.",
     canonicalUrl: "/speed-distance-time-calculator",
     processingType: "client",
@@ -653,7 +653,7 @@ export const calculatorTools: ToolDefinition[] = [
     ],
     faq: [{ question: "How many calories equal 1 kg of fat?", answer: "Approximately 7,700 kcal deficit is required to burn 1 kilogram of body fat." }],
     relatedTools: ["bmr-calculator", "bmi-calculator"],
-    seoTitle: "Calorie Deficit - Weight Loss Target",
+    seoTitle: "Calorie Deficit & Fat Loss Calculator Online | Nova Tools",
     seoDescription: "Calculate daily calorie intake targets and projected weekly fat loss rates. Instant client-side calculations with accurate real-time results on Nova Tools.",
     canonicalUrl: "/calorie-deficit-calculator",
     processingType: "client",
@@ -807,7 +807,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does Inflation & Purchasing Power Calculator support instant calculation?", answer: "Yes. Inflation & Purchasing Power Calculator provides instant calculation natively in your browser with real-time feedback." }
     ],
     relatedTools: ["compound-interest-calculator", "sip-calculator", "loan-emi-calculator", "simple-interest-calculator", "percentage-calculator"],
-    seoTitle: "Inflation Calculator - Future Value",
+    seoTitle: "Inflation & Purchasing Power Calculator Online | Nova Tools",
     seoDescription: "Calculate future living costs and purchasing power erosion over time due to inflation rates. Instant client-side calculations with accurate real-time.",
     canonicalUrl: "/inflation-calculator",
     processingType: "client",
@@ -884,7 +884,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does Gross Profit Margin Calculator support instant calculation?", answer: "Yes. Gross Profit Margin Calculator provides instant calculation natively in your browser with real-time feedback." }
     ],
     relatedTools: ["markup-calculator", "percentage-change-calculator"],
-    seoTitle: "Margin Calculator - Gross Profit Margin",
+    seoTitle: "Gross Profit Margin Calculator Online | Nova Tools",
     seoDescription: "Calculate gross profit margin percentage and net revenue margins from revenue and cost of goods sold. Instant client-side calculations with accurate.",
     canonicalUrl: "/margin-calculator",
     processingType: "client",
@@ -925,7 +925,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does Time Duration & Addition Calculator support instant result?", answer: "Yes. Time Duration & Addition Calculator provides instant result natively in your browser with real-time feedback." }
     ],
     relatedTools: ["date-difference-calculator", "unix-timestamp-converter"],
-    seoTitle: "Time Duration & Addition Calculator",
+    seoTitle: "Time Duration & Addition Calculator Online | Nova Tools",
     seoDescription: "Add or subtract hours, minutes, and seconds between two time durations. Instant client-side calculations with accurate real-time results on Nova Tools.",
     canonicalUrl: "/time-calculator",
     processingType: "client",

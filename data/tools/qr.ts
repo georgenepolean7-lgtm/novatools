@@ -105,7 +105,7 @@ export const qrTools: ToolDefinition[] = [
     ],
     relatedTools: ["qr-code-generator", "email-qr-code-generator"],
     seoTitle: "vCard Contact QR Code Generator Online | Nova Tools",
-    seoDescription: "Create vCard 3.0 contact QR codes online for digital business cards. Free, private in-browser QR generator.",
+    seoDescription: "Generate standard vCard 3.0 contact QR codes with Name, Phone, Email, Company, and Website for business cards. Free, fast in-browser data utility with.",
     canonicalUrl: "/vcard-qr-code-generator",
     processingType: "client",
     privacyMessage: "Contact data processed 100% locally. Zero logging.",

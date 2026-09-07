@@ -134,7 +134,7 @@ export const textTools: ToolDefinition[] = [
       { question: "Does Character Frequency & Vowel Analyzer support intl.segmenter unicode grapheme support?", answer: "Yes. Character Frequency & Vowel Analyzer provides intl.segmenter unicode grapheme support natively in your browser with real-time feedback." }
     ],
     relatedTools: ["character-counter", "word-frequency-counter"],
-    seoTitle: "Character Frequency & Vowel Analyzer",
+    seoTitle: "Character Frequency & Vowel Analyzer | Nova Tools",
     seoDescription: "Count vowels, consonants, digits, punctuation, and Unicode graphemes in text. Free, fast in-browser data utility with immediate results on Nova Tools.",
     canonicalUrl: "/character-frequency-analyzer",
     processingType: "client",

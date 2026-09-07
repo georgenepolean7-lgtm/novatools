@@ -175,7 +175,7 @@ export const dataTools: ToolDefinition[] = [
       { question: "Does JSON to TypeScript Interface Generator support strict typescript syntax?", answer: "Yes. JSON to TypeScript Interface Generator provides strict typescript syntax natively in your browser with real-time feedback." }
     ],
     relatedTools: ["json-validator", "json-formatter", "json-to-csv", "csv-to-json", "csv-to-markdown-table"],
-    seoTitle: "JSON to TypeScript Interface Generator",
+    seoTitle: "JSON to TypeScript Interface Generator Online | Nova Tools",
     seoDescription: "Generate strongly-typed TypeScript interface definitions automatically from JSON API responses. Free, fast in-browser data utility with immediate results.",
     canonicalUrl: "/json-to-typescript-interfaces",
     processingType: "client",
@@ -321,7 +321,7 @@ export const dataTools: ToolDefinition[] = [
       { question: "Does JSON to XML Converter support sanitizes tag names?", answer: "Yes. JSON to XML Converter provides sanitizes tag names natively in your browser with real-time feedback." }
     ],
     relatedTools: ["xml-to-json", "json-to-csv", "json-to-yaml", "yaml-to-json", "csv-to-json", "csv-to-markdown-table", "markdown-table-to-csv", "json-to-typescript-interfaces"],
-    seoTitle: "JSON to XML Converter - Data Converter",
+    seoTitle: "JSON to XML Converter Online | Nova Tools",
     seoDescription: "Convert JSON objects and arrays into well-formed XML documents with XML declaration headers. Free, fast in-browser data utility with immediate results on.",
     canonicalUrl: "/json-to-xml",
     processingType: "client",

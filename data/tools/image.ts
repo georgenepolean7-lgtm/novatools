@@ -28,7 +28,7 @@ export const imageTools: ToolDefinition[] = [
     ],
     relatedTools: ["image-resizer", "signature-resizer", "image-cropper", "webp-converter"],
     seoTitle: "Compress Image (JPG, PNG, WebP) Online Tool | Nova Tools",
-    seoDescription: "Compress JPG, PNG, and WebP images to exact target sizes (20KB, 50KB, 100KB) online. 100% in-browser privacy.",
+    seoDescription: "Compress and reduce image file sizes to exact target KB (20KB, 50KB, 100KB) without visual degradation. Fast in-browser file processing with complete.",
     canonicalUrl: "/compress-image",
     processingType: "client",
     privacyMessage: "Processed 100% in-browser with zero uploads.",
