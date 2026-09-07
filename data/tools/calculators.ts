@@ -473,7 +473,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Is Aspect Ratio Calculator (Image & Video) free to use on Nova Tools?", answer: "Yes. All calculations are performed directly in-browser with no usage limits or registration required." }
     ],
     relatedTools: ["image-resizer", "px-to-rem-converter"],
-    seoTitle: "Aspect Ratio - Image & Video Dimensions",
+    seoTitle: "Aspect Ratio Calculator (Image & Video) Online | Nova Tools",
     seoDescription: "Calculate proportionate dimensions and maintain aspect ratios (16:9, 4:3, 1:1) when resizing images. Instant client-side calculations with accurate.",
     canonicalUrl: "/aspect-ratio-calculator",
     processingType: "client",
