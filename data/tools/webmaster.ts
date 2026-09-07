@@ -68,7 +68,7 @@ export const webmasterTools: ToolDefinition[] = [
       { question: "Does HTTP Request Header Parser & Security Auditor support one-click copy?", answer: "Yes. HTTP Request Header Parser & Security Auditor provides one-click copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["security-headers-generator", "cache-control-generator", "cors-header-generator"],
-    seoTitle: "HTTP Request Header Parser & Security Audi",
+    seoTitle: "HTTP Request Header Parser & Security Auditor | Nova Tools",
     seoDescription: "Parse raw HTTP request and response headers into formatted JSON key-value pairs and audit security headers. Free, fast in-browser data utility with.",
     canonicalUrl: "/http-request-header-parser",
     processingType: "client",
@@ -220,7 +220,7 @@ export const webmasterTools: ToolDefinition[] = [
       { question: "Does Nginx Reverse Proxy Config Generator support ssl and http/2 directives?", answer: "Yes. Nginx Reverse Proxy Config Generator provides ssl and http/2 directives natively in your browser with real-time feedback." }
     ],
     relatedTools: ["htaccess-redirect-generator", "cors-header-generator"],
-    seoTitle: "Nginx Reverse Proxy Config Generator",
+    seoTitle: "Nginx Reverse Proxy Config Generator Online | Nova Tools",
     seoDescription: "Generate production-ready Nginx `server {}` and `location /` reverse proxy configuration blocks with WebSocket and SSL. Free, fast in-browser data utility.",
     canonicalUrl: "/nginx-reverse-proxy-generator",
     processingType: "client",

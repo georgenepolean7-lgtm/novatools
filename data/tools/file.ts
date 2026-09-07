@@ -98,7 +98,7 @@ export const fileTools: ToolDefinition[] = [
       { question: "Does Batch File Renamer & Pattern Generator support find and replace support?", answer: "Yes. Batch File Renamer & Pattern Generator provides find and replace support natively in your browser with real-time feedback." }
     ],
     relatedTools: ["text-file-merger", "file-metadata-inspector"],
-    seoTitle: "Batch File Renamer & Pattern Generator",
+    seoTitle: "Batch File Renamer & Pattern Generator Online | Nova Tools",
     seoDescription: "Preview batch renaming for photo lists and documents with sequential numbering (001, 002), prefixes, and find/replace. Fast in-browser file processing.",
     canonicalUrl: "/batch-file-renamer-preview",
     processingType: "client",
