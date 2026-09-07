@@ -39,6 +39,16 @@ export interface RunCycleOptions {
   batchSize?: number;
 }
 
+export interface ValidationFailureDetail {
+  stage: "STAGE_A" | "STAGE_B";
+  pageSlug?: string;
+  affectedPages?: string[];
+  failedCheckName: string;
+  failureMessage: string;
+  allFailedChecks?: string[];
+  durationMs?: number;
+}
+
 export interface CycleRunResult {
   success: boolean;
   status: "COMPLETED" | "PARTIAL" | "FAILED" | "COMPLETED_WITH_ROLLBACKS" | "BLOCKED_PENDING_REAL_DATA" | "PAUSED_KILL_SWITCH" | "DRY_RUN";
@@ -61,6 +71,7 @@ export interface CycleRunResult {
   summary: string;
   auditRecords: SeoAuditRecord[];
   killSwitchActive: boolean;
+  validationFailures?: ValidationFailureDetail[];
   timing?: {
     telemetryIngestionMs: number;
     opportunityScoringMs: number;
@@ -353,6 +364,7 @@ export class SeoAgentRunner {
     let totalDeploymentMs = 0;
     let telemetryIngestionMs = 0;
     let opportunityScoringMs = 0;
+    const validationFailures: ValidationFailureDetail[] = [];
     const getElapsed = () => ((Date.now() - cycleStartTime) / 1000).toFixed(1) + "s";
 
     if (this.auditStore.isKillSwitchActive()) {
@@ -380,6 +392,7 @@ export class SeoAgentRunner {
         summary: "Autonomous SEO operations are paused via Emergency Kill Switch.",
         auditRecords: [killAudit],
         killSwitchActive: true,
+        validationFailures,
       };
     }
 
@@ -522,6 +535,7 @@ export class SeoAgentRunner {
         summary,
         auditRecords,
         killSwitchActive: false,
+        validationFailures,
         timing: {
           telemetryIngestionMs,
           opportunityScoringMs: 0,
@@ -857,6 +871,7 @@ export class SeoAgentRunner {
         summary,
         auditRecords,
         killSwitchActive: false,
+        validationFailures,
         timing: {
           telemetryIngestionMs,
           opportunityScoringMs,
@@ -1124,6 +1139,22 @@ export class SeoAgentRunner {
 
                 this.optimizer.rollbackFile(applyResult.targetFile, applyResult.previousContent);
 
+                const failedChecks = stageAResult.checks.filter((c) => !c.passed);
+                const primaryFailedCheck = failedChecks[0] || {
+                  name: "Stage A Gate",
+                  passed: false,
+                  message: stageAResult.failureReason || "Stage A isolation validation failed.",
+                  durationMs: stageAResult.durationMs,
+                };
+                validationFailures.push({
+                  stage: "STAGE_A",
+                  pageSlug: opp.pageSlug,
+                  failedCheckName: primaryFailedCheck.name,
+                  failureMessage: stageAResult.failureReason || primaryFailedCheck.message,
+                  allFailedChecks: failedChecks.map((c) => c.name),
+                  durationMs: stageAResult.durationMs,
+                });
+
                 const stageAAudit: SeoAuditRecord = {
                   id: `audit-${cycleId}-${opp.id}-stage-a-rejected`,
                   timestamp: new Date().toISOString(),
@@ -1302,6 +1333,15 @@ export class SeoAgentRunner {
           this.optimizer.rollbackFile(file, originalContent);
         }
 
+        validationFailures.push({
+          stage: "STAGE_B",
+          affectedPages: [...batchChangedSlugs],
+          failedCheckName: primaryFailedCheck.name,
+          failureMessage: lastValSummary.failureReason || primaryFailedCheck.message,
+          allFailedChecks: failedChecks.map((c) => c.name),
+          durationMs: Date.now() - stageBStart,
+        });
+
         const failAudit: SeoAuditRecord = {
           id: `audit-${cycleId}-batch-${bIndex}-validation-failed`,
           timestamp: new Date().toISOString(),
@@ -1457,6 +1497,7 @@ export class SeoAgentRunner {
       summary,
       auditRecords,
       killSwitchActive: false,
+      validationFailures,
       timing: {
         telemetryIngestionMs,
         opportunityScoringMs,

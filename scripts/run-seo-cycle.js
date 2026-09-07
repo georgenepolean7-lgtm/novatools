@@ -181,6 +181,53 @@ async function runStandaloneCycle() {
       console.log(`\n🛡️ High-Risk Protection: ${result.highRiskSkipped} high-risk opportunities safely skipped (SKIP -> LOG -> CONTINUE).`);
     }
 
+    // Unconditional, high-visibility validation failure reporting (Required by Phase 1)
+    const hasValidationFailures = (result.validationFailures && result.validationFailures.length > 0) ||
+      result.auditRecords.some((a) => a.action === "BATCH_VALIDATION_FAILED_ROLLED_BACK" || a.action === "STAGE_A_ISOLATION_REJECTED");
+
+    if (hasValidationFailures) {
+      console.log("\n❌ ================================================================================");
+      console.log("❌ VALIDATION FAILURES & ROLLBACKS DETECTED IN THIS CYCLE:");
+      console.log("--------------------------------------------------------------------------------");
+      if (result.validationFailures && result.validationFailures.length > 0) {
+        result.validationFailures.forEach((vf, idx) => {
+          console.log(`[Failure #${idx + 1}] Stage: ${vf.stage}`);
+          if (vf.pageSlug) console.log(`  * Target Page:       /${vf.pageSlug}`);
+          if (vf.affectedPages && vf.affectedPages.length > 0) {
+            console.log(`  * Affected Pages:    ${vf.affectedPages.map((s) => "/" + s).join(", ")}`);
+          }
+          console.log(`  * Failed Gate/Check: ${vf.failedCheckName}`);
+          if (vf.durationMs) console.log(`  * Duration:          ${vf.durationMs}ms`);
+          if (vf.allFailedChecks && vf.allFailedChecks.length > 1) {
+            console.log(`  * All Failed Gates:  ${vf.allFailedChecks.join(", ")}`);
+          }
+          console.log(`  * Exact Error:`);
+          const indentedErr = (vf.failureMessage || "Unknown failure")
+            .split("\n")
+            .map((line) => `      ${line}`)
+            .join("\n");
+          console.log(indentedErr);
+          console.log("--------------------------------------------------------------------------------");
+        });
+      } else {
+        // Fallback to audit records
+        const failAudits = result.auditRecords.filter(
+          (a) => a.action === "BATCH_VALIDATION_FAILED_ROLLED_BACK" || a.action === "STAGE_A_ISOLATION_REJECTED"
+        );
+        failAudits.forEach((fa, idx) => {
+          console.log(`[Failure #${idx + 1}] Action: ${fa.action}`);
+          if (fa.pageSlug) console.log(`  * Target Page:       /${fa.pageSlug}`);
+          if (fa.details?.affectedPages) console.log(`  * Affected Pages:    ${fa.details.affectedPages.join(", ")}`);
+          if (fa.details?.failedCheckName) console.log(`  * Failed Check:      ${fa.details.failedCheckName}`);
+          if (fa.details?.exactFailureMessage) {
+            console.log(`  * Exact Error:       ${fa.details.exactFailureMessage}`);
+          }
+          console.log("--------------------------------------------------------------------------------");
+        });
+      }
+      console.log("================================================================================\n");
+    }
+
     if (isDryRun) {
       console.log("\n🔒 DRY RUN SAFETY GUARANTEE: Zero files were modified. Zero Git commits created. Zero deployments triggered. Zero IndexNow calls broadcast.");
     }

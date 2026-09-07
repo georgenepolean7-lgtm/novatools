@@ -1128,39 +1128,67 @@ export class SeoValidator {
     timeoutMs: number = SEO_AGENT_CONFIG.TIMEOUTS?.BUILD_TIMEOUT_MS || 480000
   ): Promise<ValidationCheckResult> {
     console.log("[SEO][next_build] started");
+    const maxRetries = 2;
+    let attempt = 0;
     const start = Date.now();
-    try {
-      await execWithWatchdog(
-        "cmd.exe /c npx next build",
-        { cwd: this.workspaceRoot, maxBuffer: 10 * 1024 * 1024 },
-        timeoutMs,
-        "Next.js Build"
-      );
-      const durationMs = Date.now() - start;
-      console.log(`[SEO][next_build] completed in ${durationMs}ms`);
-      return {
-        name: "Next.js Build Gate",
-        passed: true,
-        message: "Full production build compiled cleanly with all static routes generated.",
-        durationMs,
-      };
-    } catch (err: unknown) {
-      const durationMs = Date.now() - start;
-      const isTimeout = err instanceof Error && err.message.startsWith("TIMEOUT:");
-      if (isTimeout) {
-        console.log(`[SEO][next_build] timeout after ${durationMs}ms`);
-      } else {
-        console.log(`[SEO][next_build] failed`);
+
+    while (attempt <= maxRetries) {
+      attempt++;
+      try {
+        await execWithWatchdog(
+          "cmd.exe /c npx next build",
+          { cwd: this.workspaceRoot, maxBuffer: 10 * 1024 * 1024 },
+          timeoutMs,
+          "Next.js Build"
+        );
+        const durationMs = Date.now() - start;
+        console.log(`[SEO][next_build] completed in ${durationMs}ms`);
+        return {
+          name: "Next.js Build Gate",
+          passed: true,
+          message: "Full production build compiled cleanly with all static routes generated.",
+          durationMs,
+        };
+      } catch (err: unknown) {
+        const stdout = err && typeof err === "object" && "stdout" in err ? String(err.stdout).trim() : "";
+        const stderr = err && typeof err === "object" && "stderr" in err ? String(err.stderr).trim() : "";
+        const errorOutput = [stderr, stdout].filter(Boolean).join("\n") || String(err);
+
+        const isTransientFsLock =
+          /EPERM:\s*operation not permitted/i.test(errorOutput) ||
+          /EBUSY:\s*resource busy or locked/i.test(errorOutput) ||
+          /operation not permitted,\s*unlink/i.test(errorOutput);
+
+        if (isTransientFsLock && attempt <= maxRetries) {
+          console.warn(
+            `⚠️ [SEO][next_build] Transient Windows/OneDrive filesystem lock detected on .next directory (attempt ${attempt}/${maxRetries + 1}). Pausing 3000ms before retry...`
+          );
+          await new Promise((resolve) => setTimeout(resolve, 3000));
+          continue;
+        }
+
+        const durationMs = Date.now() - start;
+        const isTimeout = err instanceof Error && err.message.startsWith("TIMEOUT:");
+        if (isTimeout) {
+          console.log(`[SEO][next_build] timeout after ${durationMs}ms`);
+        } else {
+          console.log(`[SEO][next_build] failed`);
+        }
+
+        return {
+          name: "Next.js Build Gate",
+          passed: false,
+          message: `Build error: ${errorOutput.slice(0, 1000)}`,
+          durationMs,
+        };
       }
-      const stdout = err && typeof err === "object" && "stdout" in err ? String(err.stdout).trim() : "";
-      const stderr = err && typeof err === "object" && "stderr" in err ? String(err.stderr).trim() : "";
-      const errorOutput = [stderr, stdout].filter(Boolean).join("\n") || String(err);
-      return {
-        name: "Next.js Build Gate",
-        passed: false,
-        message: `Build error: ${errorOutput.slice(0, 1000)}`,
-        durationMs,
-      };
     }
+
+    return {
+      name: "Next.js Build Gate",
+      passed: false,
+      message: "Build error: Maximum build retries exceeded due to persistent filesystem lock.",
+      durationMs: Date.now() - start,
+    };
   }
 }
