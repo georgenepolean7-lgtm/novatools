@@ -498,7 +498,7 @@ export const textTools: ToolDefinition[] = [
     ],
     relatedTools: ["snake-case-converter", "kebab-case-converter", "pascalcase-converter"],
     seoTitle: "camelCase String Converter Online | Nova Tools",
-    seoDescription: "Convert text and phrases to camelCase online for JavaScript and programming. Fast and free.",
+    seoDescription: "Convert strings and phrases into camelCase (e.g. 'helloWorld') for JavaScript and coding. Free, fast in-browser data utility with immediate results on.",
     canonicalUrl: "/camelcase-converter",
     processingType: "client",
     privacyMessage: "100% in-browser conversion.",

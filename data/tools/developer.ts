@@ -968,7 +968,7 @@ export const developerTools: ToolDefinition[] = [
       { question: "Does ASCII to Hex Converter support full utf-8 support?", answer: "Yes. ASCII to Hex Converter provides full utf-8 support natively in your browser with real-time feedback." }
     ],
     relatedTools: ["hex-to-ascii-converter", "binary-to-decimal-converter", "base64-encoder"],
-    seoTitle: "ASCII to Hex Converter - Text to Hex",
+    seoTitle: "ASCII to Hex Converter Online | Nova Tools",
     seoDescription: "Convert text characters and ASCII strings into hexadecimal byte representations. Free, fast in-browser data utility with immediate results on Nova Tools.",
     canonicalUrl: "/ascii-to-hex-converter",
     processingType: "client",

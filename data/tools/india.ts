@@ -238,7 +238,7 @@ export const indiaTools: ToolDefinition[] = [
     ],
     faq: [{ question: "Is my Aadhaar number sent to UIDAI or any server?", answer: "No. The check runs purely mathematical Verhoeff parity calculations locally inside your browser with zero network transmission." }],
     relatedTools: ["pan-card-format-validator", "ifsc-code-validator", "gst-calculator", "income-tax-regime-comparator", "gratuity-calculator", "epf-calculator-india", "indian-currency-words-converter", "pin-code-format-validator-india"],
-    seoTitle: "Aadhaar Checksum - Verhoeff Check",
+    seoTitle: "Aadhaar Verhoeff Checksum & Format Validator | Nova Tools",
     seoDescription: "Validate Indian Aadhaar number format and calculate Verhoeff checksum online. 100% private and secure.",
     canonicalUrl: "/aadhaar-verhoeff-checksum-validator",
     processingType: "client",
