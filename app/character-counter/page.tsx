@@ -118,6 +118,16 @@ export default function CharacterCounterPage() {
               "'No Spaces' subtracts only standard space characters (' '), while 'No Whitespace' also excludes tabs, returns, and newline characters.",
           },
           {
+            question: "Are symbols and punctuation marks included in the character count?",
+            answer:
+              "Yes. The total character count includes all alphabetic letters, numeric digits, punctuation marks, and symbols. To find your letter-only count, subtract spaces, symbols, and punctuation.",
+          },
+          {
+            question: "How is character density or average word length calculated?",
+            answer:
+              "In standard English text, the average word length is approximately 4.7 to 5 characters. Character density measures how tightly packed characters and symbols are across sentences and paragraphs.",
+          },
+          {
             question: "Is my text data private?",
             answer:
               "Yes! All text processing is 100% client-side in your browser memory. Nothing is ever sent to a server.",
@@ -248,9 +258,28 @@ export default function CharacterCounterPage() {
             <h2 className="text-2xl font-bold text-white">How to Count Characters</h2>
             <ol className="mt-4 list-decimal space-y-2 pl-6 text-slate-300">
               <li>Type or paste your text into the editor.</li>
-              <li>View character counts with and without spaces, word count, and line count immediately.</li>
-              <li>Check social media character progress bars for Twitter, Instagram, and LinkedIn.</li>
+              <li>View character counts with and without spaces, word count, line count, and byte size immediately.</li>
+              <li>Check social media character progress bars for Twitter, Instagram, LinkedIn, and SMS.</li>
             </ol>
+          </div>
+
+          {/* Character Counting Standards & Density Guide */}
+          <div className="mx-auto mt-8 max-w-3xl rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+            <h3 className="text-lg font-bold text-white">Character Counting Standards &amp; Density</h3>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs text-slate-300">
+              <div className="rounded-2xl border border-white/10 bg-black/30 p-4 space-y-1.5">
+                <span className="font-semibold text-cyan-300">With Spaces vs. Without Spaces</span>
+                <p className="text-slate-400 leading-relaxed">
+                  College essays and job portal forms (like UCAS) frequently specify limits &ldquo;with spaces&rdquo; (raw length) or &ldquo;without spaces&rdquo; (content glyphs only). Both counts are updated live above.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-black/30 p-4 space-y-1.5">
+                <span className="font-semibold text-cyan-300">Symbol &amp; Punctuation Handling</span>
+                <p className="text-slate-400 leading-relaxed">
+                  Every period, comma, quotation mark, and symbol counts as 1 character in ASCII, while emojis with compound modifiers are measured accurately via grapheme iterators.
+                </p>
+              </div>
+            </div>
           </div>
 
           <RelatedTools current="/character-counter" />

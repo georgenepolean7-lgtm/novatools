@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import SiteFooter from "@/components/SiteFooter";
 import { ChangeEvent, useState } from "react";
 import ToolLayout from "@/components/ToolLayout";
@@ -290,18 +291,26 @@ setTimeout(() => {
       mainEntity: [
         {
           "@type": "Question",
-          name: "How do I compress an image to 20KB or 50KB?",
+          name: "How do I compress an image to 20KB, 50KB, or 100KB?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Upload your image, choose the target file size such as 20KB, 50KB or 100KB, then compress and download the optimized image.",
+            text: "Upload your JPG or PNG image, select a preset button (20KB, 50KB, 100KB, or 200KB) or enter a custom target KB size, then click 'Compress Image'. Our client-side algorithm will iteratively adjust compression quality to match your target file size.",
           },
         },
         {
           "@type": "Question",
-          name: "Is this image compressor free?",
+          name: "How do I reduce image size for government job portals (UPSC, SSC, NEET, JEE)?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. Nova Tools lets you compress images online for free.",
+            text: "Online application forms typically mandate signatures between 10KB-20KB and passport photos between 20KB-50KB or 50KB-100KB. Use the preset 20KB or 50KB buttons to produce files that comply with portal upload limits.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Why does an image look blurry when reduced under 20KB or 50KB?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Compressing high-resolution images down to very low KB sizes (like 20KB) requires lowering JPEG quality. For best clarity, downscale pixel dimensions (e.g. 200x200 for signatures) before compressing so quality remains sharp.",
           },
         },
         {
@@ -309,15 +318,15 @@ setTimeout(() => {
           name: "Which image formats are supported?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "JPG, JPEG, PNG and other common image formats are supported.",
+            text: "JPG, JPEG, PNG, and WebP formats are fully supported. Compressed output is exported as an optimized JPEG for maximum compatibility across web forms.",
           },
         },
         {
           "@type": "Question",
-          name: "Are my images secure?",
+          name: "Are my uploaded photos and signatures secure?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. Images are processed in your browser and are not permanently stored.",
+            text: "Yes, 100%. Compression runs entirely inside your browser memory using HTML5 Canvas. Your sensitive photos and signatures are never sent to or stored on any server.",
           },
         },
       ],
@@ -662,10 +671,10 @@ setTimeout(() => {
 
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           {[
-            ["01", "Select your image"],
-            ["02", "Choose your target KB size"],
-            ["03", "Press Compress Image"],
-            ["04", "Download the compressed image"],
+            ["01", "Select your JPG, PNG, or WebP image"],
+            ["02", "Choose target KB (20KB, 50KB, 100KB, 200KB or custom)"],
+            ["03", "Press Compress Image (in-browser processing)"],
+            ["04", "Download the optimized compressed file"],
           ].map(([number, text]) => (
             <div
               key={number}
@@ -682,32 +691,107 @@ setTimeout(() => {
           ))}
         </div>
       </div>
+
+      {/* Target Size Guidelines for Portals & Exams */}
+      <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl sm:p-8">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
+          Upload Reference Guide
+        </p>
+        <h2 className="mt-2 text-xl font-bold text-white">
+          Common Application &amp; Portal File Size Requirements
+        </h2>
+        <p className="mt-2 text-xs text-slate-400">
+          Government examination boards, college portals, and visa authorities enforce strict maximum file sizes:
+        </p>
+
+        <div className="mt-5 grid gap-3 sm:grid-cols-3">
+          <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
+            <span className="rounded-lg bg-cyan-500/10 px-2 py-0.5 font-mono text-xs font-bold text-cyan-300">10KB - 20KB</span>
+            <h3 className="mt-2 font-semibold text-white text-sm">Signatures &amp; Thumbs</h3>
+            <p className="mt-1 text-xs text-slate-400 leading-relaxed">
+              Standard requirement for SSC, UPSC, IBPS, and state government application signatures.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
+            <span className="rounded-lg bg-emerald-500/10 px-2 py-0.5 font-mono text-xs font-bold text-emerald-300">20KB - 50KB</span>
+            <h3 className="mt-2 font-semibold text-white text-sm">Passport Photos</h3>
+            <p className="mt-1 text-xs text-slate-400 leading-relaxed">
+              Required by NEET, JEE, passport portals, university admissions, and online job applications.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
+            <span className="rounded-lg bg-blue-500/10 px-2 py-0.5 font-mono text-xs font-bold text-blue-300">50KB - 100KB</span>
+            <h3 className="mt-2 font-semibold text-white text-sm">Certificates &amp; IDs</h3>
+            <p className="mt-1 text-xs text-slate-400 leading-relaxed">
+              Typical threshold for scanned mark sheets, caste certificates, address proofs, and Aadhaar cards.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Relevant Related Image Tools */}
+      <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+        <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400">
+          Related Image Processing Utilities
+        </h3>
+        <div className="mt-4 flex flex-wrap gap-2.5">
+          <Link
+            href="/signature-resizer"
+            className="rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-medium text-slate-200 transition hover:border-cyan-400/50 hover:bg-cyan-500/10"
+          >
+            Signature Resizer (20KB) &rarr;
+          </Link>
+          <Link
+            href="/webp-converter"
+            className="rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-medium text-slate-200 transition hover:border-cyan-400/50 hover:bg-cyan-500/10"
+          >
+            WebP Converter &rarr;
+          </Link>
+          <Link
+            href="/image-resizer"
+            className="rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-medium text-slate-200 transition hover:border-cyan-400/50 hover:bg-cyan-500/10"
+          >
+            Dimension Resizer (Pixels/CM) &rarr;
+          </Link>
+          <Link
+            href="/image-to-pdf"
+            className="rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-medium text-slate-200 transition hover:border-cyan-400/50 hover:bg-cyan-500/10"
+          >
+            Image to PDF &rarr;
+          </Link>
+        </div>
+      </div>
     </ToolLayout>
 <div className="mx-auto mt-16 max-w-5xl rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-
   <h2 className="text-3xl font-bold text-white">
     Frequently Asked Questions
   </h2>
 
   <div className="mt-8 space-y-6">
-
     <div>
       <h3 className="text-xl font-semibold text-cyan-300">
-        How do I compress an image to 20KB or 50KB?
+        How do I compress an image to 20KB, 50KB, or 100KB?
       </h3>
-
       <p className="mt-2 text-slate-300 leading-8">
-        Upload your image, choose the target file size such as 20KB, 50KB, 100KB or enter your own custom size, then click Compress Image. Download the optimized image when the process finishes.
+        Upload your JPG or PNG image, select a preset button (20KB, 50KB, 100KB, or 200KB) or enter a custom target KB size, then click &ldquo;Compress Image&rdquo;. Our client-side algorithm will iteratively adjust compression quality to match your target file size.
       </p>
     </div>
 
     <div>
       <h3 className="text-xl font-semibold text-cyan-300">
-        Is this image compressor free?
+        How do I reduce image size for government job portals (UPSC, SSC, NEET, JEE)?
       </h3>
-
       <p className="mt-2 text-slate-300 leading-8">
-        Yes. Nova Tools lets you compress images online for free without creating an account.
+        Online application forms typically mandate signatures between 10KB-20KB and passport photos between 20KB-50KB or 50KB-100KB. Use the preset 20KB or 50KB buttons to produce files that comply with portal upload limits.
+      </p>
+    </div>
+
+    <div>
+      <h3 className="text-xl font-semibold text-cyan-300">
+        Why does an image look blurry when reduced under 20KB or 50KB?
+      </h3>
+      <p className="mt-2 text-slate-300 leading-8">
+        Compressing high-resolution images down to very low KB sizes (like 20KB) requires lowering JPEG quality. For best clarity, downscale pixel dimensions (e.g. 200x200 for signatures) before compressing so quality remains sharp.
       </p>
     </div>
 
@@ -715,24 +799,20 @@ setTimeout(() => {
       <h3 className="text-xl font-semibold text-cyan-300">
         Which image formats are supported?
       </h3>
-
       <p className="mt-2 text-slate-300 leading-8">
-        JPG, JPEG, PNG and other common image formats are supported.
+        JPG, JPEG, PNG, and WebP formats are fully supported. Compressed output is exported as an optimized JPEG for maximum compatibility across web forms.
       </p>
     </div>
 
     <div>
       <h3 className="text-xl font-semibold text-cyan-300">
-        Are my uploaded images secure?
+        Are my uploaded photos and signatures secure?
       </h3>
-
       <p className="mt-2 text-slate-300 leading-8">
-        Yes. Your files are processed in your browser and are not permanently stored on our servers.
+        Yes, 100%. Compression runs entirely inside your browser memory using HTML5 Canvas. Your sensitive photos and signatures are never sent to or stored on any server.
       </p>
     </div>
-
   </div>
-
 </div>
         <SiteFooter />
 

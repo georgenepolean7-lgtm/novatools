@@ -156,9 +156,9 @@ export const educationTools: ToolDefinition[] = [
     shortDescription: "Calculate current attendance percentage, safe classes you can miss, or required consecutive attendance to reach 75%.",
     longDescription: "Track university and school attendance against mandatory criteria (75% or 85%) to avoid exam hall ticket shortage or academic penalties.",
     category: "education",
-    keywords: ["attendance calculator", "safe bunk calculator", "calculate attendance percentage", "75 percent attendance calculator"],
-    searchTerms: ["attendance calculator", "how many classes can i skip", "75 attendance requirement", "attendance percentage formula"],
-    synonyms: ["bunk calculator", "attendance tracker tool"],
+    keywords: ["attendance calculator", "safe bunk calculator", "calculate attendance percentage", "75 percent attendance calculator", "student attendance percentage", "attendance percentage formula"],
+    searchTerms: ["attendance calculator", "how many classes can i skip", "75 attendance requirement", "attendance percentage formula", "student attendance percentage"],
+    synonyms: ["bunk calculator", "attendance tracker tool", "college attendance calculator"],
     problemStatements: ["Check how many classes I can safely miss without dropping below 75%", "Calculate classes needed to recover attendance shortage"],
     inputTypes: ["number"],
     outputTypes: ["text", "number"],
@@ -168,7 +168,38 @@ export const educationTools: ToolDefinition[] = [
       { step: 2, title: "Set Minimum Requirement", instruction: "Specify target percentage (e.g. 75% or 80%)." },
       { step: 3, title: "Calculate", instruction: "View your current status and future attendance guidance." },
     ],
-    faq: [{ question: "How does the safe bunk calculation work?", answer: "It calculates the maximum number of future classes you can miss such that your overall attendance remains above the required threshold." }],
+    faq: [
+      {
+        question: "How do I calculate how many classes I can miss without dropping below 75%?",
+        answer: "If your current percentage is above 75%, the formula for safe bunks is: floor((Classes Attended - (Total Classes × 0.75)) / 0.75). This gives the maximum number of future classes you can miss while keeping your cumulative average at or above 75%."
+      },
+      {
+        question: "How many consecutive classes do I need to attend to recover from an attendance shortage?",
+        answer: "To climb back to 75% from a shortage, use the recovery formula: ceil(((Total Classes × 0.75) - Classes Attended) / (1 - 0.75)). This represents the consecutive upcoming classes you must attend without missing any."
+      },
+      {
+        question: "What is the standard university minimum attendance percentage requirement?",
+        answer: "Collegiate institutions (such as Jain University, SRM, Saveetha, Anna University, and VTU) commonly enforce a mandatory minimum of 75% to 80% to issue semester examination admit cards and hall tickets."
+      },
+      {
+        question: "Does medical leave or on-duty (OD) count towards attendance?",
+        answer: "Institutional regulations vary. Many universities allow a condonation threshold (often lowering the bar to 65% with an approved medical certificate or official collegiate sports/academic duty sanction)."
+      }
+    ],
+    editorialGuide: {
+      title: "Student Attendance & Safe Bunk Calculation Guide",
+      summary: "Mathematical formulas and collegiate criteria for tracking semester attendance, safe missed classes, and shortage recovery.",
+      sections: [
+        {
+          heading: "Attendance & Safe Bunk Mathematical Formulas",
+          content: "Understanding the mathematics behind semester attendance helps prevent exam hall ticket shortages:\n\n• Current Attendance: % = (Classes Attended / Total Classes Conducted) × 100\n• Safe Missed Classes (Safe Bunk): When your percentage is above target P (e.g. 0.75):\n  Safe Bunks = floor((Attended - (Total × P)) / P)\n• Recovery Classes Needed: When your percentage is below target P:\n  Recovery Needed = ceil(((Total × P) - Attended) / (1 - P))\n\nEvery upcoming attended class adds 1 to both Attended and Total, gradually lifting your overall percentage."
+        },
+        {
+          heading: "75% & 80% University Attendance Guidelines",
+          content: "Standard academic councils mandate minimum attendance benchmarks:\n• 75% Requirement: Standard benchmark across Indian and international universities to qualify for semester examinations.\n• 80% Requirement: Commonly enforced in laboratory practicals, clinical postings, and studio coursework.\n• Condonation (65%–74%): Many colleges permit condonation for medical reasons or authorized On-Duty (OD) representations upon submitting formal documentation."
+        }
+      ]
+    },
     relatedTools: ["gpa-calculator", "weighted-grade-calculator", "cgpa-to-percentage-converter", "citation-generator", "exam-score-target-calculator"],
     seoTitle: "Attendance Calculator - Safe Bunk Count",
     seoDescription: "Calculate attendance percentage and find out how many classes you can safely skip or must attend to meet 75% attendance.",
