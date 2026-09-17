@@ -34,7 +34,7 @@ export default function ExploreNovaSection() {
   ];
 
   return (
-    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-16 [content-visibility:auto] [contain-intrinsic-size:1px_380px]">
+    <section id="how-it-works" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-16 [content-visibility:auto] [contain-intrinsic-size:1px_380px] scroll-mt-24">
       <div className="space-y-8">
         <div className="text-center space-y-2 max-w-2xl mx-auto">
           <p className="text-xs font-bold uppercase tracking-widest text-cyan-400">
@@ -54,10 +54,10 @@ export default function ExploreNovaSection() {
             return (
               <div
                 key={idx}
-                className="group p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-cyan-500/30 hover:bg-slate-900/80 transition-all flex flex-col justify-between space-y-4"
+                className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 transition-colors cursor-default select-none flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-3">
-                  <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center">
                     <Icon className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-400">

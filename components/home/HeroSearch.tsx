@@ -86,8 +86,8 @@ export default function HeroSearch() {
 
   return (
     <div ref={searchRef} className="relative w-full max-w-xl mx-auto lg:mx-0 mt-8 z-30">
-      <div className="relative group">
-        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-cyan-400 pointer-events-none transition-colors">
+      <div className="relative group flex items-center">
+        <div className="absolute left-4.5 top-1/2 -translate-y-1/2 text-cyan-400 pointer-events-none transition-colors">
           <Search className="w-5 h-5" />
         </div>
 
@@ -102,23 +102,43 @@ export default function HeroSearch() {
           }}
           onKeyDown={handleKeyDown}
           placeholder="Search 251+ tools (e.g. compress pdf, emi, gst, json, resize photo, tamil)..."
-          className="w-full pl-12 pr-12 py-3.5 rounded-2xl bg-slate-900/90 border border-white/15 text-white placeholder-slate-400 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.5)] transition-all"
+          className="w-full pl-12 pr-24 py-3.5 sm:py-4 rounded-full bg-slate-900/80 border border-slate-700/60 text-white placeholder-slate-400 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400/80 backdrop-blur-2xl shadow-[0_10px_35px_rgba(0,0,0,0.6)] transition-all"
         />
 
-        {query && (
+        <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1.5">
+          {query && (
+            <button
+              type="button"
+              onClick={() => {
+                setQuery("");
+                setResults([]);
+                setIsOpen(false);
+              }}
+              className="p-1 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+              aria-label="Clear search"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
+
           <button
             type="button"
             onClick={() => {
-              setQuery("");
-              setResults([]);
-              setIsOpen(false);
+              if (results.length > 0) {
+                window.location.href = `/${results[0].slug}`;
+              } else if (query.trim()) {
+                window.location.href = `#all-tools`;
+              } else {
+                setIsOpen(true);
+                loadSearchModule();
+              }
             }}
-            className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
-            aria-label="Clear search"
+            aria-label="Submit search"
+            className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-sky-400 text-white shadow-[0_0_15px_rgba(34,211,238,0.4)] transition-all hover:scale-105 hover:brightness-110 active:scale-95 cursor-pointer"
           >
-            <X className="w-4 h-4" />
+            <ArrowRight className="h-4 w-4" />
           </button>
-        )}
+        </div>
       </div>
 
       {/* Autocomplete Dropdown */}
@@ -186,15 +206,15 @@ export default function HeroSearch() {
         </div>
       )}
 
-      {/* Quick Category Chips */}
-      <div className="mt-3 flex flex-wrap items-center gap-1.5 text-xs text-slate-400">
-        <span className="text-[11px] text-slate-500">Quick:</span>
+      {/* Popular Category Shortcuts */}
+      <div className="mt-3.5 flex flex-wrap items-center gap-1.5 text-xs text-slate-400">
+        <span className="text-[11px] font-medium text-slate-400 mr-0.5">Popular:</span>
         {["PDF", "Image", "EMI", "GST", "JSON", "QR Code", "Tamil", "Password"].map((cat) => (
           <button
             key={cat}
             type="button"
             onClick={() => handleQuickCategory(cat)}
-            className="px-2.5 py-1 rounded-lg bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 hover:text-cyan-300 text-[11px] font-medium transition-all cursor-pointer"
+            className="px-2.5 py-1 rounded-lg bg-slate-900/70 border border-slate-800/90 hover:border-cyan-500/50 hover:bg-slate-800/80 hover:text-cyan-300 text-[11px] font-medium text-slate-300 transition-all cursor-pointer backdrop-blur-md active:scale-95"
           >
             {cat}
           </button>
