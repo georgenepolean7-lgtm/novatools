@@ -47,15 +47,15 @@ export default function HeroSection() {
 
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
             <Link
-              href="#tools"
+              href="#all-tools"
               className="glow-border inline-flex w-full items-center justify-center rounded-2xl border border-cyan-400/20 bg-gradient-to-r from-blue-600 via-cyan-500 to-sky-400 px-7 py-4 font-semibold text-white shadow-[0_0_35px_rgba(34,211,238,.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-cyan-300 hover:shadow-[0_0_70px_rgba(34,211,238,.55)] active:scale-95 sm:w-auto"
             >
-              Explore Free Tools
+              Explore All Tools
               <span className="ml-2">→</span>
             </Link>
 
-            <div className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-sm text-slate-300 backdrop-blur-xl">
-              ✓ No signup required
+            <div className="pointer-events-none select-none flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-sm text-slate-400 backdrop-blur-xl">
+              <span className="text-emerald-400 mr-2 font-bold">✓</span> No signup required
             </div>
           </div>
 
@@ -75,7 +75,7 @@ export default function HeroSection() {
           <HeroUploadVisual />
 
           {/* Floating Glass Status */}
-          <div className="absolute left-14 top-20 rounded-2xl border border-white/15 bg-white/10 px-4 py-3 shadow-2xl backdrop-blur-xl">
+          <div className="pointer-events-none select-none absolute left-14 top-20 rounded-2xl border border-white/15 bg-white/10 px-4 py-3 shadow-2xl backdrop-blur-xl">
             <p className="text-[10px] uppercase tracking-wider text-slate-400">
               Image
             </p>
@@ -85,7 +85,7 @@ export default function HeroSection() {
           </div>
 
           {/* Floating PDF */}
-          <div className="absolute -right-12 bottom-20 rounded-2xl border border-white/15 bg-white/10 px-4 py-3 shadow-2xl backdrop-blur-xl">
+          <div className="pointer-events-none select-none absolute -right-12 bottom-20 rounded-2xl border border-white/15 bg-white/10 px-4 py-3 shadow-2xl backdrop-blur-xl">
             <p className="text-[10px] uppercase tracking-wider text-slate-400">
               PDF Ready
             </p>

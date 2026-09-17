@@ -107,6 +107,9 @@ export default function AllToolsSection() {
 
   return (
     <section id="all-tools" className="relative overflow-hidden bg-slate-950 py-20 text-white scroll-mt-20 [content-visibility:auto] [contain-intrinsic-size:1px_1200px]">
+      {/* Anchor alias for #tools backward compatibility */}
+      <span id="tools" className="absolute -top-24 block pointer-events-none" />
+
       {/* Background ambient lighting */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_25%,rgba(34,211,238,0.06),transparent_40%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_75%,rgba(59,130,246,0.06),transparent_40%)]" />
@@ -117,18 +120,18 @@ export default function AllToolsSection() {
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-xl">
             <Layers className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Nova Tools Directory</span>
+            <span>Complete Tools Directory</span>
           </div>
 
           <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
-            Complete Tools Collection,
+            Explore All 251 Tools,
             <span className="block bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
               Fast, Private &amp; 100% Free.
             </span>
           </h2>
 
           <p className="mx-auto mt-3 max-w-2xl text-sm sm:text-base text-slate-400">
-            Browse all 250+ in-browser utilities across PDF, Image, Developer, Financial, GST, Tamil, and Data formats with zero server queues.
+            Browse all 251 in-browser utilities across 16 active categories including PDF, Image, Developer, Calculators, GST, Tamil, and Data formats with zero server queues.
           </p>
         </div>
 

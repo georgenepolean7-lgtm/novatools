@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
-import ExploreNovaSection from "@/components/home/ExploreNovaSection";
+import QuickCategoryShortcuts from "@/components/home/QuickCategoryShortcuts";
 import FeaturedToolsSection from "@/components/home/FeaturedToolsSection";
-import ToolsSection from "@/components/home/ToolsSection";
+import ExploreNovaSection from "@/components/home/ExploreNovaSection";
 import AllToolsSection from "@/components/AllToolsSection";
+import ToolsSection from "@/components/home/ToolsSection";
+import CategoryDirectorySection from "@/components/home/CategoryDirectorySection";
 import HomeGuidesSection from "@/components/home/HomeGuidesSection";
 import SeoFaqSection from "@/components/home/SeoFaqSection";
 import AboutSection from "@/components/home/AboutSection";
@@ -33,44 +35,47 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-slate-950 text-white">
-      {/* 1. Hero Section with Live Search */}
+      {/* 1. Hero Section with Live Search & Direct #all-tools CTA */}
       <HeroSection />
 
-      {/* 2. Why Choose Nova Tools (4 Benefit Cards) */}
-      <ExploreNovaSection />
+      {/* 2. Top Balanced Ad Slot */}
+      <AdSenseBanner slotId="home-hero-bottom" className="my-4" />
 
-      {/* 3. Featured Tools by Category (6 Organized Groups) */}
+      {/* 3. Quick Category Shortcuts (High-Level Orientation) */}
+      <QuickCategoryShortcuts />
+
+      {/* 4. Featured Tools by Category (Curated Representative Workflows) */}
       <FeaturedToolsSection />
 
-      {/* 4. Top Ad Area */}
-      <AdSenseBanner slotId="home-hero-bottom" className="my-6" />
+      {/* 5. Why Choose Nova Tools (In-Browser Architecture, Privacy & Speed) */}
+      <ExploreNovaSection />
 
-      {/* 5. Popular Tools Quick Grid */}
-      <ToolsSection />
-
-      {/* 6. Mid Ad Area */}
-      <AdSenseBanner slotId="home-directory-top" className="my-6" />
-
-      {/* 7. Complete Tools Directory & Category Explorer */}
+      {/* 6. Complete 251-Tool Directory (Primary #all-tools Search & Filter Hub) */}
       <AllToolsSection />
 
-      {/* 8. Technical Guides & Editorial Tutorials */}
+      {/* 7. Interactive Spotlight (Secondary Popular Tools Quick Launcher) */}
+      <ToolsSection />
+
+      {/* 8. Active Category Directory (251 Tools Across 16 Categories - No Empty Cards) */}
+      <CategoryDirectorySection />
+
+      {/* 9. Technical Guides & Editorial Tutorials */}
       <HomeGuidesSection />
 
-      {/* 9. Bottom Ad Area */}
-      <AdSenseBanner slotId="home-directory-bottom" className="my-6" />
+      {/* 10. Bottom Balanced Ad Slot */}
+      <AdSenseBanner slotId="home-directory-bottom" className="my-4" />
 
-      {/* 10. SEO Content, Crawlable Category Tree & FAQ Schema */}
+      {/* 11. FAQ Accordion & Google Rich Snippets Schema */}
       <SeoFaqSection />
 
-      {/* 11. About & Editorial Trust Highlights */}
+      {/* 12. About & Founder Trust Section (#about and #company preserved) */}
       <AboutSection />
       <CompanySection />
 
-      {/* 12. Approved Partner Recommendation (UPDF with Full Disclosure) */}
+      {/* 13. Approved Partner Recommendation (UPDF with Full Disclosure) */}
       <AffiliateRecommendations />
 
-      {/* 13. Site Footer */}
+      {/* 14. Site Footer */}
       <SiteFooter />
     </div>
   );

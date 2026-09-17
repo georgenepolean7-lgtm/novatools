@@ -34,7 +34,7 @@ export default function FeaturedToolsSection() {
       tools: [
         { name: "Compress Image", slug: "compress-image", desc: "Target 100KB, 50KB, or 20KB for exams & government forms." },
         { name: "Image Resizer", slug: "image-resizer", desc: "Resize dimensions with aspect ratio lock and DPI settings." },
-        { name: "Convert to WebP", slug: "convert-to-webp", desc: "Convert JPG/PNG to next-gen WebP for faster web loading." },
+        { name: "Convert to WebP", slug: "webp-converter", desc: "Convert JPG/PNG to next-gen WebP for faster web loading." },
         { name: "Color Palette Extractor", slug: "image-color-palette-extractor", desc: "Extract dominant hex color codes from any image." },
       ],
     },
@@ -66,7 +66,7 @@ export default function FeaturedToolsSection() {
     },
     {
       title: "Calculators",
-      categorySlug: "calculator",
+      categorySlug: "calculators",
       icon: Calculator,
       badge: "Financial & Everyday",
       accent: "from-amber-500/20 to-yellow-500/20 text-amber-400 border-amber-500/30",
@@ -104,15 +104,15 @@ export default function FeaturedToolsSection() {
               Featured Tools by Category
             </h2>
             <p className="text-xs sm:text-sm text-slate-400 max-w-2xl">
-              Organized collections of our most popular online utilities for document management, media editing, development, and everyday calculations.
+              Representative utilities across our most popular document management, image optimization, developer, and calculator workflows.
             </p>
           </div>
 
           <Link
-            href="/categories"
+            href="#category-directory"
             className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors shrink-0"
           >
-            <span>View All 25 Categories</span>
+            <span>Browse All Categories</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -182,6 +182,25 @@ export default function FeaturedToolsSection() {
               </div>
             );
           })}
+        </div>
+
+        {/* Clear discovery path to the complete tool directory */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 rounded-2xl border border-cyan-500/20 bg-gradient-to-r from-cyan-500/5 via-blue-500/5 to-transparent">
+          <div>
+            <p className="text-sm font-bold text-white">
+              Looking for a specific converter, formatter, or calculation tool?
+            </p>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Browse our complete library of 251 client-side utilities with instant keyword search and category filters.
+            </p>
+          </div>
+          <Link
+            href="#all-tools"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/30 text-cyan-300 hover:text-white text-xs font-bold transition-all shrink-0"
+          >
+            <span>Explore All 251 Tools Below</span>
+            <span>↓</span>
+          </Link>
         </div>
       </div>
     </section>

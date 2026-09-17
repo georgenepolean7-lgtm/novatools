@@ -101,7 +101,7 @@ export default function HeroSearch() {
             else loadSearchModule();
           }}
           onKeyDown={handleKeyDown}
-          placeholder="Search 250+ tools (e.g. compress pdf, emi, gst, json, resize photo, tamil)..."
+          placeholder="Search 251+ tools (e.g. compress pdf, emi, gst, json, resize photo, tamil)..."
           className="w-full pl-12 pr-12 py-3.5 rounded-2xl bg-slate-900/90 border border-white/15 text-white placeholder-slate-400 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.5)] transition-all"
         />
 
@@ -128,7 +128,7 @@ export default function HeroSearch() {
             <>
               <div className="px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-slate-400 flex items-center justify-between">
                 <span>Matching Tools ({results.length})</span>
-                <span className="text-cyan-400">250 Total Active</span>
+                <span className="text-cyan-400">251 Total Active</span>
               </div>
               <div className="py-1 space-y-1">
                 {results.map((tool) => (
@@ -179,7 +179,7 @@ export default function HeroSearch() {
                 onClick={() => setIsOpen(false)}
                 className="text-cyan-400 hover:underline font-semibold"
               >
-                Browse all 250 tools by category →
+                Browse all 251 tools by category →
               </Link>
             </div>
           )}
