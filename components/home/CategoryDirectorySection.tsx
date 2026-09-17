@@ -113,7 +113,7 @@ export default function CategoryDirectorySection() {
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-emerald-400 shrink-0" />
             <span>
-              <strong>{totalActiveTools} tools</strong> across <strong>{totalActiveCategories} categories</strong> are live and ready to use in your browser. {upcomingCategoriesCount} additional suites (AI, Media, OCR, Business) are scheduled on our product roadmap.
+              <strong>{totalActiveTools} tools</strong> across <strong>{totalActiveCategories} categories</strong> are live and ready to use in your browser. {upcomingCategoriesCount} additional suites (AI, Media, Audio, Video, Business) are scheduled on our product roadmap.
             </span>
           </div>
 

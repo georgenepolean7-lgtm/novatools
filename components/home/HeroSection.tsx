@@ -4,7 +4,6 @@ import HeroLighting from "@/components/HeroLighting";
 import CinematicHero from "@/components/CinematicHero";
 import HeroParticles from "@/components/HeroParticles";
 import HeroSearch from "./HeroSearch";
-import { HeroDesktopVisuals } from "./HeroBackgroundEffects";
 import HeroToolUniverse from "./HeroToolUniverse";
 
 export default function HeroSection() {
@@ -14,7 +13,6 @@ export default function HeroSection() {
       <HeroLighting />
       <CinematicHero />
       <HeroParticles />
-      <HeroDesktopVisuals />
 
       <div className="hero-blue-glow pointer-events-none absolute left-[-220px] top-[-180px] h-[700px] w-[700px] rounded-full bg-cyan-500/20 blur-[170px]" />
       <div className="hero-purple-glow pointer-events-none absolute right-[-220px] top-[80px] h-[650px] w-[650px] rounded-full bg-fuchsia-500/20 blur-[170px]" />

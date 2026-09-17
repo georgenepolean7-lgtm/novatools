@@ -33,6 +33,7 @@ const SHORTCUTS: ShortcutItem[] = [
 
 export default function QuickCategoryShortcuts() {
   const allTools = getToolDirectoryItems();
+  const activeCategoriesCount = new Set(allTools.map((t) => t.category)).size;
 
   return (
     <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-8 [content-visibility:auto]">
@@ -46,7 +47,7 @@ export default function QuickCategoryShortcuts() {
             href="#category-directory"
             className="text-xs text-cyan-400 hover:text-cyan-300 font-semibold inline-flex items-center gap-1 transition-colors"
           >
-            <span>View All 16 Active Categories</span>
+            <span>View All {activeCategoriesCount} Active Categories</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>

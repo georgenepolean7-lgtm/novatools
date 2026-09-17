@@ -3182,7 +3182,7 @@ export const TOOL_DIRECTORY_ITEMS: ToolDirectoryItem[] = [
     "id": "tamil-image-to-text",
     "name": "Tamil Image to Text (OCR)",
     "slug": "tamil-image-to-text",
-    "category": "tamil",
+    "category": "ocr",
     "shortDescription": "Extract editable Tamil text from images, photos, and scanned documents using in-browser neural OCR.",
     "keywords": [
       "tamil image to text",

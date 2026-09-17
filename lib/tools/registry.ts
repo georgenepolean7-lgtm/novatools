@@ -15,12 +15,14 @@ import { accessibilityTools } from "@/data/tools/accessibility";
 import { privacyTools } from "@/data/tools/privacy";
 import { qrTools } from "@/data/tools/qr";
 import { fileTools } from "@/data/tools/file";
+import { ocrTools } from "@/data/tools/ocr";
 
 // Aggregated Master Tool Collection
 const ALL_TOOLS: ToolDefinition[] = [
   ...pdfTools,
   ...imageTools,
   ...textTools,
+  ...ocrTools,
   ...developerTools,
   ...calculatorTools,
   ...indiaTools,
