@@ -860,3 +860,114 @@ mix-blend-mode:screen;
   pointer-events:none;
 
 }
+
+/* AdSense Unfilled & Unfill-Optimized Clean Collapse */
+ins.adsbygoogle[data-ad-status="unfilled"],
+ins.adsbygoogle[data-ad-status="unfill-optimized"] {
+  display: none !important;
+}
+
+aside:has(ins.adsbygoogle[data-ad-status="unfilled"]),
+aside:has(ins.adsbygoogle[data-ad-status="unfill-optimized"]) {
+  display: none !important;
+}
+
+/* Hero Tool Universe Animations */
+@keyframes heroFloat1 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes heroFloat2 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+@keyframes heroFloat3 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes heroFloat4 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes heroCoreBreathe {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 45px rgba(6, 182, 212, 0.18), inset 0 0 20px rgba(6, 182, 212, 0.1);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 65px rgba(6, 182, 212, 0.32), inset 0 0 30px rgba(6, 182, 212, 0.18);
+  }
+}
+
+@keyframes heroOrbitPulse {
+  0%, 100% {
+    opacity: 0.3;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    opacity: 0.65;
+    stroke-dashoffset: 20;
+  }
+}
+
+.animate-hero-float-1 {
+  animation: heroFloat1 6.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-hero-float-2 {
+  animation: heroFloat2 8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-hero-float-3 {
+  animation: heroFloat3 7.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-hero-float-4 {
+  animation: heroFloat4 8.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-hero-core {
+  animation: heroCoreBreathe 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-hero-orbit {
+  animation: heroOrbitPulse 8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-float-1,
+  .animate-hero-float-2,
+  .animate-hero-float-3,
+  .animate-hero-float-4,
+  .animate-hero-core,
+  .animate-hero-orbit {
+    animation: none !important;
+    transform: none !important;
+  }
+}
