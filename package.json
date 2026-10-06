@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "typecheck": "tsc --noEmit",
     "indexnow:submit": "node scripts/submit-indexnow.js",
     "seo:cycle": "node scripts/run-seo-cycle.js",
     "seo:verify": "node scripts/verify-seo-agent.js"

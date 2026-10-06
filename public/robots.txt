@@ -3,6 +3,7 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 Disallow: /api/
+Disallow: /cdn-cgi/
 
 Sitemap: https://novatool.in/sitemap.xml
 Host: https://novatool.in

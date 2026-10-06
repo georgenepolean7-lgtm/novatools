@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 import { getAllTools } from "@/lib/tools/registry";
 import { getAllCategories } from "@/lib/tools/categories";
 import { getAllArticles } from "@/lib/blog/posts";
-import { programmaticPages } from "@/lib/seo/programmaticPages";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://novatool.in";
@@ -96,21 +95,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  // 5. Programmatic SEO Landing Pages
-  const progRoutes: MetadataRoute.Sitemap = Object.values(programmaticPages)
-    .flat()
-    .map((p) => ({
-      url: `${baseUrl}/tools/${p.slug}`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    }));
-
   // Deduplicate by URL
   const seenUrls = new Set<string>();
   const merged: MetadataRoute.Sitemap = [];
 
-  [...staticRoutes, ...toolRoutes, ...categoryRoutes, ...blogRoutes, ...progRoutes].forEach((entry) => {
+  [...staticRoutes, ...toolRoutes, ...categoryRoutes, ...blogRoutes].forEach((entry) => {
     if (!seenUrls.has(entry.url)) {
       seenUrls.add(entry.url);
       merged.push(entry);

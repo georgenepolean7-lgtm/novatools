@@ -60,12 +60,12 @@ export default function SiteFooter() {
             </p>
 
             <div className="mt-3 flex flex-col gap-3 text-sm">
-              <a
-                href="mailto:georgenepolean7@gmail.com"
-                className="break-all hover:text-white"
-              >
-                📧 georgenepolean7@gmail.com
-              </a>
+              <span
+                dangerouslySetInnerHTML={{
+                  __html:
+                    '<!--email_off--><a href="mailto:georgenepolean7@gmail.com" class="break-all hover:text-white">📧 georgenepolean7@gmail.com</a><!--/email_off-->',
+                }}
+              />
 
               <p className="text-slate-400">
                 Need a custom website or web application?
@@ -76,12 +76,12 @@ export default function SiteFooter() {
               </p>
 
               <div className="flex gap-3 pt-2">
-                <a
-                  href="mailto:georgenepolean7@gmail.com"
-                  className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 transition hover:border-cyan-400 hover:bg-cyan-500/10"
-                >
-                  📧 Email
-                </a>
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      '<!--email_off--><a href="mailto:georgenepolean7@gmail.com" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 transition hover:border-cyan-400 hover:bg-cyan-500/10">📧 Email</a><!--/email_off-->',
+                  }}
+                />
               </div>
             </div>
           </div>

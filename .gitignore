@@ -48,3 +48,5 @@ next-env.d.ts
 capable-shape-*.json
 *service-account*.json
 *.credential.json
+/scratch/
+

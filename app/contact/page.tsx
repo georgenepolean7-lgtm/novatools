@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import SiteFooter from "@/components/SiteFooter";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
-import { Mail, MessageSquare, Clock, Globe, ShieldCheck, ArrowRight } from "lucide-react";
+import { Mail, MessageSquare, Clock, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact Us - Support, Feedback & Inquiries | Nova Tools",
@@ -57,15 +56,13 @@ export default function ContactPage() {
             <p className="text-xs text-slate-400 leading-relaxed">
               Send us an email for general inquiries, bug reports, or feature recommendations.
             </p>
-            <div className="pt-2">
-              <a
-                href="mailto:georgenepolean7@gmail.com"
-                className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-mono text-sm font-semibold break-all"
-              >
-                <span>georgenepolean7@gmail.com</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
+            <div
+              className="pt-2"
+              dangerouslySetInnerHTML={{
+                __html:
+                  '<!--email_off--><a href="mailto:georgenepolean7@gmail.com" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-mono text-sm font-semibold break-all"><span>georgenepolean7@gmail.com</span><svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a><!--/email_off-->',
+              }}
+            />
           </div>
 
           {/* Response Commitment Card */}

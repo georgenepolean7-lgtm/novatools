@@ -52,7 +52,8 @@ export class SeoScoringEngine {
     scoredOpportunities: SeoOpportunity[],
     dailyChangesAlreadyDone = 0,
     weeklyChangesAlreadyDone = 0,
-    auditStore?: SeoAuditStore
+    auditStore?: SeoAuditStore,
+    maxLimit?: number
   ): OpportunitySelectionResult {
     const dailyBudgetRemaining = Math.max(
       0,
@@ -62,8 +63,7 @@ export class SeoScoringEngine {
       0,
       SEO_AGENT_CONFIG.BUDGETS.MAX_PAGE_CHANGES_PER_WEEK - weeklyChangesAlreadyDone
     );
-    const cycleBudget = SEO_AGENT_CONFIG.BUDGETS.MAX_PAGE_CHANGES_PER_CYCLE || 40;
-    const effectiveBudget = Math.min(dailyBudgetRemaining, weeklyBudgetRemaining, cycleBudget);
+    const effectiveBudget = maxLimit !== undefined ? maxLimit : Math.min(dailyBudgetRemaining, weeklyBudgetRemaining);
 
     const actionable: SeoOpportunity[] = [];
     const skippedHighRisk: SeoOpportunity[] = [];
@@ -277,21 +277,29 @@ export class SeoScoringEngine {
     // Deterministic quality defects receive priority based on on-page SEO defect severity
     const tool = getToolBySlug(opp.pageSlug);
     let objectiveDefect = 0;
-    if (opp.type === "WEAK_TITLE" && tool) {
-      const titleLen = (tool.seoTitle || "").trim().length;
-      const hasLegacy = (tool.seoTitle || "").includes("Free, Fast & Private");
-      if (titleLen < 35 || titleLen > 60 || hasLegacy) {
-        objectiveDefect = 12; // High priority: Title tag is primary on-page ranking and SERP headline signal
+    if (opp.type === "WEAK_TITLE") {
+      if (tool) {
+        const titleLen = (tool.seoTitle || "").trim().length;
+        const hasLegacy = (tool.seoTitle || "").includes("Free, Fast & Private");
+        if (titleLen < 35 || titleLen > 60 || hasLegacy) {
+          objectiveDefect = 12; // High priority: Title tag is primary on-page ranking and SERP headline signal
+        } else {
+          objectiveDefect = 10; // Minor defect (brand suffix formatting)
+        }
       } else {
-        objectiveDefect = 8;  // Minor defect (brand suffix formatting)
+        objectiveDefect = 11;
       }
-    } else if (opp.type === "WEAK_META_DESCRIPTION" && tool) {
-      const descLen = (tool.seoDescription || "").trim().length;
-      const hasLegacy = (tool.seoDescription || "").includes("Free, Fast & Private");
-      if (descLen < 110 || descLen > 155 || hasLegacy) {
-        objectiveDefect = 11; // Medium-high priority: Snippet description quality
+    } else if (opp.type === "WEAK_META_DESCRIPTION") {
+      if (tool) {
+        const descLen = (tool.seoDescription || "").trim().length;
+        const hasLegacy = (tool.seoDescription || "").includes("Free, Fast & Private");
+        if (descLen < 110 || descLen > 155 || hasLegacy) {
+          objectiveDefect = 12; // Medium-high priority: Snippet description quality
+        } else {
+          objectiveDefect = 10;
+        }
       } else {
-        objectiveDefect = 7;
+        objectiveDefect = 11;
       }
     } else if (opp.type === "THIN_PAGE_CONTENT" && tool) {
       const faqCount = tool.faq?.length || 0;

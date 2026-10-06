@@ -114,7 +114,9 @@ async function runVerification() {
     assert(Array.isArray(emptyGsc.metrics), `Connected GSC successfully returned ${emptyGsc.metrics.length} real Search Analytics rows`);
   }
 
-  const emptyGa4 = await connector.fetchAnalyticsMetrics({ startDate: "2026-08-01", endDate: "2026-08-28" });
+  const ga4End = new Date().toISOString().split("T")[0];
+  const ga4Start = new Date(Date.now() - 28 * 24 * 60 * 60 * 1000).toISOString().split("T")[0];
+  const emptyGa4 = await connector.fetchAnalyticsMetrics({ startDate: ga4Start, endDate: ga4End });
   if (health.ga4DataApi.status !== "CONNECTED" && health.ga4.status !== "CONNECTED") {
     assert(emptyGa4.metrics.length === 0, "Unconfigured GA4 returns exactly 0 metrics without fabricating fake numbers");
   } else {
@@ -1097,10 +1099,10 @@ async function runVerification() {
   };
   const weakTitleOpp = {
     id: "weak-title-test",
-    pageSlug: "compress-pdf",
-    pageUrl: "https://novatool.in/compress-pdf",
+    pageSlug: "pdf-password-protect",
+    pageUrl: "https://novatool.in/pdf-password-protect",
     type: "WEAK_TITLE",
-    reason: "Title length is outside optimal range",
+    reason: "Title lacks standard brand suffix",
     riskLevel: "LOW",
     proposedAction: { type: "TITLE_OPTIMIZATION", summary: "Format title tag" },
     opportunityScore: 0,
@@ -1117,8 +1119,8 @@ async function runVerification() {
   console.log("Testing Regression B: Weak description + good links...");
   const weakDescOpp = {
     id: "weak-desc-test",
-    pageSlug: "image-blur-sharpen-tool",
-    pageUrl: "https://novatool.in/image-blur-sharpen-tool",
+    pageSlug: "text-reverser",
+    pageUrl: "https://novatool.in/text-reverser",
     type: "WEAK_META_DESCRIPTION",
     reason: "Meta description length is outside optimal range",
     riskLevel: "LOW",

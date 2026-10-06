@@ -213,7 +213,7 @@ export class SeoAuditStore {
         opportunityType: "THIN_PAGE_CONTENT",
         actionType: "FAQ_ENRICHMENT",
         contentFingerprint: "3c809e2daa1139a3",
-        timestamp: "2026-09-04T13:40:15.000Z",
+        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
         commitStatus: "DEPLOYED",
         commitHash: "3c809e2daa1139a315698cf7eff5636a0e4f6c55",
         details: {

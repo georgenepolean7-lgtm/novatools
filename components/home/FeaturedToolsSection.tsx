@@ -74,7 +74,7 @@ export default function FeaturedToolsSection() {
         { name: "GST Calculator", slug: "gst-calculator", desc: "Calculate Inclusive and Exclusive GST rates (5%, 12%, 18%, 28%)." },
         { name: "Percentage Calculator", slug: "percentage-calculator", desc: "Calculate percentage changes, markups, discounts, and ratios." },
         { name: "Age Calculator", slug: "age-calculator", desc: "Calculate exact age in years, months, days, and total hours." },
-        { name: "EMI Calculator", slug: "emi-calculator", desc: "Compute monthly loan payments and total interest breakdown." },
+        { name: "EMI Calculator", slug: "loan-emi-calculator", desc: "Compute monthly loan payments and total interest breakdown." },
       ],
     },
     {
@@ -84,10 +84,10 @@ export default function FeaturedToolsSection() {
       badge: "Integrity & Data Conversion",
       accent: "from-blue-500/20 to-cyan-500/20 text-blue-400 border-blue-500/30",
       tools: [
-        { name: "File Hash Calculator", slug: "file-hash-calculator", desc: "Verify file integrity with SHA-256, SHA-512, and MD5 hashes." },
+        { name: "File Hash Calculator", slug: "file-checksum-sha256", desc: "Verify file integrity with SHA-256, SHA-512, and MD5 hashes." },
         { name: "CSV to JSON Converter", slug: "csv-to-json", desc: "Convert tabular CSV exports into structured JSON arrays." },
-        { name: "Base64 File Converter", slug: "base64-file-converter", desc: "Encode local files into Base64 data URIs for embedding." },
-        { name: "Text Diff Viewer", slug: "text-diff-viewer", desc: "Compare two text snippets side-by-side with diff highlights." },
+        { name: "Base64 File Converter", slug: "data-url-file-converter", desc: "Encode local files into Base64 data URIs for embedding." },
+        { name: "Text Diff Viewer", slug: "text-diff-checker", desc: "Compare two text snippets side-by-side with diff highlights." },
       ],
     },
   ];

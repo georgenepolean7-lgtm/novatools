@@ -30,6 +30,31 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["lucide-react", "@supabase/ssr"],
   },
 
+  async redirects() {
+    return [
+      {
+        source: "/text-diff-viewer",
+        destination: "/text-diff-checker",
+        permanent: true,
+      },
+      {
+        source: "/base64-file-converter",
+        destination: "/data-url-file-converter",
+        permanent: true,
+      },
+      {
+        source: "/file-hash-calculator",
+        destination: "/file-checksum-sha256",
+        permanent: true,
+      },
+      {
+        source: "/emi-calculator",
+        destination: "/loan-emi-calculator",
+        permanent: true,
+      },
+    ];
+  },
+
   async headers() {
     return [
       {

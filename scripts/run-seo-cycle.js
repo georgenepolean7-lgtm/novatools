@@ -41,7 +41,8 @@ const maxBatches = maxBatchesIndex !== -1 && args[maxBatchesIndex + 1] ? parseIn
 const batchSizeIndex = args.indexOf("--batch-size");
 const batchSize = batchSizeIndex !== -1 && args[batchSizeIndex + 1] ? parseInt(args[batchSizeIndex + 1], 10) : 20;
 const maxPagesIndex = args.indexOf("--max-pages");
-const maxPages = maxPagesIndex !== -1 && args[maxPagesIndex + 1] ? parseInt(args[maxPagesIndex + 1], 10) : 40;
+const rawMaxPages = maxPagesIndex !== -1 && args[maxPagesIndex + 1] ? parseInt(args[maxPagesIndex + 1], 10) : 40;
+const maxPages = Math.min(Math.max(1, isNaN(rawMaxPages) ? 40 : rawMaxPages), 40);
 
 async function runStandaloneCycle() {
   console.log("================================================================================");

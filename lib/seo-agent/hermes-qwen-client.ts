@@ -9,6 +9,7 @@ import { ToolDefinition } from "@/lib/tools/tool-types";
 import { getAllTools } from "@/lib/tools/registry";
 import { FactualContentSafetyValidator, FactualSafetyCheckResult } from "./factual-safety";
 import { SeoActionType } from "./types";
+import { AIProvider, getAIProvider } from "./ai-provider";
 
 export interface SemanticOptimizationResult {
   seoTitle?: string;
@@ -32,19 +33,21 @@ export function normalizeFaqQuestion(q: string): string {
 }
 
 export class HermesQwenClient {
-  private model: string;
-  private ollamaBaseUrl: string;
-  private customEndpoint: string;
+  public model: string;
+  public ollamaBaseUrl: string;
+  public customEndpoint: string;
+  public provider: AIProvider;
   private isLocalLlmAvailable: boolean | null = null;
 
-  constructor() {
+  constructor(provider?: AIProvider) {
     this.model = SEO_AGENT_CONFIG.LLM.MODEL;
     this.ollamaBaseUrl = SEO_AGENT_CONFIG.LLM.OLLAMA_BASE_URL;
     this.customEndpoint = SEO_AGENT_CONFIG.LLM.CUSTOM_OPENAI_ENDPOINT;
+    this.provider = provider || getAIProvider();
   }
 
   /**
-   * Quick check for local Ollama reachability with single health-check cache.
+   * Quick check for LLM reachability with single health-check cache.
    */
   private async isLlmReachable(): Promise<boolean> {
     if (this.isLocalLlmAvailable !== null) {
@@ -54,14 +57,14 @@ export class HermesQwenClient {
     this.isLocalLlmAvailable = health.connected;
     if (!this.isLocalLlmAvailable) {
       console.log(
-        `[LLM Engine] Local LLM endpoint unreachable (${this.ollamaBaseUrl}). Deterministic semantic rules engine will be used directly for zero latency.`
+        `[LLM Engine] LLM endpoint unreachable (${this.provider.providerName}: ${this.ollamaBaseUrl}). Deterministic semantic rules engine will be used directly for zero latency.`
       );
     }
     return this.isLocalLlmAvailable;
   }
 
   /**
-   * Health check for local Ollama / Hermes Qwen instance.
+   * Health check for active AI Provider (Ollama or Cloud AI API).
    */
   async checkHealth(): Promise<{
     connected: boolean;
@@ -69,44 +72,51 @@ export class HermesQwenClient {
     model: string;
     message: string;
   }> {
-    let timeoutId: NodeJS.Timeout | null = null;
-    try {
-      const endpoint = this.customEndpoint || `${this.ollamaBaseUrl}/api/tags`;
-      const controller = new AbortController();
-      timeoutId = setTimeout(() => controller.abort(), 2500);
-      if (typeof timeoutId.unref === "function") timeoutId.unref();
+    if (this.customEndpoint && this.customEndpoint !== SEO_AGENT_CONFIG.LLM.CUSTOM_OPENAI_ENDPOINT) {
+      let timeoutId: NodeJS.Timeout | null = null;
+      try {
+        const controller = new AbortController();
+        timeoutId = setTimeout(() => controller.abort(), 2500);
+        if (typeof timeoutId.unref === "function") timeoutId.unref();
 
-      const res = await fetch(endpoint, {
-        signal: controller.signal,
-      });
-
-      if (res.ok) {
-        this.isLocalLlmAvailable = true;
+        const res = await fetch(this.customEndpoint, { signal: controller.signal });
+        if (res.ok) {
+          this.isLocalLlmAvailable = true;
+          return {
+            connected: true,
+            status: "CONNECTED" as const,
+            model: this.model,
+            message: `Custom endpoint active with model ${this.model}`,
+          };
+        }
+        this.isLocalLlmAvailable = false;
         return {
-          connected: true,
-          status: "CONNECTED" as const,
+          connected: false,
+          status: "NOT_CONNECTED" as const,
           model: this.model,
-          message: `Local Ollama instance active with model ${this.model}`,
+          message: `Custom endpoint returned HTTP ${res.status}`,
         };
+      } catch (err) {
+        this.isLocalLlmAvailable = false;
+        return {
+          connected: false,
+          status: "NOT_CONNECTED" as const,
+          model: this.model,
+          message: `Custom endpoint not reachable: ${err instanceof Error ? err.message : String(err)}`,
+        };
+      } finally {
+        if (timeoutId) clearTimeout(timeoutId);
       }
-      this.isLocalLlmAvailable = false;
-      return {
-        connected: false,
-        status: "NOT_CONNECTED" as const,
-        model: this.model,
-        message: `Ollama returned HTTP ${res.status}: ${res.statusText}`,
-      };
-    } catch (err) {
-      this.isLocalLlmAvailable = false;
-      return {
-        connected: false,
-        status: "NOT_CONNECTED" as const,
-        model: this.model,
-        message: `Local Ollama instance not reachable: ${err instanceof Error ? err.message : String(err)}`,
-      };
-    } finally {
-      if (timeoutId) clearTimeout(timeoutId);
     }
+
+    const health = await this.provider.checkHealth();
+    this.isLocalLlmAvailable = health.connected;
+    return {
+      connected: health.connected,
+      status: health.status as "CONNECTED" | "NOT_CONNECTED" | "FALLBACK_MODE",
+      model: health.model || this.model,
+      message: health.message,
+    };
   }
 
   /**
@@ -234,56 +244,52 @@ Return ONLY a valid JSON object in this exact schema:
   }
 
   private async callLlm(prompt: string): Promise<string | null> {
-    const controller = new AbortController();
-    const timeoutMs = SEO_AGENT_CONFIG.TIMEOUTS?.LLM_TIMEOUT_MS || SEO_AGENT_CONFIG.LLM?.TIMEOUT_MS || 12000;
-    let isTimedOut = false;
-    let timeoutId: NodeJS.Timeout | null = null;
-    timeoutId = setTimeout(() => {
-      isTimedOut = true;
-      controller.abort();
-    }, timeoutMs);
-    if (typeof timeoutId.unref === "function") timeoutId.unref();
+    if (this.customEndpoint && this.customEndpoint !== SEO_AGENT_CONFIG.LLM.CUSTOM_OPENAI_ENDPOINT) {
+      const controller = new AbortController();
+      const timeoutMs = SEO_AGENT_CONFIG.TIMEOUTS?.LLM_TIMEOUT_MS || SEO_AGENT_CONFIG.LLM?.TIMEOUT_MS || 12000;
+      let isTimedOut = false;
+      let timeoutId: NodeJS.Timeout | null = null;
+      timeoutId = setTimeout(() => {
+        isTimedOut = true;
+        controller.abort();
+      }, timeoutMs);
+      if (typeof timeoutId.unref === "function") timeoutId.unref();
 
-    try {
-      const url = this.customEndpoint || `${this.ollamaBaseUrl}/api/generate`;
-      const res = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        signal: controller.signal,
-        body: JSON.stringify({
-          model: this.model,
-          prompt,
-          stream: false,
-          format: "json",
-          temperature: SEO_AGENT_CONFIG.LLM.TEMPERATURE,
-        }),
-      });
+      try {
+        const res = await fetch(this.customEndpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          signal: controller.signal,
+          body: JSON.stringify({
+            model: this.model,
+            prompt,
+            stream: false,
+            format: "json",
+            temperature: SEO_AGENT_CONFIG.LLM.TEMPERATURE,
+          }),
+        });
 
-      if (!res.ok) return null;
-      const json = await res.json();
+        if (!res.ok) return null;
+        const json = await res.json();
+        const responseText = (json?.response || "").trim();
+        const thinkingText = (json?.thinking || "").trim();
 
-      // Qwen3:4b may place JSON in json.response, or inside json.thinking / think tags
-      const responseText = (json?.response || "").trim();
-      const thinkingText = (json?.thinking || "").trim();
-
-      if (responseText && responseText.includes("{")) {
-        return responseText;
+        if (responseText && responseText.includes("{")) return responseText;
+        if (thinkingText && thinkingText.includes("{")) return thinkingText;
+        if (responseText) return responseText;
+        if (json?.choices?.[0]?.message?.content) return json.choices[0].message.content;
+        return null;
+      } catch {
+        if (isTimedOut) {
+          throw new Error(`TIMEOUT: LLM generation exceeded ${timeoutMs}ms`);
+        }
+        return null;
+      } finally {
+        if (timeoutId) clearTimeout(timeoutId);
       }
-      if (thinkingText && thinkingText.includes("{")) {
-        return thinkingText;
-      }
-      if (responseText) return responseText;
-      if (json?.choices?.[0]?.message?.content) return json.choices[0].message.content;
-
-      return null;
-    } catch {
-      if (isTimedOut) {
-        throw new Error(`TIMEOUT: LLM generation exceeded ${timeoutMs}ms`);
-      }
-      return null;
-    } finally {
-      if (timeoutId) clearTimeout(timeoutId);
     }
+
+    return this.provider.generateCompletion(prompt);
   }
 
   private parseLlmResponse(raw: string, fallbackTool: ToolDefinition): SemanticOptimizationResult | null {

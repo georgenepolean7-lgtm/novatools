@@ -1,4 +1,4 @@
-name: Autonomous SEO Cycle Worker
+name: Autonomous SEO Agent
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: 'Dry Run mode (no file mutations)'
+        description: 'Dry Run mode (analysis and scoring only, no file mutations)'
         required: false
         default: false
         type: boolean
@@ -17,7 +17,7 @@ on:
         default: '40'
         type: string
       slug:
-        description: 'Target single tool slug (optional)'
+        description: 'Target single tool slug (optional override)'
         required: false
         default: ''
         type: string
@@ -28,7 +28,7 @@ concurrency:
 
 jobs:
   run-seo-cycle:
-    name: SEO Agent Cycle Runner
+    name: Execute Autonomous SEO Cycle
     runs-on: ubuntu-latest
     timeout-minutes: 60
     permissions:
@@ -55,7 +55,7 @@ jobs:
           git config --global user.name "Nova Tools SEO Agent"
           git config --global user.email "seo-agent@novatool.in"
 
-      - name: Execute Dedicated SEO Cycle Worker
+      - name: Execute Autonomous SEO Agent
         env:
           NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL || 'https://novatool.in' }}
           COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
@@ -67,6 +67,7 @@ jobs:
           CLOUD_AI_API_KEY: ${{ secrets.CLOUD_AI_API_KEY }}
           CLOUD_AI_ENDPOINT: ${{ secrets.CLOUD_AI_ENDPOINT }}
           CLOUD_AI_MODEL: ${{ secrets.CLOUD_AI_MODEL || 'qwen3:4b' }}
+          REAL_SEO_DATA_REQUIRED: ${{ secrets.REAL_SEO_DATA_REQUIRED || 'true' }}
         run: |
           ARGS=""
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
