@@ -1045,7 +1045,7 @@ export class SeoValidator {
     const start = Date.now();
     try {
       await execWithWatchdog(
-        "cmd.exe /c npx tsc --noEmit",
+        "npx tsc --noEmit",
         { cwd: this.workspaceRoot, maxBuffer: 10 * 1024 * 1024 },
         timeoutMs,
         "TypeScript Typecheck"
@@ -1088,7 +1088,7 @@ export class SeoValidator {
     const start = Date.now();
     try {
       await execWithWatchdog(
-        "cmd.exe /c npx eslint data/tools/",
+        "npx eslint data/tools/",
         { cwd: this.workspaceRoot, maxBuffer: 10 * 1024 * 1024 },
         timeoutMs,
         "ESLint"
@@ -1136,7 +1136,7 @@ export class SeoValidator {
       attempt++;
       try {
         await execWithWatchdog(
-          "cmd.exe /c npx next build",
+          "npx next build",
           { cwd: this.workspaceRoot, maxBuffer: 10 * 1024 * 1024 },
           timeoutMs,
           "Next.js Build"
