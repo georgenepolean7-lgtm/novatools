@@ -160,6 +160,10 @@ export class HermesQwenClient {
       result = this.generateDeterministicSemanticFallback(tool, actionType, context);
     }
 
+    // Deterministic metadata boundary normalization runs after any model/fallback output.
+    // This prevents a semantically valid but overlong AI title/description from reaching Stage A.
+    result = this.normalizeSemanticMetadata(result, tool, actionType);
+
     // Run strict factual content safety verification with evidence context
     const evidenceContext = {
       hasMeasurableTraffic: Boolean(context.hasMeasurableTraffic),
@@ -652,6 +656,62 @@ Return ONLY a valid JSON object in this exact schema:
     };
   }
 
+  /**
+   * Enforces the same hard metadata bounds used by the validator before a proposal is patched.
+   * Only normalizes fields that the current action is allowed to modify.
+   */
+  private normalizeSemanticMetadata(
+    result: SemanticOptimizationResult,
+    tool: ToolDefinition,
+    actionType: string
+  ): SemanticOptimizationResult {
+    const titleAction =
+      actionType === "TITLE_OPTIMIZATION" ||
+      actionType === "WEAK_TITLE" ||
+      actionType === "POSITION_4_10_OPPORTUNITY";
+    const descriptionAction =
+      actionType === "DESCRIPTION_OPTIMIZATION" ||
+      actionType === "WEAK_META_DESCRIPTION" ||
+      actionType === "HIGH_IMPRESSIONS_LOW_CTR";
+
+    const trimToWord = (value: string, max: number): string => {
+      const clean = value.replace(/["\\r\\n]+/g, " ").replace(/\\s+/g, " ").trim();
+      if (clean.length <= max) return clean;
+      const cut = clean.slice(0, max).trim();
+      const lastSpace = cut.lastIndexOf(" ");
+      return (lastSpace >= 20 ? cut.slice(0, lastSpace) : cut).replace(/[.,;:|\\-]+$/, "").trim();
+    };
+
+    if (titleAction) {
+      let title = (result.seoTitle || "").replace(/["\\r\\n]+/g, " ").replace(/\\s+/g, " ").trim();
+      if (title.length < SEO_AGENT_CONFIG.METADATA.MIN_TITLE_LENGTH) {
+        title = `${tool.name} Online Tool | Nova Tools`;
+      }
+      title = trimToWord(title, SEO_AGENT_CONFIG.METADATA.MAX_TITLE_LENGTH);
+      if (title.length < SEO_AGENT_CONFIG.METADATA.MIN_TITLE_LENGTH) {
+        title = trimToWord(`${tool.name} | Nova Tools`, SEO_AGENT_CONFIG.METADATA.MAX_TITLE_LENGTH);
+      }
+      result.seoTitle = title;
+    }
+
+    if (descriptionAction) {
+      let description = (result.seoDescription || "").replace(/["\\r\\n]+/g, " ").replace(/\\s+/g, " ").trim();
+      if (description.length < SEO_AGENT_CONFIG.METADATA.MIN_DESCRIPTION_LENGTH) {
+        const base = (tool.shortDescription || tool.longDescription || tool.name).trim();
+        description = `${base} Get clear results directly in your browser with Nova Tools.`;
+      }
+      description = trimToWord(description, SEO_AGENT_CONFIG.METADATA.MAX_DESCRIPTION_LENGTH);
+      if (description.length < SEO_AGENT_CONFIG.METADATA.MIN_DESCRIPTION_LENGTH) {
+        description = trimToWord(
+          `${tool.name} helps you complete this task quickly with clear results directly in your browser on Nova Tools.`,
+          SEO_AGENT_CONFIG.METADATA.MAX_DESCRIPTION_LENGTH
+        );
+      }
+      result.seoDescription = description;
+    }
+
+    return result;
+  }
   private sanitizeText(text: string, maxLength: number): string {
     return text.replace(/["\r\n]+/g, " ").trim().slice(0, maxLength);
   }
