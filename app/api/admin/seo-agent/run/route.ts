@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
       if (githubToken && githubRepo) {
         try {
           const dispatchRes = await fetch(
-            `https://api.github.com/repos/${githubRepo}/actions/workflows/seo-cycle.yml/dispatches`,
+            `https://api.github.com/repos/${githubRepo}/actions/workflows/seo-agent.yml/dispatches`,
             {
               method: "POST",
               headers: {
@@ -81,7 +81,8 @@ export async function POST(req: NextRequest) {
               body: JSON.stringify({
                 ref: "main",
                 inputs: {
-                  dryRun: "false",
+                  dry_run: "false",
+                  max_pages: "40",
                   slug: forceSlug || "",
                 },
               }),
@@ -95,7 +96,7 @@ export async function POST(req: NextRequest) {
               status: "DISPATCHED",
               dispatched: true,
               target: "GITHUB_ACTIONS",
-              workflow: "seo-cycle.yml",
+              workflow: "seo-agent.yml",
               message: "Autonomous live mutation cycle dispatched to GitHub Actions worker workflow.",
               environment: "VERCEL_SERVERLESS",
               workerScript: "scripts/run-seo-cycle.js",
