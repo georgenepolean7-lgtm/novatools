@@ -644,7 +644,7 @@ export class SeoDataConnector {
       };
     }
 
-    // 1. Attempt direct GA4 Data API v1 reporting adapter
+    // 1. Preferred direct GA4 Data API v1 reporting adapter.
     const dataApiResult = await this.ga4DataApi.getPageReport(dateRange);
     if (dataApiResult.status === "CONNECTED" && dataApiResult.metrics.length > 0) {
       const metrics: GA4TrafficMetric[] = dataApiResult.metrics.map((m) => ({
@@ -664,15 +664,11 @@ export class SeoDataConnector {
       };
     }
 
-    if (dataApiResult.status === "NO_DATA") {
-      return {
-        metrics: [],
-        status: "CONNECTED",
-        provenanceReport: dataApiResult.message,
-      };
-    }
-
-    // 2. Fallback to Composio authentication status reporting
+    // 2. Real Composio GA4 reporting fallback.
+    // The Composio GA4 OAuth connection is a real Google Analytics Data API
+    // connection and can execute RUN_REPORT directly, so a Vercel deployment
+    // does not require a separately provisioned Service Account just to read
+    // real GA4 data.
     if (this.composioApiKey) {
       try {
         const composioResult = await this.getComposioConnectedAccounts();
@@ -681,21 +677,115 @@ export class SeoDataConnector {
           : undefined;
 
         if (ga4Acc) {
+          const payload: Record<string, unknown> = {
+            connected_account_id: ga4Acc.id,
+            arguments: {
+              property: `properties/${this.ga4PropertyId}`,
+              dateRanges: [{ startDate: dateRange.startDate, endDate: dateRange.endDate }],
+              dimensions: [{ name: "landingPagePlusQueryString" }],
+              metrics: [
+                { name: "activeUsers" },
+                { name: "sessions" },
+                { name: "screenPageViews" },
+                { name: "engagementRate" },
+                { name: "averageSessionDuration" },
+              ],
+              limit: 500,
+            },
+          };
+
+          if (ga4Acc.user_id) payload.user_id = ga4Acc.user_id;
+
+          const res = await fetchWithTimeout(
+            `${this.composioBaseUrl}/tools/execute/GOOGLE_ANALYTICS_RUN_REPORT`,
+            {
+              method: "POST",
+              headers: {
+                "x-api-key": this.composioApiKey,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(payload),
+            },
+            SEO_AGENT_CONFIG.TELEMETRY_TIMEOUTS?.GA4_DIRECT_MS || 20000
+          );
+
+          if (res.ok) {
+            const json = await res.json();
+            const rawRows =
+              json?.data?.response_data?.rows ||
+              json?.data?.rows ||
+              json?.response_data?.rows ||
+              json?.rows ||
+              [];
+
+            const rows = Array.isArray(rawRows) ? rawRows : [];
+            const timestamp = new Date().toISOString();
+
+            const metrics: GA4TrafficMetric[] = rows
+              .filter((row: unknown) => row && typeof row === "object")
+              .map((row: Record<string, unknown>) => {
+                const dimensions = Array.isArray(row.dimensionValues) ? row.dimensionValues as Array<Record<string, unknown>> : [];
+                const values = Array.isArray(row.metricValues) ? row.metricValues as Array<Record<string, unknown>> : [];
+                const pagePath = String(dimensions[0]?.value || "");
+                const activeUsers = Number(values[0]?.value || 0);
+                const sessions = Number(values[1]?.value || 0);
+                const engagementRate = Number(values[3]?.value || 0);
+                const averageSessionDuration = Number(values[4]?.value || 0);
+
+                return {
+                  pagePath,
+                  activeUsers,
+                  sessions,
+                  engagementRate,
+                  averageSessionDuration,
+                  dateRange,
+                  provenance: {
+                    source: "GOOGLE_ANALYTICS_4",
+                    property: this.ga4PropertyId,
+                    dateRange,
+                    retrievalTimestamp: timestamp,
+                    pageOrQuery: pagePath || "GA4_COMPOSIO_RUN_REPORT",
+                    metric: "GA4_COMPOSIO_RUN_REPORT_ROW",
+                    value: sessions,
+                  },
+                };
+              });
+
+            if (metrics.length > 0) {
+              return {
+                metrics,
+                status: "CONNECTED",
+                provenanceReport: `Retrieved ${metrics.length} real GA4 metrics via Composio Google Analytics RUN_REPORT for Property ${this.ga4PropertyId}. Direct Service Account API was unavailable, so Composio OAuth reporting was used.`,
+              };
+            }
+
+            return {
+              metrics: [],
+              status: "CONNECTED",
+              provenanceReport: `Composio Google Analytics RUN_REPORT returned 0 rows for Property ${this.ga4PropertyId}. Zero fabricated metrics returned.`,
+            };
+          }
+
+          const errorBody = await res.text().catch(() => "");
           return {
             metrics: [],
-            status: "NOT_CONNECTED",
-            provenanceReport: `Composio GA4 account authenticated (ID: ${ga4Acc.id}), but GA4 Data API reporting requires a Service Account with Viewer access on Property ${this.ga4PropertyId}. Direct Data API status: ${dataApiResult.status} (${dataApiResult.message}). Zero fabricated metrics returned.`,
+            status: "ERROR",
+            provenanceReport: `Composio Google Analytics RUN_REPORT returned HTTP ${res.status}: ${errorBody.slice(0, 300)}. Zero fabricated metrics returned.`,
           };
         }
-      } catch {
-        // Continue to fallback
+      } catch (err) {
+        return {
+          metrics: [],
+          status: "ERROR",
+          provenanceReport: `Composio Google Analytics reporting failed: ${err instanceof Error ? err.message : String(err)}. Zero fabricated metrics returned.`,
+        };
       }
     }
 
     return {
       metrics: [],
       status: "NOT_CONNECTED",
-      provenanceReport: `GA4 Data API reporting unconfigured (${dataApiResult.message}). Zero fabricated metrics returned.`,
+      provenanceReport: `GA4 reporting unavailable. Direct Data API status: ${dataApiResult.status} (${dataApiResult.message}). Zero fabricated metrics returned.`,
     };
   }
 
