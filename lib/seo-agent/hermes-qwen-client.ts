@@ -675,7 +675,7 @@ Return ONLY a valid JSON object in this exact schema:
       actionType === "HIGH_IMPRESSIONS_LOW_CTR";
 
     const trimToWord = (value: string, max: number): string => {
-      const clean = value.replace(/["\\r\\n]+/g, " ").replace(/\\s+/g, " ").trim();
+      const clean = value.replace(/["\r\n]+/g, " ").replace(/\s+/g, " ").trim();
       if (clean.length <= max) return clean;
       const cut = clean.slice(0, max).trim();
       const lastSpace = cut.lastIndexOf(" ");
@@ -683,7 +683,7 @@ Return ONLY a valid JSON object in this exact schema:
     };
 
     if (titleAction) {
-      let title = (result.seoTitle || "").replace(/["\\r\\n]+/g, " ").replace(/\\s+/g, " ").trim();
+      let title = (result.seoTitle || "").replace(/["\r\n]+/g, " ").replace(/\s+/g, " ").trim();
       if (title.length < SEO_AGENT_CONFIG.METADATA.MIN_TITLE_LENGTH) {
         title = `${tool.name} Online Tool | Nova Tools`;
       }
@@ -695,7 +695,7 @@ Return ONLY a valid JSON object in this exact schema:
     }
 
     if (descriptionAction) {
-      let description = (result.seoDescription || "").replace(/["\\r\\n]+/g, " ").replace(/\\s+/g, " ").trim();
+      let description = (result.seoDescription || "").replace(/["\r\n]+/g, " ").replace(/\s+/g, " ").trim();
       if (description.length < SEO_AGENT_CONFIG.METADATA.MIN_DESCRIPTION_LENGTH) {
         const base = (tool.shortDescription || tool.longDescription || tool.name).trim();
         description = `${base} Get clear results directly in your browser with Nova Tools.`;
