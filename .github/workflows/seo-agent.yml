@@ -70,7 +70,7 @@ jobs:
           REAL_SEO_DATA_REQUIRED: ${{ secrets.REAL_SEO_DATA_REQUIRED || 'true' }}
         run: |
           ARGS=""
-          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dry_run }}" = "true" ]; then
             ARGS="$ARGS --dry-run"
           fi
           if [ -n "${{ github.event.inputs.max_pages }}" ]; then
