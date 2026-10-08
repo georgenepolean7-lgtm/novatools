@@ -5,6 +5,9 @@ import { Lock, ShieldCheck } from "lucide-react";
 import { verifyAdminSession } from "@/lib/supabase/server";
 import SeoAgentDashboard from "@/components/admin/SeoAgentDashboard";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: "Admin SEO Automation Dashboard | Nova Tools",
   description: "Autonomous SEO Agent Command Center & Telemetry Matrix",

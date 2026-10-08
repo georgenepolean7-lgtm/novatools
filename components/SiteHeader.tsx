@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useAuth } from "@/components/auth/AuthContext";
 import {
   Heart,
@@ -22,10 +22,24 @@ import {
 
 export default function SiteHeader() {
   const router = useRouter();
+  const pathname = usePathname();
   const { user, profile, isAdmin, signOut } = useAuth();
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Reset mobile menu when pathname changes during render
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setMobileMenuOpen(false);
+  }
+
+  const closeMobileMenu = () => {
+    requestAnimationFrame(() => {
+      setMobileMenuOpen(false);
+    });
+  };
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -133,6 +147,7 @@ export default function SiteHeader() {
           {isAdmin && (
             <Link
               href="/admin"
+              prefetch={false}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-300 hover:bg-amber-500/25 transition-all text-xs font-bold shadow-[0_0_15px_rgba(245,158,11,0.15)]"
               title="Admin Dashboard"
             >
@@ -204,6 +219,7 @@ export default function SiteHeader() {
                       {isAdmin && (
                         <Link
                           href="/admin"
+                          prefetch={false}
                           rel="nofollow"
                           onClick={() => setUserDropdownOpen(false)}
                           className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs text-amber-300 hover:text-amber-200 hover:bg-amber-500/10 transition-colors font-semibold"
@@ -256,6 +272,7 @@ export default function SiteHeader() {
           {isAdmin && (
             <Link
               href="/admin"
+              prefetch={false}
               className="p-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400"
               title="Admin"
             >
@@ -280,7 +297,7 @@ export default function SiteHeader() {
           <nav className="flex flex-col space-y-2 text-sm font-semibold text-slate-300">
             <Link
               href="/tools"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
               className="px-3 py-2 rounded-xl hover:bg-slate-900 flex items-center gap-2"
             >
               <Layers className="w-4 h-4 text-cyan-400" />
@@ -289,7 +306,7 @@ export default function SiteHeader() {
 
             <Link
               href="/categories"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
               className="px-3 py-2 rounded-xl hover:bg-slate-900 flex items-center gap-2"
             >
               <FolderTree className="w-4 h-4 text-indigo-400" />
@@ -298,7 +315,7 @@ export default function SiteHeader() {
 
             <Link
               href="/blog"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
               className="px-3 py-2 rounded-xl hover:bg-slate-900 flex items-center gap-2"
             >
               <BookOpen className="w-4 h-4 text-amber-400" />
@@ -307,7 +324,7 @@ export default function SiteHeader() {
 
             <Link
               href="/favorites"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
               className="px-3 py-2 rounded-xl hover:bg-slate-900 flex items-center gap-2 text-pink-400"
             >
               <Heart className="w-4 h-4" />
@@ -316,7 +333,7 @@ export default function SiteHeader() {
 
             <Link
               href="/pricing"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
               className="px-3 py-2 rounded-xl hover:bg-slate-900"
             >
               Pricing &amp; Plans
@@ -324,7 +341,7 @@ export default function SiteHeader() {
 
             <Link
               href="/about"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
               className="px-3 py-2 rounded-xl hover:bg-slate-900"
             >
               About
@@ -332,7 +349,7 @@ export default function SiteHeader() {
 
             <Link
               href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
               className="px-3 py-2 rounded-xl hover:bg-slate-900"
             >
               Contact
@@ -341,7 +358,8 @@ export default function SiteHeader() {
             {isAdmin && (
               <Link
                 href="/admin"
-                onClick={() => setMobileMenuOpen(false)}
+                prefetch={false}
+                onClick={closeMobileMenu}
                 className="px-3 py-2 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-300 flex items-center gap-2 font-bold"
               >
                 <ShieldCheck className="w-4 h-4 text-amber-400" />
@@ -369,7 +387,7 @@ export default function SiteHeader() {
                 <div className="grid grid-cols-2 gap-2 pt-1">
                   <Link
                     href="/profile"
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={closeMobileMenu}
                     className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs font-medium text-white"
                   >
                     <UserIcon className="w-3.5 h-3.5 text-cyan-400" />
@@ -391,7 +409,7 @@ export default function SiteHeader() {
                 <Link
                   href="/auth/login"
                   rel="nofollow"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={closeMobileMenu}
                   className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl border border-white/10 bg-white/5 text-xs font-bold text-white text-center"
                 >
                   <LogIn className="w-3.5 h-3.5 text-cyan-400" />
@@ -401,7 +419,7 @@ export default function SiteHeader() {
                 <Link
                   href="/auth/signup"
                   rel="nofollow"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={closeMobileMenu}
                   className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-sky-400 text-xs font-bold text-white text-center"
                 >
                   <UserPlus className="w-3.5 h-3.5" />

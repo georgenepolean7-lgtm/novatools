@@ -106,7 +106,7 @@ export default function AllToolsSection() {
   }, [totalPages, safeCurrentPage]);
 
   return (
-    <section id="all-tools" className="relative overflow-hidden bg-slate-950 py-20 text-white scroll-mt-20 [content-visibility:auto] [contain-intrinsic-size:1px_1200px]">
+    <section id="all-tools" className="relative overflow-hidden bg-slate-950 py-20 text-white scroll-mt-20">
       {/* Anchor alias for #tools backward compatibility */}
       <span id="tools" className="absolute -top-24 block pointer-events-none" />
 

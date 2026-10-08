@@ -82,7 +82,7 @@ export default function NovaBuddy({
       }
     }
 
-    function handleClickOutside(e: MouseEvent) {
+    function handleClickOutside(e: MouseEvent | TouchEvent) {
       if (panelRef.current && !panelRef.current.contains(e.target as Node)) {
         // Only close if click is not on the trigger button
         const trigger = document.getElementById("novabuddy-trigger");
@@ -94,9 +94,11 @@ export default function NovaBuddy({
 
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside, { passive: true });
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
     };
   }, [isOpen]);
 
@@ -129,7 +131,7 @@ export default function NovaBuddy({
       {/* Floating Trigger Button (Bottom-Right) */}
       <div
         id="novabuddy-trigger"
-        className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2.5"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2"
       >
         {!isOpen && (
           <button

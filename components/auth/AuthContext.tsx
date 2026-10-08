@@ -60,40 +60,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     const supabase = getSupabaseBrowserClient();
+    let isMounted = true;
 
-    // Check active session on idle to keep initial paint fast
-    const initSession = () => {
-      supabase.auth.getSession().then(async ({ data: { session: currentSession } }) => {
-        setSession(currentSession);
-        setUser(currentSession?.user || null);
-        if (currentSession?.user) {
-          try {
-            const [p, favs] = await Promise.all([
-              fetchCurrentUserProfile(),
-              fetchUserFavorites(currentSession.user.id),
-            ]);
-            setProfile(p);
-            setFavorites(favs);
-          } catch {
-            // Handled inside fetchers
-          }
-        }
-        setIsLoading(false);
-      });
-    };
-
-    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
-      const win = window as unknown as {
-        requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number;
-      };
-      win.requestIdleCallback(initSession, { timeout: 1500 });
-    } else {
-      setTimeout(initSession, 500);
-    }
-
-    // Listen for auth events
+    // Listen for auth events & initial session
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (_event, newSession) => {
+        if (!isMounted) return;
         setSession(newSession);
         setUser(newSession?.user || null);
         if (newSession?.user) {
@@ -102,20 +74,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               fetchCurrentUserProfile(),
               fetchUserFavorites(newSession.user.id),
             ]);
+            if (!isMounted) return;
             setProfile(p);
             setFavorites(favs);
           } catch {
             // Handled inside fetchers
           }
         } else {
+          if (!isMounted) return;
           setProfile(null);
           setFavorites([]);
         }
-        setIsLoading(false);
+        if (isMounted) {
+          setIsLoading(false);
+        }
       }
     );
 
     return () => {
+      isMounted = false;
       subscription.unsubscribe();
     };
   }, [configured]);

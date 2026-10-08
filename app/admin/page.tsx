@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 import { verifyAdminSession, getServerSystemSettings } from "@/lib/supabase/server";
 import { AdminClient } from "./AdminClient";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: "Admin Panel - System Operations",
   description: "Administrative dashboard for Nova Tools platform operations.",

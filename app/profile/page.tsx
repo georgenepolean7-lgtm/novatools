@@ -126,6 +126,7 @@ export default function ProfilePage() {
                 {profile?.role === "admin" && (
                   <Link
                     href="/admin"
+                    prefetch={false}
                     className="ml-2 px-3 py-1 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-extrabold shadow-sm transition-all"
                   >
                     Open Admin Dashboard →

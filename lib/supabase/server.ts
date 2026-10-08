@@ -90,7 +90,7 @@ export async function verifyAdminSession(): Promise<{ isAdmin: boolean; user: Us
 
     const { data: profile, error: profileError } = await supabase
       .from("profiles")
-      .select("role")
+      .select("id, display_name, role, created_at, updated_at")
       .eq("id", user.id)
       .maybeSingle();
 
@@ -98,7 +98,18 @@ export async function verifyAdminSession(): Promise<{ isAdmin: boolean; user: Us
       return { isAdmin: false, user: null };
     }
 
-    const fullUser = await getServerCurrentUser();
+    const fullUser: UserProfile = {
+      id: profile.id,
+      email: user.email || "",
+      displayName: profile.display_name || user.email?.split("@")[0] || "Admin",
+      avatarUrl: null,
+      role: (profile.role || "user") as "user" | "admin" | "moderator",
+      isPremium: true,
+      premiumExpiresAt: null,
+      createdAt: profile.created_at,
+      updatedAt: profile.updated_at,
+    };
+
     return { isAdmin: true, user: fullUser };
   } catch {
     return { isAdmin: false, user: null };
