@@ -248,7 +248,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 1, title: "Select Birthdate", instruction: "Pick your date of birth from the calendar picker." },
       { step: 2, title: "Calculate", instruction: "View your exact age and total days lived." },
     ],
-    faq: [{ question: "Does it handle leap years?", answer: "Yes, it accounts for 366-day leap years and varying month days accurately." }],
+    faq: [
+{ question: "Does it handle leap years?", answer: "Yes, it accounts for 366-day leap years and varying month days accurately." },
+      { question: "Does Age & Chronological Days Calculator support exact years, months, days breakdown?", answer: "Yes. Age & Chronological Days Calculator provides exact years, months, days breakdown natively in your browser with real-time feedback." },
+      { question: "Does Age & Chronological Days Calculator support total weeks and days lived?", answer: "Yes. Age & Chronological Days Calculator provides total weeks and days lived natively in your browser with real-time feedback." },
+      { question: "Does Age & Chronological Days Calculator support handles leap years?", answer: "Yes. Age & Chronological Days Calculator provides handles leap years natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["date-difference-calculator", "unix-timestamp-converter"],
     seoTitle: "Age Calculator - Exact Years & Days",
     seoDescription: "Calculate exact chronological age in years, months, days, total weeks, and days lived. Instant client-side calculations with accurate real-time results on.",
@@ -430,7 +435,7 @@ export const calculatorTools: ToolDefinition[] = [
     ],
     faq: [{ question: "What is a customary tip percentage?", answer: "10% to 15% is standard for satisfactory restaurant dining service." }],
     relatedTools: ["sales-tax-calculator", "discount-calculator", "loan-emi-calculator", "sip-calculator", "compound-interest-calculator", "simple-interest-calculator", "percentage-calculator", "percentage-change-calculator"],
-    seoTitle: "Tip Calculator - Split Restaurant Bill",
+    seoTitle: "Restaurant Tip & Bill Splitter Calculator | Nova Tools",
     seoDescription: "Calculate restaurant tips and split total bills evenly across dinner guests. Instant client-side calculations with accurate real-time results on Nova.",
     canonicalUrl: "/tip-calculator",
     processingType: "client",
@@ -615,7 +620,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Enter Weight & Height", instruction: "Input body weight (kg) and height (cm)." },
       { step: 3, title: "Enter Age", instruction: "Input age in years to view daily BMR calorie burn." },
     ],
-    faq: [{ question: "What is BMR?", answer: "Basal Metabolic Rate is the minimum calorie expenditure required to sustain breathing, circulation, and cell production at complete rest." }],
+    faq: [
+{ question: "What is BMR?", answer: "Basal Metabolic Rate is the minimum calorie expenditure required to sustain breathing, circulation, and cell production at complete rest." },
+      { question: "Does BMR Calculator (Basal Metabolic Rate) support mifflin-st jeor validated formula?", answer: "Yes. BMR Calculator (Basal Metabolic Rate) provides mifflin-st jeor validated formula natively in your browser with real-time feedback." },
+      { question: "Does BMR Calculator (Basal Metabolic Rate) support activity burn multipliers (1.2x to 1.55x)?", answer: "Yes. BMR Calculator (Basal Metabolic Rate) provides activity burn multipliers (1.2x to 1.55x) natively in your browser with real-time feedback." },
+      { question: "Does BMR Calculator (Basal Metabolic Rate) support instant result?", answer: "Yes. BMR Calculator (Basal Metabolic Rate) provides instant result natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["calorie-deficit-calculator", "bmi-calculator"],
     seoTitle: "BMR Calculator - Basal Metabolic Rate",
     seoDescription: "Calculate daily basal calories burned at rest using the Mifflin-St Jeor metabolic formula. Instant client-side calculations with accurate real-time.",
@@ -651,7 +661,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Set Deficit %", instruction: "Choose target deficit percentage (e.g. 20%)." },
       { step: 3, title: "View Target", instruction: "Read daily eating target and estimated weekly fat loss." },
     ],
-    faq: [{ question: "How many calories equal 1 kg of fat?", answer: "Approximately 7,700 kcal deficit is required to burn 1 kilogram of body fat." }],
+    faq: [
+{ question: "How many calories equal 1 kg of fat?", answer: "Approximately 7,700 kcal deficit is required to burn 1 kilogram of body fat." },
+      { question: "Does Calorie Deficit & Fat Loss Calculator support calculates daily calorie cut?", answer: "Yes. Calorie Deficit & Fat Loss Calculator provides calculates daily calorie cut natively in your browser with real-time feedback." },
+      { question: "Does Calorie Deficit & Fat Loss Calculator support projects weekly fat loss rate?", answer: "Yes. Calorie Deficit & Fat Loss Calculator provides projects weekly fat loss rate natively in your browser with real-time feedback." },
+      { question: "Does Calorie Deficit & Fat Loss Calculator support instant target output?", answer: "Yes. Calorie Deficit & Fat Loss Calculator provides instant target output natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["bmr-calculator", "bmi-calculator"],
     seoTitle: "Calorie Deficit & Fat Loss Calculator Online | Nova Tools",
     seoDescription: "Calculate daily calorie intake targets and projected weekly fat loss rates. Instant client-side calculations with accurate real-time results on Nova Tools.",
@@ -841,7 +856,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Enter Markup %", instruction: "Input desired markup percentage." },
       { step: 3, title: "View Selling Price", instruction: "Read your recommended selling price and profit." },
     ],
-    faq: [{ question: "How does markup differ from margin?", answer: "Markup is profit percentage over cost price; margin is profit percentage over selling price." }],
+    faq: [
+{ question: "How does markup differ from margin?", answer: "Markup is profit percentage over cost price; margin is profit percentage over selling price." },
+      { question: "Does Price Markup Calculator support calculates final selling price and profit?", answer: "Yes. Price Markup Calculator provides calculates final selling price and profit natively in your browser with real-time feedback." },
+      { question: "Does Price Markup Calculator support shows equivalent profit margin percentage?", answer: "Yes. Price Markup Calculator provides shows equivalent profit margin percentage natively in your browser with real-time feedback." },
+      { question: "Does Price Markup Calculator support instant result?", answer: "Yes. Price Markup Calculator provides instant result natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["margin-calculator", "discount-calculator"],
     seoTitle: "Price Markup Calculator Online | Nova Tools",
     seoDescription: "Calculate selling price, gross profit, and profit margin from cost price and markup percentage. Instant client-side calculations with accurate real-time.",
@@ -1215,7 +1235,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 1, title: "Enter Song BPM", instruction: "Input tempo (e.g. 128 BPM)." },
       { step: 2, title: "View Timing", instruction: "Read exact milliseconds for standard note divisions." },
     ],
-    faq: [{ question: "What is the formula for quarter note delay?", answer: "Delay Time (ms) = 60,000 / BPM." }],
+    faq: [
+{ question: "What is the formula for quarter note delay?", answer: "Delay Time (ms) = 60,000 / BPM." },
+      { question: "Does BPM Tempo to Delay Time & LFO Frequency Calculator support 1/4, 1/8, 1/16, dotted & triplet notes?", answer: "Yes. BPM Tempo to Delay Time & LFO Frequency Calculator provides 1/4, 1/8, 1/16, dotted & triplet notes natively in your browser with real-time feedback." },
+      { question: "Does BPM Tempo to Delay Time & LFO Frequency Calculator support lfo rate in hertz (hz)?", answer: "Yes. BPM Tempo to Delay Time & LFO Frequency Calculator provides lfo rate in hertz (hz) natively in your browser with real-time feedback." },
+      { question: "Does BPM Tempo to Delay Time & LFO Frequency Calculator support tempo slider (40 - 240 bpm)?", answer: "Yes. BPM Tempo to Delay Time & LFO Frequency Calculator provides tempo slider (40 - 240 bpm) natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["audio-file-bitrate-size-calculator", "audio-metadata-inspector"],
     seoTitle: "BPM Tempo to Delay Time & LFO Frequency Ca",
     seoDescription: "Calculate tempo-synced delay times in milliseconds and LFO frequencies in Hz from BPM online. Free music production tool.",

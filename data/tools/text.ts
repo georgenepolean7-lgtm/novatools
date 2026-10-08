@@ -810,7 +810,12 @@ export const textTools: ToolDefinition[] = [
       { step: 1, title: "Paste Binary Bits", instruction: "Enter binary string (e.g. 01001000 01101001)." },
       { step: 2, title: "Translate", instruction: "Click Process to read plain text." },
     ],
-    faq: [{ question: "Do binary bits need spaces between bytes?", answer: "Spaces are optional; the converter automatically parses both space-separated and continuous binary bitstreams." }],
+    faq: [
+{ question: "Do binary bits need spaces between bytes?", answer: "Spaces are optional; the converter automatically parses both space-separated and continuous binary bitstreams." },
+      { question: "Does Binary to Text Translator support validates 8-bit alignment?", answer: "Yes. Binary to Text Translator provides validates 8-bit alignment natively in your browser with real-time feedback." },
+      { question: "Does Binary to Text Translator support utf-8 multi-byte decoding?", answer: "Yes. Binary to Text Translator provides utf-8 multi-byte decoding natively in your browser with real-time feedback." },
+      { question: "Does Binary to Text Translator support instant translation?", answer: "Yes. Binary to Text Translator provides instant translation natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["text-to-binary", "decimal-to-binary-converter"],
     seoTitle: "Binary to Text Translator - Text Formatter",
     seoDescription: "Decode 8-bit binary byte streams (0s and 1s) back into readable English and UTF-8 text. Free, fast in-browser data utility with immediate results on Nova.",

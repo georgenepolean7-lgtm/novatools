@@ -208,7 +208,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 1, title: "Paste XML", instruction: "Paste XML or SVG markup." },
       { step: 2, title: "Format", instruction: "Click Execute to apply proper indentation." },
     ],
-    faq: [{ question: "Does it format SVG files?", answer: "Yes, SVG is valid XML and will be formatted with clean tag indentation." }],
+    faq: [
+{ question: "Does it format SVG files?", answer: "Yes, SVG is valid XML and will be formatted with clean tag indentation." },
+      { question: "Does XML Formatter & Beautifier support smart tag nesting indentation?", answer: "Yes. XML Formatter & Beautifier provides smart tag nesting indentation natively in your browser with real-time feedback." },
+      { question: "Does XML Formatter & Beautifier support preserves xml attributes?", answer: "Yes. XML Formatter & Beautifier provides preserves xml attributes natively in your browser with real-time feedback." },
+      { question: "Does XML Formatter & Beautifier support instant copy?", answer: "Yes. XML Formatter & Beautifier provides instant copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["xml-validator", "xml-to-json", "json-formatter"],
     seoTitle: "XML Formatter Online Tool | Nova Tools",
     seoDescription: "Use this xml formatter online tool to format and beautify XML data. Get fast client-side results in your browser, with no data upload required.",

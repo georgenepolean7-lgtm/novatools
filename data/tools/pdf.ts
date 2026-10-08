@@ -20,7 +20,12 @@ export const pdfTools: ToolDefinition[] = [
       { step: 2, title: "Select Compression Level", instruction: "Choose Low, Medium, or High compression." },
       { step: 3, title: "Download", instruction: "Download your optimized compact PDF." },
     ],
-    faq: [{ question: "Are my confidential PDFs safe?", answer: "Yes, compression runs 100% inside your browser using client-side JavaScript." }],
+    faq: [
+{ question: "Are my confidential PDFs safe?", answer: "Yes, compression runs 100% inside your browser using client-side JavaScript." },
+      { question: "Does Compress PDF support multiple compression levels?", answer: "Yes. Compress PDF provides multiple compression levels natively in your browser with real-time feedback." },
+      { question: "Does Compress PDF support 100% in-browser privacy?", answer: "Yes. Compress PDF provides 100% in-browser privacy natively in your browser with real-time feedback." },
+      { question: "Does Compress PDF support no file size limits?", answer: "Yes. Compress PDF provides no file size limits natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["merge-pdf", "split-pdf", "pdf-password-protect", "pdf-to-jpg"],
     seoTitle: "Compress PDF Online Tool | Nova Tools",
     seoDescription: "Reduce PDF file size while maintaining sharp text and visual clarity. Fast in-browser file processing with complete local privacy on Nova Tools.",

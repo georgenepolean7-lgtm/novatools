@@ -208,7 +208,12 @@ export const developerTools: ToolDefinition[] = [
       { step: 2, title: "Encode", instruction: "Click 'Encode to Base64'." },
       { step: 3, title: "Copy", instruction: "Copy the Base64 encoded string." },
     ],
-    faq: [{ question: "Does it support non-English characters?", answer: "Yes, it handles full UTF-8 Unicode characters safely." }],
+    faq: [
+{ question: "Does it support non-English characters?", answer: "Yes, it handles full UTF-8 Unicode characters safely." },
+      { question: "Does Base64 Text Encoder support supports utf-8 & unicode?", answer: "Yes. Base64 Text Encoder provides supports utf-8 & unicode natively in your browser with real-time feedback." },
+      { question: "Does Base64 Text Encoder support instant one-click copy?", answer: "Yes. Base64 Text Encoder provides instant one-click copy natively in your browser with real-time feedback." },
+      { question: "Does Base64 Text Encoder support zero character distortion?", answer: "Yes. Base64 Text Encoder provides zero character distortion natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["base64-decoder", "url-encoder", "image-to-base64"],
     seoTitle: "Base64 Text Encoder - Encode Text Online",
     seoDescription: "Encode plain text, UTF-8 strings, and special characters into Base64 format. Free, fast in-browser data utility with immediate results on Nova Tools.",
@@ -244,7 +249,12 @@ export const developerTools: ToolDefinition[] = [
       { step: 2, title: "Decode", instruction: "Click 'Decode Base64'." },
       { step: 3, title: "Read", instruction: "View the decoded plain text result." },
     ],
-    faq: [{ question: "What if my Base64 string is corrupt?", answer: "The tool will display a clear error message indicating invalid padding or characters." }],
+    faq: [
+{ question: "What if my Base64 string is corrupt?", answer: "The tool will display a clear error message indicating invalid padding or characters." },
+      { question: "Does Base64 Text Decoder support utf-8 character restoration?", answer: "Yes. Base64 Text Decoder provides utf-8 character restoration natively in your browser with real-time feedback." },
+      { question: "Does Base64 Text Decoder support error detection for invalid strings?", answer: "Yes. Base64 Text Decoder provides error detection for invalid strings natively in your browser with real-time feedback." },
+      { question: "Does Base64 Text Decoder support instant copy?", answer: "Yes. Base64 Text Decoder provides instant copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["base64-encoder", "url-decoder", "jwt-decoder"],
     seoTitle: "Base64 Text Decoder - Decode Base64 Text",
     seoDescription: "Decode Base64 encoded strings back into clean, readable plain text. Free, fast in-browser data utility with immediate results on Nova Tools.",
@@ -888,7 +898,12 @@ export const developerTools: ToolDefinition[] = [
       { step: 2, title: "Convert", instruction: "Click 'Process Binary to Decimal'." },
       { step: 3, title: "View Results", instruction: "Read the base-10 decimal, hex, and octal outputs." },
     ],
-    faq: [{ question: "Can I enter spaces between binary nibbles?", answer: "Yes, spaces like '1100 1000' are automatically trimmed." }],
+    faq: [
+{ question: "Can I enter spaces between binary nibbles?", answer: "Yes, spaces like '1100 1000' are automatically trimmed." },
+      { question: "Does Binary to Decimal Converter support calculates decimal, hex, and octal?", answer: "Yes. Binary to Decimal Converter provides calculates decimal, hex, and octal natively in your browser with real-time feedback." },
+      { question: "Does Binary to Decimal Converter support validates binary characters (0 and 1)?", answer: "Yes. Binary to Decimal Converter provides validates binary characters (0 and 1) natively in your browser with real-time feedback." },
+      { question: "Does Binary to Decimal Converter support instant conversion?", answer: "Yes. Binary to Decimal Converter provides instant conversion natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["decimal-to-binary-converter", "ascii-to-hex-converter", "hex-to-ascii-converter"],
     seoTitle: "Binary to Decimal Converter Online Tool | Nova Tools",
     seoDescription: "Use this binary to decimal converter online tool to convert binary numbers to decimal values. Get fast client-side results in your browser.",

@@ -136,7 +136,7 @@ export const financeTools: ToolDefinition[] = [
     faq: [{ question: "What is the difference between Gross Burn and Net Burn?", answer: "Gross burn is total monthly expenses; net burn is total expenses minus monthly revenue." }],
     relatedTools: ["break-even-calculator", "profit-margin-calculator", "roi-calculator", "loan-amortization-schedule-calculator", "dividend-yield-calculator"],
     seoTitle: "Startup Burn Rate & Runway Calculator",
-    seoDescription: "Calculate startup cash runway and net burn rate online. Free business financial planning calculator.",
+    seoDescription: "Calculate monthly gross burn, net burn, and business cash runway in months for startups and businesses. Instant client-side calculations with accurate.",
     canonicalUrl: "/cash-flow-burn-rate-calculator",
     processingType: "client",
     privacyMessage: "100% private in-browser calculation.",

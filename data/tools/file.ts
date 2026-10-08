@@ -20,7 +20,12 @@ export const fileTools: ToolDefinition[] = [
       { step: 2, title: "Compute Hash", instruction: "Web Crypto streams the file locally and computes the hash." },
       { step: 3, title: "Compare & Copy", instruction: "Compare against the published checksum or copy to clipboard." },
     ],
-    faq: [{ question: "Are large 1GB+ files uploaded?", answer: "No, files are streamed block-by-block directly through your browser's cryptographic hardware API." }],
+    faq: [
+{ question: "Are large 1GB+ files uploaded?", answer: "No, files are streamed block-by-block directly through your browser's cryptographic hardware API." },
+      { question: "Does File Checksum & SHA-256 Verifier support local file streaming via web crypto api?", answer: "Yes. File Checksum & SHA-256 Verifier provides local file streaming via web crypto api natively in your browser with real-time feedback." },
+      { question: "Does File Checksum & SHA-256 Verifier support supports multi-gigabyte files?", answer: "Yes. File Checksum & SHA-256 Verifier provides supports multi-gigabyte files natively in your browser with real-time feedback." },
+      { question: "Does File Checksum & SHA-256 Verifier support zero network upload?", answer: "Yes. File Checksum & SHA-256 Verifier provides zero network upload natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["hash-generator", "password-generator"],
     seoTitle: "File Checksum & SHA-256 Verifier Online Tool | Nova Tools",
     seoDescription: "Calculate and verify file SHA-256 checksums online without uploading files. Fast, private in-browser file integrity checker.",

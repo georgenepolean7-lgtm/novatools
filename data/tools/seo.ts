@@ -270,7 +270,12 @@ export const seoTools: ToolDefinition[] = [
       { step: 1, title: "Enter Webpage URL", instruction: "Input full URL (with or without query parameters)." },
       { step: 2, title: "Generate", instruction: "Click Execute to produce normalized `<link rel='canonical'>` tag." },
     ],
-    faq: [{ question: "Why is a canonical URL necessary?", answer: "It tells search engines which URL represents the master copy of a page, preventing duplicate content dilution." }],
+    faq: [
+{ question: "Why is a canonical URL necessary?", answer: "It tells search engines which URL represents the master copy of a page, preventing duplicate content dilution." },
+      { question: "Does Canonical URL Tag Generator & Normalizer support strips utm and query parameters?", answer: "Yes. Canonical URL Tag Generator & Normalizer provides strips utm and query parameters natively in your browser with real-time feedback." },
+      { question: "Does Canonical URL Tag Generator & Normalizer support normalizes protocol and trailing slash?", answer: "Yes. Canonical URL Tag Generator & Normalizer provides normalizes protocol and trailing slash natively in your browser with real-time feedback." },
+      { question: "Does Canonical URL Tag Generator & Normalizer support instant copy?", answer: "Yes. Canonical URL Tag Generator & Normalizer provides instant copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["meta-tag-generator", "robots-txt-generator"],
     seoTitle: "Canonical URL Tag Generator & Normalizer",
     seoDescription: "Generate clean `<link rel='canonical'>` tags, normalize trailing slashes, and strip tracking parameters. Free, fast in-browser data utility with immediate.",

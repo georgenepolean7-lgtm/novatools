@@ -19,7 +19,12 @@ export const educationTools: ToolDefinition[] = [
       { step: 1, title: "Add Courses", instruction: "Enter credit hours and grade points for each subject." },
       { step: 2, title: "Calculate GPA", instruction: "Click 'Calculate GPA' to view total points and average." },
     ],
-    faq: [{ question: "How is weighted GPA calculated?", answer: "Total Quality Points (Credits x Grade Point) divided by Total Credit Hours." }],
+    faq: [
+{ question: "How is weighted GPA calculated?", answer: "Total Quality Points (Credits x Grade Point) divided by Total Credit Hours." },
+      { question: "Does College GPA & Semester Grade Calculator support 4.0 gpa scale standard?", answer: "Yes. College GPA & Semester Grade Calculator provides 4.0 gpa scale standard natively in your browser with real-time feedback." },
+      { question: "Does College GPA & Semester Grade Calculator support credit-weighted calculations?", answer: "Yes. College GPA & Semester Grade Calculator provides credit-weighted calculations natively in your browser with real-time feedback." },
+      { question: "Does College GPA & Semester Grade Calculator support letter grade equivalent analysis?", answer: "Yes. College GPA & Semester Grade Calculator provides letter grade equivalent analysis natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["cgpa-to-percentage-converter", "citation-generator", "percentage-calculator"],
     seoTitle: "GPA Calculator - Grade Point Average",
     seoDescription: "Calculate college and semester GPA online across credit hours and letter grades. Fast, accurate, free GPA calculator.",
@@ -201,7 +206,7 @@ export const educationTools: ToolDefinition[] = [
       ]
     },
     relatedTools: ["gpa-calculator", "weighted-grade-calculator", "cgpa-to-percentage-converter", "citation-generator", "exam-score-target-calculator"],
-    seoTitle: "Attendance Calculator - Safe Bunk Count",
+    seoTitle: "Student Attendance Percentage & Safe Bunk | Nova Tools",
     seoDescription: "Calculate attendance percentage and find out how many classes you can safely skip or must attend to meet 75% attendance.",
     canonicalUrl: "/attendance-percentage-calculator",
     processingType: "client",
