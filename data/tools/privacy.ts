@@ -491,7 +491,12 @@ export const privacyTools: ToolDefinition[] = [
       { step: 1, title: "Paste Base32 String", instruction: "Input Base32 encoded text." },
       { step: 2, title: "Decode", instruction: "Click Execute to read plain text." },
     ],
-    faq: [{ question: "Does it support padding '=' characters?", answer: "Yes, both padded and unpadded Base32 strings are parsed seamlessly." }],
+    faq: [
+{ question: "Does it support padding '=' characters?", answer: "Yes, both padded and unpadded Base32 strings are parsed seamlessly." },
+      { question: "Does Base32 Text Decoder (RFC 4648) support validates base32 characters?", answer: "Yes. Base32 Text Decoder (RFC 4648) provides validates base32 characters natively in your browser with real-time feedback." },
+      { question: "Does Base32 Text Decoder (RFC 4648) support decodes utf-8 byte streams?", answer: "Yes. Base32 Text Decoder (RFC 4648) provides decodes utf-8 byte streams natively in your browser with real-time feedback." },
+      { question: "Does Base32 Text Decoder (RFC 4648) support instant output?", answer: "Yes. Base32 Text Decoder (RFC 4648) provides instant output natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["base32-encoder", "base64-decoder", "base58-decoder"],
     seoTitle: "Base32 Decoder Online Tool | Nova Tools",
     seoDescription: "Use this base32 decoder online tool to decode Base32 encoded text. Get fast client-side results in your browser, with no data upload required.",

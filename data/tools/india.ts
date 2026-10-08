@@ -201,7 +201,12 @@ export const indiaTools: ToolDefinition[] = [
       { step: 1, title: "Enter PAN Number", instruction: "Type 10-character PAN (e.g. ABCDE1234F)." },
       { step: 2, title: "Validate", instruction: "Click Execute to verify syntax and entity category." },
     ],
-    faq: [{ question: "What does the 4th letter in a PAN number mean?", answer: "It denotes the entity type: 'P' for Individual/Person, 'C' for Company, 'F' for Firm/LLP, 'H' for HUF, 'T' for Trust." }],
+    faq: [
+{ question: "What does the 4th letter in a PAN number mean?", answer: "It denotes the entity type: 'P' for Individual/Person, 'C' for Company, 'F' for Firm/LLP, 'H' for HUF, 'T' for Trust." },
+      { question: "Does PAN Card Number Format Validator (India) support validates 10-digit standard regex?", answer: "Yes. PAN Card Number Format Validator (India) provides validates 10-digit standard regex natively in your browser with real-time feedback." },
+      { question: "Does PAN Card Number Format Validator (India) support identifies entity (individual 'p', company 'c', firm 'f')?", answer: "Yes. PAN Card Number Format Validator (India) provides identifies entity (individual 'p', company 'c', firm 'f') natively in your browser with real-time feedback." },
+      { question: "Does PAN Card Number Format Validator (India) support surname letter verification?", answer: "Yes. PAN Card Number Format Validator (India) provides surname letter verification natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["ifsc-code-validator", "aadhaar-verhoeff-checksum-validator"],
     seoTitle: "PAN Card Number Format Validator (India)",
     seoDescription: "Validate Indian PAN card format (AAAAA9999A) and identify entity type (Individual, Company, Firm, Trust). Free, fast in-browser data utility with.",

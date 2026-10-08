@@ -383,7 +383,12 @@ export const textTools: ToolDefinition[] = [
       { step: 2, title: "Extract", instruction: "Click Process to isolate all unique email addresses." },
       { step: 3, title: "Copy", instruction: "Copy clean line-separated email list." },
     ],
-    faq: [{ question: "Does it filter out duplicate emails?", answer: "Yes, it automatically deduplicates and lowercases all extracted email addresses." }],
+    faq: [
+{ question: "Does it filter out duplicate emails?", answer: "Yes, it automatically deduplicates and lowercases all extracted email addresses." },
+      { question: "Does Email Address Extractor & Deduplicator support rfc 5322 regex extraction?", answer: "Yes. Email Address Extractor & Deduplicator provides rfc 5322 regex extraction natively in your browser with real-time feedback." },
+      { question: "Does Email Address Extractor & Deduplicator support automatic lowercase deduplication?", answer: "Yes. Email Address Extractor & Deduplicator provides automatic lowercase deduplication natively in your browser with real-time feedback." },
+      { question: "Does Email Address Extractor & Deduplicator support total count feedback?", answer: "Yes. Email Address Extractor & Deduplicator provides total count feedback natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["extract-urls", "extract-numbers"],
     seoTitle: "Email Address Extractor & Deduplicator",
     seoDescription: "Extract and deduplicate all valid email addresses from raw text dumps, emails, and web pages. Free, fast in-browser data utility with immediate results on.",

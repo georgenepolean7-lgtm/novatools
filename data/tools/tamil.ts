@@ -56,7 +56,12 @@ export const tamilTools: ToolDefinition[] = [
       { step: 2, title: "Convert", instruction: "Click 'Convert to Tamil' to translate words to Tamil script." },
       { step: 3, title: "Copy", instruction: "Copy the Tamil Unicode text for WhatsApp, social media, or documents." },
     ],
-    faq: [{ question: "Can I use this for social media posts?", answer: "Yes, the output is standard UTF-8 Tamil text that pastes directly into WhatsApp, Instagram, Facebook, and Word." }],
+    faq: [
+{ question: "Can I use this for social media posts?", answer: "Yes, the output is standard UTF-8 Tamil text that pastes directly into WhatsApp, Instagram, Facebook, and Word." },
+      { question: "Does Tanglish to Tamil Transliteration support phonetic conversion?", answer: "Yes. Tanglish to Tamil Transliteration provides phonetic conversion natively in your browser with real-time feedback." },
+      { question: "Does Tanglish to Tamil Transliteration support supports everyday words?", answer: "Yes. Tanglish to Tamil Transliteration provides supports everyday words natively in your browser with real-time feedback." },
+      { question: "Does Tanglish to Tamil Transliteration support instant one-click copy?", answer: "Yes. Tanglish to Tamil Transliteration provides instant one-click copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["tamil-image-to-text", "bamini-to-unicode-converter", "tamil-word-sentence-counter"],
     seoTitle: "Tanglish to Tamil Transliteration Online Tool | Nova Tools",
     seoDescription: "Type Tamil words in English letters (Tanglish) and convert them instantly to Tamil script. Free, fast in-browser data utility with immediate results on.",
@@ -91,7 +96,12 @@ export const tamilTools: ToolDefinition[] = [
       { step: 1, title: "Paste Tamil Text", instruction: "Input your Tamil text or poem." },
       { step: 2, title: "Count", instruction: "View letter breakdown by grammatical category." },
     ],
-    faq: [{ question: "How does it handle compound letters like 'கோ'?", answer: "It correctly treats 'கோ' as 1 Uyir-Mei compound character rather than counting separate Unicode glyphs." }],
+    faq: [
+{ question: "How does it handle compound letters like 'கோ'?", answer: "It correctly treats 'கோ' as 1 Uyir-Mei compound character rather than counting separate Unicode glyphs." },
+      { question: "Does Tamil Character & Letter Classification Counter (உயிர், மெய், உயிர்மெய்) support uyir (12), mei (18), uyir-mei (216) classification?", answer: "Yes. Tamil Character & Letter Classification Counter (உயிர், மெய், உயிர்மெய்) provides uyir (12), mei (18), uyir-mei (216) classification natively in your browser with real-time feedback." },
+      { question: "Does Tamil Character & Letter Classification Counter (உயிர், மெய், உயிர்மெய்) support ayutha 'ஃ' detection?", answer: "Yes. Tamil Character & Letter Classification Counter (உயிர், மெய், உயிர்மெய்) provides ayutha 'ஃ' detection natively in your browser with real-time feedback." },
+      { question: "Does Tamil Character & Letter Classification Counter (உயிர், மெய், உயிர்மெய்) support 100% private in-browser?", answer: "Yes. Tamil Character & Letter Classification Counter (உயிர், மெய், உயிர்மெய்) provides 100% private in-browser natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["tamil-word-sentence-counter", "tamil-unicode-normalizer"],
     seoTitle: "Tamil Character & Letter Classification Co",
     seoDescription: "Count and classify Tamil letters (Uyir, Mei, Uyir-Mei, Ayutha) online. Accurate Tamil grammar and letter counter.",
@@ -198,7 +208,12 @@ export const tamilTools: ToolDefinition[] = [
       { step: 2, title: "Clean", instruction: "Strip non-Tamil characters and clean formatting." },
       { step: 3, title: "Copy", instruction: "Save purified Tamil text." },
     ],
-    faq: [{ question: "Does it delete numbers and punctuation?", answer: "No, standard numbers and punctuation marks are preserved alongside Tamil script." }],
+    faq: [
+{ question: "Does it delete numbers and punctuation?", answer: "No, standard numbers and punctuation marks are preserved alongside Tamil script." },
+      { question: "Does Tamil Text Cleaner & English Character Stripper support strips english [a-za-z]?", answer: "Yes. Tamil Text Cleaner & English Character Stripper provides strips english [a-za-z] natively in your browser with real-time feedback." },
+      { question: "Does Tamil Text Cleaner & English Character Stripper support normalizes tabs and blank lines?", answer: "Yes. Tamil Text Cleaner & English Character Stripper provides normalizes tabs and blank lines natively in your browser with real-time feedback." },
+      { question: "Does Tamil Text Cleaner & English Character Stripper support preserves tamil punctuation and numbers?", answer: "Yes. Tamil Text Cleaner & English Character Stripper provides preserves tamil punctuation and numbers natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["tamil-unicode-normalizer", "text-cleaner"],
     seoTitle: "Tamil Text Cleaner & English Character Str",
     seoDescription: "Clean Tamil prose by stripping mixed English characters, removing excessive spaces, and regularizing punctuation. Free, fast in-browser data utility with.",

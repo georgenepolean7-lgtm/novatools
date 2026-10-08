@@ -246,9 +246,12 @@ export const imageTools: ToolDefinition[] = [
       { step: 3, title: "Download", instruction: "Click 'Crop & Download' to save your cropped image." },
     ],
     faq: [
-      { question: "Is my photo uploaded to any server?", answer: "No, cropping runs 100% client-side in your web browser using HTML5 Canvas." },
+{ question: "Is my photo uploaded to any server?", answer: "No, cropping runs 100% client-side in your web browser using HTML5 Canvas." },
       { question: "Can I crop to specific aspect ratios like 16:9 or 1:1?", answer: "Yes, select the desired aspect ratio button (1:1, 4:3, 16:9, 9:16, 3:2, 2:3, or Free) to lock proportions while adjusting the crop box." },
-      { question: "What image formats are supported for cropping?", answer: "Image Cropper supports JPG, PNG, and WebP images with high-resolution canvas rendering." }
+      { question: "What image formats are supported for cropping?", answer: "Image Cropper supports JPG, PNG, and WebP images with high-resolution canvas rendering." },
+      { question: "Does Image Cropper (Aspect Ratio & Presets) support aspect ratio presets (1:1, 4:3, 16:9, 9:16, free)?", answer: "Yes. Image Cropper (Aspect Ratio & Presets) provides aspect ratio presets (1:1, 4:3, 16:9, 9:16, free) natively in your browser with real-time feedback." },
+      { question: "Does Image Cropper (Aspect Ratio & Presets) support interactive drag-and-resize crop box?", answer: "Yes. Image Cropper (Aspect Ratio & Presets) provides interactive drag-and-resize crop box natively in your browser with real-time feedback." },
+      { question: "Does Image Cropper (Aspect Ratio & Presets) support lossless png, jpg, and webp export?", answer: "Yes. Image Cropper (Aspect Ratio & Presets) provides lossless png, jpg, and webp export natively in your browser with real-time feedback." }
     ],
     relatedTools: ["compress-image", "image-resizer", "signature-resizer", "image-rotator"],
     seoTitle: "Image Cropper - Free Online Photo Crop Tool | Nova Tools",

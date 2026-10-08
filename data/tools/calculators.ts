@@ -979,7 +979,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "View Words", instruction: "Read the generated English words (e.g. 'One Lakh Twenty Five Thousand Rupees Only')." },
       { step: 3, title: "Copy", instruction: "Copy text directly for your bank cheque or invoice." },
     ],
-    faq: [{ question: "Does it support Indian Lakhs and Crores?", answer: "Yes, it fully complies with the Indian numbering system." }],
+    faq: [
+{ question: "Does it support Indian Lakhs and Crores?", answer: "Yes, it fully complies with the Indian numbering system." },
+      { question: "Does Number to Words & Cheque Amount Converter support indian numbering format (crore, lakh, thousand)?", answer: "Yes. Number to Words & Cheque Amount Converter provides indian numbering format (crore, lakh, thousand) natively in your browser with real-time feedback." },
+      { question: "Does Number to Words & Cheque Amount Converter support cheque 'rupees only' formatting?", answer: "Yes. Number to Words & Cheque Amount Converter provides cheque 'rupees only' formatting natively in your browser with real-time feedback." },
+      { question: "Does Number to Words & Cheque Amount Converter support instant copy?", answer: "Yes. Number to Words & Cheque Amount Converter provides instant copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["gst-calculator", "sales-tax-calculator"],
     seoTitle: "Number to Words & Cheque Amount Converter",
     seoDescription: "Convert numerical digits into English words formatted for bank cheques and financial invoices. Instant client-side calculations with accurate real-time.",
@@ -1418,7 +1423,7 @@ export const calculatorTools: ToolDefinition[] = [
     ],
     faq: [{ question: "How does ISO 8601 define Week 1?", answer: "Week 1 of the year is the first week that contains the first Thursday of that year (or at least 4 days in that year)." }],
     relatedTools: ["working-days-business-calculator", "world-clock-timezone-converter", "loan-emi-calculator", "sip-calculator", "compound-interest-calculator", "simple-interest-calculator", "percentage-calculator", "percentage-change-calculator"],
-    seoTitle: "ISO 8601 Week Number & Day of Year Calcula",
+    seoTitle: "ISO 8601 Week Number & Day of Year Calculator | Nova Tools",
     seoDescription: "Calculate the official ISO 8601 calendar week number, day of year, leap year status, and days remaining. Instant client-side calculations with accurate.",
     canonicalUrl: "/week-number-iso-calculator",
     processingType: "client",

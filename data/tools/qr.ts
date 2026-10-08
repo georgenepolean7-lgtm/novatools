@@ -256,7 +256,7 @@ export const qrTools: ToolDefinition[] = [
     faq: [{ question: "Is there any transaction fee for this QR code?", answer: "No, standard peer-to-peer and merchant UPI QR codes generated here have zero platform fees." }],
     relatedTools: ["qr-code-generator", "gst-calculator", "indian-currency-words-converter", "wifi-qr-code-generator", "vcard-qr-code-generator", "email-qr-code-generator"],
     seoTitle: "UPI Payment QR Code Generator (India)",
-    seoDescription: "Create UPI payment QR codes online for Google Pay, PhonePe, and Paytm. NPCI standard, free, in-browser tool.",
+    seoDescription: "Generate static and dynamic Indian UPI payment QR codes (`upi://pay`) for Google Pay, PhonePe, Paytm, and BHIM. Free, fast in-browser data utility with.",
     canonicalUrl: "/upi-qr-code-generator",
     processingType: "client",
     privacyMessage: "UPI details stay 100% in your browser. Zero logging.",
