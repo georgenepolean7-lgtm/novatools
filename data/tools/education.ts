@@ -140,7 +140,7 @@ export const educationTools: ToolDefinition[] = [
     faq: [{ question: "How does category weighting work?", answer: "Each category's percentage score is multiplied by its weight percentage, and all products are summed to give the final course grade." }],
     relatedTools: ["gpa-calculator", "exam-score-target-calculator"],
     seoTitle: "Weighted Grade & Course Final Score Calcul",
-    seoDescription: "Calculate weighted grades and course averages online across assignments, quizzes, and exams. Fast and free.",
+    seoDescription: "Calculate overall course percentage from weighted assignments, quizzes, projects, midterms, and finals. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/weighted-grade-calculator",
     processingType: "client",
     privacyMessage: "100% private in-browser calculation.",
