@@ -208,7 +208,7 @@ export const indiaTools: ToolDefinition[] = [
       { question: "Does PAN Card Number Format Validator (India) support surname letter verification?", answer: "Yes. PAN Card Number Format Validator (India) provides surname letter verification natively in your browser with real-time feedback." }
     ],
     relatedTools: ["ifsc-code-validator", "aadhaar-verhoeff-checksum-validator"],
-    seoTitle: "PAN Card Number Format Validator (India)",
+    seoTitle: "PAN Card Number Format Validator | Nova Tools",
     seoDescription: "Validate Indian PAN card format (AAAAA9999A) and identify entity type (Individual, Company, Firm, Trust). Free, fast in-browser data utility with.",
     canonicalUrl: "/pan-card-format-validator",
     processingType: "client",

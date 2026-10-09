@@ -125,7 +125,12 @@ export const accessibilityTools: ToolDefinition[] = [
       { step: 1, title: "Enter Width & Height", instruction: "Input element pixel dimensions." },
       { step: 2, title: "Audit", instruction: "View compliance across WCAG, Apple HIG, and Material Design." },
     ],
-    faq: [{ question: "What is the minimum recommended touch target?", answer: "WCAG 2.5.5 mandates at least 44x44px, while Google Material Design recommends 48x48px with 8px padding." }],
+    faq: [
+{ question: "What is the minimum recommended touch target?", answer: "WCAG 2.5.5 mandates at least 44x44px, while Google Material Design recommends 48x48px with 8px padding." },
+      { question: "Does Touch Target Size Checker (WCAG 2.5.5 / 48px) support wcag 2.5.5 (44x44px) verification?", answer: "Yes. Touch Target Size Checker (WCAG 2.5.5 / 48px) provides wcag 2.5.5 (44x44px) verification natively in your browser with real-time feedback." },
+      { question: "Does Touch Target Size Checker (WCAG 2.5.5 / 48px) support apple hig & google material (48x48px) compliance?", answer: "Yes. Touch Target Size Checker (WCAG 2.5.5 / 48px) provides apple hig & google material (48x48px) compliance natively in your browser with real-time feedback." },
+      { question: "Does Touch Target Size Checker (WCAG 2.5.5 / 48px) support instant pass/fail rating?", answer: "Yes. Touch Target Size Checker (WCAG 2.5.5 / 48px) provides instant pass/fail rating natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["color-contrast-checker", "accessible-form-label-checker", "html-image-alt-text-checker", "aria-attribute-reference-validator", "heading-accessibility-hierarchy-checker"],
     seoTitle: "Touch Target - WCAG 48px Target Test",
     seoDescription: "Audit UI button and link dimensions against WCAG 2.5.5 (44x44px) and Google/Apple (48x48px) touch target rules. Free, fast in-browser data utility with.",

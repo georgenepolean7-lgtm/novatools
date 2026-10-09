@@ -215,7 +215,7 @@ export const developerTools: ToolDefinition[] = [
       { question: "Does Base64 Text Encoder support zero character distortion?", answer: "Yes. Base64 Text Encoder provides zero character distortion natively in your browser with real-time feedback." }
     ],
     relatedTools: ["base64-decoder", "url-encoder", "image-to-base64"],
-    seoTitle: "Base64 Text Encoder - Encode Text Online",
+    seoTitle: "Base64 Text Encoder Online Tool | Nova Tools",
     seoDescription: "Encode plain text, UTF-8 strings, and special characters into Base64 format. Free, fast in-browser data utility with immediate results on Nova Tools.",
     canonicalUrl: "/base64-encoder",
     processingType: "client",
@@ -256,7 +256,7 @@ export const developerTools: ToolDefinition[] = [
       { question: "Does Base64 Text Decoder support instant copy?", answer: "Yes. Base64 Text Decoder provides instant copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["base64-encoder", "url-decoder", "jwt-decoder"],
-    seoTitle: "Base64 Text Decoder - Decode Base64 Text",
+    seoTitle: "Base64 Text Decoder Online Tool | Nova Tools",
     seoDescription: "Decode Base64 encoded strings back into clean, readable plain text. Free, fast in-browser data utility with immediate results on Nova Tools.",
     canonicalUrl: "/base64-decoder",
     processingType: "client",

@@ -253,7 +253,12 @@ export const qrTools: ToolDefinition[] = [
       { step: 2, title: "Set Amount (Optional)", instruction: "Enter fixed billing amount or leave blank for customer choice." },
       { step: 3, title: "Download", instruction: "Save high-resolution PNG for store counter display or invoice embedding." },
     ],
-    faq: [{ question: "Is there any transaction fee for this QR code?", answer: "No, standard peer-to-peer and merchant UPI QR codes generated here have zero platform fees." }],
+    faq: [
+{ question: "Is there any transaction fee for this QR code?", answer: "No, standard peer-to-peer and merchant UPI QR codes generated here have zero platform fees." },
+      { question: "Does UPI Payment QR Code Generator (India) support compatible with google pay, phonepe, paytm, bhim, cred?", answer: "Yes. UPI Payment QR Code Generator (India) provides compatible with google pay, phonepe, paytm, bhim, cred natively in your browser with real-time feedback." },
+      { question: "Does UPI Payment QR Code Generator (India) support optional pre-filled amount and payment note?", answer: "Yes. UPI Payment QR Code Generator (India) provides optional pre-filled amount and payment note natively in your browser with real-time feedback." },
+      { question: "Does UPI Payment QR Code Generator (India) support printable shop png?", answer: "Yes. UPI Payment QR Code Generator (India) provides printable shop png natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["qr-code-generator", "gst-calculator", "indian-currency-words-converter", "wifi-qr-code-generator", "vcard-qr-code-generator", "email-qr-code-generator"],
     seoTitle: "UPI Payment QR Code Generator (India)",
     seoDescription: "Generate static and dynamic Indian UPI payment QR codes (`upi://pay`) for Google Pay, PhonePe, Paytm, and BHIM. Free, fast in-browser data utility with.",

@@ -390,7 +390,7 @@ export const textTools: ToolDefinition[] = [
       { question: "Does Email Address Extractor & Deduplicator support total count feedback?", answer: "Yes. Email Address Extractor & Deduplicator provides total count feedback natively in your browser with real-time feedback." }
     ],
     relatedTools: ["extract-urls", "extract-numbers"],
-    seoTitle: "Email Address Extractor & Deduplicator",
+    seoTitle: "Email Address Extractor & Deduplicator | Nova Tools",
     seoDescription: "Extract and deduplicate all valid email addresses from raw text dumps, emails, and web pages. Free, fast in-browser data utility with immediate results on.",
     canonicalUrl: "/extract-emails",
     processingType: "client",
@@ -822,7 +822,7 @@ export const textTools: ToolDefinition[] = [
       { question: "Does Binary to Text Translator support instant translation?", answer: "Yes. Binary to Text Translator provides instant translation natively in your browser with real-time feedback." }
     ],
     relatedTools: ["text-to-binary", "decimal-to-binary-converter"],
-    seoTitle: "Binary to Text Translator - Text Formatter",
+    seoTitle: "Binary to Text Translator Online Tool | Nova Tools",
     seoDescription: "Decode 8-bit binary byte streams (0s and 1s) back into readable English and UTF-8 text. Free, fast in-browser data utility with immediate results on Nova.",
     canonicalUrl: "/binary-to-text",
     processingType: "client",

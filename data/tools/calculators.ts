@@ -255,7 +255,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does Age & Chronological Days Calculator support handles leap years?", answer: "Yes. Age & Chronological Days Calculator provides handles leap years natively in your browser with real-time feedback." }
     ],
     relatedTools: ["date-difference-calculator", "unix-timestamp-converter"],
-    seoTitle: "Age Calculator - Exact Years & Days",
+    seoTitle: "Age & Chronological Days Calculator Online | Nova Tools",
     seoDescription: "Calculate exact chronological age in years, months, days, total weeks, and days lived. Instant client-side calculations with accurate real-time results on.",
     canonicalUrl: "/age-calculator",
     processingType: "client",
@@ -627,7 +627,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does BMR Calculator (Basal Metabolic Rate) support instant result?", answer: "Yes. BMR Calculator (Basal Metabolic Rate) provides instant result natively in your browser with real-time feedback." }
     ],
     relatedTools: ["calorie-deficit-calculator", "bmi-calculator"],
-    seoTitle: "BMR Calculator - Basal Metabolic Rate",
+    seoTitle: "BMR Calculator (Basal Metabolic Rate) Online | Nova Tools",
     seoDescription: "Calculate daily basal calories burned at rest using the Mifflin-St Jeor metabolic formula. Instant client-side calculations with accurate real-time.",
     canonicalUrl: "/bmr-calculator",
     processingType: "client",
@@ -986,7 +986,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does Number to Words & Cheque Amount Converter support instant copy?", answer: "Yes. Number to Words & Cheque Amount Converter provides instant copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["gst-calculator", "sales-tax-calculator"],
-    seoTitle: "Number to Words & Cheque Amount Converter",
+    seoTitle: "Number to Words & Cheque Amount Converter | Nova Tools",
     seoDescription: "Convert numerical digits into English words formatted for bank cheques and financial invoices. Instant client-side calculations with accurate real-time.",
     canonicalUrl: "/number-to-words-converter",
     processingType: "client",
@@ -1247,7 +1247,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does BPM Tempo to Delay Time & LFO Frequency Calculator support tempo slider (40 - 240 bpm)?", answer: "Yes. BPM Tempo to Delay Time & LFO Frequency Calculator provides tempo slider (40 - 240 bpm) natively in your browser with real-time feedback." }
     ],
     relatedTools: ["audio-file-bitrate-size-calculator", "audio-metadata-inspector"],
-    seoTitle: "BPM Tempo to Delay Time & LFO Frequency Ca",
+    seoTitle: "BPM Tempo to Delay Time & LFO Frequency | Nova Tools",
     seoDescription: "Calculate tempo-synced delay times in milliseconds and LFO frequencies in Hz from BPM online. Free music production tool.",
     canonicalUrl: "/audio-bpm-tempo-delay-calculator",
     processingType: "client",

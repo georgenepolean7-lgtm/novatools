@@ -103,7 +103,7 @@ export const tamilTools: ToolDefinition[] = [
       { question: "Does Tamil Character & Letter Classification Counter (உயிர், மெய், உயிர்மெய்) support 100% private in-browser?", answer: "Yes. Tamil Character & Letter Classification Counter (உயிர், மெய், உயிர்மெய்) provides 100% private in-browser natively in your browser with real-time feedback." }
     ],
     relatedTools: ["tamil-word-sentence-counter", "tamil-unicode-normalizer"],
-    seoTitle: "Tamil Character & Letter Classification Co",
+    seoTitle: "Tamil Character & Letter Classification Counter | Nova Tools",
     seoDescription: "Count and classify Tamil letters (Uyir, Mei, Uyir-Mei, Ayutha) online. Accurate Tamil grammar and letter counter.",
     canonicalUrl: "/tamil-character-counter",
     processingType: "client",
@@ -215,7 +215,7 @@ export const tamilTools: ToolDefinition[] = [
       { question: "Does Tamil Text Cleaner & English Character Stripper support preserves tamil punctuation and numbers?", answer: "Yes. Tamil Text Cleaner & English Character Stripper provides preserves tamil punctuation and numbers natively in your browser with real-time feedback." }
     ],
     relatedTools: ["tamil-unicode-normalizer", "text-cleaner"],
-    seoTitle: "Tamil Text Cleaner & English Character Str",
+    seoTitle: "Tamil Text Cleaner & English Character Stripper | Nova Tools",
     seoDescription: "Clean Tamil prose by stripping mixed English characters, removing excessive spaces, and regularizing punctuation. Free, fast in-browser data utility with.",
     canonicalUrl: "/tamil-text-cleaner",
     processingType: "client",

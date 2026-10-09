@@ -26,7 +26,7 @@ export const educationTools: ToolDefinition[] = [
       { question: "Does College GPA & Semester Grade Calculator support letter grade equivalent analysis?", answer: "Yes. College GPA & Semester Grade Calculator provides letter grade equivalent analysis natively in your browser with real-time feedback." }
     ],
     relatedTools: ["cgpa-to-percentage-converter", "citation-generator", "percentage-calculator"],
-    seoTitle: "GPA Calculator - Grade Point Average",
+    seoTitle: "College GPA & Semester Grade Calculator Online | Nova Tools",
     seoDescription: "Calculate college and semester GPA online across credit hours and letter grades. Fast, accurate, free GPA calculator.",
     canonicalUrl: "/gpa-calculator",
     processingType: "client",
