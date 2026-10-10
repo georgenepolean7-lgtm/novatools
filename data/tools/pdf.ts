@@ -178,7 +178,12 @@ export const pdfTools: ToolDefinition[] = [
       { step: 2, title: "Enter Password", instruction: "Provide the correct decryption password." },
       { step: 3, title: "Download Unlocked PDF", instruction: "Save the permanently unlocked PDF document." },
     ],
-    faq: [{ question: "Do I need the password to unlock it?", answer: "Yes, standard legal decryption requires entering the correct password once to remove security." }],
+    faq: [
+{ question: "Do I need the password to unlock it?", answer: "Yes, standard legal decryption requires entering the correct password once to remove security." },
+      { question: "Does Unlock PDF (Remove Password) support real qpdf webassembly decryption?", answer: "Yes. Unlock PDF (Remove Password) provides real qpdf webassembly decryption natively in your browser with real-time feedback." },
+      { question: "Does Unlock PDF (Remove Password) support removes print & copy restrictions?", answer: "Yes. Unlock PDF (Remove Password) provides removes print & copy restrictions natively in your browser with real-time feedback." },
+      { question: "Does Unlock PDF (Remove Password) support 100% private in-browser?", answer: "Yes. Unlock PDF (Remove Password) provides 100% private in-browser natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["pdf-password-protect", "compress-pdf", "merge-pdf", "split-pdf", "pdf-page-numberer", "pdf-metadata-viewer-editor"],
     seoTitle: "Unlock PDF (Remove Password) Online Tool | Nova Tools",
     seoDescription: "Decrypt and remove password restrictions from password-protected PDF files in-browser. Fast in-browser file processing with complete local privacy on Nova.",
@@ -213,7 +218,12 @@ export const pdfTools: ToolDefinition[] = [
       { step: 2, title: "Choose Alignment & Style", instruction: "Select page number format and position." },
       { step: 3, title: "Download", instruction: "Save your paginated PDF." },
     ],
-    faq: [{ question: "Can I skip numbering the cover page?", answer: "Yes, you can set the starting page index to start on page 2 or any page you choose." }],
+    faq: [
+{ question: "Can I skip numbering the cover page?", answer: "Yes, you can set the starting page index to start on page 2 or any page you choose." },
+      { question: "Does PDF Page Numbering Tool support page x of y & standard numeric formats?", answer: "Yes. PDF Page Numbering Tool provides page x of y & standard numeric formats natively in your browser with real-time feedback." },
+      { question: "Does PDF Page Numbering Tool support bottom-center, bottom-right, and header placement?", answer: "Yes. PDF Page Numbering Tool provides bottom-center, bottom-right, and header placement natively in your browser with real-time feedback." },
+      { question: "Does PDF Page Numbering Tool support 100% in-browser privacy?", answer: "Yes. PDF Page Numbering Tool provides 100% in-browser privacy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["merge-pdf", "split-pdf", "compress-pdf", "pdf-password-protect", "pdf-unlocker", "pdf-metadata-viewer-editor"],
     seoTitle: "PDF Page Numbering Tool Online Tool | Nova Tools",
     seoDescription: "Add customized page numbers ('Page X of Y') to headers or footers of PDF documents in-browser. Fast in-browser file processing with complete local privacy.",
@@ -248,7 +258,12 @@ export const pdfTools: ToolDefinition[] = [
       { step: 1, title: "Select PDF", instruction: "Choose document to inspect." },
       { step: 2, title: "View / Edit", instruction: "Inspect Title, Author, Subject, and Keywords." },
     ],
-    faq: [{ question: "Does this affect the visible PDF pages?", answer: "No, metadata changes only affect internal document properties shown in reader info panels." }],
+    faq: [
+{ question: "Does this affect the visible PDF pages?", answer: "No, metadata changes only affect internal document properties shown in reader info panels." },
+      { question: "Does PDF Metadata Viewer & Tag Inspector support iso standard metadata fields?", answer: "Yes. PDF Metadata Viewer & Tag Inspector provides iso standard metadata fields natively in your browser with real-time feedback." },
+      { question: "Does PDF Metadata Viewer & Tag Inspector support inspects producer and creator tools?", answer: "Yes. PDF Metadata Viewer & Tag Inspector provides inspects producer and creator tools natively in your browser with real-time feedback." },
+      { question: "Does PDF Metadata Viewer & Tag Inspector support instant preview?", answer: "Yes. PDF Metadata Viewer & Tag Inspector provides instant preview natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["pdf-page-numberer", "pdf-password-protect", "compress-pdf", "merge-pdf", "split-pdf"],
     seoTitle: "PDF Metadata Viewer & Tag Inspector",
     seoDescription: "Inspect and edit PDF document properties, author, title, subject, creation date, and keywords. Fast in-browser file processing with complete local privacy.",
@@ -319,7 +334,12 @@ export const pdfTools: ToolDefinition[] = [
       { step: 1, title: "Paste Markdown", instruction: "Input your Markdown text." },
       { step: 2, title: "Convert", instruction: "Inspect generated HTML code." },
     ],
-    faq: [{ question: "Is the output compliant with standard HTML5?", answer: "Yes, it produces clean semantic `<article>`, `<h1>`-`<h3>`, `<p>`, `<strong>`, and `<code>` tags." }],
+    faq: [
+{ question: "Is the output compliant with standard HTML5?", answer: "Yes, it produces clean semantic `<article>`, `<h1>`-`<h3>`, `<p>`, `<strong>`, and `<code>` tags." },
+      { question: "Does Markdown to HTML Converter & Live Preview support supports gfm syntax (headers, code blocks, bold, lists)?", answer: "Yes. Markdown to HTML Converter & Live Preview provides supports gfm syntax (headers, code blocks, bold, lists) natively in your browser with real-time feedback." },
+      { question: "Does Markdown to HTML Converter & Live Preview support live preview panel?", answer: "Yes. Markdown to HTML Converter & Live Preview provides live preview panel natively in your browser with real-time feedback." },
+      { question: "Does Markdown to HTML Converter & Live Preview support one-click copy?", answer: "Yes. Markdown to HTML Converter & Live Preview provides one-click copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["html-to-markdown-converter", "text-cleaner"],
     seoTitle: "Markdown to HTML Converter & Live Preview",
     seoDescription: "Convert GitHub Flavored Markdown (headings, tables, code blocks, lists) into clean semantic HTML markup. Fast in-browser file processing with complete.",
@@ -356,7 +376,7 @@ export const pdfTools: ToolDefinition[] = [
     ],
     faq: [{ question: "Are complex tables converted?", answer: "Yes, standard table structures and list items are converted into Markdown table pipes and dashes." }],
     relatedTools: ["markdown-to-html-converter", "text-cleaner", "compress-pdf", "merge-pdf", "split-pdf", "pdf-password-protect", "pdf-unlocker", "pdf-page-numberer"],
-    seoTitle: "HTML to Markdown Converter - PDF Utility",
+    seoTitle: "HTML to Markdown Converter Online | Nova Tools",
     seoDescription: "Convert HTML source code and rich text back into clean, readable GitHub Flavored Markdown syntax. Fast in-browser file processing with complete local.",
     canonicalUrl: "/html-to-markdown-converter",
     processingType: "client",
@@ -389,7 +409,12 @@ export const pdfTools: ToolDefinition[] = [
       { step: 1, title: "Paste Document Text", instruction: "Input your essay or presentation script." },
       { step: 2, title: "Analyze", instruction: "View estimated pages, reading duration, and speech length." },
     ],
-    faq: [{ question: "How is page count estimated?", answer: "Standard academic formatting (12pt font, double-spaced, 1-inch margins) averages approximately 250 to 300 words per page." }],
+    faq: [
+{ question: "How is page count estimated?", answer: "Standard academic formatting (12pt font, double-spaced, 1-inch margins) averages approximately 250 to 300 words per page." },
+      { question: "Does Document Word, Page & Reading Time Estimator support standard 300 words/page double-spaced metric?", answer: "Yes. Document Word, Page & Reading Time Estimator provides standard 300 words/page double-spaced metric natively in your browser with real-time feedback." },
+      { question: "Does Document Word, Page & Reading Time Estimator support 200 wpm silent reading estimate?", answer: "Yes. Document Word, Page & Reading Time Estimator provides 200 wpm silent reading estimate natively in your browser with real-time feedback." },
+      { question: "Does Document Word, Page & Reading Time Estimator support 130 wpm speech duration?", answer: "Yes. Document Word, Page & Reading Time Estimator provides 130 wpm speech duration natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["word-counter", "character-counter", "markdown-to-html-converter", "compress-pdf", "merge-pdf", "split-pdf"],
     seoTitle: "Document Word, Page & Reading Time Estimat",
     seoDescription: "Estimate standard printed pages (~300 words/page), reading time, speech duration, and character metrics. Fast in-browser file processing with complete.",

@@ -140,7 +140,12 @@ export const imageTools: ToolDefinition[] = [
       { step: 2, title: "Convert", instruction: "Click 'Convert to PNG'." },
       { step: 3, title: "Download", instruction: "Save your PNG file." },
     ],
-    faq: [{ question: "Does converting to PNG lose quality?", answer: "No, PNG is a lossless format, preserving all pixel data from the JPG." }],
+    faq: [
+{ question: "Does converting to PNG lose quality?", answer: "No, PNG is a lossless format, preserving all pixel data from the JPG." },
+      { question: "Does JPG to PNG Converter support lossless png encoding?", answer: "Yes. JPG to PNG Converter provides lossless png encoding natively in your browser with real-time feedback." },
+      { question: "Does JPG to PNG Converter support batch processing support?", answer: "Yes. JPG to PNG Converter provides batch processing support natively in your browser with real-time feedback." },
+      { question: "Does JPG to PNG Converter support fast instant conversion?", answer: "Yes. JPG to PNG Converter provides fast instant conversion natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["png-to-jpg", "webp-converter", "compress-image"],
     seoTitle: "JPG to PNG - High Quality Converter",
     seoDescription: "Convert JPG images to lossless PNG format with transparent alpha channel support. Fast in-browser file processing with complete local privacy on Nova.",
@@ -175,7 +180,12 @@ export const imageTools: ToolDefinition[] = [
       { step: 2, title: "Adjust Quality", instruction: "Select desired JPG quality level." },
       { step: 3, title: "Download", instruction: "Save your compact JPG image." },
     ],
-    faq: [{ question: "What happens to transparent pixels?", answer: "Transparent areas are cleanly filled with a solid white background." }],
+    faq: [
+{ question: "What happens to transparent pixels?", answer: "Transparent areas are cleanly filled with a solid white background." },
+      { question: "Does PNG to JPG Converter support custom quality compression slider?", answer: "Yes. PNG to JPG Converter provides custom quality compression slider natively in your browser with real-time feedback." },
+      { question: "Does PNG to JPG Converter support white background auto-fill?", answer: "Yes. PNG to JPG Converter provides white background auto-fill natively in your browser with real-time feedback." },
+      { question: "Does PNG to JPG Converter support fast batch conversion?", answer: "Yes. PNG to JPG Converter provides fast batch conversion natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["jpg-to-png", "webp-converter", "compress-image"],
     seoTitle: "PNG to JPG Converter Online | Nova Tools",
     seoDescription: "Convert PNG images to JPG format online. Fast, high-quality, in-browser image conversion with background fill.",
@@ -210,7 +220,12 @@ export const imageTools: ToolDefinition[] = [
       { step: 2, title: "Choose Output Format", instruction: "Select target format (JPG, PNG, or WebP)." },
       { step: 3, title: "Download", instruction: "Save your converted file." },
     ],
-    faq: [{ question: "Why use WebP?", answer: "WebP images are typically 25-35% smaller than comparable JPGs with identical visual quality." }],
+    faq: [
+{ question: "Why use WebP?", answer: "WebP images are typically 25-35% smaller than comparable JPGs with identical visual quality." },
+      { question: "Does WebP Converter (to JPG & PNG) support two-way conversion (webp ↔ jpg/png)?", answer: "Yes. WebP Converter (to JPG & PNG) provides two-way conversion (webp ↔ jpg/png) natively in your browser with real-time feedback." },
+      { question: "Does WebP Converter (to JPG & PNG) support superior web compression?", answer: "Yes. WebP Converter (to JPG & PNG) provides superior web compression natively in your browser with real-time feedback." },
+      { question: "Does WebP Converter (to JPG & PNG) support 100% client-side privacy?", answer: "Yes. WebP Converter (to JPG & PNG) provides 100% client-side privacy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["compress-image", "jpg-to-png", "png-to-jpg"],
     seoTitle: "WebP Converter (to JPG & PNG) Online | Nova Tools",
     seoDescription: "Convert next-gen WebP images to JPG/PNG, or convert photos to WebP for 30%+ smaller file sizes. Fast in-browser file processing with complete local.",
