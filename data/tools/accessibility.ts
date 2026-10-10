@@ -132,7 +132,7 @@ export const accessibilityTools: ToolDefinition[] = [
       { question: "Does Touch Target Size Checker (WCAG 2.5.5 / 48px) support instant pass/fail rating?", answer: "Yes. Touch Target Size Checker (WCAG 2.5.5 / 48px) provides instant pass/fail rating natively in your browser with real-time feedback." }
     ],
     relatedTools: ["color-contrast-checker", "accessible-form-label-checker", "html-image-alt-text-checker", "aria-attribute-reference-validator", "heading-accessibility-hierarchy-checker"],
-    seoTitle: "Touch Target - WCAG 48px Target Test",
+    seoTitle: "Touch Target Size Checker | Nova Tools",
     seoDescription: "Audit UI button and link dimensions against WCAG 2.5.5 (44x44px) and Google/Apple (48x48px) touch target rules. Free, fast in-browser data utility with.",
     canonicalUrl: "/touch-target-size-checker",
     processingType: "client",

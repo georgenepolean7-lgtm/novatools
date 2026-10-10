@@ -260,7 +260,7 @@ export const qrTools: ToolDefinition[] = [
       { question: "Does UPI Payment QR Code Generator (India) support printable shop png?", answer: "Yes. UPI Payment QR Code Generator (India) provides printable shop png natively in your browser with real-time feedback." }
     ],
     relatedTools: ["qr-code-generator", "gst-calculator", "indian-currency-words-converter", "wifi-qr-code-generator", "vcard-qr-code-generator", "email-qr-code-generator"],
-    seoTitle: "UPI Payment QR Code Generator (India)",
+    seoTitle: "UPI Payment QR Code Generator (India) Online | Nova Tools",
     seoDescription: "Generate static and dynamic Indian UPI payment QR codes (`upi://pay`) for Google Pay, PhonePe, Paytm, and BHIM. Free, fast in-browser data utility with.",
     canonicalUrl: "/upi-qr-code-generator",
     processingType: "client",
