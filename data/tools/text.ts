@@ -20,7 +20,12 @@ export const textTools: ToolDefinition[] = [
       { step: 2, title: "Click Remove", instruction: "Click Process to deduplicate all identical lines." },
       { step: 3, title: "Copy Result", instruction: "Copy your clean, unique line list." },
     ],
-    faq: [{ question: "Does it change the line order?", answer: "No, it preserves the original order of the first occurrence of each unique line." }],
+    faq: [
+{ question: "Does it change the line order?", answer: "No, it preserves the original order of the first occurrence of each unique line." },
+      { question: "Does Remove Duplicate Lines support case sensitive toggle?", answer: "Yes. Remove Duplicate Lines provides case sensitive toggle natively in your browser with real-time feedback." },
+      { question: "Does Remove Duplicate Lines support preserves line ordering?", answer: "Yes. Remove Duplicate Lines provides preserves line ordering natively in your browser with real-time feedback." },
+      { question: "Does Remove Duplicate Lines support shows count of removed duplicates?", answer: "Yes. Remove Duplicate Lines provides shows count of removed duplicates natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["sort-lines", "remove-empty-lines", "text-cleaner"],
     seoTitle: "Remove Duplicate Lines - Text Deduplicator",
     seoDescription: "Remove repetitive and duplicate lines from text files, lists, and code with instant deduplication. Free, fast in-browser data utility with immediate.",
@@ -56,7 +61,12 @@ export const textTools: ToolDefinition[] = [
       { step: 2, title: "Choose Order", instruction: "Click 'Sort A → Z' or 'Sort Z → A'." },
       { step: 3, title: "Copy", instruction: "Copy sorted alphabetical output." },
     ],
-    faq: [{ question: "Does it support non-Latin scripts?", answer: "Yes, it uses Intl locale-aware string comparison for accurate Unicode sorting." }],
+    faq: [
+{ question: "Does it support non-Latin scripts?", answer: "Yes, it uses Intl locale-aware string comparison for accurate Unicode sorting." },
+      { question: "Does Sort Lines Alphabetically (A-Z / Z-A) support a → z and z → a sorting?", answer: "Yes. Sort Lines Alphabetically (A-Z / Z-A) provides a → z and z → a sorting natively in your browser with real-time feedback." },
+      { question: "Does Sort Lines Alphabetically (A-Z / Z-A) support unicode locale-aware comparison?", answer: "Yes. Sort Lines Alphabetically (A-Z / Z-A) provides unicode locale-aware comparison natively in your browser with real-time feedback." },
+      { question: "Does Sort Lines Alphabetically (A-Z / Z-A) support instant result?", answer: "Yes. Sort Lines Alphabetically (A-Z / Z-A) provides instant result natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["remove-duplicate-lines", "prefix-suffix-lines"],
     seoTitle: "Sort Lines Alphabetically (A-Z / Z-A)",
     seoDescription: "Sort lines of text alphabetically in ascending (A to Z) or descending (Z to A) order. Free, fast in-browser data utility with immediate results on Nova.",
@@ -92,7 +102,12 @@ export const textTools: ToolDefinition[] = [
       { step: 2, title: "Analyze", instruction: "Click Process to compute word occurrence counts." },
       { step: 3, title: "View Rankings", instruction: "Inspect sorted keyword frequency breakdown." },
     ],
-    faq: [{ question: "Are common words like 'the' counted?", answer: "Yes, all words are tracked with their exact occurrence percentage." }],
+    faq: [
+{ question: "Are common words like 'the' counted?", answer: "Yes, all words are tracked with their exact occurrence percentage." },
+      { question: "Does Word Frequency Counter & Analyzer support ranked frequency table?", answer: "Yes. Word Frequency Counter & Analyzer provides ranked frequency table natively in your browser with real-time feedback." },
+      { question: "Does Word Frequency Counter & Analyzer support percentage density calculation?", answer: "Yes. Word Frequency Counter & Analyzer provides percentage density calculation natively in your browser with real-time feedback." },
+      { question: "Does Word Frequency Counter & Analyzer support identifies top keywords?", answer: "Yes. Word Frequency Counter & Analyzer provides identifies top keywords natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["word-counter", "character-frequency-analyzer"],
     seoTitle: "Word Frequency Counter & Analyzer Online Tool | Nova Tools",
     seoDescription: "Analyze word frequency, find keyword density, and count repeated words in essays and articles. Free, fast in-browser data utility with immediate results.",
@@ -169,7 +184,7 @@ export const textTools: ToolDefinition[] = [
     ],
     faq: [{ question: "What reading speed is assumed?", answer: "220 words per minute (WPM) for silent adult reading, and 130 WPM for clear public speaking." }],
     relatedTools: ["word-counter", "word-frequency-counter", "remove-duplicate-lines", "sort-lines", "character-frequency-analyzer", "slug-generator", "text-reverser", "find-and-replace-text"],
-    seoTitle: "Reading Time & Speech Duration Estimator",
+    seoTitle: "Reading Time & Speech Duration Estimator | Nova Tools",
     seoDescription: "Estimate silent reading time and speaking duration for articles, speeches, and presentations. Free, fast in-browser data utility with immediate results on.",
     canonicalUrl: "/reading-time-estimator",
     processingType: "client",
@@ -203,7 +218,12 @@ export const textTools: ToolDefinition[] = [
       { step: 2, title: "Generate Slug", instruction: "Click Process to produce sanitized slug." },
       { step: 3, title: "Copy", instruction: "Copy web-ready slug into your CMS or code." },
     ],
-    faq: [{ question: "Does it remove accents like é and ñ?", answer: "Yes, accents are automatically converted to standard ASCII equivalents (e.g. cafe-de-paris)." }],
+    faq: [
+{ question: "Does it remove accents like é and ñ?", answer: "Yes, accents are automatically converted to standard ASCII equivalents (e.g. cafe-de-paris)." },
+      { question: "Does URL Slug Generator & Sanitizer support accent normalization (nfd)?", answer: "Yes. URL Slug Generator & Sanitizer provides accent normalization (nfd) natively in your browser with real-time feedback." },
+      { question: "Does URL Slug Generator & Sanitizer support special character removal?", answer: "Yes. URL Slug Generator & Sanitizer provides special character removal natively in your browser with real-time feedback." },
+      { question: "Does URL Slug Generator & Sanitizer support single-hyphen collapsing?", answer: "Yes. URL Slug Generator & Sanitizer provides single-hyphen collapsing natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["kebab-case-converter", "case-converter"],
     seoTitle: "URL Slug Generator & Sanitizer Online | Nova Tools",
     seoDescription: "Convert article titles and headlines into clean, URL-friendly, SEO-optimized kebab-case slugs. Free, fast in-browser data utility with immediate results.",
@@ -311,7 +331,12 @@ export const textTools: ToolDefinition[] = [
       { step: 2, title: "Process", instruction: "Click Process to remove all blank rows." },
       { step: 3, title: "Copy", instruction: "Copy cleaned compact text." },
     ],
-    faq: [{ question: "Does it remove spaces on lines with text?", answer: "No, it only removes lines that contain solely whitespace or empty newlines." }],
+    faq: [
+{ question: "Does it remove spaces on lines with text?", answer: "No, it only removes lines that contain solely whitespace or empty newlines." },
+      { question: "Does Remove Empty & Blank Lines support removes both pure empty lines and whitespace lines?", answer: "Yes. Remove Empty & Blank Lines provides removes both pure empty lines and whitespace lines natively in your browser with real-time feedback." },
+      { question: "Does Remove Empty & Blank Lines support shows removed count?", answer: "Yes. Remove Empty & Blank Lines provides shows removed count natively in your browser with real-time feedback." },
+      { question: "Does Remove Empty & Blank Lines support instant clean?", answer: "Yes. Remove Empty & Blank Lines provides instant clean natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["remove-duplicate-lines", "text-cleaner"],
     seoTitle: "Remove Empty Lines Online Tool | Nova Tools",
     seoDescription: "Use this remove empty lines online tool to remove empty and whitespace-only lines from text. Get fast client-side results in your browser.",
@@ -424,7 +449,12 @@ export const textTools: ToolDefinition[] = [
       { step: 2, title: "Extract", instruction: "Click Process to parse all URLs." },
       { step: 3, title: "Copy", instruction: "Copy the extracted URL list." },
     ],
-    faq: [{ question: "Does it extract query parameters in URLs?", answer: "Yes, it captures complete URLs including query strings and anchor hashes." }],
+    faq: [
+{ question: "Does it extract query parameters in URLs?", answer: "Yes, it captures complete URLs including query strings and anchor hashes." },
+      { question: "Does URL & Web Link Extractor support http and https protocol detection?", answer: "Yes. URL & Web Link Extractor provides http and https protocol detection natively in your browser with real-time feedback." },
+      { question: "Does URL & Web Link Extractor support automatic duplicate removal?", answer: "Yes. URL & Web Link Extractor provides automatic duplicate removal natively in your browser with real-time feedback." },
+      { question: "Does URL & Web Link Extractor support clean line-by-line format?", answer: "Yes. URL & Web Link Extractor provides clean line-by-line format natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["extract-emails", "extract-numbers"],
     seoTitle: "URL & Web Link Extractor - Text Formatter",
     seoDescription: "Extract all HTTP/HTTPS links and website URLs from raw text, HTML code, and documents. Free, fast in-browser data utility with immediate results on Nova.",
@@ -459,7 +489,12 @@ export const textTools: ToolDefinition[] = [
       { step: 1, title: "Paste Content", instruction: "Paste text with embedded numbers." },
       { step: 2, title: "Extract", instruction: "Click Process to isolate all numeric values." },
     ],
-    faq: [{ question: "Does it extract decimal numbers like 19.99?", answer: "Yes, it extracts both whole integers and decimal fractions." }],
+    faq: [
+{ question: "Does it extract decimal numbers like 19.99?", answer: "Yes, it extracts both whole integers and decimal fractions." },
+      { question: "Does Number & Currency Extractor support extracts integers and decimal numbers?", answer: "Yes. Number & Currency Extractor provides extracts integers and decimal numbers natively in your browser with real-time feedback." },
+      { question: "Does Number & Currency Extractor support supports negative numbers?", answer: "Yes. Number & Currency Extractor provides supports negative numbers natively in your browser with real-time feedback." },
+      { question: "Does Number & Currency Extractor support total matches counter?", answer: "Yes. Number & Currency Extractor provides total matches counter natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["extract-emails", "extract-urls"],
     seoTitle: "Extract Numbers Online Tool | Nova Tools",
     seoDescription: "Use this extract numbers online tool to extract numbers from text. Get fast client-side results in your browser, with no data upload required.",
@@ -535,7 +570,12 @@ export const textTools: ToolDefinition[] = [
       { step: 1, title: "Enter Text", instruction: "Type words or phrases." },
       { step: 2, title: "Convert", instruction: "Click Process to generate snake_case string." },
     ],
-    faq: [{ question: "Where is snake_case used?", answer: "It is standard in Python (PEP 8), SQL database column names, and C/C++ libraries." }],
+    faq: [
+{ question: "Where is snake_case used?", answer: "It is standard in Python (PEP 8), SQL database column names, and C/C++ libraries." },
+      { question: "Does snake_case String Converter support replaces spaces with underscores?", answer: "Yes. snake_case String Converter provides replaces spaces with underscores natively in your browser with real-time feedback." },
+      { question: "Does snake_case String Converter support strips special characters?", answer: "Yes. snake_case String Converter provides strips special characters natively in your browser with real-time feedback." },
+      { question: "Does snake_case String Converter support instant execution?", answer: "Yes. snake_case String Converter provides instant execution natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["kebab-case-converter", "camelcase-converter", "pascalcase-converter"],
     seoTitle: "Snake Case Converter Online Tool | Nova Tools",
     seoDescription: "Use this snake case converter online tool to convert text to snake_case. Get fast client-side results in your browser, with no data upload required.",
@@ -570,7 +610,12 @@ export const textTools: ToolDefinition[] = [
       { step: 1, title: "Enter Text", instruction: "Type input string." },
       { step: 2, title: "Convert", instruction: "Click Process to generate kebab-case output." },
     ],
-    faq: [{ question: "Where is kebab-case used?", answer: "In CSS class names (e.g. .btn-primary), HTML custom element tags, and URL slugs." }],
+    faq: [
+{ question: "Where is kebab-case used?", answer: "In CSS class names (e.g. .btn-primary), HTML custom element tags, and URL slugs." },
+      { question: "Does kebab-case String Converter support replaces spaces with hyphens?", answer: "Yes. kebab-case String Converter provides replaces spaces with hyphens natively in your browser with real-time feedback." },
+      { question: "Does kebab-case String Converter support lowercases all letters?", answer: "Yes. kebab-case String Converter provides lowercases all letters natively in your browser with real-time feedback." },
+      { question: "Does kebab-case String Converter support strips punctuation?", answer: "Yes. kebab-case String Converter provides strips punctuation natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["slug-generator", "snake-case-converter", "camelcase-converter"],
     seoTitle: "Kebab Case Converter Online Tool | Nova Tools",
     seoDescription: "Use this kebab case converter online tool to convert text to kebab-case. Get fast client-side results in your browser, with no data upload required.",
@@ -605,7 +650,12 @@ export const textTools: ToolDefinition[] = [
       { step: 1, title: "Enter Words", instruction: "Type phrase or sentence." },
       { step: 2, title: "Convert", instruction: "Click Process to generate PascalCase output." },
     ],
-    faq: [{ question: "What is PascalCase?", answer: "A naming convention where all words begin with a capital letter with no spaces (e.g., UserProfileCard)." }],
+    faq: [
+{ question: "What is PascalCase?", answer: "A naming convention where all words begin with a capital letter with no spaces (e.g., UserProfileCard)." },
+      { question: "Does PascalCase String Converter support capitalizes every word start?", answer: "Yes. PascalCase String Converter provides capitalizes every word start natively in your browser with real-time feedback." },
+      { question: "Does PascalCase String Converter support removes spaces and punctuation?", answer: "Yes. PascalCase String Converter provides removes spaces and punctuation natively in your browser with real-time feedback." },
+      { question: "Does PascalCase String Converter support instant conversion?", answer: "Yes. PascalCase String Converter provides instant conversion natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["camelcase-converter", "kebab-case-converter"],
     seoTitle: "PascalCase Converter Online Tool | Nova Tools",
     seoDescription: "Use this pascalcase converter online tool to convert text to PascalCase. Get fast client-side results in your browser, with no data upload required.",
@@ -677,7 +727,7 @@ export const textTools: ToolDefinition[] = [
     ],
     faq: [{ question: "Does it work across multiple paragraphs?", answer: "Yes, all sentence boundaries across paragraphs are recognized and capitalized." }],
     relatedTools: ["title-case-converter", "case-converter", "remove-duplicate-lines", "sort-lines", "word-frequency-counter", "character-frequency-analyzer", "reading-time-estimator", "slug-generator"],
-    seoTitle: "Sentence Case Converter - Free Online Tool",
+    seoTitle: "Sentence Case Converter Online | Nova Tools",
     seoDescription: "Capitalize the first letter of each sentence following periods, exclamation points, and question marks. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/sentence-case-converter",
     processingType: "client",
@@ -710,7 +760,12 @@ export const textTools: ToolDefinition[] = [
       { step: 1, title: "Enter Text", instruction: "Type letters or numbers." },
       { step: 2, title: "Translate", instruction: "Click Process to generate Morse code dots and dashes." },
     ],
-    faq: [{ question: "What is Morse code for SOS?", answer: "... --- ... (3 dots, 3 dashes, 3 dots)." }],
+    faq: [
+{ question: "What is Morse code for SOS?", answer: "... --- ... (3 dots, 3 dashes, 3 dots)." },
+      { question: "Does Text to Morse Code Translator support international morse standard?", answer: "Yes. Text to Morse Code Translator provides international morse standard natively in your browser with real-time feedback." },
+      { question: "Does Text to Morse Code Translator support letters, numbers, and space separation?", answer: "Yes. Text to Morse Code Translator provides letters, numbers, and space separation natively in your browser with real-time feedback." },
+      { question: "Does Text to Morse Code Translator support instant copy?", answer: "Yes. Text to Morse Code Translator provides instant copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["morse-code-to-text", "text-to-binary"],
     seoTitle: "Text to Morse Code Online Tool | Nova Tools",
     seoDescription: "Use this text to morse code online tool to translate text into Morse code. Get fast client-side results in your browser, with no data upload required.",
@@ -780,7 +835,12 @@ export const textTools: ToolDefinition[] = [
       { step: 1, title: "Enter Text", instruction: "Type words or sentences." },
       { step: 2, title: "Convert", instruction: "Click Process to generate 8-bit binary output." },
     ],
-    faq: [{ question: "What is binary code for the letter 'A'?", answer: "01000001 in 8-bit ASCII binary." }],
+    faq: [
+{ question: "What is binary code for the letter 'A'?", answer: "01000001 in 8-bit ASCII binary." },
+      { question: "Does Text to Binary Code Converter support 8-bit padded byte chunks?", answer: "Yes. Text to Binary Code Converter provides 8-bit padded byte chunks natively in your browser with real-time feedback." },
+      { question: "Does Text to Binary Code Converter support full utf-8 character support?", answer: "Yes. Text to Binary Code Converter provides full utf-8 character support natively in your browser with real-time feedback." },
+      { question: "Does Text to Binary Code Converter support total byte count breakdown?", answer: "Yes. Text to Binary Code Converter provides total byte count breakdown natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["binary-to-text", "binary-to-decimal-converter"],
     seoTitle: "Text to Binary Online Tool | Nova Tools",
     seoDescription: "Use this text to binary online tool to convert text into binary code. Get fast client-side results in your browser, with no data upload required.",
@@ -893,7 +953,7 @@ export const textTools: ToolDefinition[] = [
     ],
     faq: [{ question: "What is NFC vs NFD?", answer: "NFC composes characters with combined glyphs (e.g. 'é' as one code point), while NFD decomposes characters into base letter plus combining accent marks." }],
     relatedTools: ["character-frequency-analyzer", "slug-generator", "remove-duplicate-lines", "sort-lines", "word-frequency-counter", "reading-time-estimator", "text-reverser", "find-and-replace-text"],
-    seoTitle: "Unicode Text Normalizer (NFC, NFD, NFKC, N",
+    seoTitle: "Unicode Text Normalizer | Nova Tools",
     seoDescription: "Normalize multi-script Unicode text across NFC, NFD, NFKC, and NFKD canonical and compatibility forms. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/normalize-unicode-text",
     processingType: "client",
@@ -929,7 +989,7 @@ export const textTools: ToolDefinition[] = [
     ],
     faq: [{ question: "Is this syntax compatible with GitHub and GitLab?", answer: "Yes, the generated syntax adheres strictly to the GitHub Flavored Markdown (GFM) specification." }],
     relatedTools: ["csv-to-markdown-table", "text-diff-checker", "remove-duplicate-lines", "sort-lines", "word-frequency-counter", "character-frequency-analyzer", "reading-time-estimator", "slug-generator"],
-    seoTitle: "Markdown Table Generator & GFM Grid Format",
+    seoTitle: "Markdown Table Generator & GFM Grid Formatter | Nova Tools",
     seoDescription: "Generate clean GitHub Flavored Markdown (GFM) tables with custom columns, rows, and header alignments. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/markdown-table-generator",
     processingType: "client",
