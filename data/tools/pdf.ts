@@ -265,7 +265,7 @@ export const pdfTools: ToolDefinition[] = [
       { question: "Does PDF Metadata Viewer & Tag Inspector support instant preview?", answer: "Yes. PDF Metadata Viewer & Tag Inspector provides instant preview natively in your browser with real-time feedback." }
     ],
     relatedTools: ["pdf-page-numberer", "pdf-password-protect", "compress-pdf", "merge-pdf", "split-pdf"],
-    seoTitle: "PDF Metadata Viewer & Tag Inspector",
+    seoTitle: "PDF Metadata Viewer & Tag Inspector Online Tool | Nova Tools",
     seoDescription: "Inspect and edit PDF document properties, author, title, subject, creation date, and keywords. Fast in-browser file processing with complete local privacy.",
     canonicalUrl: "/pdf-metadata-viewer-editor",
     processingType: "client",
@@ -341,7 +341,7 @@ export const pdfTools: ToolDefinition[] = [
       { question: "Does Markdown to HTML Converter & Live Preview support one-click copy?", answer: "Yes. Markdown to HTML Converter & Live Preview provides one-click copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["html-to-markdown-converter", "text-cleaner"],
-    seoTitle: "Markdown to HTML Converter & Live Preview",
+    seoTitle: "Markdown to HTML Converter & Live Preview | Nova Tools",
     seoDescription: "Convert GitHub Flavored Markdown (headings, tables, code blocks, lists) into clean semantic HTML markup. Fast in-browser file processing with complete.",
     canonicalUrl: "/markdown-to-html-converter",
     processingType: "client",
@@ -416,7 +416,7 @@ export const pdfTools: ToolDefinition[] = [
       { question: "Does Document Word, Page & Reading Time Estimator support 130 wpm speech duration?", answer: "Yes. Document Word, Page & Reading Time Estimator provides 130 wpm speech duration natively in your browser with real-time feedback." }
     ],
     relatedTools: ["word-counter", "character-counter", "markdown-to-html-converter", "compress-pdf", "merge-pdf", "split-pdf"],
-    seoTitle: "Document Word, Page & Reading Time Estimat",
+    seoTitle: "Document Word, Page & Reading Time Estimator | Nova Tools",
     seoDescription: "Estimate standard printed pages (~300 words/page), reading time, speech duration, and character metrics. Fast in-browser file processing with complete.",
     canonicalUrl: "/document-stats-counter",
     processingType: "client",

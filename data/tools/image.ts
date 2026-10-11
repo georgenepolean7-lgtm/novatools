@@ -147,7 +147,7 @@ export const imageTools: ToolDefinition[] = [
       { question: "Does JPG to PNG Converter support fast instant conversion?", answer: "Yes. JPG to PNG Converter provides fast instant conversion natively in your browser with real-time feedback." }
     ],
     relatedTools: ["png-to-jpg", "webp-converter", "compress-image"],
-    seoTitle: "JPG to PNG - High Quality Converter",
+    seoTitle: "JPG to PNG Converter Online | Nova Tools",
     seoDescription: "Convert JPG images to lossless PNG format with transparent alpha channel support. Fast in-browser file processing with complete local privacy on Nova.",
     canonicalUrl: "/jpg-to-png",
     processingType: "client",
@@ -304,7 +304,7 @@ export const imageTools: ToolDefinition[] = [
     ],
     faq: [{ question: "Are my private graphics uploaded?", answer: "No, pixel sampling is executed 100% client-side inside HTML5 Canvas." }],
     relatedTools: ["compress-image", "image-resizer", "signature-resizer", "jpg-to-png", "png-to-jpg", "webp-converter", "image-cropper", "image-grayscale-filter"],
-    seoTitle: "Image Color Palette & Dominant Color Extra",
+    seoTitle: "Image Color Palette & Dominant Color Extractor | Nova Tools",
     seoDescription: "Extract dominant color swatches, complementary palettes, and HEX/RGB codes from any photo in-browser. Fast in-browser file processing with complete local.",
     canonicalUrl: "/image-color-palette-extractor",
     processingType: "client",
@@ -338,7 +338,12 @@ export const imageTools: ToolDefinition[] = [
       { step: 2, title: "Adjust Sliders", instruction: "Customize grayscale intensity, brightness, and contrast." },
       { step: 3, title: "Download", instruction: "Save your monochromatic image." },
     ],
-    faq: [{ question: "Does it support high resolution photos?", answer: "Yes, Canvas processes images at their original native pixel resolution." }],
+    faq: [
+{ question: "Does it support high resolution photos?", answer: "Yes, Canvas processes images at their original native pixel resolution." },
+      { question: "Does Photo Grayscale & Black/White Filter Tool support grayscale percentage slider?", answer: "Yes. Photo Grayscale & Black/White Filter Tool provides grayscale percentage slider natively in your browser with real-time feedback." },
+      { question: "Does Photo Grayscale & Black/White Filter Tool support brightness and contrast tuning?", answer: "Yes. Photo Grayscale & Black/White Filter Tool provides brightness and contrast tuning natively in your browser with real-time feedback." },
+      { question: "Does Photo Grayscale & Black/White Filter Tool support high-resolution png download?", answer: "Yes. Photo Grayscale & Black/White Filter Tool provides high-resolution png download natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["compress-image", "pdf-grayscale-converter"],
     seoTitle: "Photo Grayscale & Black/White Filter",
     seoDescription: "Apply clean black-and-white grayscale filters, adjust brightness and contrast, and download high-res photos. Fast in-browser file processing with complete.",
