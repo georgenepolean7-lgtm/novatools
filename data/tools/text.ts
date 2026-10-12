@@ -27,7 +27,7 @@ export const textTools: ToolDefinition[] = [
       { question: "Does Remove Duplicate Lines support shows count of removed duplicates?", answer: "Yes. Remove Duplicate Lines provides shows count of removed duplicates natively in your browser with real-time feedback." }
     ],
     relatedTools: ["sort-lines", "remove-empty-lines", "text-cleaner"],
-    seoTitle: "Remove Duplicate Lines - Text Deduplicator",
+    seoTitle: "Remove Duplicate Lines Online Tool | Nova Tools",
     seoDescription: "Remove repetitive and duplicate lines from text files, lists, and code with instant deduplication. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/remove-duplicate-lines",
     processingType: "client",
@@ -68,7 +68,7 @@ export const textTools: ToolDefinition[] = [
       { question: "Does Sort Lines Alphabetically (A-Z / Z-A) support instant result?", answer: "Yes. Sort Lines Alphabetically (A-Z / Z-A) provides instant result natively in your browser with real-time feedback." }
     ],
     relatedTools: ["remove-duplicate-lines", "prefix-suffix-lines"],
-    seoTitle: "Sort Lines Alphabetically (A-Z / Z-A)",
+    seoTitle: "Sort Lines Alphabetically | Nova Tools",
     seoDescription: "Sort lines of text alphabetically in ascending (A to Z) or descending (Z to A) order. Free, fast in-browser data utility with immediate results on Nova.",
     canonicalUrl: "/sort-lines",
     processingType: "client",
@@ -456,7 +456,7 @@ export const textTools: ToolDefinition[] = [
       { question: "Does URL & Web Link Extractor support clean line-by-line format?", answer: "Yes. URL & Web Link Extractor provides clean line-by-line format natively in your browser with real-time feedback." }
     ],
     relatedTools: ["extract-emails", "extract-numbers"],
-    seoTitle: "URL & Web Link Extractor - Text Formatter",
+    seoTitle: "URL & Web Link Extractor Online Tool | Nova Tools",
     seoDescription: "Extract all HTTP/HTTPS links and website URLs from raw text, HTML code, and documents. Free, fast in-browser data utility with immediate results on Nova.",
     canonicalUrl: "/extract-urls",
     processingType: "client",

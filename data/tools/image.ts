@@ -345,7 +345,7 @@ export const imageTools: ToolDefinition[] = [
       { question: "Does Photo Grayscale & Black/White Filter Tool support high-resolution png download?", answer: "Yes. Photo Grayscale & Black/White Filter Tool provides high-resolution png download natively in your browser with real-time feedback." }
     ],
     relatedTools: ["compress-image", "pdf-grayscale-converter"],
-    seoTitle: "Photo Grayscale & Black/White Filter",
+    seoTitle: "Photo Grayscale & Black/White Filter Tool | Nova Tools",
     seoDescription: "Apply clean black-and-white grayscale filters, adjust brightness and contrast, and download high-res photos. Fast in-browser file processing with complete.",
     canonicalUrl: "/image-grayscale-filter",
     processingType: "client",

@@ -59,7 +59,12 @@ export const developerTools: ToolDefinition[] = [
       { step: 2, title: "Minify", instruction: "Click 'Minify JSON' to compress into a single line." },
       { step: 3, title: "Copy", instruction: "Copy the minified JSON text to clipboard." },
     ],
-    faq: [{ question: "Does minifying break the JSON data?", answer: "No, minification only removes whitespace outside of string literals." }],
+    faq: [
+{ question: "Does minifying break the JSON data?", answer: "No, minification only removes whitespace outside of string literals." },
+      { question: "Does JSON Minifier & Compressor support strips all formatting whitespace?", answer: "Yes. JSON Minifier & Compressor provides strips all formatting whitespace natively in your browser with real-time feedback." },
+      { question: "Does JSON Minifier & Compressor support reduces payload size?", answer: "Yes. JSON Minifier & Compressor provides reduces payload size natively in your browser with real-time feedback." },
+      { question: "Does JSON Minifier & Compressor support instant copy?", answer: "Yes. JSON Minifier & Compressor provides instant copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["json-formatter", "json-validator", "json-to-csv"],
     seoTitle: "JSON Minifier Online Tool | Nova Tools",
     seoDescription: "Use this json minifier online tool to minify JSON by removing unnecessary whitespace. Get fast client-side results in your browser.",
@@ -136,7 +141,12 @@ export const developerTools: ToolDefinition[] = [
       { step: 2, title: "Format", instruction: "Click 'Format SQL' to align clauses and uppercase keywords." },
       { step: 3, title: "Copy", instruction: "Copy your clean formatted query." },
     ],
-    faq: [{ question: "Does it support PostgreSQL and MySQL?", answer: "Yes, it formats standard keywords across all major relational SQL dialects." }],
+    faq: [
+{ question: "Does it support PostgreSQL and MySQL?", answer: "Yes, it formats standard keywords across all major relational SQL dialects." },
+      { question: "Does SQL Formatter & Beautifier support keyword capitalization?", answer: "Yes. SQL Formatter & Beautifier provides keyword capitalization natively in your browser with real-time feedback." },
+      { question: "Does SQL Formatter & Beautifier support clause indentation?", answer: "Yes. SQL Formatter & Beautifier provides clause indentation natively in your browser with real-time feedback." },
+      { question: "Does SQL Formatter & Beautifier support clean line breaks?", answer: "Yes. SQL Formatter & Beautifier provides clean line breaks natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["json-formatter", "regex-tester"],
     seoTitle: "SQL Formatter Online Tool | Nova Tools",
     seoDescription: "Use this sql formatter online tool to format SQL queries into readable structured code. Get fast client-side results in your browser.",
