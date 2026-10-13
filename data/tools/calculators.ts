@@ -141,7 +141,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Enter Rate & Time", instruction: "Provide annual interest percentage and duration in years." },
       { step: 3, title: "View Return", instruction: "Read the total interest and final maturity sum." },
     ],
-    faq: [{ question: "How does simple interest differ from compound interest?", answer: "Simple interest is calculated solely on the principal, whereas compound interest also calculates interest on accumulated interest." }],
+    faq: [
+{ question: "How does simple interest differ from compound interest?", answer: "Simple interest is calculated solely on the principal, whereas compound interest also calculates interest on accumulated interest." },
+      { question: "Does Simple Interest Calculator support a = p(1 + rt) formula?", answer: "Yes. Simple Interest Calculator provides a = p(1 + rt) formula natively in your browser with real-time feedback." },
+      { question: "Does Simple Interest Calculator support shows interest and total sum?", answer: "Yes. Simple Interest Calculator provides shows interest and total sum natively in your browser with real-time feedback." },
+      { question: "Does Simple Interest Calculator support instant result?", answer: "Yes. Simple Interest Calculator provides instant result natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["compound-interest-calculator", "loan-emi-calculator"],
     seoTitle: "Simple Interest - Quick Loan Calculator",
     seoDescription: "Calculate simple interest (SI) and total repayment amounts using A = P(1 + rt). Instant client-side calculations with accurate real-time results on Nova.",
@@ -177,7 +182,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Enter Number", instruction: "Input the total number (e.g. 2500)." },
       { step: 3, title: "Get Answer", instruction: "View the calculated percentage value immediately." },
     ],
-    faq: [{ question: "How is percentage calculated?", answer: "Percentage = (Part / Whole) x 100." }],
+    faq: [
+{ question: "How is percentage calculated?", answer: "Percentage = (Part / Whole) x 100." },
+      { question: "Does Percentage Calculator support supports multiple percentage modes?", answer: "Yes. Percentage Calculator provides supports multiple percentage modes natively in your browser with real-time feedback." },
+      { question: "Does Percentage Calculator support instant calculation?", answer: "Yes. Percentage Calculator provides instant calculation natively in your browser with real-time feedback." },
+      { question: "Does Percentage Calculator support high precision?", answer: "Yes. Percentage Calculator provides high precision natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["percentage-change-calculator", "discount-calculator", "sales-tax-calculator"],
     seoTitle: "Percentage Calculator - Quick Percent",
     seoDescription: "Calculate percentages (What is X% of Y, and X is what percent of Y) instantly. Instant client-side calculations with accurate real-time results on Nova.",
@@ -213,7 +223,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Enter New Value", instruction: "Input updated final value." },
       { step: 3, title: "View Change", instruction: "Read the percentage difference with positive (+) or negative (-) indicator." },
     ],
-    faq: [{ question: "What formula calculates percentage change?", answer: "Percentage Change = ((New Value - Old Value) / Old Value) x 100." }],
+    faq: [
+{ question: "What formula calculates percentage change?", answer: "Percentage Change = ((New Value - Old Value) / Old Value) x 100." },
+      { question: "Does Percentage Change & Difference Calculator support shows positive increase / negative decrease?", answer: "Yes. Percentage Change & Difference Calculator provides shows positive increase / negative decrease natively in your browser with real-time feedback." },
+      { question: "Does Percentage Change & Difference Calculator support absolute and relative delta?", answer: "Yes. Percentage Change & Difference Calculator provides absolute and relative delta natively in your browser with real-time feedback." },
+      { question: "Does Percentage Change & Difference Calculator support instant result?", answer: "Yes. Percentage Change & Difference Calculator provides instant result natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["percentage-calculator", "cagr-calculator", "margin-calculator"],
     seoTitle: "Percentage Change - Increase & Drop",
     seoDescription: "Calculate percentage increase or decrease between two numerical values. Instant client-side calculations with accurate real-time results on Nova Tools.",
@@ -289,7 +304,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Pick End Date", instruction: "Choose ending calendar date." },
       { step: 3, title: "View Difference", instruction: "Read total days and weeks elapsed." },
     ],
-    faq: [{ question: "Does it include leap days?", answer: "Yes, all calendar calculations use standard Gregorian date algorithms." }],
+    faq: [
+{ question: "Does it include leap days?", answer: "Yes, all calendar calculations use standard Gregorian date algorithms." },
+      { question: "Does Date Difference & Duration Calculator support calculates total days, weeks, and hours?", answer: "Yes. Date Difference & Duration Calculator provides calculates total days, weeks, and hours natively in your browser with real-time feedback." },
+      { question: "Does Date Difference & Duration Calculator support instant date picker?", answer: "Yes. Date Difference & Duration Calculator provides instant date picker natively in your browser with real-time feedback." },
+      { question: "Does Date Difference & Duration Calculator support handles multi-year spans?", answer: "Yes. Date Difference & Duration Calculator provides handles multi-year spans natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["age-calculator", "time-calculator"],
     seoTitle: "Date Difference - Days Between Dates",
     seoDescription: "Calculate the exact number of days, weeks, and hours between two calendar dates. Instant client-side calculations with accurate real-time results on Nova.",
@@ -325,7 +345,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Enter Height", instruction: "Input height in centimeters (cm)." },
       { step: 3, title: "Read BMI", instruction: "View your BMI score and health classification." },
     ],
-    faq: [{ question: "What is a healthy BMI score?", answer: "A BMI between 18.5 and 24.9 is classified as Normal weight by WHO standards." }],
+    faq: [
+{ question: "What is a healthy BMI score?", answer: "A BMI between 18.5 and 24.9 is classified as Normal weight by WHO standards." },
+      { question: "Does BMI Calculator (Body Mass Index) support who health category categorization?", answer: "Yes. BMI Calculator (Body Mass Index) provides who health category categorization natively in your browser with real-time feedback." },
+      { question: "Does BMI Calculator (Body Mass Index) support healthy weight range display?", answer: "Yes. BMI Calculator (Body Mass Index) provides healthy weight range display natively in your browser with real-time feedback." },
+      { question: "Does BMI Calculator (Body Mass Index) support instant computation?", answer: "Yes. BMI Calculator (Body Mass Index) provides instant computation natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["bmr-calculator", "calorie-deficit-calculator"],
     seoTitle: "BMI Calculator (Body Mass Index) Online | Nova Tools",
     seoDescription: "Calculate Body Mass Index (BMI) and health category classification (Underweight, Normal, Overweight). Instant client-side calculations with accurate.",
@@ -361,7 +386,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Enter Discount %", instruction: "Type discount percentage offered." },
       { step: 3, title: "View Final Price", instruction: "Read your final price and total savings." },
     ],
-    faq: [{ question: "How is discount calculated?", answer: "Final Price = Original Price - (Original Price x Discount% / 100)." }],
+    faq: [
+{ question: "How is discount calculated?", answer: "Final Price = Original Price - (Original Price x Discount% / 100)." },
+      { question: "Does Shopping Discount & Savings Calculator support shows final price and exact money saved?", answer: "Yes. Shopping Discount & Savings Calculator provides shows final price and exact money saved natively in your browser with real-time feedback." },
+      { question: "Does Shopping Discount & Savings Calculator support instant recalculation?", answer: "Yes. Shopping Discount & Savings Calculator provides instant recalculation natively in your browser with real-time feedback." },
+      { question: "Does Shopping Discount & Savings Calculator support clean currency formatting?", answer: "Yes. Shopping Discount & Savings Calculator provides clean currency formatting natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["sales-tax-calculator", "percentage-calculator", "markup-calculator"],
     seoTitle: "Discount Calculator - Sale Price Savings",
     seoDescription: "Calculate final sale price and total money saved during shopping and retail sales discounts. Instant client-side calculations with accurate real-time.",
@@ -397,7 +427,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Enter Tax Rate", instruction: "Type sales tax percentage rate." },
       { step: 3, title: "View Breakdown", instruction: "Read the net price and tax amount." },
     ],
-    faq: [{ question: "What is the difference between tax inclusive and exclusive?", answer: "Tax-inclusive means tax is already included in the displayed price; tax-exclusive adds tax on top of the base price." }],
+    faq: [
+{ question: "What is the difference between tax inclusive and exclusive?", answer: "Tax-inclusive means tax is already included in the displayed price; tax-exclusive adds tax on top of the base price." },
+      { question: "Does Sales Tax & VAT Calculator support tax-exclusive and tax-inclusive support?", answer: "Yes. Sales Tax & VAT Calculator provides tax-exclusive and tax-inclusive support natively in your browser with real-time feedback." },
+      { question: "Does Sales Tax & VAT Calculator support shows net price and tax portion?", answer: "Yes. Sales Tax & VAT Calculator provides shows net price and tax portion natively in your browser with real-time feedback." },
+      { question: "Does Sales Tax & VAT Calculator support instant result?", answer: "Yes. Sales Tax & VAT Calculator provides instant result natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["discount-calculator", "percentage-calculator"],
     seoTitle: "Sales Tax Calculator - VAT & Tax Rate",
     seoDescription: "Calculate sales tax, VAT, and total checkout prices for tax-exclusive and tax-inclusive items. Instant client-side calculations with accurate real-time.",
@@ -550,7 +585,7 @@ export const calculatorTools: ToolDefinition[] = [
     ],
     faq: [{ question: "How do you calculate fuel needed for a trip?", answer: "Fuel Required (Liters) = Total Distance (km) / Vehicle Mileage (km/L)." }],
     relatedTools: ["speed-distance-time-calculator", "loan-emi-calculator", "sip-calculator", "compound-interest-calculator", "simple-interest-calculator", "percentage-calculator", "percentage-change-calculator", "age-calculator"],
-    seoTitle: "Fuel Cost Calculator - Trip Gas Estimate",
+    seoTitle: "Fuel Cost & Mileage Trip Calculator Online | Nova Tools",
     seoDescription: "Estimate petrol/diesel trip expenses based on distance, vehicle mileage (km/L), and fuel prices. Instant client-side calculations with accurate real-time.",
     canonicalUrl: "/fuel-cost-calculator",
     processingType: "client",
@@ -584,7 +619,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Enter Regular Hours", instruction: "Input standard work hours." },
       { step: 3, title: "Enter Overtime Hours", instruction: "Input extra overtime hours to view gross earnings." },
     ],
-    faq: [{ question: "What is standard overtime multiplier?", answer: "1.5x (time-and-a-half) is standard in most labor regulations for hours worked beyond 40 hours per week." }],
+    faq: [
+{ question: "What is standard overtime multiplier?", answer: "1.5x (time-and-a-half) is standard in most labor regulations for hours worked beyond 40 hours per week." },
+      { question: "Does Overtime Pay & Wage Calculator support supports 1.5x and 2.0x multipliers?", answer: "Yes. Overtime Pay & Wage Calculator provides supports 1.5x and 2.0x multipliers natively in your browser with real-time feedback." },
+      { question: "Does Overtime Pay & Wage Calculator support separates regular vs overtime earnings?", answer: "Yes. Overtime Pay & Wage Calculator provides separates regular vs overtime earnings natively in your browser with real-time feedback." },
+      { question: "Does Overtime Pay & Wage Calculator support instant calculation?", answer: "Yes. Overtime Pay & Wage Calculator provides instant calculation natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["salary-to-hourly-calculator", "hourly-to-salary-calculator"],
     seoTitle: "Overtime Pay & Wage Calculator Online | Nova Tools",
     seoDescription: "Calculate overtime compensation at 1.5x (time-and-a-half) or 2.0x (double time) hourly rates. Instant client-side calculations with accurate real-time.",
@@ -702,7 +742,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Set Weekly Hours", instruction: "Input hours worked per week (default 40)." },
       { step: 3, title: "View Wage", instruction: "Read your calculated hourly wage." },
     ],
-    faq: [{ question: "How is annual salary converted to hourly?", answer: "Hourly Wage = Annual Salary / (Hours per Week x 52 Weeks)." }],
+    faq: [
+{ question: "How is annual salary converted to hourly?", answer: "Hourly Wage = Annual Salary / (Hours per Week x 52 Weeks)." },
+      { question: "Does Salary to Hourly Wage Calculator support hourly, weekly, monthly breakdown?", answer: "Yes. Salary to Hourly Wage Calculator provides hourly, weekly, monthly breakdown natively in your browser with real-time feedback." },
+      { question: "Does Salary to Hourly Wage Calculator support configurable weekly hours?", answer: "Yes. Salary to Hourly Wage Calculator provides configurable weekly hours natively in your browser with real-time feedback." },
+      { question: "Does Salary to Hourly Wage Calculator support instant conversion?", answer: "Yes. Salary to Hourly Wage Calculator provides instant conversion natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["hourly-to-salary-calculator", "overtime-pay-calculator"],
     seoTitle: "Salary to Hourly Wage Calculator Online | Nova Tools",
     seoDescription: "Convert annual gross salary into hourly, daily, weekly, and monthly pay rates. Instant client-side calculations with accurate real-time results on Nova.",
@@ -738,7 +783,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Set Hours Per Week", instruction: "Enter typical weekly work hours (e.g. 40)." },
       { step: 3, title: "View Annual Pay", instruction: "Read projected gross annual compensation." },
     ],
-    faq: [{ question: "How many working hours are in a year?", answer: "A full-time 40-hour work week equals 2,080 hours per year." }],
+    faq: [
+{ question: "How many working hours are in a year?", answer: "A full-time 40-hour work week equals 2,080 hours per year." },
+      { question: "Does Hourly to Salary Calculator support weekly, monthly, yearly projection?", answer: "Yes. Hourly to Salary Calculator provides weekly, monthly, yearly projection natively in your browser with real-time feedback." },
+      { question: "Does Hourly to Salary Calculator support custom hours per week?", answer: "Yes. Hourly to Salary Calculator provides custom hours per week natively in your browser with real-time feedback." },
+      { question: "Does Hourly to Salary Calculator support instant result?", answer: "Yes. Hourly to Salary Calculator provides instant result natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["salary-to-hourly-calculator", "overtime-pay-calculator"],
     seoTitle: "Hourly to Salary Calculator Online | Nova Tools",
     seoDescription: "Convert hourly pay rates into equivalent weekly, monthly, and annual gross salaries. Instant client-side calculations with accurate real-time results on.",
@@ -1020,7 +1070,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Select Units", instruction: "Pick source and target units (e.g. km to mi)." },
       { step: 3, title: "View Result", instruction: "Read the exact converted measurement." },
     ],
-    faq: [{ question: "How many feet are in a meter?", answer: "1 meter is approximately 3.28084 feet." }],
+    faq: [
+{ question: "How many feet are in a meter?", answer: "1 meter is approximately 3.28084 feet." },
+      { question: "Does Length & Distance Unit Converter support supports km, m, cm, mm, ft, in, mi?", answer: "Yes. Length & Distance Unit Converter provides supports km, m, cm, mm, ft, in, mi natively in your browser with real-time feedback." },
+      { question: "Does Length & Distance Unit Converter support high decimal precision?", answer: "Yes. Length & Distance Unit Converter provides high decimal precision natively in your browser with real-time feedback." },
+      { question: "Does Length & Distance Unit Converter support instant conversion?", answer: "Yes. Length & Distance Unit Converter provides instant conversion natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["weight-unit-converter", "temperature-converter"],
     seoTitle: "Length & Distance Unit Converter Online | Nova Tools",
     seoDescription: "Convert length units across Kilometers, Meters, Centimeters, Miles, Feet, and Inches. Instant client-side calculations with accurate real-time results on.",
@@ -1056,7 +1111,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Select Units", instruction: "Choose from and to units." },
       { step: 3, title: "View Conversion", instruction: "Read the converted mass." },
     ],
-    faq: [{ question: "How many pounds in a kilogram?", answer: "1 kilogram equals approximately 2.20462 pounds." }],
+    faq: [
+{ question: "How many pounds in a kilogram?", answer: "1 kilogram equals approximately 2.20462 pounds." },
+      { question: "Does Weight & Mass Unit Converter support supports kg, g, mg, lb, oz?", answer: "Yes. Weight & Mass Unit Converter provides supports kg, g, mg, lb, oz natively in your browser with real-time feedback." },
+      { question: "Does Weight & Mass Unit Converter support accurate conversion constants?", answer: "Yes. Weight & Mass Unit Converter provides accurate conversion constants natively in your browser with real-time feedback." },
+      { question: "Does Weight & Mass Unit Converter support instant result?", answer: "Yes. Weight & Mass Unit Converter provides instant result natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["length-unit-converter", "temperature-converter", "bmi-calculator"],
     seoTitle: "Weight Unit Converter Online Tool | Nova Tools",
     seoDescription: "Use this weight unit converter online tool to convert weight and mass units. Get fast client-side results in your browser, with no data upload required.",
@@ -1092,7 +1152,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Select Scales", instruction: "Choose from and to scales (e.g. °C to °F)." },
       { step: 3, title: "View Output", instruction: "Read converted temperature." },
     ],
-    faq: [{ question: "What is the formula to convert Celsius to Fahrenheit?", answer: "°F = (°C x 9/5) + 32." }],
+    faq: [
+{ question: "What is the formula to convert Celsius to Fahrenheit?", answer: "°F = (°C x 9/5) + 32." },
+      { question: "Does Temperature Unit Converter support supports celsius, fahrenheit, and kelvin?", answer: "Yes. Temperature Unit Converter provides supports celsius, fahrenheit, and kelvin natively in your browser with real-time feedback." },
+      { question: "Does Temperature Unit Converter support high accuracy conversion?", answer: "Yes. Temperature Unit Converter provides high accuracy conversion natively in your browser with real-time feedback." },
+      { question: "Does Temperature Unit Converter support instant result?", answer: "Yes. Temperature Unit Converter provides instant result natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["length-unit-converter", "weight-unit-converter"],
     seoTitle: "Temperature Converter Online Tool | Nova Tools",
     seoDescription: "Use this temperature converter online tool to convert temperatures between common units. Get fast client-side results in your browser.",
@@ -1207,7 +1272,7 @@ export const calculatorTools: ToolDefinition[] = [
     ],
     faq: [{ question: "Why is 48kHz standard for video?", answer: "48kHz divides evenly into common video frame rates (24, 25, 30 fps), preventing audio-video sync drift." }],
     relatedTools: ["audio-file-bitrate-size-calculator", "audio-bpm-tempo-delay-calculator", "loan-emi-calculator", "sip-calculator", "compound-interest-calculator", "simple-interest-calculator", "percentage-calculator", "percentage-change-calculator"],
-    seoTitle: "Audio Duration to Samples & Video Frames C",
+    seoTitle: "Audio Duration to Samples & Video Frames | Nova Tools",
     seoDescription: "Convert audio duration to sample counts (44.1kHz, 48kHz) and video frames online. Free audio engineering tool.",
     canonicalUrl: "/audio-duration-to-samples-converter",
     processingType: "client",
@@ -1282,7 +1347,7 @@ export const calculatorTools: ToolDefinition[] = [
     ],
     faq: [{ question: "Is my audio sent to a server?", answer: "No, all audio analysis and math executes 100% locally in your browser." }],
     relatedTools: ["audio-file-bitrate-size-calculator", "audio-bpm-tempo-delay-calculator", "loan-emi-calculator", "sip-calculator", "compound-interest-calculator", "simple-interest-calculator", "percentage-calculator", "percentage-change-calculator"],
-    seoTitle: "Audio Format & Track Property Inspector",
+    seoTitle: "Audio Format & Track Property Inspector | Nova Tools",
     seoDescription: "Inspect audio track duration, estimated bitrates, channel counts, and audio characteristics in-browser. Instant client-side calculations with accurate.",
     canonicalUrl: "/audio-metadata-inspector",
     processingType: "client",
@@ -1316,7 +1381,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Select Timezones", instruction: "Choose source and target cities." },
       { step: 3, title: "View Converted Time", instruction: "Read exact converted meeting time." },
     ],
-    faq: [{ question: "Does this handle Daylight Saving Time (DST)?", answer: "Yes, standard IANA timezone database rules automatically apply Daylight Saving offsets based on the date." }],
+    faq: [
+{ question: "Does this handle Daylight Saving Time (DST)?", answer: "Yes, standard IANA timezone database rules automatically apply Daylight Saving offsets based on the date." },
+      { question: "Does World Clock & Global Timezone Converter support supports asia/kolkata, utc, america/new_york, europe/london, asia/singapore, asia/tokyo?", answer: "Yes. World Clock & Global Timezone Converter provides supports asia/kolkata, utc, america/new_york, europe/london, asia/singapore, asia/tokyo natively in your browser with real-time feedback." },
+      { question: "Does World Clock & Global Timezone Converter support daylight saving time aware?", answer: "Yes. World Clock & Global Timezone Converter provides daylight saving time aware natively in your browser with real-time feedback." },
+      { question: "Does World Clock & Global Timezone Converter support instant conversion?", answer: "Yes. World Clock & Global Timezone Converter provides instant conversion natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["business-hours-overlap-calculator", "working-days-business-calculator"],
     seoTitle: "World Clock & Global Timezone Converter",
     seoDescription: "Convert meeting times across global timezones (IST, UTC, EST, PST, GMT) online. Free IANA-standard timezone converter.",
@@ -1386,7 +1456,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 1, title: "Select Start & End Date", instruction: "Pick two dates." },
       { step: 2, title: "Calculate", instruction: "View total working business days." },
     ],
-    faq: [{ question: "Does this exclude Saturdays and Sundays?", answer: "Yes, all weekend days (Saturday and Sunday) are subtracted from the total calendar duration." }],
+    faq: [
+{ question: "Does this exclude Saturdays and Sundays?", answer: "Yes, all weekend days (Saturday and Sunday) are subtracted from the total calendar duration." },
+      { question: "Does Working Business Days Calculator (Excluding Weekends) support calculates working days vs weekend days?", answer: "Yes. Working Business Days Calculator (Excluding Weekends) provides calculates working days vs weekend days natively in your browser with real-time feedback." },
+      { question: "Does Working Business Days Calculator (Excluding Weekends) support total calendar span analysis?", answer: "Yes. Working Business Days Calculator (Excluding Weekends) provides total calendar span analysis natively in your browser with real-time feedback." },
+      { question: "Does Working Business Days Calculator (Excluding Weekends) support instant result?", answer: "Yes. Working Business Days Calculator (Excluding Weekends) provides instant result natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["world-clock-timezone-converter", "week-number-iso-calculator"],
     seoTitle: "Working Business Days Calculator (Excludin",
     seoDescription: "Calculate business working days between two dates online, excluding weekends. Fast project and invoice workday tool.",
@@ -1458,7 +1533,7 @@ export const calculatorTools: ToolDefinition[] = [
     ],
     faq: [{ question: "What is the maximum standard Roman numeral supported?", answer: "Standard Roman numeral system supports numbers up to 3999 (MMMCMXCIX)." }],
     relatedTools: ["number-to-words-converter", "age-calculator", "loan-emi-calculator", "sip-calculator", "compound-interest-calculator", "simple-interest-calculator", "percentage-calculator", "percentage-change-calculator"],
-    seoTitle: "Roman Numerals Converter (Numbers ↔ Roman)",
+    seoTitle: "Roman Numerals Converter | Nova Tools",
     seoDescription: "Convert decimal numbers to Roman numerals and decode Roman numerals to numbers online. Free in-browser math tool.",
     canonicalUrl: "/roman-numerals-converter",
     processingType: "client",
@@ -1492,7 +1567,12 @@ export const calculatorTools: ToolDefinition[] = [
       { step: 2, title: "Enter Exercise Time", instruction: "Input daily workout duration in minutes." },
       { step: 3, title: "View Hydration Goal", instruction: "Read personalized daily water requirement." },
     ],
-    faq: [{ question: "How much water is in a standard glass?", answer: "A standard hydration glass is 250 ml (approximately 8.45 fl oz)." }],
+    faq: [
+{ question: "How much water is in a standard glass?", answer: "A standard hydration glass is 250 ml (approximately 8.45 fl oz)." },
+      { question: "Does Daily Water Intake & Hydration Calculator support calibrated by body weight (~35ml/kg)?", answer: "Yes. Daily Water Intake & Hydration Calculator provides calibrated by body weight (~35ml/kg) natively in your browser with real-time feedback." },
+      { question: "Does Daily Water Intake & Hydration Calculator support exercise duration adjustments?", answer: "Yes. Daily Water Intake & Hydration Calculator provides exercise duration adjustments natively in your browser with real-time feedback." },
+      { question: "Does Daily Water Intake & Hydration Calculator support displays in liters and 250ml glass counts?", answer: "Yes. Daily Water Intake & Hydration Calculator provides displays in liters and 250ml glass counts natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["bmi-calculator", "bmr-calculator", "calorie-deficit-calculator", "loan-emi-calculator", "sip-calculator", "compound-interest-calculator"],
     seoTitle: "Daily Water Intake - Hydration Guide",
     seoDescription: "Calculate recommended daily water intake based on body weight and exercise online. Free in-browser health tool.",
