@@ -353,7 +353,7 @@ export const developerTools: ToolDefinition[] = [
       { question: "Does URL Decoder support one-click copy?", answer: "Yes. URL Decoder provides one-click copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["url-encoder", "base64-decoder", "jwt-decoder"],
-    seoTitle: "URL Decoder - Decode URL Parameters",
+    seoTitle: "URL Decoder Online Tool | Nova Tools",
     seoDescription: "Decode percent-encoded (%20, %26) URLs back into normal human-readable text. Free, fast in-browser data utility with immediate results on Nova Tools.",
     canonicalUrl: "/url-decoder",
     processingType: "client",
@@ -752,7 +752,7 @@ export const developerTools: ToolDefinition[] = [
       { question: "Does HTML Entity Encoder support instant copy?", answer: "Yes. HTML Entity Encoder provides instant copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["html-entity-decoder", "url-encoder", "base64-encoder"],
-    seoTitle: "HTML Entity Encoder - Developer Utility",
+    seoTitle: "HTML Entity Encoder Online Tool | Nova Tools",
     seoDescription: "Convert special characters to safe HTML entities online. Prevent code execution and rendering errors in your browser.",
     canonicalUrl: "/html-entity-encoder",
     processingType: "client",
@@ -929,7 +929,7 @@ export const developerTools: ToolDefinition[] = [
       { question: "Does CSS Gradient Generator support multi-stop color pickers?", answer: "Yes. CSS Gradient Generator provides multi-stop color pickers natively in your browser with real-time feedback." }
     ],
     relatedTools: ["css-box-shadow-generator", "hex-to-rgb-converter", "rgb-to-hex-converter", "json-formatter", "json-minifier", "json-validator"],
-    seoTitle: "CSS Gradient Generator - Linear & Radial",
+    seoTitle: "CSS Gradient Generator Online | Nova Tools",
     seoDescription: "Create colorful linear and radial CSS gradients with live preview and custom angle controls. Free, fast in-browser data utility with immediate results on.",
     canonicalUrl: "/css-gradient-generator",
     processingType: "client",
@@ -1165,7 +1165,7 @@ export const developerTools: ToolDefinition[] = [
       { question: "Does JSON to YAML Converter support instant copy?", answer: "Yes. JSON to YAML Converter provides instant copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["yaml-to-json", "json-formatter", "json-validator"],
-    seoTitle: "JSON to YAML Converter - Developer Utility",
+    seoTitle: "JSON to YAML Converter Online | Nova Tools",
     seoDescription: "Convert JSON configuration files into clean, readable YAML format instantly. Free, fast in-browser data utility with immediate results on Nova Tools.",
     canonicalUrl: "/json-to-yaml",
     processingType: "client",

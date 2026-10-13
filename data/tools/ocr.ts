@@ -53,14 +53,17 @@ export const ocrTools: ToolDefinition[] = [
       { step: 3, title: "Copy Text", instruction: "Copy the extracted Unicode text or download it as TXT." },
     ],
     faq: [
-      {
+{
         question: "Is my image uploaded to a server?",
         answer: "No. The OCR neural network runs entirely inside your browser via WebAssembly (Tesseract.js). Your documents never leave your device."
       },
       {
         question: "Which languages are supported?",
         answer: "The neural recognition model is trained on both Tamil (tam) and English (eng) typography."
-      }
+      },
+      { question: "Does Tamil Image to Text (OCR) support 100% client-side neural ocr?", answer: "Yes. Tamil Image to Text (OCR) provides 100% client-side neural ocr natively in your browser with real-time feedback." },
+      { question: "Does Tamil Image to Text (OCR) support tesseract.js + opencv engine?", answer: "Yes. Tamil Image to Text (OCR) provides tesseract.js + opencv engine natively in your browser with real-time feedback." },
+      { question: "Does Tamil Image to Text (OCR) support multilingual support (tamil + english)?", answer: "Yes. Tamil Image to Text (OCR) provides multilingual support (tamil + english) natively in your browser with real-time feedback." }
     ],
     relatedTools: [
       "bamini-to-unicode-converter",

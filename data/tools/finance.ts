@@ -20,7 +20,12 @@ export const financeTools: ToolDefinition[] = [
       { step: 2, title: "Enter Selling Price", instruction: "Input customer retail price." },
       { step: 3, title: "Calculate", instruction: "View gross profit, margin percentage, and markup." },
     ],
-    faq: [{ question: "What is the difference between Margin and Markup?", answer: "Margin is profit as a percentage of Selling Price; Markup is profit as a percentage of Cost Price." }],
+    faq: [
+{ question: "What is the difference between Margin and Markup?", answer: "Margin is profit as a percentage of Selling Price; Markup is profit as a percentage of Cost Price." },
+      { question: "Does Profit Margin Calculator support calculates gross profit, margin %, and markup %?", answer: "Yes. Profit Margin Calculator provides calculates gross profit, margin %, and markup % natively in your browser with real-time feedback." },
+      { question: "Does Profit Margin Calculator support indian rupee formatting?", answer: "Yes. Profit Margin Calculator provides indian rupee formatting natively in your browser with real-time feedback." },
+      { question: "Does Profit Margin Calculator support fast pricing decisions?", answer: "Yes. Profit Margin Calculator provides fast pricing decisions natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["roi-calculator", "break-even-calculator", "discount-calculator", "gst-calculator"],
     seoTitle: "Profit Margin Calculator Online Tool | Nova Tools",
     seoDescription: "Use this profit margin calculator online tool to calculate profit, margin, markup, and selling price. Get fast client-side results in your browser.",
