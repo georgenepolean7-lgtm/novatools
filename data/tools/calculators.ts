@@ -434,7 +434,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does Sales Tax & VAT Calculator support instant result?", answer: "Yes. Sales Tax & VAT Calculator provides instant result natively in your browser with real-time feedback." }
     ],
     relatedTools: ["discount-calculator", "percentage-calculator"],
-    seoTitle: "Sales Tax Calculator - VAT & Tax Rate",
+    seoTitle: "Sales Tax & VAT Calculator Online | Nova Tools",
     seoDescription: "Calculate sales tax, VAT, and total checkout prices for tax-exclusive and tax-inclusive items. Instant client-side calculations with accurate real-time.",
     canonicalUrl: "/sales-tax-calculator",
     processingType: "client",
@@ -1388,7 +1388,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does World Clock & Global Timezone Converter support instant conversion?", answer: "Yes. World Clock & Global Timezone Converter provides instant conversion natively in your browser with real-time feedback." }
     ],
     relatedTools: ["business-hours-overlap-calculator", "working-days-business-calculator"],
-    seoTitle: "World Clock & Global Timezone Converter",
+    seoTitle: "World Clock & Global Timezone Converter Online | Nova Tools",
     seoDescription: "Convert meeting times across global timezones (IST, UTC, EST, PST, GMT) online. Free IANA-standard timezone converter.",
     canonicalUrl: "/world-clock-timezone-converter",
     processingType: "client",
@@ -1463,7 +1463,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does Working Business Days Calculator (Excluding Weekends) support instant result?", answer: "Yes. Working Business Days Calculator (Excluding Weekends) provides instant result natively in your browser with real-time feedback." }
     ],
     relatedTools: ["world-clock-timezone-converter", "week-number-iso-calculator"],
-    seoTitle: "Working Business Days Calculator (Excludin",
+    seoTitle: "Working Business Days Calculator | Nova Tools",
     seoDescription: "Calculate business working days between two dates online, excluding weekends. Fast project and invoice workday tool.",
     canonicalUrl: "/working-days-business-calculator",
     processingType: "client",
@@ -1574,7 +1574,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does Daily Water Intake & Hydration Calculator support displays in liters and 250ml glass counts?", answer: "Yes. Daily Water Intake & Hydration Calculator provides displays in liters and 250ml glass counts natively in your browser with real-time feedback." }
     ],
     relatedTools: ["bmi-calculator", "bmr-calculator", "calorie-deficit-calculator", "loan-emi-calculator", "sip-calculator", "compound-interest-calculator"],
-    seoTitle: "Daily Water Intake - Hydration Guide",
+    seoTitle: "Daily Water Intake & Hydration Calculator | Nova Tools",
     seoDescription: "Calculate recommended daily water intake based on body weight and exercise online. Free in-browser health tool.",
     canonicalUrl: "/water-intake-calculator",
     processingType: "client",

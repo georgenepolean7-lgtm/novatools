@@ -20,7 +20,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 2, title: "Convert", instruction: "Click Execute to transform JSON into CSV." },
       { step: 3, title: "Download", instruction: "Copy or download your .csv file." },
     ],
-    faq: [{ question: "Can it handle nested JSON objects?", answer: "Yes, keys from all items are discovered and flattened into CSV columns." }],
+    faq: [
+{ question: "Can it handle nested JSON objects?", answer: "Yes, keys from all items are discovered and flattened into CSV columns." },
+      { question: "Does JSON to CSV Converter support rfc 4180 standard compliance?", answer: "Yes. JSON to CSV Converter provides rfc 4180 standard compliance natively in your browser with real-time feedback." },
+      { question: "Does JSON to CSV Converter support handles quotes and commas in fields?", answer: "Yes. JSON to CSV Converter provides handles quotes and commas in fields natively in your browser with real-time feedback." },
+      { question: "Does JSON to CSV Converter support instant download?", answer: "Yes. JSON to CSV Converter provides instant download natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["csv-to-json", "csv-to-markdown-table", "json-flattener"],
     seoTitle: "JSON to CSV Online Tool | Nova Tools",
     seoDescription: "Use this json to csv online tool to convert JSON data into CSV. Get fast client-side results in your browser, with no data upload required.",
@@ -97,7 +102,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 2, title: "Convert", instruction: "Click Execute to generate Markdown table syntax." },
       { step: 3, title: "Copy to Markdown", instruction: "Paste directly into your GitHub README or wiki." },
     ],
-    faq: [{ question: "Does it create header separator lines?", answer: "Yes, it creates the required `| --- | --- |` separator row automatically." }],
+    faq: [
+{ question: "Does it create header separator lines?", answer: "Yes, it creates the required `| --- | --- |` separator row automatically." },
+      { question: "Does CSV to Markdown Table Converter support github flavored markdown syntax?", answer: "Yes. CSV to Markdown Table Converter provides github flavored markdown syntax natively in your browser with real-time feedback." },
+      { question: "Does CSV to Markdown Table Converter support clean column alignment?", answer: "Yes. CSV to Markdown Table Converter provides clean column alignment natively in your browser with real-time feedback." },
+      { question: "Does CSV to Markdown Table Converter support instant copy?", answer: "Yes. CSV to Markdown Table Converter provides instant copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["markdown-table-to-csv", "csv-to-html-table", "json-to-csv"],
     seoTitle: "CSV to Markdown Table Converter Online | Nova Tools",
     seoDescription: "Convert CSV data into GitHub-flavored Markdown tables for documentation and README files. Free, fast in-browser data utility with immediate results on.",
@@ -132,7 +142,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 1, title: "Paste Markdown Table", instruction: "Paste Markdown text containing `|` pipes." },
       { step: 2, title: "Convert", instruction: "Click Execute to extract CSV rows." },
     ],
-    faq: [{ question: "Does it filter out markdown separator lines?", answer: "Yes, rows containing `---` delimiters are automatically discarded." }],
+    faq: [
+{ question: "Does it filter out markdown separator lines?", answer: "Yes, rows containing `---` delimiters are automatically discarded." },
+      { question: "Does Markdown Table to CSV Converter support strips markdown pipes and separators?", answer: "Yes. Markdown Table to CSV Converter provides strips markdown pipes and separators natively in your browser with real-time feedback." },
+      { question: "Does Markdown Table to CSV Converter support rfc 4180 csv escaping?", answer: "Yes. Markdown Table to CSV Converter provides rfc 4180 csv escaping natively in your browser with real-time feedback." },
+      { question: "Does Markdown Table to CSV Converter support instant download?", answer: "Yes. Markdown Table to CSV Converter provides instant download natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["csv-to-markdown-table", "csv-to-json"],
     seoTitle: "Markdown Table to CSV Converter Online | Nova Tools",
     seoDescription: "Convert GitHub-flavored Markdown tables (| col |) back into standard CSV spreadsheets. Free, fast in-browser data utility with immediate results on Nova.",
@@ -284,7 +299,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 2, title: "Convert", instruction: "Click Execute to generate JSON." },
       { step: 3, title: "Copy", instruction: "Copy structured JSON output." },
     ],
-    faq: [{ question: "How are repeated XML tags handled?", answer: "Multiple identical sibling tags are automatically grouped into a JSON array." }],
+    faq: [
+{ question: "How are repeated XML tags handled?", answer: "Multiple identical sibling tags are automatically grouped into a JSON array." },
+      { question: "Does XML to JSON Converter support preserves nested tree structure?", answer: "Yes. XML to JSON Converter provides preserves nested tree structure natively in your browser with real-time feedback." },
+      { question: "Does XML to JSON Converter support arrays for multiple child nodes?", answer: "Yes. XML to JSON Converter provides arrays for multiple child nodes natively in your browser with real-time feedback." },
+      { question: "Does XML to JSON Converter support instant json output?", answer: "Yes. XML to JSON Converter provides instant json output natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["json-to-xml", "xml-formatter", "csv-to-json"],
     seoTitle: "XML to JSON Converter - Data Converter",
     seoDescription: "Convert XML data feeds and documents into structured JSON objects and arrays. Free, fast in-browser data utility with immediate results on Nova Tools.",
@@ -360,7 +380,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 2, title: "Enter Columns", instruction: "Specify target column names or indices (e.g. '0, 2' or 'name, email')." },
       { step: 3, title: "Extract", instruction: "Click Execute to produce filtered CSV." },
     ],
-    faq: [{ question: "Can I use column numbers instead of names?", answer: "Yes, comma-separated 0-indexed column numbers (e.g. 0, 1, 4) work seamlessly." }],
+    faq: [
+{ question: "Can I use column numbers instead of names?", answer: "Yes, comma-separated 0-indexed column numbers (e.g. 0, 1, 4) work seamlessly." },
+      { question: "Does CSV Column Extractor & Filter support supports column indices (0, 2) or header names (email, name)?", answer: "Yes. CSV Column Extractor & Filter provides supports column indices (0, 2) or header names (email, name) natively in your browser with real-time feedback." },
+      { question: "Does CSV Column Extractor & Filter support preserves rfc 4180 escaping?", answer: "Yes. CSV Column Extractor & Filter provides preserves rfc 4180 escaping natively in your browser with real-time feedback." },
+      { question: "Does CSV Column Extractor & Filter support instant download?", answer: "Yes. CSV Column Extractor & Filter provides instant download natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["csv-row-filter", "csv-delimiter-converter", "csv-to-json"],
     seoTitle: "CSV Column Extractor Online Tool | Nova Tools",
     seoDescription: "Use this csv column extractor online tool to extract selected columns from CSV data. Get fast client-side results in your browser.",
