@@ -148,7 +148,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does Simple Interest Calculator support instant result?", answer: "Yes. Simple Interest Calculator provides instant result natively in your browser with real-time feedback." }
     ],
     relatedTools: ["compound-interest-calculator", "loan-emi-calculator"],
-    seoTitle: "Simple Interest - Quick Loan Calculator",
+    seoTitle: "Simple Interest Calculator Online | Nova Tools",
     seoDescription: "Calculate simple interest (SI) and total repayment amounts using A = P(1 + rt). Instant client-side calculations with accurate real-time results on Nova.",
     canonicalUrl: "/simple-interest-calculator",
     processingType: "client",
@@ -189,7 +189,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does Percentage Calculator support high precision?", answer: "Yes. Percentage Calculator provides high precision natively in your browser with real-time feedback." }
     ],
     relatedTools: ["percentage-change-calculator", "discount-calculator", "sales-tax-calculator"],
-    seoTitle: "Percentage Calculator - Quick Percent",
+    seoTitle: "Percentage Calculator Online | Nova Tools",
     seoDescription: "Calculate percentages (What is X% of Y, and X is what percent of Y) instantly. Instant client-side calculations with accurate real-time results on Nova.",
     canonicalUrl: "/percentage-calculator",
     processingType: "client",
@@ -230,7 +230,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does Percentage Change & Difference Calculator support instant result?", answer: "Yes. Percentage Change & Difference Calculator provides instant result natively in your browser with real-time feedback." }
     ],
     relatedTools: ["percentage-calculator", "cagr-calculator", "margin-calculator"],
-    seoTitle: "Percentage Change - Increase & Drop",
+    seoTitle: "Percentage Change & Difference Calculator | Nova Tools",
     seoDescription: "Calculate percentage increase or decrease between two numerical values. Instant client-side calculations with accurate real-time results on Nova Tools.",
     canonicalUrl: "/percentage-change-calculator",
     processingType: "client",
@@ -311,7 +311,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does Date Difference & Duration Calculator support handles multi-year spans?", answer: "Yes. Date Difference & Duration Calculator provides handles multi-year spans natively in your browser with real-time feedback." }
     ],
     relatedTools: ["age-calculator", "time-calculator"],
-    seoTitle: "Date Difference - Days Between Dates",
+    seoTitle: "Date Difference & Duration Calculator Online | Nova Tools",
     seoDescription: "Calculate the exact number of days, weeks, and hours between two calendar dates. Instant client-side calculations with accurate real-time results on Nova.",
     canonicalUrl: "/date-difference-calculator",
     processingType: "client",
@@ -393,7 +393,7 @@ export const calculatorTools: ToolDefinition[] = [
       { question: "Does Shopping Discount & Savings Calculator support clean currency formatting?", answer: "Yes. Shopping Discount & Savings Calculator provides clean currency formatting natively in your browser with real-time feedback." }
     ],
     relatedTools: ["sales-tax-calculator", "percentage-calculator", "markup-calculator"],
-    seoTitle: "Discount Calculator - Sale Price Savings",
+    seoTitle: "Shopping Discount & Savings Calculator Online | Nova Tools",
     seoDescription: "Calculate final sale price and total money saved during shopping and retail sales discounts. Instant client-side calculations with accurate real-time.",
     canonicalUrl: "/discount-calculator",
     processingType: "client",

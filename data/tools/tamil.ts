@@ -20,7 +20,12 @@ export const tamilTools: ToolDefinition[] = [
       { step: 2, title: "Convert", instruction: "Click 'Convert to Unicode' to translate glyphs into UTF-8 Tamil." },
       { step: 3, title: "Copy", instruction: "Copy the standard readable Tamil text." },
     ],
-    faq: [{ question: "Why convert BAMINI to Unicode?", answer: "Unicode works on all phones, web browsers, social media, and modern operating systems without installing legacy fonts." }],
+    faq: [
+{ question: "Why convert BAMINI to Unicode?", answer: "Unicode works on all phones, web browsers, social media, and modern operating systems without installing legacy fonts." },
+      { question: "Does BAMINI to Tamil Unicode Converter support instant conversion?", answer: "Yes. BAMINI to Tamil Unicode Converter provides instant conversion natively in your browser with real-time feedback." },
+      { question: "Does BAMINI to Tamil Unicode Converter support full bamini glyph mapping?", answer: "Yes. BAMINI to Tamil Unicode Converter provides full bamini glyph mapping natively in your browser with real-time feedback." },
+      { question: "Does BAMINI to Tamil Unicode Converter support supports large paragraphs?", answer: "Yes. BAMINI to Tamil Unicode Converter provides supports large paragraphs natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["tamil-image-to-text", "tanglish-to-tamil-transliteration", "tamil-character-counter"],
     seoTitle: "Bamini to Unicode - Tamil Converter",
     seoDescription: "Convert legacy BAMINI font text to standard UTF-8 Tamil Unicode online. Fast, free in-browser Tamil font converter.",
