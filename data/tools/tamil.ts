@@ -27,7 +27,7 @@ export const tamilTools: ToolDefinition[] = [
       { question: "Does BAMINI to Tamil Unicode Converter support supports large paragraphs?", answer: "Yes. BAMINI to Tamil Unicode Converter provides supports large paragraphs natively in your browser with real-time feedback." }
     ],
     relatedTools: ["tamil-image-to-text", "tanglish-to-tamil-transliteration", "tamil-character-counter"],
-    seoTitle: "Bamini to Unicode - Tamil Converter",
+    seoTitle: "BAMINI to Tamil Unicode Converter Online | Nova Tools",
     seoDescription: "Convert legacy BAMINI font text to standard UTF-8 Tamil Unicode online. Fast, free in-browser Tamil font converter.",
     canonicalUrl: "/bamini-to-unicode-converter",
     processingType: "client",
@@ -148,7 +148,7 @@ export const tamilTools: ToolDefinition[] = [
       { question: "Does Tamil Word, Sentence & Reading Speed Counter support instant copy?", answer: "Yes. Tamil Word, Sentence & Reading Speed Counter provides instant copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["tamil-character-counter", "word-counter"],
-    seoTitle: "Tamil Word, Sentence & Reading Speed Count",
+    seoTitle: "Tamil Word, Sentence & Reading Speed Counter | Nova Tools",
     seoDescription: "Count Tamil words, sentences, paragraphs, and estimate Tamil reading and public speech duration. Free, fast in-browser data utility with immediate results.",
     canonicalUrl: "/tamil-word-sentence-counter",
     processingType: "client",
@@ -189,7 +189,7 @@ export const tamilTools: ToolDefinition[] = [
       { question: "Does Tamil Unicode Normalizer (NFC & Glitch Fixer) support one-click copy?", answer: "Yes. Tamil Unicode Normalizer (NFC & Glitch Fixer) provides one-click copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["tamil-text-cleaner", "bamini-to-unicode-converter"],
-    seoTitle: "Tamil Unicode Normalizer (NFC & Glitch Fix",
+    seoTitle: "Tamil Unicode Normalizer | Nova Tools",
     seoDescription: "Fix broken Tamil combining characters, eliminate zero-width joiner glitches, and standardize to Unicode NFC form. Free, fast in-browser data utility with.",
     canonicalUrl: "/tamil-unicode-normalizer",
     processingType: "client",

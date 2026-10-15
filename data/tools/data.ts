@@ -306,7 +306,7 @@ export const dataTools: ToolDefinition[] = [
       { question: "Does XML to JSON Converter support instant json output?", answer: "Yes. XML to JSON Converter provides instant json output natively in your browser with real-time feedback." }
     ],
     relatedTools: ["json-to-xml", "xml-formatter", "csv-to-json"],
-    seoTitle: "XML to JSON Converter - Data Converter",
+    seoTitle: "XML to JSON Converter Online | Nova Tools",
     seoDescription: "Convert XML data feeds and documents into structured JSON objects and arrays. Free, fast in-browser data utility with immediate results on Nova Tools.",
     canonicalUrl: "/xml-to-json",
     processingType: "client",

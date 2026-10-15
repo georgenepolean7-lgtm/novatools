@@ -298,7 +298,7 @@ export const indiaTools: ToolDefinition[] = [
       { question: "Does Indian Rupee Number to Words Converter (Lakhs & Crores) support instant copy?", answer: "Yes. Indian Rupee Number to Words Converter (Lakhs & Crores) provides instant copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["number-to-words-converter", "gst-calculator", "income-tax-regime-comparator", "gratuity-calculator", "ifsc-code-validator"],
-    seoTitle: "Indian Rupee Number to Words Converter (La",
+    seoTitle: "Indian Rupee Number to Words Converter | Nova Tools",
     seoDescription: "Convert numeric amounts into formal Indian Rupee text (Lakhs, Crores, Arab) for cheques, invoices, and legal receipts. Free, fast in-browser data utility.",
     canonicalUrl: "/indian-currency-words-converter",
     processingType: "client",

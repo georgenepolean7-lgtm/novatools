@@ -137,7 +137,12 @@ export const educationTools: ToolDefinition[] = [
       { step: 2, title: "Enter Category Weights", instruction: "Specify percentage weight for each assignment category." },
       { step: 3, title: "Calculate", instruction: "View cumulative course percentage and letter grade." },
     ],
-    faq: [{ question: "How does category weighting work?", answer: "Each category's percentage score is multiplied by its weight percentage, and all products are summed to give the final course grade." }],
+    faq: [
+{ question: "How does category weighting work?", answer: "Each category's percentage score is multiplied by its weight percentage, and all products are summed to give the final course grade." },
+      { question: "Does Weighted Grade & Course Final Score Calculator support multiple customizable weighted categories?", answer: "Yes. Weighted Grade & Course Final Score Calculator provides multiple customizable weighted categories natively in your browser with real-time feedback." },
+      { question: "Does Weighted Grade & Course Final Score Calculator support letter grade conversion (a, b, c, d, f)?", answer: "Yes. Weighted Grade & Course Final Score Calculator provides letter grade conversion (a, b, c, d, f) natively in your browser with real-time feedback." },
+      { question: "Does Weighted Grade & Course Final Score Calculator support performance level analysis?", answer: "Yes. Weighted Grade & Course Final Score Calculator provides performance level analysis natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["gpa-calculator", "exam-score-target-calculator"],
     seoTitle: "Weighted Grade & Course Final Score Calcul",
     seoDescription: "Calculate overall course percentage from weighted assignments, quizzes, projects, midterms, and finals. Free, fast in-browser data utility with immediate.",
