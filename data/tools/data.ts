@@ -421,7 +421,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 2, title: "Paste Data", instruction: "Input tabular text." },
       { step: 3, title: "Convert", instruction: "Click Execute to swap delimiters." },
     ],
-    faq: [{ question: "Does it re-quote fields containing the new delimiter?", answer: "Yes, fields containing the target delimiter are automatically wrapped in RFC-compliant double quotes." }],
+    faq: [
+{ question: "Does it re-quote fields containing the new delimiter?", answer: "Yes, fields containing the target delimiter are automatically wrapped in RFC-compliant double quotes." },
+      { question: "Does CSV Delimiter Converter (Comma, Semicolon, Pipe, Tab) support supports comma, semicolon, pipe, and tab?", answer: "Yes. CSV Delimiter Converter (Comma, Semicolon, Pipe, Tab) provides supports comma, semicolon, pipe, and tab natively in your browser with real-time feedback." },
+      { question: "Does CSV Delimiter Converter (Comma, Semicolon, Pipe, Tab) support proper rfc 4180 re-quoting?", answer: "Yes. CSV Delimiter Converter (Comma, Semicolon, Pipe, Tab) provides proper rfc 4180 re-quoting natively in your browser with real-time feedback." },
+      { question: "Does CSV Delimiter Converter (Comma, Semicolon, Pipe, Tab) support instant output?", answer: "Yes. CSV Delimiter Converter (Comma, Semicolon, Pipe, Tab) provides instant output natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["tsv-to-csv", "csv-to-tsv", "csv-to-json"],
     seoTitle: "CSV Delimiter Converter (Comma, Semicolon,",
     seoDescription: "Convert delimiters between Comma (,), Semicolon (;), Pipe (|), and Tab (\\t) in tabular data. Free, fast in-browser data utility with immediate results on.",
@@ -457,7 +462,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 2, title: "Paste CSV", instruction: "Input CSV data with header row." },
       { step: 3, title: "Generate SQL", instruction: "Click Execute to produce executable INSERT statements." },
     ],
-    faq: [{ question: "Are numbers automatically unquoted in SQL?", answer: "Yes, numeric integer and decimal values are output as raw numbers without SQL quotes." }],
+    faq: [
+{ question: "Are numbers automatically unquoted in SQL?", answer: "Yes, numeric integer and decimal values are output as raw numbers without SQL quotes." },
+      { question: "Does CSV to SQL INSERT Statement Generator support configurable target table name?", answer: "Yes. CSV to SQL INSERT Statement Generator provides configurable target table name natively in your browser with real-time feedback." },
+      { question: "Does CSV to SQL INSERT Statement Generator support escapes sql quotes (' -> '')?", answer: "Yes. CSV to SQL INSERT Statement Generator provides escapes sql quotes (' -> '') natively in your browser with real-time feedback." },
+      { question: "Does CSV to SQL INSERT Statement Generator support differentiates numbers and nulls?", answer: "Yes. CSV to SQL INSERT Statement Generator provides differentiates numbers and nulls natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["json-to-sql-insert", "csv-to-json", "sql-formatter"],
     seoTitle: "CSV to SQL INSERT Statement Generator",
     seoDescription: "Generate SQL INSERT INTO table (columns) VALUES (...) queries directly from CSV spreadsheet rows. Free, fast in-browser data utility with immediate.",
@@ -493,7 +503,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 2, title: "Paste JSON Array", instruction: "Input array of JSON objects." },
       { step: 3, title: "Generate", instruction: "Click Execute to produce SQL INSERT statements." },
     ],
-    faq: [{ question: "Does it support nested JSON values?", answer: "Nested values are safely serialized into string representations." }],
+    faq: [
+{ question: "Does it support nested JSON values?", answer: "Nested values are safely serialized into string representations." },
+      { question: "Does JSON to SQL INSERT Statement Generator support handles boolean (1/0), numeric, and null values?", answer: "Yes. JSON to SQL INSERT Statement Generator provides handles boolean (1/0), numeric, and null values natively in your browser with real-time feedback." },
+      { question: "Does JSON to SQL INSERT Statement Generator support custom table naming?", answer: "Yes. JSON to SQL INSERT Statement Generator provides custom table naming natively in your browser with real-time feedback." },
+      { question: "Does JSON to SQL INSERT Statement Generator support instant copy?", answer: "Yes. JSON to SQL INSERT Statement Generator provides instant copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["csv-to-sql-insert", "json-to-csv", "sql-formatter", "csv-to-json", "csv-to-markdown-table", "markdown-table-to-csv"],
     seoTitle: "JSON to SQL INSERT Statement Generator",
     seoDescription: "Generate SQL INSERT queries from an array of JSON records for MySQL, PostgreSQL, and SQLite. Free, fast in-browser data utility with immediate results on.",
@@ -528,7 +543,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 1, title: "Paste TSV", instruction: "Paste tab-separated text copied from spreadsheets." },
       { step: 2, title: "Convert", instruction: "Click Execute to convert to standard CSV." },
     ],
-    faq: [{ question: "Does it quote cells containing commas?", answer: "Yes, all cells with commas or quotes are safely wrapped in double quotes." }],
+    faq: [
+{ question: "Does it quote cells containing commas?", answer: "Yes, all cells with commas or quotes are safely wrapped in double quotes." },
+      { question: "Does TSV to CSV Converter (Tab to Comma) support accurate tab delimiter parsing?", answer: "Yes. TSV to CSV Converter (Tab to Comma) provides accurate tab delimiter parsing natively in your browser with real-time feedback." },
+      { question: "Does TSV to CSV Converter (Tab to Comma) support rfc 4180 comma quoting?", answer: "Yes. TSV to CSV Converter (Tab to Comma) provides rfc 4180 comma quoting natively in your browser with real-time feedback." },
+      { question: "Does TSV to CSV Converter (Tab to Comma) support instant download?", answer: "Yes. TSV to CSV Converter (Tab to Comma) provides instant download natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["csv-to-tsv", "csv-delimiter-converter", "csv-to-json"],
     seoTitle: "TSV to CSV Converter (Tab to Comma)",
     seoDescription: "Convert Tab-Separated Values (TSV) into Comma-Separated Values (CSV) with RFC 4180 escaping. Free, fast in-browser data utility with immediate results on.",
@@ -563,7 +583,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 1, title: "Paste CSV", instruction: "Input CSV dataset." },
       { step: 2, title: "Convert", instruction: "Click Execute to generate tab-separated output." },
     ],
-    faq: [{ question: "Can I paste the TSV output directly into Google Sheets?", answer: "Yes, tab-delimited data pastes directly into separate columns in all spreadsheet applications." }],
+    faq: [
+{ question: "Can I paste the TSV output directly into Google Sheets?", answer: "Yes, tab-delimited data pastes directly into separate columns in all spreadsheet applications." },
+      { question: "Does CSV to TSV Converter (Comma to Tab) support parses rfc 4180 csv?", answer: "Yes. CSV to TSV Converter (Comma to Tab) provides parses rfc 4180 csv natively in your browser with real-time feedback." },
+      { question: "Does CSV to TSV Converter (Comma to Tab) support outputs clean tab delimiters?", answer: "Yes. CSV to TSV Converter (Comma to Tab) provides outputs clean tab delimiters natively in your browser with real-time feedback." },
+      { question: "Does CSV to TSV Converter (Comma to Tab) support instant copy?", answer: "Yes. CSV to TSV Converter (Comma to Tab) provides instant copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["tsv-to-csv", "csv-delimiter-converter"],
     seoTitle: "CSV to TSV Converter (Comma to Tab)",
     seoDescription: "Convert Comma-Separated Values (CSV) into Tab-Separated Values (TSV) for pasting into spreadsheets. Free, fast in-browser data utility with immediate.",
@@ -704,7 +729,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 2, title: "Paste CSV", instruction: "Input full CSV dataset." },
       { step: 3, title: "Filter", instruction: "Click Execute to view matching rows." },
     ],
-    faq: [{ question: "Does it keep the top header line?", answer: "Yes, the header row is always retained at the top of the filtered output." }],
+    faq: [
+{ question: "Does it keep the top header line?", answer: "Yes, the header row is always retained at the top of the filtered output." },
+      { question: "Does CSV Row Filter & Searcher support case-insensitive search matching?", answer: "Yes. CSV Row Filter & Searcher provides case-insensitive search matching natively in your browser with real-time feedback." },
+      { question: "Does CSV Row Filter & Searcher support preserves csv header row?", answer: "Yes. CSV Row Filter & Searcher provides preserves csv header row natively in your browser with real-time feedback." },
+      { question: "Does CSV Row Filter & Searcher support matching vs total rows feedback?", answer: "Yes. CSV Row Filter & Searcher provides matching vs total rows feedback natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["csv-column-extractor", "csv-duplicate-row-remover"],
     seoTitle: "CSV Row Filter & Searcher - Data Converter",
     seoDescription: "Filter CSV spreadsheet rows matching search keywords, text patterns, or criteria while keeping headers. Free, fast in-browser data utility with immediate.",
@@ -740,7 +770,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 2, title: "Deduplicate", instruction: "Click Execute to remove all duplicate records." },
       { step: 3, title: "Download", instruction: "Copy or download clean unique CSV." },
     ],
-    faq: [{ question: "Does it alter the order of unique rows?", answer: "No, unique rows remain in their original chronological order." }],
+    faq: [
+{ question: "Does it alter the order of unique rows?", answer: "No, unique rows remain in their original chronological order." },
+      { question: "Does CSV Duplicate Row Remover support preserves first occurrence of unique rows?", answer: "Yes. CSV Duplicate Row Remover provides preserves first occurrence of unique rows natively in your browser with real-time feedback." },
+      { question: "Does CSV Duplicate Row Remover support retains header row?", answer: "Yes. CSV Duplicate Row Remover provides retains header row natively in your browser with real-time feedback." },
+      { question: "Does CSV Duplicate Row Remover support reports number of removed duplicates?", answer: "Yes. CSV Duplicate Row Remover provides reports number of removed duplicates natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["csv-row-filter", "remove-duplicate-lines", "csv-to-json", "json-to-csv", "csv-to-markdown-table", "markdown-table-to-csv"],
     seoTitle: "CSV Duplicate Row Remover - Data Converter",
     seoDescription: "Remove identical duplicate rows from CSV spreadsheets while preserving the header row. Free, fast in-browser data utility with immediate results on Nova.",
@@ -812,7 +847,12 @@ export const dataTools: ToolDefinition[] = [
       { step: 2, title: "Convert", instruction: "Click Execute to generate HTML table code." },
       { step: 3, title: "Copy", instruction: "Copy HTML markup to embed in your web page." },
     ],
-    faq: [{ question: "Is the generated HTML semantic?", answer: "Yes, it uses standard <table>, <thead>, <th>, <tbody>, and <td> elements." }],
+    faq: [
+{ question: "Is the generated HTML semantic?", answer: "Yes, it uses standard <table>, <thead>, <th>, <tbody>, and <td> elements." },
+      { question: "Does CSV to HTML Table Converter support semantic <thead> and <tbody> tags?", answer: "Yes. CSV to HTML Table Converter provides semantic <thead> and <tbody> tags natively in your browser with real-time feedback." },
+      { question: "Does CSV to HTML Table Converter support escapes html entities?", answer: "Yes. CSV to HTML Table Converter provides escapes html entities natively in your browser with real-time feedback." },
+      { question: "Does CSV to HTML Table Converter support clean indentation?", answer: "Yes. CSV to HTML Table Converter provides clean indentation natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["html-table-to-csv", "csv-to-markdown-table"],
     seoTitle: "CSV to HTML Table Online Tool | Nova Tools",
     seoDescription: "Use this csv to html table online tool to convert CSV data into an HTML table. Get fast client-side results in your browser, with no data upload required.",

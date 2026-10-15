@@ -142,7 +142,12 @@ export const webmasterTools: ToolDefinition[] = [
       { step: 1, title: "Generate Config", instruction: "Click Execute to produce standard hardened security headers." },
       { step: 2, title: "Add to Server", instruction: "Paste into your Nginx `server {}` block or Apache `.htaccess` file." },
     ],
-    faq: [{ question: "What is HSTS?", answer: "HTTP Strict Transport Security (HSTS) forces browsers to only communicate over HTTPS, preventing SSL-stripping attacks." }],
+    faq: [
+{ question: "What is HSTS?", answer: "HTTP Strict Transport Security (HSTS) forces browsers to only communicate over HTTPS, preventing SSL-stripping attacks." },
+      { question: "Does HTTP Security Headers Generator support hsts with preload and subdomains?", answer: "Yes. HTTP Security Headers Generator provides hsts with preload and subdomains natively in your browser with real-time feedback." },
+      { question: "Does HTTP Security Headers Generator support x-frame-options deny / sameorigin?", answer: "Yes. HTTP Security Headers Generator provides x-frame-options deny / sameorigin natively in your browser with real-time feedback." },
+      { question: "Does HTTP Security Headers Generator support permissions-policy for hardware restrictions?", answer: "Yes. HTTP Security Headers Generator provides permissions-policy for hardware restrictions natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["htaccess-redirect-generator", "nginx-reverse-proxy-generator"],
     seoTitle: "HTTP Security Headers Generator Online | Nova Tools",
     seoDescription: "Generate robust HTTP security headers (HSTS, CSP, X-Frame-Options, Permissions-Policy) for Nginx and Apache. Free, fast in-browser data utility with.",
@@ -179,7 +184,7 @@ export const webmasterTools: ToolDefinition[] = [
     ],
     faq: [{ question: "What does 'immutable' mean in Cache-Control?", answer: "It indicates that the file content will never change during its max-age lifetime, preventing unnecessary 304 revalidation requests." }],
     relatedTools: ["security-headers-generator", "nginx-reverse-proxy-generator", "cidr-calculator", "http-request-header-parser", "htaccess-redirect-generator", "cors-header-generator", "url-slug-parser-analyzer"],
-    seoTitle: "HTTP Cache-Control Header Generator",
+    seoTitle: "HTTP Cache-Control Header Generator Online | Nova Tools",
     seoDescription: "Configure optimal `Cache-Control`, `Expires`, and `ETag` headers for static assets, SSR pages, and APIs. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/cache-control-generator",
     processingType: "client",
@@ -253,7 +258,12 @@ export const webmasterTools: ToolDefinition[] = [
       { step: 1, title: "Specify Allowed Origin", instruction: "Enter your frontend domain URL (e.g. https://myfrontend.com) or `*`." },
       { step: 2, title: "Generate", instruction: "Click Execute to produce middleware snippet." },
     ],
-    faq: [{ question: "Can I use wildcard `*` with credentials enabled?", answer: "No, the CORS standard forbids using `*` for Access-Control-Allow-Origin when Access-Control-Allow-Credentials is true." }],
+    faq: [
+{ question: "Can I use wildcard `*` with credentials enabled?", answer: "No, the CORS standard forbids using `*` for Access-Control-Allow-Origin when Access-Control-Allow-Credentials is true." },
+      { question: "Does CORS Header & Middleware Generator support custom allowed origins and methods?", answer: "Yes. CORS Header & Middleware Generator provides custom allowed origins and methods natively in your browser with real-time feedback." },
+      { question: "Does CORS Header & Middleware Generator support credentials support?", answer: "Yes. CORS Header & Middleware Generator provides credentials support natively in your browser with real-time feedback." },
+      { question: "Does CORS Header & Middleware Generator support express.js snippet output?", answer: "Yes. CORS Header & Middleware Generator provides express.js snippet output natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["security-headers-generator", "nginx-reverse-proxy-generator"],
     seoTitle: "CORS Header & Middleware Generator Online | Nova Tools",
     seoDescription: "Generate Cross-Origin Resource Sharing (CORS) headers and Express.js middleware for APIs. Free, fast in-browser data utility with immediate results on.",

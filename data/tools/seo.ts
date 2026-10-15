@@ -20,7 +20,12 @@ export const seoTools: ToolDefinition[] = [
       { step: 2, title: "Generate Tags", instruction: "Click 'Generate Meta Tags' to produce full HTML markup." },
       { step: 3, title: "Paste in <head>", instruction: "Copy the code directly into your website's `<head>` section." },
     ],
-    faq: [{ question: "What is the recommended title length?", answer: "Between 50 to 60 characters for optimal desktop and mobile SERP display." }],
+    faq: [
+{ question: "What is the recommended title length?", answer: "Between 50 to 60 characters for optimal desktop and mobile SERP display." },
+      { question: "Does Meta Tag Generator (SEO & OpenGraph) support title, description, canonical url?", answer: "Yes. Meta Tag Generator (SEO & OpenGraph) provides title, description, canonical url natively in your browser with real-time feedback." },
+      { question: "Does Meta Tag Generator (SEO & OpenGraph) support facebook open graph & twitter summary cards?", answer: "Yes. Meta Tag Generator (SEO & OpenGraph) provides facebook open graph & twitter summary cards natively in your browser with real-time feedback." },
+      { question: "Does Meta Tag Generator (SEO & OpenGraph) support character length guidelines?", answer: "Yes. Meta Tag Generator (SEO & OpenGraph) provides character length guidelines natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["robots-txt-generator", "keyword-density-checker", "slug-generator"],
     seoTitle: "Meta Tag Generator (SEO & OpenGraph)",
     seoDescription: "Generate SEO meta tags, OpenGraph Facebook cards, and Twitter summary cards online. Free in-browser SEO tag builder.",
@@ -56,7 +61,12 @@ export const seoTools: ToolDefinition[] = [
       { step: 2, title: "Add Sitemap URL", instruction: "Enter your full sitemap XML link." },
       { step: 3, title: "Download", instruction: "Save as `robots.txt` and place in your website root directory." },
     ],
-    faq: [{ question: "Where should robots.txt be uploaded?", answer: "In the root directory of your website domain (e.g. `https://yourdomain.com/robots.txt`)." }],
+    faq: [
+{ question: "Where should robots.txt be uploaded?", answer: "In the root directory of your website domain (e.g. `https://yourdomain.com/robots.txt`)." },
+      { question: "Does Robots.txt Generator support standard rfc 9309 syntax?", answer: "Yes. Robots.txt Generator provides standard rfc 9309 syntax natively in your browser with real-time feedback." },
+      { question: "Does Robots.txt Generator support disallow paths configuration?", answer: "Yes. Robots.txt Generator provides disallow paths configuration natively in your browser with real-time feedback." },
+      { question: "Does Robots.txt Generator support sitemap integration?", answer: "Yes. Robots.txt Generator provides sitemap integration natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["meta-tag-generator", "keyword-density-checker", "cidr-calculator"],
     seoTitle: "Robots.txt Generator - SEO Optimization",
     seoDescription: "Create RFC 9309 compliant robots.txt files online. Direct search engine crawlers with custom allow and disallow rules.",
@@ -92,7 +102,12 @@ export const seoTools: ToolDefinition[] = [
       { step: 2, title: "Enter Target Keyword", instruction: "Type the phrase or keyword to check." },
       { step: 3, title: "Analyze", instruction: "View the occurrence count and density percentage." },
     ],
-    faq: [{ question: "What is an ideal SEO keyword density?", answer: "Most SEO experts recommend 1% to 2.5% keyword density for natural, high-ranking content." }],
+    faq: [
+{ question: "What is an ideal SEO keyword density?", answer: "Most SEO experts recommend 1% to 2.5% keyword density for natural, high-ranking content." },
+      { question: "Does Keyword Density Checker support calculates exact percentage density?", answer: "Yes. Keyword Density Checker provides calculates exact percentage density natively in your browser with real-time feedback." },
+      { question: "Does Keyword Density Checker support highlights optimal density zone (1% - 2.5%)?", answer: "Yes. Keyword Density Checker provides highlights optimal density zone (1% - 2.5%) natively in your browser with real-time feedback." },
+      { question: "Does Keyword Density Checker support total word tally?", answer: "Yes. Keyword Density Checker provides total word tally natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["word-counter", "meta-tag-generator", "character-counter"],
     seoTitle: "Keyword Density Checker - SEO Optimization",
     seoDescription: "Analyze keyword density and frequency online. Optimize your content for search engines without keyword stuffing.",
@@ -128,7 +143,12 @@ export const seoTools: ToolDefinition[] = [
       { step: 2, title: "Enter Meta Description", instruction: "Input page description snippet." },
       { step: 3, title: "Preview", instruction: "Inspect the rendered Google SERP preview box." },
     ],
-    faq: [{ question: "What is the maximum pixel width for Google titles?", answer: "Google typically truncates titles exceeding approximately 600 pixels (around 55 to 60 characters)." }],
+    faq: [
+{ question: "What is the maximum pixel width for Google titles?", answer: "Google typically truncates titles exceeding approximately 600 pixels (around 55 to 60 characters)." },
+      { question: "Does Google SERP Snippet Preview Tool support pixel width estimation (600px desktop cap)?", answer: "Yes. Google SERP Snippet Preview Tool provides pixel width estimation (600px desktop cap) natively in your browser with real-time feedback." },
+      { question: "Does Google SERP Snippet Preview Tool support live desktop and mobile simulation?", answer: "Yes. Google SERP Snippet Preview Tool provides live desktop and mobile simulation natively in your browser with real-time feedback." },
+      { question: "Does Google SERP Snippet Preview Tool support truncation warning alerts?", answer: "Yes. Google SERP Snippet Preview Tool provides truncation warning alerts natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["meta-tag-generator", "keyword-density-checker", "robots-txt-generator", "open-graph-meta-generator", "schema-markup-generator"],
     seoTitle: "SERP Snippet Preview Online Tool | Nova Tools",
     seoDescription: "Use this serp snippet preview online tool to preview a search result title and description. Get fast client-side results in your browser.",
@@ -163,7 +183,12 @@ export const seoTools: ToolDefinition[] = [
       { step: 1, title: "Enter Details", instruction: "Input Title, Description, URL, and Image URL." },
       { step: 2, title: "Generate", instruction: "Click Execute to produce HTML meta tags." },
     ],
-    faq: [{ question: "What is the recommended Open Graph image size?", answer: "1200 x 630 pixels (1.91:1 aspect ratio) for high-resolution displays." }],
+    faq: [
+{ question: "What is the recommended Open Graph image size?", answer: "1200 x 630 pixels (1.91:1 aspect ratio) for high-resolution displays." },
+      { question: "Does Open Graph & Twitter Card Generator support generates full og:* and twitter:* tags?", answer: "Yes. Open Graph & Twitter Card Generator provides generates full og:* and twitter:* tags natively in your browser with real-time feedback." },
+      { question: "Does Open Graph & Twitter Card Generator support recommended 1200x630 social dimensions?", answer: "Yes. Open Graph & Twitter Card Generator provides recommended 1200x630 social dimensions natively in your browser with real-time feedback." },
+      { question: "Does Open Graph & Twitter Card Generator support one-click copy?", answer: "Yes. Open Graph & Twitter Card Generator provides one-click copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["meta-tag-generator", "serp-snippet-preview", "robots-txt-generator", "keyword-density-checker", "schema-markup-generator"],
     seoTitle: "Open Graph & Twitter Card Generator",
     seoDescription: "Generate full Facebook OpenGraph (`og:image`, `og:title`) and Twitter summary large image card tags. Free, fast in-browser data utility with immediate.",
@@ -199,7 +224,12 @@ export const seoTools: ToolDefinition[] = [
       { step: 2, title: "Fill Details", instruction: "Input headline, organization name, and URL." },
       { step: 3, title: "Copy JSON-LD", instruction: "Paste into your website HTML `<head>` section." },
     ],
-    faq: [{ question: "Why is JSON-LD preferred over Microdata?", answer: "Google officially recommends JSON-LD because it is decoupled from HTML presentation and easier to maintain." }],
+    faq: [
+{ question: "Why is JSON-LD preferred over Microdata?", answer: "Google officially recommends JSON-LD because it is decoupled from HTML presentation and easier to maintain." },
+      { question: "Does Schema Markup Generator (JSON-LD) support supports article, organization, faqpage, product?", answer: "Yes. Schema Markup Generator (JSON-LD) provides supports article, organization, faqpage, product natively in your browser with real-time feedback." },
+      { question: "Does Schema Markup Generator (JSON-LD) support valid schema.org 2024+ format?", answer: "Yes. Schema Markup Generator (JSON-LD) provides valid schema.org 2024+ format natively in your browser with real-time feedback." },
+      { question: "Does Schema Markup Generator (JSON-LD) support instant json-ld copy?", answer: "Yes. Schema Markup Generator (JSON-LD) provides instant json-ld copy natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["meta-tag-generator", "canonical-url-generator", "robots-txt-generator", "keyword-density-checker", "serp-snippet-preview"],
     seoTitle: "Schema Markup Generator (JSON-LD) Online | Nova Tools",
     seoDescription: "Generate Google-recommended JSON-LD structured data for Articles, Organizations, FAQPages, and Products. Free, fast in-browser data utility with immediate.",
@@ -237,7 +267,7 @@ export const seoTools: ToolDefinition[] = [
     ],
     faq: [{ question: "What does hreflang='x-default' do?", answer: "It specifies the fallback page for users whose language or region does not match any specified alternate tag." }],
     relatedTools: ["meta-tag-generator", "canonical-url-generator", "robots-txt-generator", "keyword-density-checker", "serp-snippet-preview", "open-graph-meta-generator", "schema-markup-generator", "heading-structure-analyzer"],
-    seoTitle: "Hreflang Tag Generator for Multi-Language",
+    seoTitle: "Hreflang Tag Generator for Multi-Language SEO | Nova Tools",
     seoDescription: "Generate multi-regional and multi-language `<link rel='alternate' hreflang='...'>` tags with `x-default`. Free, fast in-browser data utility with.",
     canonicalUrl: "/hreflang-tag-generator",
     processingType: "client",
@@ -277,7 +307,7 @@ export const seoTools: ToolDefinition[] = [
       { question: "Does Canonical URL Tag Generator & Normalizer support instant copy?", answer: "Yes. Canonical URL Tag Generator & Normalizer provides instant copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["meta-tag-generator", "robots-txt-generator"],
-    seoTitle: "Canonical URL Tag Generator & Normalizer",
+    seoTitle: "Canonical URL Tag Generator & Normalizer Online | Nova Tools",
     seoDescription: "Generate clean `<link rel='canonical'>` tags, normalize trailing slashes, and strip tracking parameters. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/canonical-url-generator",
     processingType: "client",
@@ -312,7 +342,7 @@ export const seoTools: ToolDefinition[] = [
     ],
     faq: [{ question: "Should a webpage have more than one H1 tag?", answer: "While HTML5 technically allows it, best SEO practice recommends a single descriptive H1 tag per page representing the main topic." }],
     relatedTools: ["keyword-density-checker", "meta-tag-generator", "robots-txt-generator", "serp-snippet-preview", "open-graph-meta-generator", "schema-markup-generator", "hreflang-tag-generator", "canonical-url-generator"],
-    seoTitle: "HTML Heading Structure Analyzer (H1-H6)",
+    seoTitle: "HTML Heading Structure Analyzer | Nova Tools",
     seoDescription: "Inspect HTML heading tags (H1, H2, H3) for hierarchy errors, multiple H1 tags, and missing levels. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/heading-structure-analyzer",
     processingType: "client",
