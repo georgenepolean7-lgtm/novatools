@@ -27,7 +27,7 @@ export const seoTools: ToolDefinition[] = [
       { question: "Does Meta Tag Generator (SEO & OpenGraph) support character length guidelines?", answer: "Yes. Meta Tag Generator (SEO & OpenGraph) provides character length guidelines natively in your browser with real-time feedback." }
     ],
     relatedTools: ["robots-txt-generator", "keyword-density-checker", "slug-generator"],
-    seoTitle: "Meta Tag Generator (SEO & OpenGraph)",
+    seoTitle: "Meta Tag Generator (SEO & OpenGraph) Online | Nova Tools",
     seoDescription: "Generate SEO meta tags, OpenGraph Facebook cards, and Twitter summary cards online. Free in-browser SEO tag builder.",
     canonicalUrl: "/meta-tag-generator",
     processingType: "client",
@@ -68,7 +68,7 @@ export const seoTools: ToolDefinition[] = [
       { question: "Does Robots.txt Generator support sitemap integration?", answer: "Yes. Robots.txt Generator provides sitemap integration natively in your browser with real-time feedback." }
     ],
     relatedTools: ["meta-tag-generator", "keyword-density-checker", "cidr-calculator"],
-    seoTitle: "Robots.txt Generator - SEO Optimization",
+    seoTitle: "Robots.txt Generator Online | Nova Tools",
     seoDescription: "Create RFC 9309 compliant robots.txt files online. Direct search engine crawlers with custom allow and disallow rules.",
     canonicalUrl: "/robots-txt-generator",
     processingType: "client",
@@ -109,7 +109,7 @@ export const seoTools: ToolDefinition[] = [
       { question: "Does Keyword Density Checker support total word tally?", answer: "Yes. Keyword Density Checker provides total word tally natively in your browser with real-time feedback." }
     ],
     relatedTools: ["word-counter", "meta-tag-generator", "character-counter"],
-    seoTitle: "Keyword Density Checker - SEO Optimization",
+    seoTitle: "Keyword Density Checker Online Tool | Nova Tools",
     seoDescription: "Analyze keyword density and frequency online. Optimize your content for search engines without keyword stuffing.",
     canonicalUrl: "/keyword-density-checker",
     processingType: "client",
@@ -190,7 +190,7 @@ export const seoTools: ToolDefinition[] = [
       { question: "Does Open Graph & Twitter Card Generator support one-click copy?", answer: "Yes. Open Graph & Twitter Card Generator provides one-click copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["meta-tag-generator", "serp-snippet-preview", "robots-txt-generator", "keyword-density-checker", "schema-markup-generator"],
-    seoTitle: "Open Graph & Twitter Card Generator",
+    seoTitle: "Open Graph & Twitter Card Generator Online | Nova Tools",
     seoDescription: "Generate full Facebook OpenGraph (`og:image`, `og:title`) and Twitter summary large image card tags. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/open-graph-meta-generator",
     processingType: "client",

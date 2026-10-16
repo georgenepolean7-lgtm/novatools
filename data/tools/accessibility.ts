@@ -20,7 +20,12 @@ export const accessibilityTools: ToolDefinition[] = [
       { step: 2, title: "Enter Background Color", instruction: "Input background hex color (e.g. #FFFFFF)." },
       { step: 3, title: "Review Compliance", instruction: "Check AA and AAA pass status for normal (16px) and large (24px) text." },
     ],
-    faq: [{ question: "What ratio is required for WCAG AA?", answer: "WCAG 2.1 AA requires a minimum 4.5:1 ratio for normal body text and 3.0:1 for large text (18pt+ or 14pt bold)." }],
+    faq: [
+{ question: "What ratio is required for WCAG AA?", answer: "WCAG 2.1 AA requires a minimum 4.5:1 ratio for normal body text and 3.0:1 for large text (18pt+ or 14pt bold)." },
+      { question: "Does WCAG Color Contrast Ratio Checker support calculates exact ratio (e.g. 7.42:1)?", answer: "Yes. WCAG Color Contrast Ratio Checker provides calculates exact ratio (e.g. 7.42:1) natively in your browser with real-time feedback." },
+      { question: "Does WCAG Color Contrast Ratio Checker support wcag aa & aaa pass/fail badges for normal & large text?", answer: "Yes. WCAG Color Contrast Ratio Checker provides wcag aa & aaa pass/fail badges for normal & large text natively in your browser with real-time feedback." },
+      { question: "Does WCAG Color Contrast Ratio Checker support live preview sample?", answer: "Yes. WCAG Color Contrast Ratio Checker provides live preview sample natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["hex-to-rgb-converter", "touch-target-size-checker", "accessible-form-label-checker"],
     seoTitle: "Color Contrast - WCAG Ratio Checker",
     seoDescription: "Check color contrast ratios against WCAG 2.1 AA and AAA standards online. Ensure accessible, high-readability text on websites.",
@@ -55,7 +60,12 @@ export const accessibilityTools: ToolDefinition[] = [
       { step: 1, title: "Paste HTML", instruction: "Input HTML code snippet containing images." },
       { step: 2, title: "Audit", instruction: "View breakdown of valid, decorative, and missing alt attributes." },
     ],
-    faq: [{ question: "Is alt='' allowed for decorative images?", answer: "Yes, empty alt='' correctly signals to screen readers to skip purely decorative icons." }],
+    faq: [
+{ question: "Is alt='' allowed for decorative images?", answer: "Yes, empty alt='' correctly signals to screen readers to skip purely decorative icons." },
+      { question: "Does Image Alt Text Accessibility & WCAG Auditor support scans all <img> tags in pasted html?", answer: "Yes. Image Alt Text Accessibility & WCAG Auditor provides scans all <img> tags in pasted html natively in your browser with real-time feedback." },
+      { question: "Does Image Alt Text Accessibility & WCAG Auditor support differentiates decorative (alt='') vs missing alt?", answer: "Yes. Image Alt Text Accessibility & WCAG Auditor provides differentiates decorative (alt='') vs missing alt natively in your browser with real-time feedback." },
+      { question: "Does Image Alt Text Accessibility & WCAG Auditor support pass/fail compliance metrics?", answer: "Yes. Image Alt Text Accessibility & WCAG Auditor provides pass/fail compliance metrics natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["color-contrast-checker", "accessible-form-label-checker"],
     seoTitle: "Alt Text Checker - Image Accessibility",
     seoDescription: "Scan HTML markup for missing or empty <img> alt attributes to ensure screen reader accessibility. Free, fast in-browser data utility with immediate.",

@@ -101,7 +101,12 @@ export const educationTools: ToolDefinition[] = [
       { step: 2, title: "Enter Source Details", instruction: "Input Author, Title, Year, Publisher, and URL." },
       { step: 3, title: "Copy Citation", instruction: "Copy the formatted reference into your bibliography." },
     ],
-    faq: [{ question: "Is this compliant with APA 7th edition?", answer: "Yes, it follows the latest APA 7th edition formatting rules for authors, dates, and titles." }],
+    faq: [
+{ question: "Is this compliant with APA 7th edition?", answer: "Yes, it follows the latest APA 7th edition formatting rules for authors, dates, and titles." },
+      { question: "Does Citation Generator (APA, MLA, Chicago) support apa 7th, mla 8th, chicago styles?", answer: "Yes. Citation Generator (APA, MLA, Chicago) provides apa 7th, mla 8th, chicago styles natively in your browser with real-time feedback." },
+      { question: "Does Citation Generator (APA, MLA, Chicago) support italicized titles syntax?", answer: "Yes. Citation Generator (APA, MLA, Chicago) provides italicized titles syntax natively in your browser with real-time feedback." },
+      { question: "Does Citation Generator (APA, MLA, Chicago) support one-click copy formatted reference?", answer: "Yes. Citation Generator (APA, MLA, Chicago) provides one-click copy formatted reference natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["gpa-calculator", "word-counter", "text-cleaner"],
     seoTitle: "Citation Generator (APA, MLA, Chicago)",
     seoDescription: "Generate APA, MLA, and Chicago style citations online. Create clean academic references and bibliographies in your browser.",
@@ -245,7 +250,12 @@ export const educationTools: ToolDefinition[] = [
       { step: 2, title: "Enter Desired Grade & Weight", instruction: "Input desired overall grade and final exam weight percentage." },
       { step: 3, title: "Calculate", instruction: "View target score needed on the final exam." },
     ],
-    faq: [{ question: "What if the required score is over 100%?", answer: "The calculator indicates that the target grade is mathematically impossible without extra credit." }],
+    faq: [
+{ question: "What if the required score is over 100%?", answer: "The calculator indicates that the target grade is mathematically impossible without extra credit." },
+      { question: "Does Final Exam Target Score Calculator support calculates exact needed final score?", answer: "Yes. Final Exam Target Score Calculator provides calculates exact needed final score natively in your browser with real-time feedback." },
+      { question: "Does Final Exam Target Score Calculator support feasibility indicator?", answer: "Yes. Final Exam Target Score Calculator provides feasibility indicator natively in your browser with real-time feedback." },
+      { question: "Does Final Exam Target Score Calculator support instant result?", answer: "Yes. Final Exam Target Score Calculator provides instant result natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["weighted-grade-calculator", "gpa-calculator", "cgpa-to-percentage-converter", "citation-generator", "attendance-percentage-calculator"],
     seoTitle: "Final Exam Target Score Calculator Online | Nova Tools",
     seoDescription: "Calculate the exact score you need on your final exam to get your desired course grade. Free student grade tool.",
@@ -283,7 +293,7 @@ export const educationTools: ToolDefinition[] = [
     ],
     faq: [{ question: "What is the standard college study hour rule?", answer: "The standard academic rule recommends 2 hours of independent study per week for every 1 credit hour enrolled." }],
     relatedTools: ["gpa-calculator", "attendance-percentage-calculator", "cgpa-to-percentage-converter", "citation-generator", "weighted-grade-calculator", "exam-score-target-calculator"],
-    seoTitle: "College Study Time Planner & Schedule Esti",
+    seoTitle: "College Study Time Planner & Schedule Estimator | Nova Tools",
     seoDescription: "Estimate recommended weekly and daily study hours based on semester credit units online. Free student study planner.",
     canonicalUrl: "/study-time-planner-calculator",
     processingType: "client",

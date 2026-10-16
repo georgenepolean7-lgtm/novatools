@@ -298,7 +298,12 @@ export const webmasterTools: ToolDefinition[] = [
       { step: 1, title: "Paste URL", instruction: "Input full URL (e.g. https://api.example.com:8080/v1/users?role=admin&limit=25#top)." },
       { step: 2, title: "Parse", instruction: "Click Execute to view structural analysis." },
     ],
-    faq: [{ question: "Does it decode URL-encoded query characters?", answer: "Yes, percent-encoded query parameter values are automatically decoded into plain text." }],
+    faq: [
+{ question: "Does it decode URL-encoded query characters?", answer: "Yes, percent-encoded query parameter values are automatically decoded into plain text." },
+      { question: "Does URL Structure Parser & Query Analyzer support parses protocol, host, port, path, hash?", answer: "Yes. URL Structure Parser & Query Analyzer provides parses protocol, host, port, path, hash natively in your browser with real-time feedback." },
+      { question: "Does URL Structure Parser & Query Analyzer support extracts individual query parameter key-value pairs?", answer: "Yes. URL Structure Parser & Query Analyzer provides extracts individual query parameter key-value pairs natively in your browser with real-time feedback." },
+      { question: "Does URL Structure Parser & Query Analyzer support instant breakdown?", answer: "Yes. URL Structure Parser & Query Analyzer provides instant breakdown natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["url-encoder", "url-decoder", "cidr-calculator", "http-request-header-parser", "htaccess-redirect-generator", "security-headers-generator"],
     seoTitle: "URL Structure Parser & Query Analyzer",
     seoDescription: "Deconstruct URLs into protocol, subdomain, domain, port, path segments, and query parameters table. Free, fast in-browser data utility with immediate.",

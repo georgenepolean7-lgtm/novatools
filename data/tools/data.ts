@@ -590,7 +590,7 @@ export const dataTools: ToolDefinition[] = [
       { question: "Does CSV to TSV Converter (Comma to Tab) support instant copy?", answer: "Yes. CSV to TSV Converter (Comma to Tab) provides instant copy natively in your browser with real-time feedback." }
     ],
     relatedTools: ["tsv-to-csv", "csv-delimiter-converter"],
-    seoTitle: "CSV to TSV Converter (Comma to Tab)",
+    seoTitle: "CSV to TSV Converter (Comma to Tab) Online | Nova Tools",
     seoDescription: "Convert Comma-Separated Values (CSV) into Tab-Separated Values (TSV) for pasting into spreadsheets. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/csv-to-tsv",
     processingType: "client",
@@ -736,7 +736,7 @@ export const dataTools: ToolDefinition[] = [
       { question: "Does CSV Row Filter & Searcher support matching vs total rows feedback?", answer: "Yes. CSV Row Filter & Searcher provides matching vs total rows feedback natively in your browser with real-time feedback." }
     ],
     relatedTools: ["csv-column-extractor", "csv-duplicate-row-remover"],
-    seoTitle: "CSV Row Filter & Searcher - Data Converter",
+    seoTitle: "CSV Row Filter & Searcher Online Tool | Nova Tools",
     seoDescription: "Filter CSV spreadsheet rows matching search keywords, text patterns, or criteria while keeping headers. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/csv-row-filter",
     processingType: "client",
@@ -777,7 +777,7 @@ export const dataTools: ToolDefinition[] = [
       { question: "Does CSV Duplicate Row Remover support reports number of removed duplicates?", answer: "Yes. CSV Duplicate Row Remover provides reports number of removed duplicates natively in your browser with real-time feedback." }
     ],
     relatedTools: ["csv-row-filter", "remove-duplicate-lines", "csv-to-json", "json-to-csv", "csv-to-markdown-table", "markdown-table-to-csv"],
-    seoTitle: "CSV Duplicate Row Remover - Data Converter",
+    seoTitle: "CSV Duplicate Row Remover Online Tool | Nova Tools",
     seoDescription: "Remove identical duplicate rows from CSV spreadsheets while preserving the header row. Free, fast in-browser data utility with immediate results on Nova.",
     canonicalUrl: "/csv-duplicate-row-remover",
     processingType: "client",
