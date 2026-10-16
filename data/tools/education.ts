@@ -144,7 +144,7 @@ export const educationTools: ToolDefinition[] = [
       { question: "Does Weighted Grade & Course Final Score Calculator support performance level analysis?", answer: "Yes. Weighted Grade & Course Final Score Calculator provides performance level analysis natively in your browser with real-time feedback." }
     ],
     relatedTools: ["gpa-calculator", "exam-score-target-calculator"],
-    seoTitle: "Weighted Grade & Course Final Score Calcul",
+    seoTitle: "Weighted Grade & Course Final Score Calculator | Nova Tools",
     seoDescription: "Calculate overall course percentage from weighted assignments, quizzes, projects, midterms, and finals. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/weighted-grade-calculator",
     processingType: "client",

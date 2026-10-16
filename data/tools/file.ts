@@ -137,7 +137,12 @@ export const fileTools: ToolDefinition[] = [
       { step: 2, title: "Consolidate", instruction: "Inspect merged output." },
       { step: 3, title: "Download", instruction: "Save consolidated .txt file." },
     ],
-    faq: [{ question: "Is there a limit on text length?", answer: "Your browser's memory can easily process tens of thousands of lines smoothly." }],
+    faq: [
+{ question: "Is there a limit on text length?", answer: "Your browser's memory can easily process tens of thousands of lines smoothly." },
+      { question: "Does Text & Log File Merger Tool support fast client-side consolidation?", answer: "Yes. Text & Log File Merger Tool provides fast client-side consolidation natively in your browser with real-time feedback." },
+      { question: "Does Text & Log File Merger Tool support preserves line breaks and encoding?", answer: "Yes. Text & Log File Merger Tool provides preserves line breaks and encoding natively in your browser with real-time feedback." },
+      { question: "Does Text & Log File Merger Tool support instant download?", answer: "Yes. Text & Log File Merger Tool provides instant download natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["text-file-splitter", "text-cleaner"],
     seoTitle: "Text & Log File Merger - File Utility",
     seoDescription: "Combine multiple plain text and log files into a single consolidated document online. Free, fast in-browser tool.",
