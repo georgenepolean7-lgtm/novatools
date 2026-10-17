@@ -68,7 +68,7 @@ export const financeTools: ToolDefinition[] = [
       { question: "Does ROI (Return on Investment) Calculator support clear visual summary?", answer: "Yes. ROI (Return on Investment) Calculator provides clear visual summary natively in your browser with real-time feedback." }
     ],
     relatedTools: ["profit-margin-calculator", "break-even-calculator", "sip-calculator"],
-    seoTitle: "ROI Calculator - Return on Investment",
+    seoTitle: "ROI (Return on Investment) Calculator Online | Nova Tools",
     seoDescription: "Calculate Return on Investment (ROI) percentage and profit online. Free in-browser financial return calculator.",
     canonicalUrl: "/roi-calculator",
     processingType: "client",
@@ -150,7 +150,7 @@ export const financeTools: ToolDefinition[] = [
       { question: "Does Startup Burn Rate & Runway Calculator support indian rupee formatting?", answer: "Yes. Startup Burn Rate & Runway Calculator provides indian rupee formatting natively in your browser with real-time feedback." }
     ],
     relatedTools: ["break-even-calculator", "profit-margin-calculator", "roi-calculator", "loan-amortization-schedule-calculator", "dividend-yield-calculator"],
-    seoTitle: "Startup Burn Rate & Runway Calculator",
+    seoTitle: "Startup Burn Rate & Runway Calculator Online | Nova Tools",
     seoDescription: "Calculate monthly gross burn, net burn, and business cash runway in months for startups and businesses. Instant client-side calculations with accurate.",
     canonicalUrl: "/cash-flow-burn-rate-calculator",
     processingType: "client",
@@ -263,7 +263,7 @@ export const financeTools: ToolDefinition[] = [
       { question: "Does Freelance Hourly Rate & Pricing Calculator support indian rupee formatting?", answer: "Yes. Freelance Hourly Rate & Pricing Calculator provides indian rupee formatting natively in your browser with real-time feedback." }
     ],
     relatedTools: ["profit-margin-calculator", "salary-to-hourly-calculator", "roi-calculator", "break-even-calculator", "cash-flow-burn-rate-calculator"],
-    seoTitle: "lance Hourly Rate & Pricing Calculator",
+    seoTitle: "Freelance Hourly Rate & Pricing Calculator | Nova Tools",
     seoDescription: "Calculate your ideal hourly billing rate based on target annual income, billable hours, business expenses, and taxes. Instant client-side calculations.",
     canonicalUrl: "/freelance-hourly-rate-calculator",
     processingType: "client",

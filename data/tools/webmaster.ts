@@ -305,7 +305,7 @@ export const webmasterTools: ToolDefinition[] = [
       { question: "Does URL Structure Parser & Query Analyzer support instant breakdown?", answer: "Yes. URL Structure Parser & Query Analyzer provides instant breakdown natively in your browser with real-time feedback." }
     ],
     relatedTools: ["url-encoder", "url-decoder", "cidr-calculator", "http-request-header-parser", "htaccess-redirect-generator", "security-headers-generator"],
-    seoTitle: "URL Structure Parser & Query Analyzer",
+    seoTitle: "URL Structure Parser & Query Analyzer | Nova Tools",
     seoDescription: "Deconstruct URLs into protocol, subdomain, domain, port, path segments, and query parameters table. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/url-slug-parser-analyzer",
     processingType: "client",

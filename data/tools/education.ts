@@ -108,7 +108,7 @@ export const educationTools: ToolDefinition[] = [
       { question: "Does Citation Generator (APA, MLA, Chicago) support one-click copy formatted reference?", answer: "Yes. Citation Generator (APA, MLA, Chicago) provides one-click copy formatted reference natively in your browser with real-time feedback." }
     ],
     relatedTools: ["gpa-calculator", "word-counter", "text-cleaner"],
-    seoTitle: "Citation Generator (APA, MLA, Chicago)",
+    seoTitle: "Citation Generator (APA, MLA, Chicago) Online | Nova Tools",
     seoDescription: "Generate APA, MLA, and Chicago style citations online. Create clean academic references and bibliographies in your browser.",
     canonicalUrl: "/citation-generator",
     processingType: "client",

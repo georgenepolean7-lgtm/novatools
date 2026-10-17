@@ -144,7 +144,7 @@ export const fileTools: ToolDefinition[] = [
       { question: "Does Text & Log File Merger Tool support instant download?", answer: "Yes. Text & Log File Merger Tool provides instant download natively in your browser with real-time feedback." }
     ],
     relatedTools: ["text-file-splitter", "text-cleaner"],
-    seoTitle: "Text & Log File Merger - File Utility",
+    seoTitle: "Text & Log File Merger Tool Online Tool | Nova Tools",
     seoDescription: "Combine multiple plain text and log files into a single consolidated document online. Free, fast in-browser tool.",
     canonicalUrl: "/text-file-merger",
     processingType: "client",

@@ -27,7 +27,7 @@ export const accessibilityTools: ToolDefinition[] = [
       { question: "Does WCAG Color Contrast Ratio Checker support live preview sample?", answer: "Yes. WCAG Color Contrast Ratio Checker provides live preview sample natively in your browser with real-time feedback." }
     ],
     relatedTools: ["hex-to-rgb-converter", "touch-target-size-checker", "accessible-form-label-checker"],
-    seoTitle: "Color Contrast - WCAG Ratio Checker",
+    seoTitle: "WCAG Color Contrast Ratio Checker Online Tool | Nova Tools",
     seoDescription: "Check color contrast ratios against WCAG 2.1 AA and AAA standards online. Ensure accessible, high-readability text on websites.",
     canonicalUrl: "/color-contrast-checker",
     processingType: "client",
