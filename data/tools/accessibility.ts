@@ -67,7 +67,7 @@ export const accessibilityTools: ToolDefinition[] = [
       { question: "Does Image Alt Text Accessibility & WCAG Auditor support pass/fail compliance metrics?", answer: "Yes. Image Alt Text Accessibility & WCAG Auditor provides pass/fail compliance metrics natively in your browser with real-time feedback." }
     ],
     relatedTools: ["color-contrast-checker", "accessible-form-label-checker"],
-    seoTitle: "Alt Text Checker - Image Accessibility",
+    seoTitle: "Image Alt Text Accessibility & WCAG Auditor | Nova Tools",
     seoDescription: "Scan HTML markup for missing or empty <img> alt attributes to ensure screen reader accessibility. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/html-image-alt-text-checker",
     processingType: "client",
@@ -100,7 +100,12 @@ export const accessibilityTools: ToolDefinition[] = [
       { step: 1, title: "Paste HTML Markup", instruction: "Input UI component HTML." },
       { step: 2, title: "Inspect", instruction: "View detected ARIA roles and state attributes." },
     ],
-    faq: [{ question: "What is the primary rule of ARIA?", answer: "The First Rule of ARIA is: Do not use ARIA if a native HTML5 semantic element (like <button> or <dialog>) already exists." }],
+    faq: [
+{ question: "What is the primary rule of ARIA?", answer: "The First Rule of ARIA is: Do not use ARIA if a native HTML5 semantic element (like <button> or <dialog>) already exists." },
+      { question: "Does WAI-ARIA Attribute & Role Syntax Validator support identifies role, aria-label, aria-expanded, aria-hidden?", answer: "Yes. WAI-ARIA Attribute & Role Syntax Validator provides identifies role, aria-label, aria-expanded, aria-hidden natively in your browser with real-time feedback." },
+      { question: "Does WAI-ARIA Attribute & Role Syntax Validator support w3c wai-aria 1.2 standard compliance?", answer: "Yes. WAI-ARIA Attribute & Role Syntax Validator provides w3c wai-aria 1.2 standard compliance natively in your browser with real-time feedback." },
+      { question: "Does WAI-ARIA Attribute & Role Syntax Validator support instant breakdown?", answer: "Yes. WAI-ARIA Attribute & Role Syntax Validator provides instant breakdown natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["accessible-form-label-checker", "color-contrast-checker", "html-image-alt-text-checker", "touch-target-size-checker", "heading-accessibility-hierarchy-checker"],
     seoTitle: "WAI-ARIA Attribute & Role Syntax Validator | Nova Tools",
     seoDescription: "Inspect HTML elements for standard W3C WAI-ARIA 1.2 roles, aria-label, aria-expanded, and aria-hidden states. Free, fast in-browser data utility with.",
@@ -175,7 +180,12 @@ export const accessibilityTools: ToolDefinition[] = [
       { step: 1, title: "Paste Form HTML", instruction: "Input your HTML form snippet." },
       { step: 2, title: "Audit", instruction: "Inspect labeled vs unlabeled inputs." },
     ],
-    faq: [{ question: "Is a 'placeholder' attribute sufficient as a label?", answer: "No. Placeholders disappear upon typing and are not reliably announced as labels by screen readers." }],
+    faq: [
+{ question: "Is a 'placeholder' attribute sufficient as a label?", answer: "No. Placeholders disappear upon typing and are not reliably announced as labels by screen readers." },
+      { question: "Does Accessible Form Label & Input Auditor (WCAG 3.3.2) support scans <input>, <select>, <textarea>?", answer: "Yes. Accessible Form Label & Input Auditor (WCAG 3.3.2) provides scans <input>, <select>, <textarea> natively in your browser with real-time feedback." },
+      { question: "Does Accessible Form Label & Input Auditor (WCAG 3.3.2) support checks for 'for' and 'id' bindings?", answer: "Yes. Accessible Form Label & Input Auditor (WCAG 3.3.2) provides checks for 'for' and 'id' bindings natively in your browser with real-time feedback." },
+      { question: "Does Accessible Form Label & Input Auditor (WCAG 3.3.2) support flags placeholder-only inputs?", answer: "Yes. Accessible Form Label & Input Auditor (WCAG 3.3.2) provides flags placeholder-only inputs natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["html-image-alt-text-checker", "color-contrast-checker"],
     seoTitle: "Accessible Form Label & Input Auditor | Nova Tools",
     seoDescription: "Audit form <input>, <select>, and <textarea> elements for accessible <label for='...'> or aria-label bindings. Free, fast in-browser data utility with.",
@@ -210,7 +220,12 @@ export const accessibilityTools: ToolDefinition[] = [
       { step: 1, title: "Paste HTML", instruction: "Input webpage HTML snippet." },
       { step: 2, title: "Audit", instruction: "Inspect heading hierarchy report." },
     ],
-    faq: [{ question: "Why are skipped heading levels bad for accessibility?", answer: "Screen reader users navigate webpages by jumping between heading levels; skipped levels cause disorientation." }],
+    faq: [
+{ question: "Why are skipped heading levels bad for accessibility?", answer: "Screen reader users navigate webpages by jumping between heading levels; skipped levels cause disorientation." },
+      { question: "Does Heading Accessibility Hierarchy & Outline Auditor support detects skipped heading levels?", answer: "Yes. Heading Accessibility Hierarchy & Outline Auditor provides detects skipped heading levels natively in your browser with real-time feedback." },
+      { question: "Does Heading Accessibility Hierarchy & Outline Auditor support audits single h1 presence?", answer: "Yes. Heading Accessibility Hierarchy & Outline Auditor provides audits single h1 presence natively in your browser with real-time feedback." },
+      { question: "Does Heading Accessibility Hierarchy & Outline Auditor support visual tree structure outline?", answer: "Yes. Heading Accessibility Hierarchy & Outline Auditor provides visual tree structure outline natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["color-contrast-checker", "html-image-alt-text-checker", "aria-attribute-reference-validator", "touch-target-size-checker", "accessible-form-label-checker"],
     seoTitle: "Heading Hierarchy - H1-H6 Structure",
     seoDescription: "Audit HTML document heading structure for screen reader navigation, single H1 usage, and skipped levels. Free, fast in-browser data utility with immediate.",

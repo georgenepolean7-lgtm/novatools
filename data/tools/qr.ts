@@ -20,7 +20,12 @@ export const qrTools: ToolDefinition[] = [
       { step: 2, title: "Generate QR", instruction: "Click 'Generate QR Code' to render your custom code." },
       { step: 3, title: "Download", instruction: "Download the high-resolution PNG image." },
     ],
-    faq: [{ question: "Do these QR codes expire?", answer: "No, these are standard static QR codes that never expire and will work forever." }],
+    faq: [
+{ question: "Do these QR codes expire?", answer: "No, these are standard static QR codes that never expire and will work forever." },
+      { question: "Does QR Code Generator (URL, WiFi, Text) support url, wifi, text, and vcard support?", answer: "Yes. QR Code Generator (URL, WiFi, Text) provides url, wifi, text, and vcard support natively in your browser with real-time feedback." },
+      { question: "Does QR Code Generator (URL, WiFi, Text) support high-resolution png download?", answer: "Yes. QR Code Generator (URL, WiFi, Text) provides high-resolution png download natively in your browser with real-time feedback." },
+      { question: "Does QR Code Generator (URL, WiFi, Text) support customizable colors & sizes?", answer: "Yes. QR Code Generator (URL, WiFi, Text) provides customizable colors & sizes natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["wifi-qr-code-generator", "barcode-code128-generator", "url-encoder"],
     seoTitle: "QR Code Generator (URL, WiFi, Text)",
     seoDescription: "Generate custom QR codes for URLs, WiFi, and text online. Free, high-resolution PNG download with 100% in-browser privacy.",
