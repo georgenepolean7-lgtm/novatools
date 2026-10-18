@@ -27,7 +27,7 @@ export const qrTools: ToolDefinition[] = [
       { question: "Does QR Code Generator (URL, WiFi, Text) support customizable colors & sizes?", answer: "Yes. QR Code Generator (URL, WiFi, Text) provides customizable colors & sizes natively in your browser with real-time feedback." }
     ],
     relatedTools: ["wifi-qr-code-generator", "barcode-code128-generator", "url-encoder"],
-    seoTitle: "QR Code Generator (URL, WiFi, Text)",
+    seoTitle: "QR Code Generator (URL, WiFi, Text) Online | Nova Tools",
     seoDescription: "Generate custom QR codes for URLs, WiFi, and text online. Free, high-resolution PNG download with 100% in-browser privacy.",
     canonicalUrl: "/qr-code-generator",
     processingType: "client",
@@ -143,7 +143,12 @@ export const qrTools: ToolDefinition[] = [
       { step: 2, title: "Enter Body", instruction: "Add optional default template message." },
       { step: 3, title: "Download", instruction: "Save high-resolution PNG image." },
     ],
-    faq: [{ question: "Does this require an internet connection to scan?", answer: "The scan itself executes offline, launching the device's default email client locally." }],
+    faq: [
+{ question: "Does this require an internet connection to scan?", answer: "The scan itself executes offline, launching the device's default email client locally." },
+      { question: "Does Email (mailto) QR Code Generator support pre-filled subject and body text?", answer: "Yes. Email (mailto) QR Code Generator provides pre-filled subject and body text natively in your browser with real-time feedback." },
+      { question: "Does Email (mailto) QR Code Generator support standard rfc 6068 mailto uri?", answer: "Yes. Email (mailto) QR Code Generator provides standard rfc 6068 mailto uri natively in your browser with real-time feedback." },
+      { question: "Does Email (mailto) QR Code Generator support high-res png download?", answer: "Yes. Email (mailto) QR Code Generator provides high-res png download natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["sms-qr-code-generator", "qr-code-generator"],
     seoTitle: "Email (mailto) QR Code Generator Online | Nova Tools",
     seoDescription: "Generate scan-to-email QR codes with pre-filled recipient email, subject line, and message body. Free, fast in-browser data utility with immediate results.",

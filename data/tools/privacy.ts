@@ -143,7 +143,7 @@ export const privacyTools: ToolDefinition[] = [
       { question: "Does UUID Validator & Parser support variant analysis?", answer: "Yes. UUID Validator & Parser provides variant analysis natively in your browser with real-time feedback." }
     ],
     relatedTools: ["uuid-generator", "hash-generator", "password-generator", "password-strength-checker", "hmac-generator"],
-    seoTitle: "UUID Validator & Parser - Security Tool",
+    seoTitle: "UUID Validator & Parser Online Tool | Nova Tools",
     seoDescription: "Validate RFC 4122 UUID strings and extract version (v1, v4, v5), variant, and timestamp metadata. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/uuid-validator-parser",
     processingType: "client",
@@ -223,7 +223,7 @@ export const privacyTools: ToolDefinition[] = [
       { question: "Does IPv4 Address Format Converter (Decimal, Hex, Binary) support instant translation?", answer: "Yes. IPv4 Address Format Converter (Decimal, Hex, Binary) provides instant translation natively in your browser with real-time feedback." }
     ],
     relatedTools: ["ipv4-subnet-calculator", "binary-to-decimal-converter"],
-    seoTitle: "IPv4 Address Format Converter (Decimal, He",
+    seoTitle: "IPv4 Address Format Converter | Nova Tools",
     seoDescription: "Convert IPv4 addresses between Dotted Decimal, Integer / Decimal, Hexadecimal, and 32-bit Binary notation. Free, fast in-browser data utility with.",
     canonicalUrl: "/ipv4-address-converter",
     processingType: "client",
@@ -373,7 +373,7 @@ export const privacyTools: ToolDefinition[] = [
       { question: "Does User-Agent String Parser & Inspector support instant breakdown?", answer: "Yes. User-Agent String Parser & Inspector provides instant breakdown natively in your browser with real-time feedback." }
     ],
     relatedTools: ["http-status-code-checker", "mime-type-lookup"],
-    seoTitle: "User-Agent String Parser & Inspector",
+    seoTitle: "User-Agent String Parser & Inspector | Nova Tools",
     seoDescription: "Parse browser name, OS version, rendering engine, and device type from HTTP User-Agent strings. Free, fast in-browser data utility with immediate results.",
     canonicalUrl: "/user-agent-parser",
     processingType: "client",

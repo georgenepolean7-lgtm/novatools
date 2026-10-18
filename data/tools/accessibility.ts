@@ -227,7 +227,7 @@ export const accessibilityTools: ToolDefinition[] = [
       { question: "Does Heading Accessibility Hierarchy & Outline Auditor support visual tree structure outline?", answer: "Yes. Heading Accessibility Hierarchy & Outline Auditor provides visual tree structure outline natively in your browser with real-time feedback." }
     ],
     relatedTools: ["color-contrast-checker", "html-image-alt-text-checker", "aria-attribute-reference-validator", "touch-target-size-checker", "accessible-form-label-checker"],
-    seoTitle: "Heading Hierarchy - H1-H6 Structure",
+    seoTitle: "Heading Accessibility Hierarchy & Outline | Nova Tools",
     seoDescription: "Audit HTML document heading structure for screen reader navigation, single H1 usage, and skipped levels. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/heading-accessibility-hierarchy-checker",
     processingType: "client",
