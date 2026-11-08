@@ -990,7 +990,7 @@ async function downloadPDF() {
       <ToolLayout
         badge="FREE OCR TOOL"
         title="Tamil Image to Text"
-        description="Extract Tamil and English text from images using advanced AI OCR."
+        description="Extract Tamil text from images, photos, scanned documents and screenshots. Free Tamil OCR with Tamil and English support, processed locally in your browser."
       >
 
         <UploadCard
@@ -1357,6 +1357,26 @@ async function downloadPDF() {
 </div>
       </ToolLayout>
 
+<section className="mx-auto max-w-5xl px-6 pb-16">
+  <div className="rounded-3xl border border-cyan-500/20 bg-white/5 p-8 backdrop-blur-xl">
+    <h2 className="text-3xl font-bold text-white">Tamil Image to Text OCR Online</h2>
+    <p className="mt-4 leading-7 text-slate-300">
+      Convert Tamil text from photos, scanned pages, screenshots and printed documents into editable Unicode text.
+      This Tamil OCR tool supports Tamil and English text and runs in your browser without uploading the image to a server.
+    </p>
+    <h3 className="mt-8 text-xl font-semibold text-cyan-300">How to extract Tamil text from an image</h3>
+    <ol className="mt-4 space-y-3 text-slate-300">
+      <li>1. Upload a clear JPG, PNG or WebP image containing Tamil text.</li>
+      <li>2. Start OCR and let the browser recognize Tamil and English characters.</li>
+      <li>3. Copy the extracted Unicode Tamil text or download it as a text file.</li>
+    </ol>
+    <h3 className="mt-8 text-xl font-semibold text-cyan-300">Tamil OCR for photos, scans and screenshots</h3>
+    <p className="mt-3 leading-7 text-slate-300">
+      Use it for Tamil book pages, certificates, notes, newspaper clippings, screenshots and scanned documents.
+      Clear, high-resolution images usually produce better OCR results.
+    </p>
+  </div>
+</section>
 <RelatedTools current="/tamil-image-to-text" />
 
 <SiteFooter />
