@@ -818,7 +818,28 @@ setTimeout(() => {
           </ol>
         </div>
       </section>
-      <RelatedTools current="/compress-pdf" />
+      <section className="mx-auto max-w-5xl px-6 pb-16">
+  <div className="rounded-3xl border border-cyan-500/20 bg-white/5 p-8 backdrop-blur-xl">
+    <h2 className="text-3xl font-bold text-white">Compress PDF Online for Forms and Upload Portals</h2>
+    <p className="mt-4 leading-7 text-slate-300">
+      Reduce a large PDF to a smaller file size for email attachments, job applications, exam forms, college admissions and government portals.
+      Processing happens in your browser, so your PDF is not uploaded to a remote file-processing server.
+    </p>
+    <h3 className="mt-8 text-xl font-semibold text-cyan-300">How to reduce PDF file size</h3>
+    <ol className="mt-4 space-y-3 text-slate-300">
+      <li>1. Upload the PDF you want to compress.</li>
+      <li>2. Enter a target size such as 200 KB or choose a compression level.</li>
+      <li>3. Run compression and compare the original and compressed file sizes.</li>
+      <li>4. Download the readable optimized PDF.</li>
+    </ol>
+    <h3 className="mt-8 text-xl font-semibold text-cyan-300">PDF compressor for exam and government forms</h3>
+    <p className="mt-3 leading-7 text-slate-300">
+      If an application portal rejects a PDF because it is too large, use the target-size option to create a smaller copy.
+      When the requested size is too aggressive, the tool keeps the best readable result instead of destroying document quality.
+    </p>
+  </div>
+</section>
+<RelatedTools current="/compress-pdf" />
       <SiteFooter />
 
 <NovaAssistant
