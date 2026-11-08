@@ -20,6 +20,9 @@ export const ocrTools: ToolDefinition[] = [
       "extract text from image"
     ],
     searchTerms: [
+      "tamil image to text online",
+      "tamil image to text converter",
+      "extract tamil text from photo",
       "tamil ocr",
       "extract tamil text",
       "image to tamil text",
@@ -70,8 +73,8 @@ export const ocrTools: ToolDefinition[] = [
       "tanglish-to-tamil-transliteration",
       "word-counter"
     ],
-    seoTitle: "Tamil Image to Text (OCR) Online Tool | Nova Tools",
-    seoDescription: "Extract editable Tamil and English text from images and photos online with 100% in-browser privacy. Fast, accurate, free neural OCR tool.",
+    seoTitle: "Tamil Image to Text OCR Online | Extract Tamil Text from Image | Nova Tools",
+    seoDescription: "Extract Tamil text from images, photos, scans and screenshots online. Free Tamil OCR with Tamil + English support, instant text extraction and 100% in-browser privacy.",
     canonicalUrl: "/tamil-image-to-text",
     processingType: "wasm",
     privacyMessage: "Processed 100% on-device with zero server uploads.",
