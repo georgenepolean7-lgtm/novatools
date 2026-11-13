@@ -184,7 +184,12 @@ export const qrTools: ToolDefinition[] = [
       { step: 2, title: "Enter Message", instruction: "Type pre-filled SMS message." },
       { step: 3, title: "Download", instruction: "Save high-resolution QR PNG." },
     ],
-    faq: [{ question: "Does scanning automatically send the SMS?", answer: "No, for security reasons, mobile operating systems require the user to tap 'Send' inside their messaging app." }],
+    faq: [
+{ question: "Does scanning automatically send the SMS?", answer: "No, for security reasons, mobile operating systems require the user to tap 'Send' inside their messaging app." },
+      { question: "Does SMS Text Message QR Code Generator support pre-filled phone number and text?", answer: "Yes. SMS Text Message QR Code Generator provides pre-filled phone number and text natively in your browser with real-time feedback." },
+      { question: "Does SMS Text Message QR Code Generator support standard smsto: uri format?", answer: "Yes. SMS Text Message QR Code Generator provides standard smsto: uri format natively in your browser with real-time feedback." },
+      { question: "Does SMS Text Message QR Code Generator support instant png download?", answer: "Yes. SMS Text Message QR Code Generator provides instant png download natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["email-qr-code-generator", "qr-code-generator", "wifi-qr-code-generator", "vcard-qr-code-generator", "barcode-code128-generator"],
     seoTitle: "SMS Text Message QR Code Generator Online | Nova Tools",
     seoDescription: "Generate scan-to-SMS QR codes with pre-filled phone number and ready-to-send text message. Free, fast in-browser data utility with immediate results on.",

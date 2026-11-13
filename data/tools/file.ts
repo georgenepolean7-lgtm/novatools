@@ -178,7 +178,12 @@ export const fileTools: ToolDefinition[] = [
       { step: 2, title: "Set Line Threshold", instruction: "Specify lines per chunk." },
       { step: 3, title: "Download", instruction: "Save split chunks." },
     ],
-    faq: [{ question: "Does this alter line formatting?", answer: "No, exact character casing, tabs, and line contents are strictly preserved." }],
+    faq: [
+{ question: "Does this alter line formatting?", answer: "No, exact character casing, tabs, and line contents are strictly preserved." },
+      { question: "Does Text & Log File Splitter Tool support custom line count threshold?", answer: "Yes. Text & Log File Splitter Tool provides custom line count threshold natively in your browser with real-time feedback." },
+      { question: "Does Text & Log File Splitter Tool support chunk preview?", answer: "Yes. Text & Log File Splitter Tool provides chunk preview natively in your browser with real-time feedback." },
+      { question: "Does Text & Log File Splitter Tool support 100% private in-browser?", answer: "Yes. Text & Log File Splitter Tool provides 100% private in-browser natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["text-file-merger", "remove-duplicate-lines", "file-checksum-sha256", "file-metadata-inspector", "batch-file-renamer-preview"],
     seoTitle: "Text & Log File Splitter - File Utility",
     seoDescription: "Split large text documents, CSV data, or log files by line count into manageable chunks in-browser. Fast in-browser file processing with complete local.",
