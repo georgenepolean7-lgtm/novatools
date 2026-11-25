@@ -634,7 +634,7 @@ export const privacyTools: ToolDefinition[] = [
     faq: [{ question: "Why use Unicode escape sequences?", answer: "To ensure code containing non-Latin characters renders identically regardless of source file character encoding." }],
     relatedTools: ["unicode-escape-decoder", "html-entity-encoder"],
     seoTitle: "Unicode Escape Sequence Encoder | Nova Tools",
-    seoDescription: "Convert Unicode characters into \\uXXXX escape sequences online for JavaScript and JSON.",
+    seoDescription: "Convert Unicode, Tamil, and special characters into \\uXXXX hex escape sequences for JavaScript and JSON. Free, fast in-browser data utility with immediate.",
     canonicalUrl: "/unicode-escape-encoder",
     processingType: "client",
     privacyMessage: "100% in-browser encoding.",
