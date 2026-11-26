@@ -631,7 +631,12 @@ export const privacyTools: ToolDefinition[] = [
       { step: 1, title: "Enter Text", instruction: "Type words in any language (e.g. Tamil or accented text)." },
       { step: 2, title: "Encode", instruction: "Click Execute to produce \\uXXXX escaped string." },
     ],
-    faq: [{ question: "Why use Unicode escape sequences?", answer: "To ensure code containing non-Latin characters renders identically regardless of source file character encoding." }],
+    faq: [
+{ question: "Why use Unicode escape sequences?", answer: "To ensure code containing non-Latin characters renders identically regardless of source file character encoding." },
+      { question: "Does Unicode Escape Sequence Encoder (\\uXXXX) support generates standard \\uxxxx 4-digit hex?", answer: "Yes. Unicode Escape Sequence Encoder (\\uXXXX) provides generates standard \\uxxxx 4-digit hex natively in your browser with real-time feedback." },
+      { question: "Does Unicode Escape Sequence Encoder (\\uXXXX) support preserves standard ascii letters?", answer: "Yes. Unicode Escape Sequence Encoder (\\uXXXX) provides preserves standard ascii letters natively in your browser with real-time feedback." },
+      { question: "Does Unicode Escape Sequence Encoder (\\uXXXX) support instant output?", answer: "Yes. Unicode Escape Sequence Encoder (\\uXXXX) provides instant output natively in your browser with real-time feedback." }
+    ],
     relatedTools: ["unicode-escape-decoder", "html-entity-encoder"],
     seoTitle: "Unicode Escape Sequence Encoder | Nova Tools",
     seoDescription: "Convert Unicode, Tamil, and special characters into \\uXXXX hex escape sequences for JavaScript and JSON. Free, fast in-browser data utility with immediate.",
